@@ -1,6 +1,8 @@
 
 export default function Home() {
   return (
-    <h1>holi</h1>
+    <div>
+      <h1>holi Home</h1>
+    </div>
   )
 }
