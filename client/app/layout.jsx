@@ -1,21 +1,21 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import Link from "next/link"
+import "./globals.css";
+import { Inter } from "next/font/google";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'MightyMonkeyClub',
-  description: 'club monito',
-}
+  title: "MightyMonkeyClub",
+  description: "club monito",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <h1>navbar</h1>
+        <h1>Enzo capo</h1>
         <ul>
-        <li>
+          <li>
             <Link href="/">Home</Link>
           </li>
           <li>
@@ -28,5 +28,5 @@ export default function RootLayout({ children }) {
         {children}
       </body>
     </html>
-  )
+  );
 }
