@@ -1,3 +1,4 @@
+
 import React from "react";
 import Link from "next/link";
 import style from "./Navbar.module.css";
@@ -28,3 +29,4 @@ export const Navbar = () => {
     </div>
   );
 };
+
