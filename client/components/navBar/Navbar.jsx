@@ -9,7 +9,9 @@ export const Navbar = () => {
   {label : "About", route: "/aboutUs"},
   {label : "Contact", route: "/contact"},
   {label : "My turns", route: "/turns"},
-   ]
+  {label : "Login", route: "/logIn"}
+  ]
+  
   return (
     <div>
         <ul>
