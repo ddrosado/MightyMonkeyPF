@@ -9,7 +9,7 @@ const Card = ({name}) => {
 
   return (
     <div className={styles.card}>
-      <Link href='/turns'>
+      <Link href='/detail'>
       <div className={styles.cardDetails}>
         <Image className={styles.sportImage} src={soccer} alt="soccer" />
         <div className={styles.sportName}>
