@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-    sequelize.define("booking", {
+    const Booking = sequelize.define("Booking", {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV1,
@@ -20,4 +20,5 @@ module.exports = (sequelize) => {
       },
       
     });
+    return Booking;
 }
