@@ -1,8 +1,10 @@
+
 .calendarContainer {
   display: inline-block;
   border: 1px solid #ccc;
   padding: 10px;
   font-family: Arial, sans-serif;
+  
 }
 
 .calendarHeaderContainer {
@@ -20,7 +22,7 @@
   margin-top: 10px;
 }
 
-.calendarDayContainer {
+.containerDay {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,10 +31,24 @@
   border: 1px solid #ccc;
 }
 
-.containerDay {
-  margin: 10px;
+.emptyDay {
+  width: 25px;
+  height: 25px;
+  
+  background-color: transparent;
 }
 
-.h3 {
-  text-align: center;
+.calendarDay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.calendarDay.selected {
+  background-color: #007bff;
+  color: #fff;
 }
