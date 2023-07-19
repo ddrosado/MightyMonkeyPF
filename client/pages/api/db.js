@@ -43,4 +43,4 @@ Booking.hasMany(Review,{foreignKey:'bookingId'})
 
 module.exports = {
    db
-};
+}
