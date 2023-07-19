@@ -1,0 +1,19 @@
+.cardSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;   
+    width: 70%;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.titleContainer {
+    width: 100%;
+}
