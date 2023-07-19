@@ -5,7 +5,7 @@ import Link from "next/link"
 export const Navbar = () => {
 
   const obj = [
-  {label : "home", route: "/"},
+  {label : "home", route: "/home"},
   {label : "About", route: "/aboutUs"},
   {label : "Contact", route: "/contact"},
   {label : "My turns", route: "/turns"},

@@ -6,17 +6,17 @@ const Cards = () => {
   return (
     <section className={styles.cardSection}>
       <div className={styles.titleContainer}>
-        <h1>Avtividades</h1>
+        <h1>Actividades</h1>
       </div>
       <div className={styles.cardsContainer}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card name={'Soccer'}/>
+        <Card name={'Tennis'} />
+        <Card name={'Basketball'} />
+        <Card name={'Voleyball'} />
+        <Card name={'Paddle'} />
+        <Card name={'Golf'} />
+        <Card name={'Hockey'} />
+        <Card name={'Gym'} />
       </div>
     </section>
   );
