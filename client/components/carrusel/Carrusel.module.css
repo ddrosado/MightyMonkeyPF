@@ -1,0 +1,46 @@
+/* .carruselContainer {
+
+
+} */
+.btn{
+    margin: 80px;
+}
+
+.carruselContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn {
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  
+  .imagesContainer {
+    display: flex;
+    align-items: center;
+    width: 600px;
+  }
+  
+  .imageWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .smallImage {
+    width: 100px; 
+    opacity: 0.5; 
+
+  }
+  
+  .bigImage {
+    width: 200px; 
+
+  }
+  
+
+

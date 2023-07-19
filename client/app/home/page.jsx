@@ -1,10 +1,12 @@
+import Image from "next/image";
 import Cards from "../../components/cards/Cards";
 import styles from './page.module.css'
+import homeImage from '../../assets/images/monoclub.jpg'
 
 export default function Home() {
   return (
     <div className={styles.homeContainer}>
-      <h1>home</h1>
+      <Image className={styles.homeImage} src={homeImage}/>
       <Cards />
     </div>
   )
