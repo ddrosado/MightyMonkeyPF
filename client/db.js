@@ -38,26 +38,18 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { User, Booking, Court, Review} = sequelize.models;
+const { User, Booking, Court, Review } = sequelize.models;
 
-// User.belongsToMany(Booking, {through:'user_booking'})
-// Booking.belongsToMany(User, {through:'user_booking'})
+User.belongsToMany(Booking, {through:'user_booking'})
+Booking.belongsToMany(User, {through:'user_booking'})
 
-// User.hasMany(Review,{foreignKey:'userId'})
+User.hasMany(Review,{foreignKey:'userId'})
 
-// Court.belongsToMany(Booking,{through:'court_booking'})
-// Booking.belongsToMany(Court,{through:'court_booking'})
+Court.belongsToMany(Booking,{through:'court_booking'})
+Booking.belongsToMany(Court,{through:'court_booking'})
 
-// Booking.hasMany(Review,{foreignKey:'bookingId'})
-const conexion = async()=>{
-   try{
-      const con = await sequelize.sync()
-      console.log(con)
-   }catch(error){
-      console.log(error)
-   }
-}
-conexion()
+Booking.hasMany(Review,{foreignKey:'bookingId'})
+
 
 module.exports = {
    ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
