@@ -1,0 +1,54 @@
+
+.calendarContainer {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  
+}
+
+.calendarHeaderContainer {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+  font-weight: bold;
+}
+
+.calendarDaysContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.containerDay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ccc;
+}
+
+.emptyDay {
+  width: 25px;
+  height: 25px;
+  
+  background-color: transparent;
+}
+
+.calendarDay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.calendarDay.selected {
+  background-color: #007bff;
+  color: #fff;
+}

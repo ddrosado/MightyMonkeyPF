@@ -1,0 +1,56 @@
+.detailContainer {
+  width: 80%;
+  margin: auto;
+
+}
+
+.p {
+  font-size: 22px;
+}
+
+.title {
+  margin: 50px;
+}
+
+.containerImgCalendar {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.image {
+  background-color: rgb(134, 134, 134);
+  width: 200px;
+  height: 400px;
+  margin: 20px;
+}
+.imagen {
+    background-color: rgb(134, 134, 134);
+    width: 400px;
+    height: 400px;
+
+  }
+
+.carruselContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slider {
+  display: flex;
+  scroll-snap-align: start;
+}
+
+.image {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
