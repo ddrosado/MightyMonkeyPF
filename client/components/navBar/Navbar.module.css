@@ -2,16 +2,27 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 60rem;
+    width: 60%;
     height: 60px;
     align-items: center;
     background-color: #F8EF88;
     font-size: 1em;
     font-weight: 600;
+    position: relative;
+    top: 120px;
+    left: 70px;
+    z-index: 100;
+}
+
+.logo {
+    width: 134.2px;
+    height: 126.6px;
+    position: relative;
+    right: 40px;
 }
 
 .options{
-    width: 50%;
+    width: 75%;
     height: 100%;
 }
 
