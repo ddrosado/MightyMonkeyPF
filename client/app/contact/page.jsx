@@ -1,13 +1,24 @@
-import React from 'react'
-import FormContact from '../../components/formContact/FormContact'
+"use client";
+import React from "react";
+import Image from "next/image";
+import FormContact from "../../components/contact/formContact/FormContact";
+import style from "./page.module.css";
+import img from "../../assets/images/monoclub.jpg";
+import { SectionDate } from "../../components/contact/sectionDate/SectionDate";
 
 const Contact = () => {
   return (
-    <div>
-      <h1>Contact</h1>
-      <FormContact/>
+    <div className={style.container}>
+      <div className={style.portada}>
+        <Image src={img} />
+        <h1 className={style.title}>Contact</h1>
+      </div>
+      <div className={style.sectionForm}>
+        <FormContact />
+      </div>
+      <SectionDate/>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
