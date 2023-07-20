@@ -1,8 +1,9 @@
 .detailContainer {
-  width: 80%;
+  width: 100%;
   margin: auto;
   color: #F8EF88;
-  margin-top: 400px;
+  background-color: #F8EF88;
+  height: 1000px;
 }
 
 .p {
@@ -12,6 +13,7 @@
 .title {
   font-size: 2.5em;
   background-color: black;
+  
 
 }
 
@@ -20,6 +22,7 @@
   justify-content: center;
   justify-content: space-evenly;
   margin-top: 200px;
+  
 }
 
 .image {
@@ -29,17 +32,18 @@
   margin: 20px;
 }
 .imagen {
-    background-color: rgb(134, 134, 134);
-    width: 400px;
-    height: 400px;
-
+    background-color: rgb(0, 0, 0);
+    width: 500px;
+    height: 500px;
+    margin-top: 10px;
   }
 
 .carruselContainer {
   width: 100%;
   overflow: hidden;
-  margin-top: 120px;
-  height: 500px;
+  margin-top: 80px;
+  height: 800px;
+  background-color: black;
 }
 
 .carousel {
@@ -64,3 +68,13 @@
 
 }
 
+.prueba{
+  background-color: rgb(0, 202, 101);
+  height: 800px;
+  width: 100%;
+}
+
+.reseñasContainer{
+  height: 800px;
+  background-color: #F8EF88;
+}
