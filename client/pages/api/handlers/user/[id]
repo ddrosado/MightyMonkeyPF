@@ -1,0 +1,9 @@
+const {db} = require('../../db')
+db.sequelize.sync({force: true})
+const {User} = db
+
+module.exports = async (req, res) => {
+    const {id} = req.query;
+    const user = await User.findByPk(id)
+    return user
+}
