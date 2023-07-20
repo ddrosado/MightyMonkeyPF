@@ -1,0 +1,32 @@
+.footerContainer {
+    height:100px;
+    background: black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    clip-path: polygon(0 0, 100% 14%, 100% 100%, 0% 100%);
+}
+.logo {
+    width: 64.2px;
+    height: 56.6px;
+}
+
+.copyright {
+    color: #F8EF88;
+}
+
+.socialIcons {
+    display: flex;
+    width: 25%;
+    justify-content: space-around;
+    color: #F8EF88;
+}
+.socialIcon {
+    scale: 30%;
+}
+
+.aboutDevs {
+    color: #F8EF88;    
+}

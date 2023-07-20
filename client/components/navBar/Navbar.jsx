@@ -15,7 +15,7 @@ export const Navbar = () => {
   
   return (
     <div className={style.container}>
-      <Image className={style.logo} src={logo} />
+      <Image className={style.logo} src={logo} alt='#' />
       <div className={style.options}>
         <ul className={style.ul}>
           {obj.map(({ label, route }) => {

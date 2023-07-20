@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <div className={style.container}>
       <div className={style.portada}>
-        <Image src={img} />
+        <Image src={img} alt='mono'/>
         <h1 className={style.title}>Contact</h1>
       </div>
       <div className={style.sectionForm}>

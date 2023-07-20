@@ -20,7 +20,7 @@ const FormContact = () => {
         </div>
         <textarea name="" id="" cols="30" rows="10" placeholder='Aqui deje su mensaje...'></textarea>
         <button>Enviar</button>
-        <Image className={style.logo} src={logo}></Image>
+        <Image className={style.logo} src={logo} alt='#' ></Image>
     </form>
   )
 }
