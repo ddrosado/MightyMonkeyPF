@@ -3,13 +3,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 1230px;
+    background: #F8EF88;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    bottom: 170px;
 }
 
 .cardsContainer {
     display: flex;
     justify-content: center;
     gap: 50px;   
-    width: 70%;
+    width: 80%;
     flex-wrap: wrap;
     margin-top: 40px;
 }
