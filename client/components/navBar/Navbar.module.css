@@ -1,29 +1,41 @@
-.container{
+.navContainer {
+    width: 100%;
+    height: 450px;
+    background-image: url('../../assets/images/mmclub.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.barContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 60%;
+    width: 40%;
     height: 60px;
     align-items: center;
     background-color: #F8EF88;
     font-size: 1em;
     font-weight: 600;
-    position: relative;
-    top: 120px;
-    left: 70px;
-    z-index: 100;
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+    margin-bottom: 100px;
+    
 }
 
 .logo {
     width: 134.2px;
     height: 126.6px;
     position: relative;
-    right: 40px;
+    right: -55px;
+    z-index: 101;
+    margin-bottom: 100px;
 }
 
 .options{
     width: 75%;
     height: 100%;
+    
 }
 
 .ul{

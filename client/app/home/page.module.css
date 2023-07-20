@@ -3,12 +3,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: -60px;
 }
 
-.homeImage {
-    max-width: 100%;
-    max-height: 450px;
-    z-index: 99;
-}

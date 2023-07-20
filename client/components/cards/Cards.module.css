@@ -3,11 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 1230px;
     background: #F8EF88;
-    position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
-    bottom: 170px;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    padding-bottom: 200px;
 }
 
 .cardsContainer {
@@ -22,3 +20,4 @@
 .titleContainer {
     width: 100%;
 }
+
