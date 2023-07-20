@@ -11,6 +11,8 @@ const sequelize = new Sequelize('mightymonkey', DB_USER, DB_PASSWORD, {
    host: DB_HOST,
    dialect: 'postgres',
    operatorAliases: false,
+   logging: false,
+   native: false,
    pool: {
        max: 5,
        min: 0,
