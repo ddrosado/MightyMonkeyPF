@@ -7,7 +7,6 @@ const Detail = () => {
   return (
     <div className={style.detailContainer}>
       <h2 className={style.title}>Alquiler</h2>
-
       <div className={style.containerImgCalendar}>
         <div>
           <div className={style.imagen}>image</div>
@@ -18,10 +17,11 @@ const Detail = () => {
         </div>
       </div>
 
-      <hr />
       <div className={style.carruselContainer}>
         <h2 className={style.title}>Gallery</h2>
-        <Carrusel />
+        <div>
+          <Carrusel />
+        </div>
       </div>
 
       <hr />

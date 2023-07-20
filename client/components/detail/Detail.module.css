@@ -1,7 +1,8 @@
 .detailContainer {
   width: 80%;
   margin: auto;
-
+  color: #F8EF88;
+  margin-top: 400px;
 }
 
 .p {
@@ -9,13 +10,16 @@
 }
 
 .title {
-  margin: 50px;
+  font-size: 2.5em;
+  background-color: black;
+
 }
 
 .containerImgCalendar {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
+  margin-top: 200px;
 }
 
 .image {
@@ -34,14 +38,19 @@
 .carruselContainer {
   width: 100%;
   overflow: hidden;
+  margin-top: 120px;
+  height: 500px;
 }
 
 .carousel {
   display: flex;
+  justify-content: center;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+
+
 }
 
 .slider {
@@ -52,5 +61,6 @@
 .image {
   flex: 0 0 100%;
   scroll-snap-align: start;
+
 }
 
