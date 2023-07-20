@@ -32,7 +32,7 @@ const Detail = () => {
       </div>
 
    
-      <Footer />
+ 
     </div>
   );
 };
