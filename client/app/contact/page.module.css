@@ -1,0 +1,28 @@
+.container{
+    
+}
+
+.portada{
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.title{
+    position: absolute;
+    font-size: 4.5em;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    bottom: 5rem;
+    left: 5rem;
+}
+
+.sectionForm{
+    display: flex;
+    width: 100%;
+    height: 50rem;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+}
+

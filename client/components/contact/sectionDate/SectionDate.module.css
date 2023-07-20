@@ -1,0 +1,25 @@
+.sectionDatos{
+    display: flex;
+    height: 50rem;
+    width: 100%;
+    background-color: #F8EF88;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+}
+
+.mapa{
+    width: 30rem;
+    height: 25rem;
+    border: solid black .3rem;
+}
+
+.datos{
+    width: 30rem;
+    height: 25rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem;
+    gap: 2rem;
+}

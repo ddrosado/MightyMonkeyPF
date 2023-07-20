@@ -1,5 +1,7 @@
 import React from 'react'
 import style from "./FormContact.module.css"
+import logo from "../../../assets/images/logo.png"
+import Image from 'next/image'
 
 const FormContact = () => {
   return (
@@ -18,9 +20,10 @@ const FormContact = () => {
         </div>
         <textarea name="" id="" cols="30" rows="10" placeholder='Aqui deje su mensaje...'></textarea>
         <button>Enviar</button>
-        <h1 className={style.logo}>Logo</h1>
+        <Image className={style.logo} src={logo}></Image>
     </form>
   )
 }
 
 export default FormContact
+
