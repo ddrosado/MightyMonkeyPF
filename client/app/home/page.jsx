@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Cards from "../../components/cards/Cards";
 import styles from './page.module.css'
-import homeImage from '../../assets/images/monoclub.jpg'
+import homeImage from '../../assets/images/mmclub.jpg'
 
 export default function Home() {
   return (
