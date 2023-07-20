@@ -48,7 +48,17 @@ const Calendar = () => {
 
   return (
     <div className={style.calendarContainer}>
+
+      <div className={style.mesBtnContainer}>
       <h3 className={style.h3}>{monthNames[currentMonth]}</h3>
+
+      <button className={style.button} onClick={handlePreviousMonth}>
+      &lt;
+      </button>
+      <button className={style.button} onClick={handleNextMonth}>
+      &gt;
+      </button>
+      </div>
       <div className={style.calendarHeaderContainer}>
         <span className={style.containerDay}>Lu</span>
         <span className={style.containerDay}>Ma</span>
@@ -62,13 +72,8 @@ const Calendar = () => {
         {emptyDays}
         {daysOfMonth}
       </div>
-      <button className={style.button} onClick={handlePreviousMonth}>
-        Mes anterior
-      </button>
-      <button className={style.button} onClick={handleNextMonth}>
-        Mes siguiente
-      </button>
-      <button>Reservation</button>
+ 
+    
     </div>
   );
 };
