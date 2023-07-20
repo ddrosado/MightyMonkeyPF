@@ -7,7 +7,7 @@ const UserModel = require('./models/User')
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 
-const sequelize = new Sequelize('mightymonkey', DB_USER, DB_PASSWORD, {
+const sequelize = new Sequelize('mightyMonkey', DB_USER, DB_PASSWORD, {
    host: DB_HOST,
    dialect: 'postgres',
    operatorAliases: false,
