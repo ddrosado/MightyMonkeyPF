@@ -14,19 +14,26 @@
 }
 
 .copyright {
-    color: #F8EF88;
+    color: white;
 }
 
 .socialIcons {
     display: flex;
-    width: 25%;
+    width: 15%;
     justify-content: space-around;
-    color: #F8EF88;
+    color: white
 }
 .socialIcon {
     width: 30px;
+    transition: all 0.2s ease;
 }
 
 .aboutDevs {
-    color: #F8EF88;    
+    color: white;  
+}
+
+.socialIcon:hover {
+    scale: 120%;
+    cursor: pointer;
+    color: #F8EF88;
 }
