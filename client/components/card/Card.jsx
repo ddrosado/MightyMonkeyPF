@@ -11,10 +11,9 @@ const Card = ({name}) => {
     <div className={styles.card}>
       <Link href='/detail'>
       <div className={styles.cardDetails}>
-        <Image className={styles.sportImage} src={soccer} alt="soccer" />
-        <div className={styles.sportName}>
+        {/* <div className={styles.sportName}>
           <h1>{name}</h1>
-        </div>
+        </div> */}
       </div>
       <button className={styles.cardButton}>Take a turn</button>
       </Link>
