@@ -1,9 +1,5 @@
-// const { Users } = require('../db')
-const { db } = require('../../db')
-const getAllUsers = require('../../controllers/users/getUsers')
-const postUser = require('../../controllers/users/postUser')
-db.sequelize.sync()
-const User = db.User
+const getAllUsers = require('../controllers/users/getUsers')
+const postUser = require('../controllers/users/postUser')
 
 export default async(req, res) => {
     switch (req.method) {
