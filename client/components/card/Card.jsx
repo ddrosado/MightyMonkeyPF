@@ -6,16 +6,16 @@ import Link from "next/link";
 const Card = ({image}) => {
 
   return (
-    <div className={styles.card} style={{backgroundImage: `url(${image})`}}>
       <Link href='/detail'>
+    <div className={styles.card} style={{backgroundImage: `url(${image})`}}>
       <div className={styles.cardDetails}>
         {/* <div className={styles.sportName}>
           <h1>{name}</h1>
         </div> */}
       </div>
       <button className={styles.cardButton}>Take a turn</button>
-      </Link>
     </div>
+      </Link>
   );
 };
 
