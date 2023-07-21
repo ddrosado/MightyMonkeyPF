@@ -8,17 +8,17 @@ const SportModel = require('./models/Sport');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 
-const sequelize = new Sequelize('mightymonkey', DB_USER, DB_PASSWORD, {
+const sequelize = new Sequelize('mightyMonkey', DB_USER, DB_PASSWORD, {
    host: DB_HOST,
    dialect: 'postgres',
    operatorAliases: false,
    logging: false,
    native: false,
    pool: {
-       max: 5,
-       min: 0,
-       acquire: 30000,
-       idle: 10000
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
    }
 })
 
