@@ -10,7 +10,7 @@ export const Navbar = () => {
     { label: "About", route: "/aboutUs" },
     { label: "Contact", route: "/contact" },
     { label: "My turns", route: "/turns" },
-    { label: "Login", route: "/login" },
+    { label: "Login", route: "/" },
   ];
 
   return (
