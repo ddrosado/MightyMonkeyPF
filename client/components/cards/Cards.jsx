@@ -1,8 +1,19 @@
 import React from "react";
 import Card from "../card/Card";
 import styles from "./Cards.module.css";
+import soccer from '../../assets/images/soccer.jpg'
+import tennis from "../../assets/images/tennis.jpg"
+import basket from "../../assets/images/basket.jpg"
+import hockey from "../../assets/images/hockey.jpg"
+import volley from "../../assets/images/volley.jpg"
+import golf from "../../assets/images/golf.jpg"
+import paddle from "../../assets/images/paddle.jpg"
+import rugby from "../../assets/images/rugby.jpg"
 
 const Cards = () => {
+
+  let images = [soccer,tennis, basket, hockey, volley, golf, paddle, rugby];
+
   return (
     <section className={styles.cardSection}>
       <div className={styles.titleContainer}>
@@ -11,14 +22,10 @@ const Cards = () => {
         </div>
       </div>
       <div className={styles.cardsContainer}>
-        <Card name={"Soccer"} />
-        <Card name={"Tennis"} />
-        <Card name={"Basketball"} />
-        <Card name={"Voleyball"} />
-        <Card name={"Paddle"} />
-        <Card name={"Golf"} />
-        <Card name={"Hockey"} />
-        <Card name={"Gym"} />
+        {
+          images.map((image) =>
+          (<Card image={image.src} />))
+        }
       </div>
     </section>
   );

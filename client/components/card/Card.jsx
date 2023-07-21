@@ -5,10 +5,10 @@ import Image from 'next/image';
 import Link from "next/link";
 
 
-const Card = ({name}) => {
+const Card = ({image}) => {
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} style={{backgroundImage: `url(${image})`}}>
       <Link href='/detail'>
       <div className={styles.cardDetails}>
         {/* <div className={styles.sportName}>
