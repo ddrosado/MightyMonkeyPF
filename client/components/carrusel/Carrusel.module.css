@@ -25,7 +25,7 @@
   .imagesContainer {
     display: flex;
     align-items: center;
-    width: 900px;
+    width: 1500px;
   }
   
   .imageWrapper {
@@ -36,14 +36,14 @@
   }
   
   .smallImage {
-    width: 180px; 
+    width: 250px; 
     opacity: 0.5; 
     border: 2px solid #F8EF88;
 
   }
   
   .bigImage {
-    width: 400px; 
+    width: 500px; 
     border: 2px solid #F8EF88;
   }
   
