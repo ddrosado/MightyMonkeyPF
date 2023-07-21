@@ -1,8 +1,5 @@
-
-
 const getAllUsers = require('../controllers/users/getUsers')
 const postUser = require('../controllers/users/postUser')
-
 
 export default async(req, res) => {
     switch (req.method) {
