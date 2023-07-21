@@ -6,6 +6,7 @@
     background: #F8EF88;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     padding: 100px 0 200px;
+    padding-bottom: 200px;
 }
 
 .cardsContainer {
@@ -37,5 +38,6 @@
 
 .titleBackround h1 {
     margin-top: -8px;
+
 }
 
