@@ -1,6 +1,6 @@
 'use client'
 import styles from "./login.module.css";
-import validation from "../login/validation"
+import validation from "./validation"
 import { useState } from "react";
 import Link from "next/link";
 
