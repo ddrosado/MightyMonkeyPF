@@ -4,13 +4,15 @@
 } */
 .btn{
     margin: 80px;
+    
 }
 
 .carruselContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 150px;
+
   }
   
   .btn {
@@ -23,24 +25,26 @@
   .imagesContainer {
     display: flex;
     align-items: center;
-    width: 900px;
+    width: 1500px;
   }
   
   .imageWrapper {
     flex: 1;
     display: flex;
     justify-content: center;
+
   }
   
   .smallImage {
-    width: 180px; 
+    width: 250px; 
     opacity: 0.5; 
+    border: 2px solid #F8EF88;
 
   }
   
   .bigImage {
-    width: 400px; 
-
+    width: 500px; 
+    border: 2px solid #F8EF88;
   }
   
 

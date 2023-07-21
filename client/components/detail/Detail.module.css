@@ -1,25 +1,49 @@
 .detailContainer {
-  width: 80%;
-  margin: auto;
+
   color: #F8EF88;
-  margin-top: 400px;
+
+
 }
 
 .p {
-  font-size: 22px;
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  margin-top: 300px;
 }
 
 .title {
   font-size: 2.5em;
   background-color: black;
+  clip-path: polygon(0 0, 100% 0%, 100% 82%, 0 100%);
+  margin-top: 120px;
+  width: 170px;
+  text-align: center;
 
 }
 
+.h2{
+  text-align: center;
+  font-size: 2.5em;
+  background-color: #F8EF88;
+  width: 170px;
+  clip-path: polygon(0 0, 100% 0%, 100% 82%, 0 100%);
+  margin: auto;
+  color: black;
+}
+.h2Review{
+background-color: red;
+
+
+}
 .containerImgCalendar {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
-  margin-top: 200px;
+  clip-path: polygon(0 0, 100% 0%, 100% 85%, 0 100%);
+  background-color: #F8EF88;;
+  height: 1000px;
+  
 }
 
 .image {
@@ -27,19 +51,22 @@
   width: 200px;
   height: 400px;
   margin: 20px;
+ 
 }
 .imagen {
-    background-color: rgb(134, 134, 134);
-    width: 400px;
-    height: 400px;
-
+    background-color: rgb(0, 0, 0);
+    width: 500px;
+    height: 500px;
+    margin-top: 300px;
+    margin-left: -500px;
   }
 
 .carruselContainer {
   width: 100%;
   overflow: hidden;
-  margin-top: 120px;
-  height: 500px;
+  margin-top: 80px;
+  height: 700px;
+
 }
 
 .carousel {
@@ -64,3 +91,14 @@
 
 }
 
+.prueba{
+  background-color: rgb(0, 202, 101);
+  height: 800px;
+  width: 100%;
+}
+
+.reseñasContainer{
+  height: 800px;
+  background-color: #F8EF88;
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
+}
