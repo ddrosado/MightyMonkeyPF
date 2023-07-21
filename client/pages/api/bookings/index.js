@@ -1,5 +1,5 @@
-const getBookings = require('../../controllers/bookings/getBookings')
-const postBookings = require('../../controllers/bookings/postBookings')
+const getBookings = require('../controllers/bookings/getBookings')
+const postBookings = require('../controllers/bookings/postBookings')
 
 export default async(req, res) => {
     switch (req.method) {
