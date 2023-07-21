@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../card/Card";
 import styles from "./Cards.module.css";
 import soccer from '../../assets/images/soccer.jpg'
-import tennis from "../../assets/images/tennis.jpg"
+import tennis from "../../assets/images/tenniscolor.jpg"
 import basket from "../../assets/images/basket.jpg"
 import hockey from "../../assets/images/hockey.jpg"
 import volley from "../../assets/images/volley.jpg"
