@@ -9,7 +9,7 @@
   font-size: 20px;
   color: black;
   text-align: center;
-  margin-top: 300px;
+  margin-top: 150px;
 }
 
 .title {
@@ -31,11 +31,7 @@
   margin: auto;
   color: black;
 }
-.h2Review{
-background-color: red;
 
-
-}
 .containerImgCalendar {
   display: flex;
   justify-content: center;
@@ -102,3 +98,4 @@ background-color: red;
   background-color: #F8EF88;
   clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
 }
+
