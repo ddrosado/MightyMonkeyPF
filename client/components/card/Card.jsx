@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./Card.module.css";
-import soccer from "../../assets/images/soccer.jpg";
-import Image from 'next/image';
 import Link from "next/link";
 
 

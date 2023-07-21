@@ -9,14 +9,7 @@ import volley from "../../assets/images/volley.jpg"
 import golf from "../../assets/images/golf.jpg"
 import paddle from "../../assets/images/paddle.jpg"
 import rugby from "../../assets/images/rugby.jpg"
-import soccer from '../../assets/images/soccer.jpg'
-import tennis from "../../assets/images/tennis.jpg"
-import basket from "../../assets/images/basket.jpg"
-import hockey from "../../assets/images/hockey.jpg"
-import volley from "../../assets/images/volley.jpg"
-import golf from "../../assets/images/golf.jpg"
-import paddle from "../../assets/images/paddle.jpg"
-import rugby from "../../assets/images/rugby.jpg"
+
 
 const Cards = () => {
 
