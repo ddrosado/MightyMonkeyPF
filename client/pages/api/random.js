@@ -1,6 +1,12 @@
-import React from "react";
+const { User } = require('../../db')
+// import { User } from '../../db'
 
-export default function handler(req, res) {
-    const randomNumber = Math.floor(Math.random() * 100); // Generate a random number between 0 and 100
-    res.status(200).json({ number: randomNumber});
+module.exports = async(req, res)=> {
+  // console.log('')
+  try{
+    const user = await User.findAll()
+    res.status(200).json(user)
+  }catch(error){
+    res.status(400).json(error.message)
   }
+}
