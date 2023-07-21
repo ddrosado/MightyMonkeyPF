@@ -1,11 +1,11 @@
 .card {
   width: 200px;
   height: 250px;
-  background-image: url('../../assets/images/soccer2.jpg');
+  /* background-image: url('../../assets/images/soccer2.jpg'); */
   background-size: cover;
     background-repeat: no-repeat;
   position: relative;
-  /* border: 2px solid transparent; */
+  border: 1px solid black;
   transition: 0.2s ease-out;
   overflow: visible;
   display: flex;
@@ -52,7 +52,7 @@
  
  /*Hover*/
  .card:hover {
-  border-color: black;
+  border: 3px solid black;
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
   cursor: pointer;
   scale: 110%;
