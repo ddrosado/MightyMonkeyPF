@@ -12,18 +12,9 @@
 }
 
 .barContainer{
-    width: 100%;
-    height: 450px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-}
-
-.barContainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
     width: 40%;
     height: 60px;
     align-items: center;
@@ -32,7 +23,6 @@
     font-weight: 600;
     clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
     margin-bottom: 100px;
-    
 }
 
 .logo {
@@ -45,9 +35,8 @@
 }
 
 .options{
-    width: 75%;
+    width: 88%;
     height: 100%;
-    
 }
 
 .ul{
@@ -57,7 +46,7 @@
 }
 
 
-.ul > li{
+.ul > .link{
     list-style: none;
     width: 100%;
     height: 100%;
@@ -68,15 +57,11 @@
     cursor: pointer;
 }
 
-.ul > li > a{
-    text-decoration: none;
-    color: black;
-} 
 
-.ul > li:hover{
+.ul > .link:hover{
     background-color: black;
 }
 
-.ul > li:hover > a{
+.ul > .link:hover > li{
     color: #F8EF88;
 }

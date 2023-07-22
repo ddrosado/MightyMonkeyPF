@@ -1,19 +1,17 @@
-
 .calendarContainer {
   display: inline-block;
   border: 3px solid #ffffff;
   padding: 45px;
   background-color: #000000;
   color: #f8ef88;
-  
-
+  box-shadow: 9px 10px 20px 8px rgba(0, 0, 0, 0.75);
 }
 
 .calendarHeaderContainer {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #c0bebe;
-  padding: 10px;
+  padding: 12px;
   font-weight: bold;
 }
 
@@ -21,15 +19,16 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 30px;
-  margin-top: 12px;
-  height: 310px;
+  margin-top: 10px;
+  height: 300px;
+  padding: 10px;
 }
 
 .containerDay {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
+  width: 30px;
   height: 20px;
 }
 
@@ -51,9 +50,13 @@
   border: none;
   border-radius: 2px;
 }
+.calendarDay:hover {
+  font-size: 22px;
+}
 
 .calendarDay.selectedDay {
-  color: #000000;
+  background-color: #f8ef88;
+  color: rgb(0, 0, 0);
   display: flex;
 }
 
@@ -69,12 +72,11 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 .dateTimePicker {
   margin-top: 30px;
-
 }
 
 .dateTimePicker label {
@@ -88,9 +90,26 @@
   align-items: center;
 }
 
-.label{
+.label {
   color: #000000;
 }
 
+.hour {
+  margin-top: 5px;
+}
 
+.reserveButton {
+  background-color: #f8ef88;
+  border-radius: 5px;
+  margin-top: 20px;
+  color: #000000;
+  padding: 6px;
+}
 
+.reserveButton:hover{
+  background-color: #fcef5c;
+}
+.parrafoSelect {
+  margin-top: 40px;
+  font-size: 20px;
+}
