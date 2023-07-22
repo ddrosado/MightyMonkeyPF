@@ -9,21 +9,15 @@ import Image from "next/image";
 
 export default function Login() {
 
-
-
-  // experimental
-
   const [activeComponent, setActiveComponent] = useState('signIn');
 
-  // Function to switch between components
+  // switch between components
   const changeComponent = (componentName) => {
     console.log('Changing component to:', componentName);
     setActiveComponent(componentName);
   };
 
-  // Conditionally render the active component
-
-  
+  // conditionally render the active component
   let componentToDisplay;
   if (activeComponent === 'signIn') {
     componentToDisplay = <SignIn 
