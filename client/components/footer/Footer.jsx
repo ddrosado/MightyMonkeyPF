@@ -4,12 +4,9 @@ import Image from "next/image";
 import logo from "../../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebookF,
-  faInstagram,
   faSquareFacebook,
   faSquareInstagram,
   faSquareTwitter,
-  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
@@ -18,7 +15,7 @@ const Footer = () => {
     <div className={style.footerContainer}>
       <Image src={logo} alt="logos" className={style.logo} />
       <p className={style.copyright}>
-        2023 mighty monky club. Todos los derechos reservados
+      © Mighty Monky Club. Todos los derechos reservados
       </p>
       <Link href='/aboutDevs'>
         <p className={style.aboutDevs}>Our Developers</p>

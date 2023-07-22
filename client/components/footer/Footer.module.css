@@ -30,6 +30,9 @@
 .aboutDevs {
     color: white;  
 }
+.aboutDevs:hover {
+    color: #F8EF88;
+}
 
 .socialIcon:hover {
     scale: 120%;
