@@ -117,13 +117,13 @@ const Calendar = () => {
         {daysOfMonth}
       </div>
       <div className={style.dateTimePicker}>
-        <label htmlFor="datetime-local">Selected date and time:</label>
+      <hr />
         {selectedDateTime ? (
           <p>
             {selectedDateTime.toLocaleDateString()} - {selectedDateTime.toLocaleTimeString()}
           </p>
         ) : (
-          <p>Select a date and time</p>
+          <p className={style.parrafoSelect}>Select a date and time</p>
         )}
         {selectedDateTime && (
           <div className={style.hour}>
