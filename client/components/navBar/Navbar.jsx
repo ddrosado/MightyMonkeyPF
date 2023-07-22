@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import style from "./Navbar.module.css";
 import Image from "next/image";
 import logo from "../../assets/images/logo.png";
 
 export const Navbar = () => {
+
+  const [admin, setAdmin] = useState(true)
+
   const obj = [
     { label: "Home", route: "/home" },
     { label: "About", route: "/aboutUs" },
@@ -20,12 +23,11 @@ export const Navbar = () => {
         <div className={style.options}>
           <ul className={style.ul}>
             {obj.map(({ label, route }) => {
-              return (
-                <li key={route}>
-                  <Link href={route}>{label}</Link>
-                </li>
+              return (              
+                  <Link className={style.link} key={route} href={route}><li>{label}</li></Link>
               );
             })}
+            {admin? <Link className={style.link} key="admin" href="dashboard"><li>Admin</li></Link> : null}
           </ul>
         </div>
       </div>
