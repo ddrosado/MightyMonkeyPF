@@ -1,0 +1,42 @@
+.devsContainer {
+    background-color: #F8EF88;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.imageDev {
+    width: 300px;
+}
+
+.devsGrid {
+    margin: 150px 0;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.devInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoIcons {
+    font-size: 2rem;
+    display: flex;
+    width: 120px;
+    justify-content: space-around;
+
+}
+
+.iconDev {
+    transition: all 0.2s ease;
+}
+
+.iconDev:hover {
+    scale: 140%;
+    cursor: pointer;
+}
