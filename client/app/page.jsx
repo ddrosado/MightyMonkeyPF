@@ -1,51 +1,44 @@
-"use client";
-import styles from "./login.module.css";
-import { useState } from "react";
+'use client'
+import styles from "./login.module.css"
 import RecoverPass from "../components/recoverPass/RecoverPass"
 import SignIn from "../components/signin/SignIn"
 import SignUp from "../components/register/Register"
 import logo from "../assets/images/logo.png"
 import Image from "next/image";
+import { useState } from "react"
 
 export default function Login() {
 
-  const [userData, setUserData] = useState({
-    username: '',
-    password: ''
-  });
-  
-  const [errors, setErrors] = useState({});
-  // const [isValid, setIsValid] = useState(false);
-  
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUserData({
-      ...userData,
-      [name]: value
-    });
-    setErrors(validation({
-      ...userData,
-      [name]: value
-    }));
+
+
+  // experimental
+
+  const [activeComponent, setActiveComponent] = useState('signIn');
+
+  // Function to switch between components
+  const changeComponent = (componentName) => {
+    console.log('Changing component to:', componentName);
+    setActiveComponent(componentName);
   };
+
+  // Conditionally render the active component
+
   
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validation(userData);
-    setErrors(validationErrors);
-    if (Object.keys(validationErrors).length === 0) {
-      // se submitea
-    }
-    setUserData({
-      username: '',
-      password: ''
-    });
-  };
+  let componentToDisplay;
+  if (activeComponent === 'signIn') {
+    componentToDisplay = <SignIn 
+      changeComponent = {changeComponent}    />;
+  } else if (activeComponent === 'register') {
+    componentToDisplay = <SignUp 
+    changeComponent = {changeComponent} />;
+  } else if (activeComponent === 'recoverPass') {
+    componentToDisplay = <RecoverPass
+    changeComponent = {changeComponent}  />;
+  }
   
 
   return  (
+
     <div className={styles.loginScreen}>
           
           <div className={styles.loginImgContainer}>
