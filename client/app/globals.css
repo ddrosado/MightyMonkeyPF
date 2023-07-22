@@ -13,3 +13,18 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+@layer utilities {
+    .register-input {
+      @apply shadow appearance-none border rounded-full w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none;
+    }
+    .register-input:focus {
+      @apply focus:shadow;
+    }
+    .register-input-mail {
+        @apply shadow appearance-none border rounded-full w-full py-1 px-4 text-gray-700 leading-tight focus:outline-none;
+    }
+    .register-input-mail:focus {
+         @apply focus:shadow;
+    }
+  }
