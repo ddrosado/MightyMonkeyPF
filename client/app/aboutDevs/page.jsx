@@ -44,7 +44,7 @@ export default function page() {
       name: "Lucas",
       surname: "Figueroa",
       image: lucas,
-      instagram: "https://www.instagram.com/lucasfigueroa5/",
+      instagram: "https://www.instagram.com/lucasfiguerok/",
       linkedIn: "https://www.linkedin.com/in/lucas-figueroa-62b6b4205/",
       github: "https://github.com/lucasfigueroa5",
     },
