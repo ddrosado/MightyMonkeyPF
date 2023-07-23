@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Navbar } from "../components/navBar/Navbar";
 import Footer from "../components/footer/Footer";
 import {redirect, usePathname} from "next/navigation"
+import { ReduxProvider } from "../redux/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         {path !== "/"? <Navbar /> : null }
-        {children}
+        <ReduxProvider>{children}</ReduxProvider>
         {path !== "/"? <Footer /> : null }
       </body>
     </html>

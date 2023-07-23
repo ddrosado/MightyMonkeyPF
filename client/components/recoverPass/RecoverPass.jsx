@@ -1,5 +1,6 @@
 import styles from "./Recover.module.css"
 import BackArrow from "../goBack/BackArrow";
+import Counter from "../counter/counter";
 
 const Recover = (props) => {
   // console.log({props})
@@ -33,6 +34,8 @@ const Recover = (props) => {
     Send Reset Code
     </button>
         </div>
+
+        <Counter/>
       </div>
   )
   };
