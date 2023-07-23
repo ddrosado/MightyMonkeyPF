@@ -1,5 +1,5 @@
 import React from 'react'
-import ListSocios from '../../components/listSocios/ListSocios'
+import ListSocios from '../../components/listSocios/ListSocios.jsx'
 
 const Page = () => {
   return (
