@@ -63,6 +63,7 @@ export default function page() {
         {devs.map((dev) => (
           <div className={style.devInfo}>
             <Image className={style.imageDev} src={dev.image} alt="#" />
+            <h1 className={style.names}>{dev.name + ' ' + dev.surname}</h1>
             <div className={style.infoIcons}>
               <Link href={dev.instagram} target="blank">
                 <FontAwesomeIcon

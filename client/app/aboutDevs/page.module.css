@@ -10,6 +10,15 @@
     width: 300px;
 }
 
+.names {
+    font-size: 1.5rem;
+    font-weight: 500;
+    transform: rotate(-31deg);
+    position: relative;
+    bottom: 55px;
+    left: 25px;
+}
+
 .devsGrid {
     margin: 150px 0;
     width: 90%;
@@ -27,13 +36,19 @@
 .infoIcons {
     font-size: 2rem;
     display: flex;
-    width: 120px;
+    width: 150px;
     justify-content: space-around;
+    transform: rotate(-31deg);
+    position: relative;
+    bottom: 55px;
+    left: 45px;
 
 }
 
 .iconDev {
     transition: all 0.2s ease;
+    transform: rotate(29deg);
+
 }
 
 .iconDev:hover {
