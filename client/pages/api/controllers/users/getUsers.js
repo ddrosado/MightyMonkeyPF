@@ -1,8 +1,8 @@
-const { db } = require('../../db')
-db.sequelize.sync()
-const User = db.User 
+import { db } from "../../db";
+db.sequelize.sync();
+const { User } = db;
 
-module.exports = async() => {
-    const allUsers = await User.findAll();
-    return allUsers;
-}
+export default async () => {
+  const allUsers = await User.findAll();
+  return allUsers;
+};

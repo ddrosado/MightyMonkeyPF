@@ -1,9 +1,8 @@
-const { db } = require('../../db')
-db.sequelize.sync()
-const User = db.User
+import { db } from "../../db";
+db.sequelize.sync();
+const { User } = db;
 
-module.exports = async(id) => {
-    const user = await User.findByPk(id)
-    if(!user) throw new Error('User not found')
-    return user;
-}
+export default async (id) => {
+  const user = await User.findByPk(id)
+  return user;
+};
