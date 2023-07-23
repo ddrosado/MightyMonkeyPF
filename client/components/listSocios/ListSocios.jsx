@@ -35,7 +35,7 @@ const ListSocios = () => {
   ];
 
   return (
-    <body className="antialiased font-sans bg-gray-200">
+    <div className="antialiased font-sans bg-gray-200">
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
           <div>
@@ -188,7 +188,7 @@ const ListSocios = () => {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 };
 
