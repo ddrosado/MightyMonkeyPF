@@ -53,5 +53,7 @@
 
 .iconDev:hover {
     scale: 140%;
+    color: rgb(156, 102, 207);
     cursor: pointer;
 }
+
