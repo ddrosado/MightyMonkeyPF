@@ -9,8 +9,8 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 
 
-const sequelize = new Sequelize('mightyMonkey','postgres','matiasxzca3000', {
-   host: 'localhost',
+const sequelize = new Sequelize('mightyMonkey',DB_USER,DB_PASSWORD, {
+   host:DB_HOST,
    dialect: 'postgres',
    operatorAliases: false,
    logging: false,
