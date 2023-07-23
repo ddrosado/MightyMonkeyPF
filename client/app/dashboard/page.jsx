@@ -1,9 +1,10 @@
 import React from 'react'
+import ListSocios from '../../components/listSocios/ListSocios'
 
 const Page = () => {
   return (
-    <div style={{height: "500px"}}>
-        <h1 style={{color: "white", fontSize: "3em"}}>hola admin</h1>
+    <div>
+      <ListSocios/>
     </div>
   )
 }
