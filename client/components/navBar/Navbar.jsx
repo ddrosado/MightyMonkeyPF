@@ -5,8 +5,7 @@ import Image from "next/image";
 import logo from "../../assets/images/logo.png";
 
 export const Navbar = () => {
-
-  const [admin, setAdmin] = useState(true)
+  const [admin, setAdmin] = useState(true);
 
   const obj = [
     { label: "Home", route: "/home" },
@@ -17,18 +16,29 @@ export const Navbar = () => {
   ];
 
   return (
-    <div className={style.navContainer}>
-      <Image className={style.logo} src={logo} alt="#" />
-      <div className={style.barContainer}>
-        <div className={style.options}>
-          <ul className={style.ul}>
-            {obj.map(({ label, route }) => {
-              return (              
-                  <Link className={style.link} key={route} href={route}><li>{label}</li></Link>
-              );
-            })}
-            {admin? <Link className={style.link} key="admin" href="dashboard"><li>Admin</li></Link> : null}
-          </ul>
+    <div className={style.navSection}>
+      <div className={style.adminBar}>
+      {admin ? (
+                <Link className={style.link} key="admin" href="dashboard">
+                  <li>Admin</li>
+                </Link>
+              ) : null}
+              
+      </div>
+      <div  className={style.navContainer}>
+        <Image className={style.logo} src={logo} alt="#" />
+        <div className={style.barContainer}>
+          <div className={style.options}>
+            <ul className={style.ul}>
+              {obj.map(({ label, route }) => {
+                return (
+                  <Link className={style.link} key={route} href={route}>
+                    <li>{label}</li>
+                  </Link>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
