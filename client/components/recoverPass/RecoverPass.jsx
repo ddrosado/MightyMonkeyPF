@@ -24,7 +24,7 @@ const Recover = (props) => {
       name="recovermail"
       placeholder="youremail@mail.com"
       value=""
-      class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     />
     </div>
 

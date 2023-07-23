@@ -58,7 +58,7 @@ const router = useRouter();
       placeholder="youremail@mail.com"
       value={userData.username}
       onChange={handleChange} 
-      class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     />
     {errors.username && <p className={styles.loginError}>{errors.username}</p>}
   </div>
@@ -96,7 +96,7 @@ const router = useRouter();
     <button
     className="bg-white px-4 py-2 border flex gap-2 border-slate-300 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
     <img 
-    class="w-6 h-6" 
+    className="w-6 h-6" 
     src="https://www.svgrepo.com/show/475656/google-color.svg" 
     loading="lazy" 
     alt="google logo"/>
