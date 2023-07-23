@@ -1,9 +1,9 @@
 import styles from "./Recover.module.css"
 import BackArrow from "../goBack/BackArrow";
-import Counter from "../counter/counter";
+import Counter from "../counter(borrar)/counter";
 
 const Recover = (props) => {
-  // console.log({props})
+
   return(
     <div>
       <BackArrow 

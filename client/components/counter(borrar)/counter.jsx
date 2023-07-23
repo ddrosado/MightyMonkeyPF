@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../../redux/slices';
+import { increment } from '../../redux/features/sportsSlice';
 
 const Counter = () => {
-  const counter = useSelector((state) => state.counter);
+  const counter = useSelector((state) => state.sports);
   const dispatch = useDispatch();
   console.log(counter)
 
@@ -11,7 +11,6 @@ const Counter = () => {
     <div>
 
       <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
     </div>
   );
 };

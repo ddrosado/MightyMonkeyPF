@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './slices';
+import sportsReducer from './features/sportsSlice';
+import usersReducer from './features/usersSlice';
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer
+    sports: sportsReducer,
+    users: usersReducer
   },
 });
 
