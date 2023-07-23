@@ -1,0 +1,25 @@
+.infoClub {
+    color: white;
+    column-count: 2;
+    column-gap: 20px;
+    padding: 100px;
+}
+
+.clubTitle {
+    color: #F8EF88;
+}
+
+.aboutContainer {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagesContainer {
+    background: #F8EF88;
+    height: 500px;
+    width: 100%;
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+}

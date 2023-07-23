@@ -1,0 +1,51 @@
+/* .carruselContainer {
+
+
+} */
+.btn{
+    margin: 80px;
+    
+}
+
+.carruselContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+
+  }
+  
+  .btn {
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  
+  .imagesContainer {
+    display: flex;
+    align-items: center;
+    width: 1500px;
+  }
+  
+  .imageWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+  }
+  
+  .smallImage {
+    width: 250px; 
+    opacity: 0.5; 
+    border: 2px solid #F8EF88;
+
+  }
+  
+  .bigImage {
+    width: 500px; 
+    border: 2px solid #F8EF88;
+  }
+  
+
+

@@ -1,0 +1,41 @@
+.footerContainer {
+    height:100px;
+    background: black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.logo {
+    width: 64.2px;
+    height: 56.6px;
+}
+
+.copyright {
+    color: white;
+}
+
+.socialIcons {
+    display: flex;
+    width: 10%;
+    justify-content: space-around;
+    color: white;
+    font-size: 1.5rem;
+}
+.socialIcon {
+    transition: all 0.2s ease;
+}
+
+.aboutDevs {
+    color: white;  
+}
+.aboutDevs:hover {
+    color: #F8EF88;
+}
+
+.socialIcon:hover {
+    scale: 120%;
+    cursor: pointer;
+    color: #F8EF88;
+}

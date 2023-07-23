@@ -1,0 +1,128 @@
+.loginScreen{
+    width: 100%;
+    height: 100vh;
+    border: 1px solid green;
+    background-image: url('../assets/images/cancha.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginTrapezoid{
+    position: absolute;
+    left: 8rem;
+    /* top: 5rem; */
+    z-index: 2;
+    width: 300px;
+    height: 400px;
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%);
+    background-color: #F8EF88;
+}
+
+.loginError{
+    font-size: 1rem;
+    /* border: 1px solid green; */
+}
+
+.loginForm{
+    margin-top: 3rem;
+} 
+
+.loginContainer{
+    margin: 0.5rem;
+    /* border: 1px solid fuchsia; */
+    padding: 1rem;
+}
+
+  
+  .loginScreen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgb(0, 0, 0); 
+    clip-path: polygon(0 0, 44% 0, 62% 100%, 0 100%);
+    z-index: 0;
+  }
+
+  .loginScreen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.521); 
+    z-index: 1;
+  }
+
+  .loginFormGroup{
+    margin-top: 1rem;
+  }
+
+.loginButtonContainer{
+    margin: 1rem 0rem 1rem 0rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.signUp{
+    color: #E10000;
+}
+
+.forgotPass{
+    font-size: 0.9rem;
+}
+
+.forgotPass:hover{
+    color: #7b7744;
+}
+
+.signUp:hover{
+    color: #7b7744;
+}
+
+.contentContainer{
+    margin: 1.5rem 1rem;
+}
+
+.signinContainer{
+    margin: 0rem;
+}
+
+.recoverArrow{
+    font-size: 2rem;
+}
+
+.recoverArrow:hover{
+    color: white;
+}
+
+.loginLogo{
+    width: 134.2px;
+    height: 126.6px;
+}
+
+.loginImgContainer{
+    left: 53vh;
+    bottom: 72vh;
+    position: absolute;
+    z-index: 3;
+}
+
+.googleButtonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.createAccount{
+    font-size: 0.9rem;
+}

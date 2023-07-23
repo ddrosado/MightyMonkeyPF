@@ -1,0 +1,95 @@
+.detailContainer {
+  color: #f8ef88;
+}
+
+.p {
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  margin-top: 230px;
+  font-weight: bold;
+  text-shadow: 10px 12px 19px 0px rgba(0,0,0,0.75);
+}
+
+.title {
+  font-size: 32px;
+  background-color: black;
+  clip-path: polygon(0 0, 100% 0%, 100% 82%, 0 100%);
+  margin-top: 80px;
+  width: 150px;
+  text-align: center;
+  padding: 5px;
+  
+}
+
+.h2 {
+  text-align: center;
+  font-size: 32px;
+  background-color: #f8ef88;
+  width: 150px;
+  padding: 5px;
+  clip-path: polygon(0 0, 100% 0%, 100% 82%, 0 100%);
+  margin: auto;
+  color: black;
+}
+
+.containerImgCalendar {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  clip-path: polygon(0 0, 100% 0%, 100% 88%, 0 100%);
+  background-color: #f8ef88;
+  height: 1100px;
+}
+
+.image {
+  background-color: rgb(134, 134, 134);
+  width: 200px;
+  height: 400px;
+  margin: 20px;
+}
+.imagen {
+  background-color: rgb(0, 0, 0);
+  width: 500px;
+  height: 500px;
+  margin-top: 265px;
+  margin-left: -500px;
+}
+
+.carruselContainer {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 80px;
+  height: 700px;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slider {
+  display: flex;
+  scroll-snap-align: start;
+}
+
+.image {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.prueba {
+  background-color: rgb(0, 202, 101);
+  height: 800px;
+  width: 100%;
+}
+
+.reseñasContainer {
+  height: 800px;
+  background-color: #f8ef88;
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
+}
