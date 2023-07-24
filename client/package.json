@@ -17,19 +17,21 @@
     "@heroicons/react": "^2.0.18",
     "@material-tailwind/react": "^2.0.7",
     "@reduxjs/toolkit": "^1.9.5",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
+    "dotenv": "^16.3.1",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
     "next": "13.4.10",
-    "next-redux-wrapper": "^8.1.0",
-    "postcss": "^8.4.26",
+    "pg": "^8.11.1",
+    "pg-hstore": "^2.3.4",
+    "postcss": "8.4.26",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-redux": "^8.1.1",
     "react-router-dom": "^6.13.0",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
-    "tailwindcss": "^3.3.3"
+    "sequelize": "^6.32.1",
+    "tailwindcss": "3.3.3"
   }
 }

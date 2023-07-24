@@ -1,0 +1,14 @@
+.whatsappIcon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    margin-bottom: 12px; 
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .whatsappIcon:hover {
+    scale: 140%;
+    cursor: pointer;
+  }
