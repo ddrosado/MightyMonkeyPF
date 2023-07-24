@@ -1,5 +1,18 @@
+'use client'
+import { getUsers } from "../../redux/actions/userActions";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from "react";
+
 const ListSocios = () => {
   const colums = ["User", "Otro dato", "Phone", "Status", "Edit"];
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []); 
+  
+   const user = useSelector(state => state.users);
+   console.log(user)
 
   const users = [
     {
@@ -106,8 +119,10 @@ const ListSocios = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map(({ name, email, phone, socio }) => {
+                  {users.map(({ name, surname, email, isAdmin }) => {
                     return (
+
+
                       <tr>
                         {/* <td className="px-5 py-5 bg-white text-sm">
                           <div className="flex items-center">
@@ -125,6 +140,8 @@ const ListSocios = () => {
                             </div>
                           </div>
                         </td> */}
+
+
                         <td className="px-4 py-4 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div className="flex items-center gap-x-2">
                                         <img className="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt=""></img>
@@ -141,23 +158,23 @@ const ListSocios = () => {
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {phone}
+                            {/* falta */}
                           </p>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
                           <span
                             className={`relative inline-block px-3 py-1 font-semibold leading-tight ${
-                              socio ? "text-green-900" : "text-red-900"
+                              isAdmin ? "text-green-900" : "text-red-900"
                             }`}
                           >
                             <span
                               aria-hidden
                               className={`absolute inset-0 ${
-                                socio ? "bg-green-200" : "bg-red-200"
+                                isAdmin ? "bg-green-200" : "bg-red-200"
                               } opacity-50 rounded-full`}
                             ></span>
                             <span className="relative">
-                              {socio ? "active" : "inactive"}
+                              {isAdmin ? "active" : "inactive"}
                             </span>
                           </span>
                         </td>
