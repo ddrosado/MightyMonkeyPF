@@ -5,7 +5,7 @@ import style from './Whatsapp.module.css'
 
 const Whatsapp = () => {
   const phoneNumber = '+541165788585';
-  const message = 'Hola Facundo pedacito de nazi';
+  const message = 'Hola Facundo';
 
   const handleWhatsappClick = () => {
 
