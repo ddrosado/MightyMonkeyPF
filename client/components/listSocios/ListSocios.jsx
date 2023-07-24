@@ -1,51 +1,19 @@
-'use client'
+"use client";
 import { getUsers } from "../../redux/actions/userActions";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 const ListSocios = () => {
-  const colums = ["User", "Otro dato", "Phone", "Status", "Edit"];
+  const colums = ["User", "Email", "Phone", "Status", "Edit"];
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
-  }, []); 
-  
-   const user = useSelector(state => state.users);
-   console.log(user)
+  }, []);
 
-  const users = [
-    {
-      name: "Enzo Marinich",
-      email: "jhon@gmail.com",
-      phone: "11658893840",
-      socio: 1,
-    },
-    {
-      name: "Alexa Liras",
-      email: "jhon@gmail.comr",
-      phone: "112441240",
-      socio: true,
-    },
-    {
-      name: "Laurent Perrier",
-      email: "jhon@gmail.com",
-      phone: "191425623",
-      socio: true,
-    },
-    {
-      name: "Michael Levi",
-      email: "jhon@gmail.comr",
-      phone: "987632453",
-      socio: false,
-    },
-    {
-      name: "Richard Gran",
-      email: "jhon@gmail.com",
-      phone: "1560992100",
-      socio: true,
-    },
-  ];
+  const user = useSelector((state) => state.users.users);
+
+
 
   return (
     <div className="antialiased font-sans bg-gray-200">
@@ -119,38 +87,26 @@ const ListSocios = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map(({ name, surname, email, isAdmin }) => {
+                  {user?.map(({ name, surname, email, isAdmin }) => {
                     return (
-
-
                       <tr>
-                        {/* <td className="px-5 py-5 bg-white text-sm">
-                          <div className="flex items-center">
-                            <div className="flex-shrink-0 w-10 h-10">
-                              <img
-                                className="w-full h-full rounded-full"
-                                src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80"
-                                alt=""
-                              />
-                            </div>
-                            <div className="ml-3">
-                              <p className="text-gray-900 whitespace-no-wrap">
-                                {name}
+                        <td className="px-5 py-5 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                          <div className="flex items-center gap-x-2">
+                            <img
+                              className="object-cover w-8 h-8 rounded-full"
+                              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                              alt=""
+                            ></img>
+                            <div>
+                              <h2 className="text-sm font-medium text-gray-800 dark:text-white ">
+                                {name} {surname}
+                              </h2>
+                              <p className="text-xs font-normal text-gray-600 dark:text-gray-400">
+                                {email}
                               </p>
                             </div>
                           </div>
-                        </td> */}
-
-
-                        <td className="px-4 py-4 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt=""></img>
-                                        <div>
-                                            <h2 className="text-sm font-medium text-gray-800 dark:text-white ">{name}</h2>
-                                            <p className="text-xs font-normal text-gray-600 dark:text-gray-400">{email}</p>
-                                        </div>
-                                    </div>
-                                </td>
+                        </td>
                         <td className="px-5 py-5 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {email}
@@ -158,7 +114,7 @@ const ListSocios = () => {
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {/* falta */}
+                            1165930687
                           </p>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
