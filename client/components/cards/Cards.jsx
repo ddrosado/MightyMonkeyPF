@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import Card from "../card/Card";
 import styles from "./Cards.module.css";
@@ -9,8 +10,10 @@ import volley from "../../assets/images/volley.jpg"
 import golf from "../../assets/images/golf.jpg"
 import paddle from "../../assets/images/paddle.jpg"
 import rugby from "../../assets/images/rugby.jpg"
-import getSports from "../../pages/api/controllers/sport/getSports";
+import { getSports } from "../../redux/actions/sportsActions";
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from "react";
+
 
 
 const Cards = () => {
@@ -18,10 +21,12 @@ const Cards = () => {
   let images = [soccer,tennis, basket, hockey, volley, golf, paddle, rugby];
 
   const dispatch = useDispatch()
-  dispatch(getSports)
+  useEffect(() => {
+    dispatch(getSports());
+  }, []); 
   
-  const sports = useSelector(state => state.sports);
-  console.log(sports)
+   const sports = useSelector(state => state.sports);
+   console.log(sports)
 
   return (
     <section className={styles.cardSection}>
