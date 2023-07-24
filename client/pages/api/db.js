@@ -9,8 +9,8 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 
 
-const sequelize = new Sequelize('mightyMonkey',DB_USER, DB_PASSWORD, {
-   host: DB_HOST,
+const sequelize = new Sequelize('mightyMonkey',DB_USER,DB_PASSWORD, {
+   host:DB_HOST,
    dialect: 'postgres',
    operatorAliases: false,
    logging: false,
@@ -27,11 +27,11 @@ const db = {}
 
 db.sequelize = sequelize
 
- db.Booking = BookingModel(sequelize);
- db.Court = CourtModel(sequelize);
- db.Review = ReviewModel(sequelize);
- db.User = UserModel(sequelize);
- db.Sport = SportModel(sequelize);
+db.Booking = BookingModel(sequelize);
+db.Court = CourtModel(sequelize);
+db.Review = ReviewModel(sequelize);
+db.User = UserModel(sequelize);
+db.Sport = SportModel(sequelize);
 
 const { User, Booking, Court, Review, Sport } = db.sequelize.models;
 
