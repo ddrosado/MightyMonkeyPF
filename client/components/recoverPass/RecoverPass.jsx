@@ -35,7 +35,7 @@ const Recover = (props) => {
     </button>
         </div>
 
-        <Counter/>
+        {/* <Counter/> */}
       </div>
   )
   };
