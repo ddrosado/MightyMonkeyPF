@@ -48,14 +48,6 @@ export default function page() {
       linkedIn: "https://www.linkedin.com/in/lucas-figueroa-62b6b4205/",
       github: "https://github.com/lucasfigueroa5",
     },
-    {
-      name: "Gonzalo",
-      surname: "Masa",
-      image: gonza,
-      instagram: "https://www.instagram.com/turquestanrusso/",
-      linkedIn: "https://www.linkedin.com/in/deniserosado/",
-      github: "https://github.com/ddrosado",
-    },
   ];
   return (
     <div className={style.devsContainer}>
