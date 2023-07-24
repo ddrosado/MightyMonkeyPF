@@ -1,6 +1,6 @@
 import { db } from "../../db";
 db.sequelize.sync();
-const { User } = db.User;
+const { User } = db;
 
 export default async (info) => {
   const existEmail = await User.findOne({
