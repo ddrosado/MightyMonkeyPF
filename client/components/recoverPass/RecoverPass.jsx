@@ -33,7 +33,6 @@ const Recover = (props) => {
     Send Reset Code
     </button>
         </div>
-
       </div>
   )
   };

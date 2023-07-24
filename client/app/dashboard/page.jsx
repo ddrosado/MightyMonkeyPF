@@ -1,25 +1,24 @@
 "use client"
 import React, { useEffect } from 'react'
 import ListSocios from '../../components/listSocios/ListSocios.jsx'
-import {useDispatch, useSelector} from "react-redux"
-import { getUsers } from '../../redux/actions/userActions.js'
-
+import Link from 'next/link.js'
 
 
 const Page = () => {
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   
-  useEffect(()=>{
-    dispatch(getUsers())
-  }, [])
+  // useEffect(()=>{
+  //   dispatch(getUsers())
+  // }, [])
   
-  const users = useSelector(state=> state.users)
+  // const users = useSelector(state=> state.users)
 
-  console.log(users)
+  // console.log(users)
 
   return (
     <div>
+      <Link href={"/home"}><button className={style.button}>Home</button></Link>
       <ListSocios/>
     </div>
   )
