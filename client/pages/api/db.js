@@ -27,11 +27,11 @@ const db = {}
 
 db.sequelize = sequelize
 
- db.Booking = BookingModel(sequelize);
- db.Court = CourtModel(sequelize);
- db.Review = ReviewModel(sequelize);
- db.User = UserModel(sequelize);
- db.Sport = SportModel(sequelize);
+db.Booking = BookingModel(sequelize);
+db.Court = CourtModel(sequelize);
+db.Review = ReviewModel(sequelize);
+db.User = UserModel(sequelize);
+db.Sport = SportModel(sequelize);
 
 const { User, Booking, Court, Review, Sport } = db.sequelize.models;
 

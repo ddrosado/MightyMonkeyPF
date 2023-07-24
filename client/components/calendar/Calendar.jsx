@@ -1,6 +1,6 @@
-'use client'
-import React, { useState } from 'react';
-import style from './Calendar.module.css';
+"use client";
+import React, { useState } from "react";
+import style from "./Calendar.module.css";
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -23,8 +23,18 @@ const Calendar = () => {
   };
 
   const monthNames = [
-    'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
-    'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
+    "Ene",
+    "Feb",
+    "Mar",
+    "Abr",
+    "May",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dic",
   ];
 
   const currentMonth = currentDate.getMonth();
@@ -39,11 +49,17 @@ const Calendar = () => {
   const daysOfMonth = Array.from({ length: daysInMonth }, (_, index) => (
     <div
       className={`${style.calendarDay} ${
-        selectedDateTime && selectedDateTime.getDate() === index + 1 ? style.selectedDay : ''
+        selectedDateTime && selectedDateTime.getDate() === index + 1
+          ? style.selectedDay
+          : ""
       }`}
       key={index + 1}
     >
-      <span onClick={() => handleDateTimeSelect(index + 1, selectedHour, selectedMinute)}>
+      <span
+        onClick={() =>
+          handleDateTimeSelect(index + 1, selectedHour, selectedMinute)
+        }
+      >
         {index + 1}
       </span>
     </div>
@@ -52,15 +68,6 @@ const Calendar = () => {
   const hours = [];
   for (let i = 12; i < 22; i++) {
     hours.push(
-      <option key={i} value={i}>
-        {i < 10 ? `0${i}` : i}
-      </option>
-    );
-  }
-
-  const minutes = [];
-  for (let i = 0; i < 60; i += 15) {
-    minutes.push(
       <option key={i} value={i}>
         {i < 10 ? `0${i}` : i}
       </option>
@@ -85,13 +92,11 @@ const Calendar = () => {
 
   const handleReservationSubmit = () => {
     if (selectedDateTime) {
-      alert(`successful reservation for ${selectedDateTime.toLocaleString()}`);
+      alert(`successful reservation`);
       setSelectedDateTime(null);
       setSelectedHour(0);
-      setSelectedMinute(0);
     }
   };
-
   return (
     <div className={style.calendarContainer}>
       <div className={style.mesBtnContainer}>
@@ -117,31 +122,39 @@ const Calendar = () => {
         {daysOfMonth}
       </div>
       <div className={style.dateTimePicker}>
-      <hr />
+        <hr />
         {selectedDateTime ? (
           <p>
-            {selectedDateTime.toLocaleDateString()} - {selectedDateTime.toLocaleTimeString()}
+            {selectedDateTime.toLocaleDateString()} -{" "}
+            {
+              selectedDateTime
+                .toLocaleString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour24: true,
+                })
+                .split(":")[0]
+            }hours
           </p>
         ) : (
           <p className={style.parrafoSelect}>Select a date and time</p>
         )}
         {selectedDateTime && (
           <div className={style.hour}>
-            <label  htmlFor="hour">Hour:</label>
-            <select className={style.label}
+            <label htmlFor="hour">Hour:</label>
+            <select
+              className={style.label}
               id="hour"
-              onChange={(e) => handleDateTimeSelect(selectedDateTime.getDate(), parseInt(e.target.value), selectedMinute)}
+              onChange={(e) =>
+                handleDateTimeSelect(
+                  selectedDateTime.getDate(),
+                  parseInt(e.target.value),
+                  selectedMinute
+                )
+              }
               value={selectedHour}
             >
               {hours}
-            </select>
-            <label  htmlFor="minute">Minute:</label>
-            <select className={style.label}
-              id="minute"
-              onChange={(e) => handleDateTimeSelect(selectedDateTime.getDate(), selectedHour, parseInt(e.target.value))}
-              value={selectedMinute}
-            >
-              {minutes}
             </select>
           </div>
         )}
@@ -154,7 +167,3 @@ const Calendar = () => {
 };
 
 export default Calendar;
-
-
-
-
