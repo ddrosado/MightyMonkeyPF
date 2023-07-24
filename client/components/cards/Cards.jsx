@@ -21,6 +21,7 @@ const Cards = () => {
   let images = [soccer,tennis, basket, hockey, volley, golf, paddle, rugby];
 
   const dispatch = useDispatch()
+  
   useEffect(() => {
     dispatch(getSports());
   }, []); 
