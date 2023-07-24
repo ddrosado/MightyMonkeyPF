@@ -48,8 +48,8 @@ Booking.belongsToMany(Court,{through:'court_booking'})
 Court.hasMany(Review,{foreignKey:'courtId'})
 Review.belongsTo(Court,{foreignKey:'courtId'})
 
-Sport.hasMany(Court, {foreignKey: 'sportId'})
-Court.belongsTo(Sport, {foreignKey: 'sportId'})
+Sport.hasMany(Court, {as: 'courts', foreignKey: 'sportId'})
+Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
 
 module.exports = {
    db

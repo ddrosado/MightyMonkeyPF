@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       },
       name:{
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       description: {
         type: DataTypes.STRING,
@@ -20,9 +20,11 @@ module.exports = (sequelize) => {
       },
       NonMemberFee:{
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
       memberFee:{
         type: DataTypes.INTEGER,
+        allowNull: false,
       }
     });
     return Court;
