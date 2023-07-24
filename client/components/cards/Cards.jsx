@@ -9,11 +9,19 @@ import volley from "../../assets/images/volley.jpg"
 import golf from "../../assets/images/golf.jpg"
 import paddle from "../../assets/images/paddle.jpg"
 import rugby from "../../assets/images/rugby.jpg"
+import getSports from "../../pages/api/controllers/sport/getSports";
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const Cards = () => {
 
   let images = [soccer,tennis, basket, hockey, volley, golf, paddle, rugby];
+
+  const dispatch = useDispatch()
+  dispatch(getSports)
+  
+  const sports = useSelector(state => state.sports);
+  console.log(sports)
 
   return (
     <section className={styles.cardSection}>
