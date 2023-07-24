@@ -12,8 +12,13 @@ module.exports = (sequelize) => {
             allowNull: false,
             unique: true
         },
-        description: {
+        image:{
             type: DataTypes.STRING,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: false,
         }
     })
     return Sport;
