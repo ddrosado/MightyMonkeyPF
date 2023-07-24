@@ -1,17 +1,40 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import style from "./Calendar.module.css";
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDateTime, setSelectedDateTime] = useState(null);
+  const [selectedHour, setSelectedHour] = useState(0);
+  const [selectedMinute, setSelectedMinute] = useState(0);
+
+  const handleDateTimeSelect = (day, hour, minute) => {
+    const newDate = new Date(currentDate);
+    newDate.setDate(day);
+    newDate.setHours(hour);
+    newDate.setMinutes(minute);
+    setSelectedDateTime(newDate);
+    setSelectedHour(hour);
+    setSelectedMinute(minute);
+  };
 
   const getDaysInMonth = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
   };
 
   const monthNames = [
-    "Ene", "Feb", "Mar", "Abr", "May", "Jun",
-    "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+    "Ene",
+    "Feb",
+    "Mar",
+    "Abr",
+    "May",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dic",
   ];
 
   const currentMonth = currentDate.getMonth();
@@ -24,14 +47,35 @@ const Calendar = () => {
   ));
 
   const daysOfMonth = Array.from({ length: daysInMonth }, (_, index) => (
-    <span className={style.calendarDay} key={index + 1}>
-      {index + 1}
-    </span>
+    <div
+      className={`${style.calendarDay} ${
+        selectedDateTime && selectedDateTime.getDate() === index + 1
+          ? style.selectedDay
+          : ""
+      }`}
+      key={index + 1}
+    >
+      <span
+        onClick={() =>
+          handleDateTimeSelect(index + 1, selectedHour, selectedMinute)
+        }
+      >
+        {index + 1}
+      </span>
+    </div>
   ));
 
+  const hours = [];
+  for (let i = 12; i < 22; i++) {
+    hours.push(
+      <option key={i} value={i}>
+        {i < 10 ? `0${i}` : i}
+      </option>
+    );
+  }
 
   const handleNextMonth = () => {
-    setCurrentDate(prevDate => {
+    setCurrentDate((prevDate) => {
       const newDate = new Date(prevDate);
       newDate.setMonth(prevDate.getMonth() + 1);
       return newDate;
@@ -39,25 +83,30 @@ const Calendar = () => {
   };
 
   const handlePreviousMonth = () => {
-    setCurrentDate(prevDate => {
+    setCurrentDate((prevDate) => {
       const newDate = new Date(prevDate);
       newDate.setMonth(prevDate.getMonth() - 1);
       return newDate;
     });
   };
 
+  const handleReservationSubmit = () => {
+    if (selectedDateTime) {
+      alert(`successful reservation`);
+      setSelectedDateTime(null);
+      setSelectedHour(0);
+    }
+  };
   return (
     <div className={style.calendarContainer}>
-
       <div className={style.mesBtnContainer}>
-      <h3 className={style.h3}>{monthNames[currentMonth]}</h3>
-
-      <button className={style.button} onClick={handlePreviousMonth}>
-      &lt;
-      </button>
-      <button className={style.button} onClick={handleNextMonth}>
-      &gt;
-      </button>
+        <h3 className={style.h3}>{monthNames[currentMonth]}</h3>
+        <button className={style.button} onClick={handlePreviousMonth}>
+          &lt;
+        </button>
+        <button className={style.button} onClick={handleNextMonth}>
+          &gt;
+        </button>
       </div>
       <div className={style.calendarHeaderContainer}>
         <span className={style.containerDay}>Lu</span>
@@ -72,8 +121,47 @@ const Calendar = () => {
         {emptyDays}
         {daysOfMonth}
       </div>
- 
-    
+      <div className={style.dateTimePicker}>
+        <hr />
+        {selectedDateTime ? (
+          <p>
+            {selectedDateTime.toLocaleDateString()} -{" "}
+            {
+              selectedDateTime
+                .toLocaleString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour24: true,
+                })
+                .split(":")[0]
+            }hours
+          </p>
+        ) : (
+          <p className={style.parrafoSelect}>Select a date and time</p>
+        )}
+        {selectedDateTime && (
+          <div className={style.hour}>
+            <label htmlFor="hour">Hour:</label>
+            <select
+              className={style.label}
+              id="hour"
+              onChange={(e) =>
+                handleDateTimeSelect(
+                  selectedDateTime.getDate(),
+                  parseInt(e.target.value),
+                  selectedMinute
+                )
+              }
+              value={selectedHour}
+            >
+              {hours}
+            </select>
+          </div>
+        )}
+      </div>
+      <button className={style.reserveButton} onClick={handleReservationSubmit}>
+        Reservation
+      </button>
     </div>
   );
 };

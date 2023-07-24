@@ -6,7 +6,6 @@ import homeImage from '../../assets/images/mmclub.jpg'
 export default function Home() {
   return (
     <div className={styles.homeContainer}>
-      {/* <Image className={styles.homeImage} alt='home' src={homeImage}/> */}
       <Cards />
     </div>
   )

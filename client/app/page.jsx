@@ -1,11 +1,11 @@
 'use client'
-import styles from "./login.module.css";
-import { useState } from "react";
+import styles from "./login.module.css"
 import RecoverPass from "../components/recoverPass/RecoverPass"
 import SignIn from "../components/signin/SignIn"
 import SignUp from "../components/register/Register"
 import logo from "../assets/images/logo.png"
 import Image from "next/image";
+import { useState } from "react"
 
 export default function Login() {
 

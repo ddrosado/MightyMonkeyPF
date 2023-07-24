@@ -2,7 +2,7 @@ import styles from "./Recover.module.css"
 import BackArrow from "../goBack/BackArrow";
 
 const Recover = (props) => {
-  // console.log({props})
+
   return(
     <div>
       <BackArrow 
@@ -23,7 +23,7 @@ const Recover = (props) => {
       name="recovermail"
       placeholder="youremail@mail.com"
       value=""
-      class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     />
     </div>
 

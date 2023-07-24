@@ -1,49 +1,45 @@
 .detailContainer {
-
-  color: #F8EF88;
-
-
+  color: #f8ef88;
 }
 
 .p {
   font-size: 20px;
   color: black;
   text-align: center;
-  margin-top: 300px;
+  margin-top: 230px;
+  font-weight: bold;
+  text-shadow: 10px 12px 19px 0px rgba(0,0,0,0.75);
 }
 
 .title {
-  font-size: 2.5em;
+  font-size: 32px;
   background-color: black;
   clip-path: polygon(0 0, 100% 0%, 100% 82%, 0 100%);
-  margin-top: 120px;
-  width: 170px;
+  margin-top: 80px;
+  width: 150px;
   text-align: center;
-
+  padding: 5px;
+  
 }
 
-.h2{
+.h2 {
   text-align: center;
-  font-size: 2.5em;
-  background-color: #F8EF88;
-  width: 170px;
+  font-size: 32px;
+  background-color: #f8ef88;
+  width: 150px;
+  padding: 5px;
   clip-path: polygon(0 0, 100% 0%, 100% 82%, 0 100%);
   margin: auto;
   color: black;
 }
-.h2Review{
-background-color: red;
 
-
-}
 .containerImgCalendar {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
-  clip-path: polygon(0 0, 100% 0%, 100% 85%, 0 100%);
-  background-color: #F8EF88;;
-  height: 1000px;
-  
+  clip-path: polygon(0 0, 100% 0%, 100% 88%, 0 100%);
+  background-color: #f8ef88;
+  height: 1100px;
 }
 
 .image {
@@ -51,22 +47,20 @@ background-color: red;
   width: 200px;
   height: 400px;
   margin: 20px;
- 
 }
 .imagen {
-    background-color: rgb(0, 0, 0);
-    width: 500px;
-    height: 500px;
-    margin-top: 300px;
-    margin-left: -500px;
-  }
+  background-color: rgb(0, 0, 0);
+  width: 500px;
+  height: 500px;
+  margin-top: 265px;
+  margin-left: -500px;
+}
 
 .carruselContainer {
   width: 100%;
   overflow: hidden;
   margin-top: 80px;
   height: 700px;
-
 }
 
 .carousel {
@@ -76,8 +70,6 @@ background-color: red;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-
-
 }
 
 .slider {
@@ -88,17 +80,16 @@ background-color: red;
 .image {
   flex: 0 0 100%;
   scroll-snap-align: start;
-
 }
 
-.prueba{
+.prueba {
   background-color: rgb(0, 202, 101);
   height: 800px;
   width: 100%;
 }
 
-.reseñasContainer{
+.reseñasContainer {
   height: 800px;
-  background-color: #F8EF88;
+  background-color: #f8ef88;
   clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
 }
