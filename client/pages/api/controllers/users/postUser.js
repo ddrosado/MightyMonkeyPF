@@ -8,7 +8,6 @@ export default async (info) => {
       email: info.email,
     },
   });
-  console.log(existEmail);
   if (!existEmail) {
     const newUser = await User.create(info);
     return newUser;
