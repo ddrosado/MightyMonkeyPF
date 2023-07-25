@@ -20,13 +20,13 @@ const Cards = () => {
 
   let images = [soccer,tennis, basket, hockey, volley, golf, paddle, rugby];
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getSports());
-  }, []); 
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(getSports());
+  // }, []); 
   
-   const sports = useSelector(state => state.sports);
-   console.log(sports)
+  //  const sports = useSelector(state => state.sports);
+
 
   return (
     <section className={styles.cardSection}>
