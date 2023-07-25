@@ -27,3 +27,8 @@
     justify-content: center;
     margin-top: 1.3rem;
 }
+
+.registerError{
+    color: red;
+    font-size: 0.7rem;
+}
