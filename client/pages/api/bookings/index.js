@@ -1,5 +1,7 @@
 const getBookings = require('../controllers/bookings/getBookings')
 const postBookings = require('../controllers/bookings/postBookings')
+const putBookings = require('../controllers/bookings/putBookings')
+const deleteBookings = require('../controllers/bookings/deleteBookings')
 
 export default async(req, res) => {
     switch (req.method) {
@@ -12,8 +14,23 @@ export default async(req, res) => {
             }
         case 'POST':
             try {
-                const newBooking = postBookings(req.body)
+                const newBooking = await postBookings(req.body)
                 return res.status(200).json(newBooking)
+            } catch (error) {
+                return res.status(400).json({error: error.message})
+            }
+        case 'PUT':
+            try {
+                const bookingUpdated = await putBookings(req.body)
+                return res.status(200).json(bookingUpdated)
+            } catch (error) {
+                return res.status(400).json({error: error.message})
+            }
+        case 'DELETE':
+            try {
+                const { id } = req.body
+                const bookingDelete = await deleteBookings(id)
+                return res.status(200).json(bookingDelete)
             } catch (error) {
                 return res.status(400).json({error: error.message})
             }
