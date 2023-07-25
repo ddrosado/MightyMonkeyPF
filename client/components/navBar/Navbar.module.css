@@ -74,12 +74,12 @@
     font-size: 0.8rem;
 }
 .adminBar li:hover {
-    color: rgb(156, 102, 207);
+    cursor: pointer;
 }
 
 
 .ul > .link:hover{
-    background-color: rgb(156, 102, 207);
+    background-color: black;
 }
 
 .ul > .link:hover > li{
