@@ -12,6 +12,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 const sequelize = new Sequelize('mightymonkey',DB_USER,DB_PASSWORD, {
    host:DB_HOST,
    dialect: 'postgres',
+   force: false,
    operatorAliases: false,
    logging: false,
    native: false,
@@ -49,7 +50,7 @@ Court.hasMany(Review,{foreignKey:'courtId'})
 Review.belongsTo(Court,{foreignKey:'courtId'})
 
 Sport.hasMany(Court, {foreignKey: 'sportId'})
-Court.belongsTo(Sport, {foreignKey: 'sportId'})
+Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
 
 module.exports = {
    db

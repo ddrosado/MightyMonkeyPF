@@ -1,20 +1,30 @@
-const getCourt = require('../controllers/courts/getCourt')
-const postCourt = require('../controllers/courts/postCourt')
-const validations = require('../controllers/courts/courtValidations')
+import getCourt from "../controllers/courts/getCourt";
+import postCourt from "../controllers/courts/postCourt";
+// const validations = require('../controllers/courts/courtValidations')
 
-module.exports = async(req, res)=>{
-    try {
-       validations(req.body)
-        switch (req.method){
-            case 'GET':
-                const court = await getCourt()
-                return res.status(200).json(court)
-            case 'POST':
-                const newCourt = await postCourt()
-                return res.status(200).json(newCourt)
-        }
-        
-    } catch (error) {
-        return res.status(400).json(error.message)
+export default async (req, res,next) => {
+
+  try {
+    switch (req.method) {
+      case "GET":
+        const court = await getCourt();
+        return res.status(200).json(court);
+      case "POST":
+        const { name, description, isAvailable, NonMemberFee, memberFee, sport } =
+          req.body;
+        if (
+          !name ||
+          !description ||
+          !isAvailable.toString() ||
+          !NonMemberFee ||
+          !memberFee ||
+          !sport
+        )
+          throw Error("missing data");
+        const newCourt = await postCourt(req.body);
+        return res.status(200).json(newCourt);
     }
-}
+  } catch (error) {
+    return res.status(400).json(error.message);
+  }
+};
