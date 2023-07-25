@@ -5,13 +5,14 @@ const CourtModel = require('../models/Court')
 const ReviewModel = require('../models/Review')
 const UserModel = require('../models/User')
 const SportModel = require('../models/Sport');
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 
 
-const sequelize = new Sequelize('mightyMonkey',DB_USER,DB_PASSWORD, {
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
    host:DB_HOST,
    dialect: 'postgres',
+   force: false,
    operatorAliases: false,
    logging: false,
    native: false,
@@ -48,7 +49,7 @@ Booking.belongsToMany(Court,{through:'court_booking'})
 Court.hasMany(Review,{foreignKey:'courtId'})
 Review.belongsTo(Court,{foreignKey:'courtId'})
 
-Sport.hasMany(Court, {as: 'courts', foreignKey: 'sportId'})
+Sport.hasMany(Court, {foreignKey: 'sportId'})
 Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
 
 module.exports = {

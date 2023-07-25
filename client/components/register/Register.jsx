@@ -1,17 +1,62 @@
-import { useState } from "react";
+'use client'
+import { useState, useEffect } from "react";
 import BackArrow from "../goBack/BackArrow";
 import styles from "./Register.module.css"
+import validation from "./validation";
+import { createUser, getUsers } from "../../redux/actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const SignUp = (props) => {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [registerData, setRegisterData] = useState({
+    name: '',
+    surname:'',
+    password: '',
+    confirmPassword: '',
+    email: '',
+    confirmEmail: ''
+  })
+
+ const dispatch = useDispatch()
+
+ useEffect(() => {
+  dispatch(getUsers())
+}, [dispatch])
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setRegisterData({
+      ...registerData,
+      [name]: value
+    });
+    setErrors(validation({
+      ...registerData,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const validationErrors = validation(registerData);
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length === 0) {
+      dispatch(createUser(registerData))
+    }
+    setRegisterData({
+      name: '',
+      surname:'',
+      password: '',
+      confirmPassword: '',
+      email: '',
+      confirmEmail: ''
+    });
   };
+
+
+
 
 
   return(
@@ -30,8 +75,9 @@ const SignUp = (props) => {
     <input
       type="text"
       id="name"
-      value={name}
-      onChange={(e) => setName(e.target.value)}
+      name="name"
+      value={registerData.name}
+      onChange={handleChange}
       required
       className="register-input"
     />
@@ -46,8 +92,9 @@ const SignUp = (props) => {
     <input
       type="text"
       id="surname"
-      value={surname}
-      onChange={(e) => setSurname(e.target.value)}
+      name="surname"
+      value={registerData.surname}
+      onChange={handleChange}
       required
       className="register-input"
     />
@@ -59,8 +106,9 @@ const SignUp = (props) => {
     <input
       type="email"
       id="email"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
+      name="email"
+      value={registerData.email}
+      onChange={handleChange}
       required
       className="register-input-mail"
     />
@@ -71,12 +119,14 @@ const SignUp = (props) => {
     className={styles.registerLabel}><p>Confirm Email</p></label>
     <input
       type="email"
-      id="email"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
+      id="confirmEmail"
+      name="confirmEmail" 
+      value={registerData.confirmEmail}
+      onChange={handleChange}
       required
       className="register-input-mail"
     />
+    {errors.email && <p className={styles.registerError}>{errors.email}</p>}
   </div>
 
   <div className={styles.div5}>
@@ -88,11 +138,13 @@ const SignUp = (props) => {
     <input
       type="password"
       id="password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
+      name="password"
+      value={registerData.password}
+      onChange={handleChange}
       required
       className="register-input"
     />
+
   </div>
 
   <div className={styles.div6}>
@@ -104,11 +156,13 @@ const SignUp = (props) => {
     <input
       type="password"
       id="confirmPassword"
-      value={confirmPassword}
-      onChange={(e) => setConfirmPassword(e.target.value)}
+      name="confirmPassword"
+      value={registerData.confirmPassword}
+      onChange={handleChange}
       required
       className="register-input"
     />
+        {errors.password && <p className={styles.registerError}>{errors.password}</p>}
   </div>
 </div>
 

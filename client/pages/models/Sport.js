@@ -19,7 +19,11 @@ module.exports = (sequelize) => {
         description: {
             type: DataTypes.TEXT,
             allowNull: false,
-        }
+        },
+        courts: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            allowNull: false,
+        },
     })
     return Sport;
 }
