@@ -3,12 +3,31 @@ import { useState } from "react";
 import styles from "../../app/login.module.css"
 import validation from "./validation";
 import { useRouter } from "next/navigation";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../pages/api/firebaseConfig";
+
 
 const SignIn = (props) => {
+
+  
+  const handleGoogle = (e) => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .catch(error => {
+        if (error.code === "auth/popup-closed-by-user") {
+          console.log("Sign-in popup closed by the user.");
+        } else {
+          console.error("Sign-in error:", error);
+        }
+      });
+  };
+
   const [userData, setUserData] = useState({
     username: '',
     password: ''
   });
+
+
   
   const [errors, setErrors] = useState({});
   // const [isValid, setIsValid] = useState(false);
@@ -94,12 +113,16 @@ const router = useRouter();
 
     <div className={styles.googleButtonContainer}>
     <button
-    className="bg-white px-4 py-2 border flex gap-2 border-slate-300 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+    className="bg-white px-4 py-2 border flex gap-2 border-slate-300 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
+    onClick={handleGoogle} >
+    
     <img 
     className="w-6 h-6" 
     src="https://www.svgrepo.com/show/475656/google-color.svg" 
     loading="lazy" 
-    alt="google logo"/>
+    alt="google logo"
+    />
+
  
     <span>Sign in with Google</span>
 </button>  
