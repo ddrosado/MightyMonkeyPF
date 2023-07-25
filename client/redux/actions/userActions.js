@@ -15,3 +15,19 @@ export const getUsers = createAsyncThunk(
       }
     }
   );
+
+  
+export const createUser = createAsyncThunk(
+    'users/createUser',
+    async (payload) => {
+      try {
+        const response = await axios.post(`${url}/api/users`, payload);
+        response ? 
+        alert("You have successfully registered")
+        : null
+        return response.data;
+      } catch (error) {
+        alert(error)
+      }
+    }
+  );

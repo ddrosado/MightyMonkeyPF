@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from "./FormSport.module.css"
 
-export const FormSport = ({sport, handleChange, handleSubmit, setCreate}) => {
+export const FormSport = ({ handlePageSport, setCreate}) => {
+
+  const [sport, setSport] = useState({
+    name: "",
+    description: "",
+    image: ""
+  });
+
+  const handleChange = (e) => {
+        setSport({
+          ...sport,
+          [e.target.id]: e.target.value,
+        });
+  };
+
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    handlePageSport()
+    console.log(sport)
+  }
+
   return (
     <form className={style.form}>
+      <label className={style.title}>Sport</label>
           <svg
             onClick={() => setCreate(false)}
             className={`h-14 w-14 text-white ${style.back}`}
@@ -71,8 +92,8 @@ export const FormSport = ({sport, handleChange, handleSubmit, setCreate}) => {
               Image(url)
             </label>
           </div>
-          <button className={style.submit} onClick={handleSubmit}>
-            Next
+          <button className={style.submit} onClick={(e)=>handleSubmit(e)}>
+            Create
           </button>
         </form>
   )

@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
         },
         courts: {
             type: DataTypes.ARRAY(DataTypes.STRING),
-            allowNull: false,
+            allowNull: true,
         },
     })
     return Sport;
