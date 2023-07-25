@@ -22,11 +22,8 @@
     "dotenv": "^16.3.1",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
-<<<<<<< HEAD
     "firebase": "^10.1.0",
-=======
     "mercadopago": "^1.5.17",
->>>>>>> d9b1a7a3a270fac3ff84f6bf94e18e18e5abfdfc
     "next": "13.4.10",
     "pg": "^8.11.1",
     "pg-hstore": "^2.3.4",
