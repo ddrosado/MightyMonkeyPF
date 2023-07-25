@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      image:{
+        type: DataTypes.TEXT,
+        allownull: true,
+      },
       surname:{
         type: DataTypes.STRING,
         allowNull: false,
@@ -31,6 +35,15 @@ module.exports = (sequelize) => {
       isAdmin:{
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+        allowNull: true,
+      },
+      isMember:{
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
+      },
+      isActive:{
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
       }
     });
     return User

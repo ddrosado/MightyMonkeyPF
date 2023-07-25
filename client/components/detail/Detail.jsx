@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Detail.module.css";
 import Calendar from "../calendar/Calendar";
-import Carrusel from "../carrusel/Carrusel";
+import Carrusel from "../carrusel/Carrusel.jsx";
 import Footer from "../footer/Footer";
 
 const Detail = () => {

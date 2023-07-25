@@ -3,7 +3,6 @@ db.sequelize.sync()
 const Sport = db.Sport
 
 module.exports = async(info) => {
-
     const existSport = await Sport.findOne({
         where: {
             name: info.name

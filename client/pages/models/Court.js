@@ -11,18 +11,22 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      description: {
+      image:{
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       isAvailable:{
         type: DataTypes.BOOLEAN,
       },
-      NonMemberFee:{
+      nonMemberPrice:{
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      memberFee:{
+      memberPrice:{
         type: DataTypes.INTEGER,
         allowNull: false,
       }
