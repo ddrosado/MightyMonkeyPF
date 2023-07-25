@@ -4,6 +4,7 @@ import style from "./Carrusel.module.css";
 import { useState } from "react";
 
 const Carrusel = () => {
+  
   const images = ["imagen.jpg", "imagen1.jpg", "imagen2.jpg"];
 
   const [currentIndex, setCurrentIndex] = useState(0);

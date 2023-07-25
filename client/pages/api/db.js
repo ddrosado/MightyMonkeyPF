@@ -9,7 +9,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 
 
-const sequelize = new Sequelize('mightyMonkey',DB_USER,DB_PASSWORD, {
+const sequelize = new Sequelize('mightymonkey',DB_USER,DB_PASSWORD, {
    host:DB_HOST,
    dialect: 'postgres',
    operatorAliases: false,
@@ -48,7 +48,7 @@ Booking.belongsToMany(Court,{through:'court_booking'})
 Court.hasMany(Review,{foreignKey:'courtId'})
 Review.belongsTo(Court,{foreignKey:'courtId'})
 
-Sport.hasMany(Court, {as: 'courts', foreignKey: 'sportId'})
+Sport.hasMany(Court, {foreignKey: 'sportId'})
 Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
 
 module.exports = {
