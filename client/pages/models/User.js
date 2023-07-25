@@ -38,7 +38,8 @@ module.exports = (sequelize) => {
       },
       isMember:{
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
+        defaultValue: false
       }
     });
     return User

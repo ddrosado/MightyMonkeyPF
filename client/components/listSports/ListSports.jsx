@@ -1,22 +1,15 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux";
-import { getSports } from '../../redux/actions/sportsActions';
+"use client"
+import React, { useState } from 'react'
+import { List } from './list/List'
+import { Form } from './form/Form'
 
 export const ListSports = () => {
 
-
-    const dispatch = useDispatch() 
-
-    useEffect(()=>{
-        dispatch(getSports())
-    })
-
-    const colums = ["sport", ""]
-    const sports = useSelector(state=> state.sports.sports)
-  
-
+    const [create, setCreate] = useState(false)
 
   return (
-    <div>sports</div>
+    <>
+    {create? <Form setCreate={setCreate}/> : <List setCreate={setCreate}/>}
+    </>
   )
 }
