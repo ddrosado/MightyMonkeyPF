@@ -16,7 +16,6 @@ const ListSocios = () => {
 
 
   return (
-    <div className="antialiased font-sans bg-gray-200">
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
           <div>
@@ -73,7 +72,7 @@ const ListSocios = () => {
             </div>
           </div>
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+            <div className="inline-block w-400 shadow rounded-lg overflow-hidden">
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
@@ -109,7 +108,7 @@ const ListSocios = () => {
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {email}
+                            {email} sa
                           </p>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
@@ -161,7 +160,6 @@ const ListSocios = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
