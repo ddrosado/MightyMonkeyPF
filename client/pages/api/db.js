@@ -5,6 +5,7 @@ const CourtModel = require('../models/Court')
 const ReviewModel = require('../models/Review')
 const UserModel = require('../models/User')
 const SportModel = require('../models/Sport');
+const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 

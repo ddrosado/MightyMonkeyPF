@@ -14,11 +14,15 @@ module.exports = (sequelize) => {
         },
         image:{
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         description: {
             type: DataTypes.TEXT,
             allowNull: false,
+        },
+        courts: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            allowNull: true,
         },
     })
     return Sport;
