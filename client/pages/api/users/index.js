@@ -2,7 +2,7 @@ import searchUsers from '../controllers/users/searchUsers';
 import getAllUsers from '../controllers/users/getUsers'
 import postUser from '../controllers/users/postUser'
 import updateUser from '../controllers/users/putUser'
-
+import deleteUser from '../controllers/users/deleteUser'
 export default async (req, res)=>{
     
     try{
@@ -16,11 +16,9 @@ export default async (req, res)=>{
             case 'PUT':
                     const userUpdate = await updateUser(req.body)
                     return res.status(200).json(userUpdate)
-            // case 'DELETE':
-            //         const userDeleted = await deleteUser(req.body)
-            //         return res.status(200).json(User)
-            
-            
+            case 'DELETE':
+                    const userDeleted = await deleteUser(req.body)
+                    return res.status(200).json(userDeleted)
             default:
                 break;
             }
