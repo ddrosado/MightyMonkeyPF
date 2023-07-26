@@ -2,22 +2,22 @@
 import { getUsers } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import style from "./ListSocios.module.css"
 
 const ListSocios = () => {
-  const colums = ["User", "Email", "Phone", "Status", "Edit"];
+  const colums = ["User", "Email", "Phone", "Members", ""];
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getUsers());
   }, []);
 
-  const user = useSelector((state) => state.users.users);
-
+  const user = useSelector((state) => state.users.users)
 
 
   return (
-    <div className="antialiased font-sans bg-gray-200">
-      <div className="container mx-auto px-4 sm:px-8">
+      <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
         <div className="py-8">
           <div>
             <h2 className="text-2xl font-semibold leading-tight">Users</h2>
@@ -73,7 +73,7 @@ const ListSocios = () => {
             </div>
           </div>
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+            <div className="inline-block w-400 shadow rounded-lg overflow-hidden">
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
@@ -87,7 +87,7 @@ const ListSocios = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {user?.map(({ name, surname, email, isAdmin }) => {
+                  {user?.map(({ name, surname, email, isMember, telephone }) => {
                     return (
                       <tr>
                         <td className="px-5 py-5 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
@@ -114,28 +114,28 @@ const ListSocios = () => {
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            1165930687
+                            {telephone}
                           </p>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
                           <span
                             className={`relative inline-block px-3 py-1 font-semibold leading-tight ${
-                              isAdmin ? "text-green-900" : "text-red-900"
+                              isMember ? "text-green-900" : "text-red-900"
                             }`}
                           >
                             <span
                               aria-hidden
                               className={`absolute inset-0 ${
-                                isAdmin ? "bg-green-200" : "bg-red-200"
+                                isMember ? "bg-green-200" : "bg-red-200"
                               } opacity-50 rounded-full`}
                             ></span>
                             <span className="relative">
-                              {isAdmin ? "active" : "inactive"}
+                              {isMember ? "active" : "inactive"}
                             </span>
                           </span>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
-                          <button className="text-sm bg-yellow-300 hover:bg-violet-400 hover:text-violet-900 text-yellow-900 font-semibold py-2 px-4 rounded-full">
+                          <button className="text-sm bg-yellow-300 hover:bg-yellow-200 text-black-900 font-semibold py-2 px-4 rounded-full">
                             edit
                           </button>
                         </td>
@@ -144,10 +144,7 @@ const ListSocios = () => {
                   })}
                 </tbody>
               </table>
-              <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-                <span className="text-xs xs:text-sm text-gray-900">
-                  Showing 1 to 5 of 50 Entries
-                </span>
+              <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">
                 <div className="inline-flex mt-2 xs:mt-0">
                   <button className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
                     Prev
@@ -161,7 +158,6 @@ const ListSocios = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

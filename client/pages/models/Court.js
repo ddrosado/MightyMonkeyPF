@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
       memberPrice:{
         type: DataTypes.INTEGER,
         allowNull: false,
-      }
+      },
     });
     return Court;
 }
