@@ -14,3 +14,16 @@ export const getSports = createAsyncThunk(
       }
     }
   );
+
+  export const postSports = createAsyncThunk(
+    'sports/postSports',
+    async (obj) => {
+      try {
+        const response = await axios.post(`${url}/api/sport`, obj);
+        return response.data;
+      } catch (error) {
+        throw new Error(error.response.data.msg)
+      }
+    }
+  );
+

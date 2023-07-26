@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import style from "./FormSport.module.css"
+import {useDispatch} from "react-redux"
+import { postSports } from '../../../../redux/actions/sportsActions'
 
 export const FormSport = ({ handlePageSport, setCreate}) => {
+
+
+  const dispatch = useDispatch()
 
   const [sport, setSport] = useState({
     name: "",
     description: "",
-    image: ""
+    image: "",
+    courts: [""]
   });
 
   const handleChange = (e) => {
@@ -16,13 +22,25 @@ export const FormSport = ({ handlePageSport, setCreate}) => {
         });
   };
 
-  const handleSubmit=(e)=>{
+  const handleSubmit= async(e)=>{
     e.preventDefault()
-    handlePageSport()
-    console.log(sport)
+    const resp = await dispatch(postSports(sport))
+    console.log(resp.meta.requestStatus)
+    if(resp.meta.requestStatus == "rejected"){
+      alert("Lo lamento no se pudo crear el deporte")
+      setSport({
+        name: "",
+        description: "",
+        image: "",
+        courts: [""]
+      })
+    } else {
+      handlePageSport(2)
+    }
   }
 
   return (
+    <>
     <form className={style.form}>
       <label className={style.title}>Sport</label>
           <svg
@@ -48,6 +66,7 @@ export const FormSport = ({ handlePageSport, setCreate}) => {
               type="text"
               name="sport"
               id="name"
+              value={sport.name}
             />
             <label
               className={`${style.label} ${
@@ -65,6 +84,7 @@ export const FormSport = ({ handlePageSport, setCreate}) => {
               type="text"
               name="sport"
               id="description"
+              value={sport.description}
             />
             <label
               className={`${style.label} ${
@@ -82,6 +102,7 @@ export const FormSport = ({ handlePageSport, setCreate}) => {
               type="text"
               name="sport"
               id="image"
+              value={sport.image}
             />
             <label
               className={`${style.label} ${
@@ -96,5 +117,6 @@ export const FormSport = ({ handlePageSport, setCreate}) => {
             Create
           </button>
         </form>
+    </>
   )
 }
