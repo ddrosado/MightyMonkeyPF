@@ -8,8 +8,6 @@ const SportModel = require('../models/Sport');
 const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
-
-
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
    host:DB_HOST,
    dialect: 'postgres',
@@ -52,6 +50,8 @@ Review.belongsTo(Court,{foreignKey:'courtId'})
 
 Sport.hasMany(Court, {as: 'court', foreignKey: 'sportId'})
 Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
+
+db.sequelize.sync();
 
 module.exports = {
    db

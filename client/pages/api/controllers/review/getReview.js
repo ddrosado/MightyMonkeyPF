@@ -1,5 +1,5 @@
 const {db}= require('../../db')
-db.sequelize.sync()
+
 const {Court, Review, User} = db
 
 module.exports = async(id)=>{
