@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import style from "./FormCount.module.css"
+import {useDispatch} from "react-redux"
+import { postCourt } from '../../../../redux/actions/courtsAction'
 
 export const FormCourt = ({handleBack}) => {
+
+
+  const dispatch = useDispatch()
 
   const [court, setCourt] = useState({
     sport: "",
@@ -29,16 +34,31 @@ export const FormCourt = ({handleBack}) => {
     }
   };
 
-  const handleSubmit=(e)=>{
+  const handleSubmit=async(e)=>{
     e.preventDefault()
-    console.log(court)
+    const resp = await dispatch(postCourt(court))
+    if(resp.meta.requestStatus == "rejected"){
+      console.log(resp)
+      alert("Lo lamento no se pudo crear la cancha")
+    } else{
+      alert("se a creado correctamente la cancha")
+    }
+    setCourt({
+      sport: "",
+      name: "",
+      description: "",
+      image: "",
+      isAvailable: true,
+      nonMemberPrice: 0,
+      memberPrice: 0
+    })
   }
 
   return (
     <form className={style.form}>
             <label className={style.title}>Court</label>
           <svg
-            onClick={handleBack}
+            onClick={()=>handleBack(2)}
             className={`h-14 w-14 text-white ${style.back}`}
             width="24"
             height="24"
@@ -60,6 +80,7 @@ export const FormCourt = ({handleBack}) => {
               type="text"
               name="court"
               id="sport"
+              value={court.sport}
             />
             <label
               className={`${style.label} ${
@@ -77,6 +98,7 @@ export const FormCourt = ({handleBack}) => {
               type="text"
               name="court"
               id="name"
+              value={court.name}
             />
             <label
               className={`${style.label} ${
@@ -94,6 +116,7 @@ export const FormCourt = ({handleBack}) => {
               type="text"
               name="court"
               id="description"
+              value={court.description}
             />
             <label
               className={`${style.label} ${
@@ -111,6 +134,7 @@ export const FormCourt = ({handleBack}) => {
               type="text"
               name="court"
               id="image"
+              value={court.image}
             />
             <label
               className={`${style.label} ${
@@ -139,6 +163,7 @@ export const FormCourt = ({handleBack}) => {
               type="text"
               name="court"
               id="memberPrice"
+              value={court.memberPrice}
             />
           </div>
           <div>
@@ -156,6 +181,7 @@ export const FormCourt = ({handleBack}) => {
               type="text"
               name="court"
               id="nonMemberPrice"
+              value={court.nonMemberPrice}
             />
           </div>
           </div>
