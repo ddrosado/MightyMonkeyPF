@@ -3,7 +3,7 @@ import Detail from "../../../components/detail/Detail";
 
 
 const page = ({params}) => {
-
+  
   return (
     <div>
       <Detail sportName={params.sport} />
