@@ -18,7 +18,7 @@ const Cards = () => {
   }, []); 
   
    const sports = useSelector(state => state.sports);
-   console.log(sports)
+
   return (
     <section className={styles.cardSection}>
       <div className={styles.titleContainer}>

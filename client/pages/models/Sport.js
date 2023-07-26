@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
         },
         image:{
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         description: {
             type: DataTypes.TEXT,
@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
         },
         courts: {
             type: DataTypes.ARRAY(DataTypes.STRING),
-            allowNull: false,
+            allowNull: true,
         },
     })
     return Sport;

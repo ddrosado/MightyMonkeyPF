@@ -9,8 +9,8 @@ export default async()=>{
             'name',
             'description',
             'isAvailable',
-            'NonMemberFee',
-            'memberFee',
+            'nonMemberPrice',
+            'memberPrice',
         ],
         include: {
             model:Sport,

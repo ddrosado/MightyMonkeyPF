@@ -5,6 +5,7 @@ const CourtModel = require('../models/Court')
 const ReviewModel = require('../models/Review')
 const UserModel = require('../models/User')
 const SportModel = require('../models/Sport');
+const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 
@@ -49,7 +50,7 @@ Booking.belongsToMany(Court,{through:'court_booking'})
 Court.hasMany(Review,{foreignKey:'courtId'})
 Review.belongsTo(Court,{foreignKey:'courtId'})
 
-Sport.hasMany(Court, {foreignKey: 'sportId'})
+Sport.hasMany(Court, {as: 'court', foreignKey: 'sportId'})
 Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
 
 module.exports = {
