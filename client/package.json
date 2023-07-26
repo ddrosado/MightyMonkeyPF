@@ -26,6 +26,7 @@
     "firebase": "^10.1.0",
     "mercadopago": "^1.5.17",
     "next": "13.4.10",
+    "next-navigation": "^1.0.6",
     "node-fetch": "^2.6.5",
     "pg": "^8.11.1",
     "pg-hstore": "^2.3.4",
