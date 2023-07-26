@@ -1,5 +1,4 @@
 import {db} from '../../db'
-db.sequelize.sync()
 const {Court,Sport} = db
 
 export default async()=>{
