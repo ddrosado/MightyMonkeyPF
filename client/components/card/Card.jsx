@@ -6,7 +6,7 @@ const Card = ({image, description, name, id, courts}) => {
 
   
   return (
-    <Link href={`/detail/futbol`}>
+    <Link href={`/detail/${name}`}>
       <div className={styles.card} style={{ backgroundImage: `url(${image})` }}>
         <div className={styles.cardDetails}>
           {/* <div className={styles.sportName}>

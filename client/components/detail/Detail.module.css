@@ -88,7 +88,7 @@
   width: 100%;
 }
 
-.reseñasContainer {
+.reviewsContainer {
   height: 800px;
   background-color: #f8ef88;
   clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
