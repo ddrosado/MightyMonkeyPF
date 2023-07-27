@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Detail.module.css";
 import Calendar from "../calendar/Calendar";
 import Carrusel from "../carrusel/Carrusel.jsx";
@@ -7,14 +7,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSports } from "../../redux/actions/sportsActions";
 
 
-const Detail = () => {
+const Detail = ({sportName}) => {
 
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getSports());
-  }, []); 
 
-  const sports = useSelector(state => state.sports);
+  useEffect(() => {
+    if(!sport.sports.length){
+      dispatch(getSports());
+    }
+}, []);
+  
+
+  const sport = useSelector(state => state.sports)
+
+  const sportFind = sport.sports?.find(e=> e.name == sportName)
+  
 
   return (
     
@@ -22,7 +29,7 @@ const Detail = () => {
       <div>
         <div className={style.containerImgCalendar}>
           <div>
-            <h2 className={style.title}>title</h2>
+            <h2 className={style.title}>{sportFind?.name}</h2>
           </div>
           <div>
             {/* <img src={} alt="" /> */}
