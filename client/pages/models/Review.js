@@ -14,6 +14,10 @@ module.exports = (sequelize) => {
       rating: {
         type: DataTypes.INTEGER,
       },
+      isDeleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      }
     });
     return Review;
 }
