@@ -17,6 +17,7 @@ export default async(req,res)=>{
             case 'DELETE':
             const reviewUpdate = await deleteReview(req.body)
             return res.status(200).json(reviewUpdate)
+            
             default:
                 throw Error('Invalid Route')
         } 
