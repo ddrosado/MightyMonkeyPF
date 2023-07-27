@@ -1,11 +1,16 @@
 "use client";
 import { getUsers } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import style from "./ListSocios.module.css"
+import { filterUsers} from "../../redux/features/usersSlice";
 
 const ListSocios = () => {
   const colums = ["User", "Email", "Phone", "Members", ""];
+  const [filter, setFilter] = useState({
+    member: "",
+    search: ""
+  })
 
   const dispatch = useDispatch();
 
@@ -13,7 +18,27 @@ const ListSocios = () => {
     dispatch(getUsers());
   }, []);
 
-  const user = useSelector((state) => state.users.users)
+
+  useEffect(()=>{
+    dispatch(filterUsers(filter))
+  }, [filter])
+
+  const user = useSelector((state) => state.users.usersCopy)
+
+  const handleFilter=(e)=>{
+    console.log(e.target.value)
+    if(e.target.name == "search"){
+      setFilter({
+        ...filter,
+        [e.target.name] : e.target.value
+      })
+    } else {
+      setFilter({
+        ...filter,
+        "member": e.target.value
+      })
+    }
+}
 
 
   return (
@@ -41,10 +66,10 @@ const ListSocios = () => {
                 </div>
               </div>
               <div className="relative">
-                <select className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                  <option>All</option>
-                  <option>Active</option>
-                  <option>Inactive</option>
+                <select onChange={(e)=>handleFilter(e)} className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                  <option value="all">All</option>
+                  <option value={true}>Active</option>
+                  <option value={false}>Inactive</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg
@@ -67,6 +92,9 @@ const ListSocios = () => {
                 </svg>
               </span>
               <input
+              onChange={(e)=>handleFilter(e)}
+                value={filter.search}
+                name="search"
                 placeholder="Search"
                 className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
               />

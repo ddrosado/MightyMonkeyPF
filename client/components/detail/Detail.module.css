@@ -1,95 +1,64 @@
 .detailContainer {
-  color: #f8ef88;
 }
 
-.p {
-  font-size: 20px;
-  color: black;
-  text-align: center;
-  margin-top: 230px;
-  font-weight: bold;
-  text-shadow: 10px 12px 19px 0px rgba(0,0,0,0.75);
-}
-
-.title {
-  font-size: 32px;
+.titleSport {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #F8EF88;
   background-color: black;
-  clip-path: polygon(0 0, 100% 0%, 100% 82%, 0 100%);
-  margin-top: 80px;
-  width: 150px;
-  text-align: center;
-  padding: 5px;
+  width: 200px;
+  height: 60px;
+  clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+  font-size: 1.5rem;
+}
+.imageAndTitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
+}
+.imageSport {
+  width: 35rem;
+  clip-path: polygon(8% 14%, 90% 0, 100% 100%, 0 85%);
+}
+
+.titleSport h1 {
+  margin-top: -8px;
+}
+
+.topSlice {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f8ef88;
+  flex-wrap: wrap;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 83%);
+  padding: 50px 50px 100px 50px;
   
 }
 
-.h2 {
-  text-align: center;
-  font-size: 32px;
-  background-color: #f8ef88;
-  width: 150px;
-  padding: 5px;
-  clip-path: polygon(0 0, 100% 0%, 100% 82%, 0 100%);
-  margin: auto;
-  color: black;
-}
-
-.containerImgCalendar {
+.calendarReservation {
   display: flex;
-  justify-content: center;
-  justify-content: space-evenly;
-  clip-path: polygon(0 0, 100% 0%, 100% 88%, 0 100%);
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendarReservation h2 {
+  margin-bottom: 20px;
+}
+
+.midSlice {
+  padding: 100px 0 100px 0;
+}
+
+.botSlice {
   background-color: #f8ef88;
-  height: 1100px;
-}
-
-.image {
-  background-color: rgb(134, 134, 134);
-  width: 200px;
-  height: 400px;
-  margin: 20px;
-}
-.imagen {
-  background-color: rgb(0, 0, 0);
-  width: 500px;
-  height: 500px;
-  margin-top: 265px;
-  margin-left: -500px;
-}
-
-.carruselContainer {
   width: 100%;
-  overflow: hidden;
-  margin-top: 80px;
-  height: 700px;
-}
-
-.carousel {
   display: flex;
+  align-items: center;
   justify-content: center;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-.slider {
-  display: flex;
-  scroll-snap-align: start;
-}
-
-.image {
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-}
-
-.prueba {
-  background-color: rgb(0, 202, 101);
-  height: 800px;
-  width: 100%;
-}
-
-.reviewsContainer {
-  height: 800px;
-  background-color: #f8ef88;
-  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
+  padding: 300px;
+  clip-path: polygon(0 17%, 100% 0, 100% 100%, 0 100%);
 }

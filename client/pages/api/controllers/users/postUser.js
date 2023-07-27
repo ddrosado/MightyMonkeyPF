@@ -1,6 +1,8 @@
 
 import { db } from "../../db";
+
 const { User } = db;	
+
 
 
 export default async (info) => {
