@@ -19,13 +19,17 @@
     "@reduxjs/toolkit": "^1.9.5",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.3.1",
+    "embla-carousel-react": "^8.0.0-rc11",
     "encoding": "^0.1.13",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
     "firebase": "^10.1.0",
-    "mercadopago": "^1.5.17",
+    "mercadopago": "^0.0.6",
     "next": "13.4.10",
+    "next-iron-session": "^4.2.0",
+    "next-navigation": "^1.0.6",
     "node-fetch": "^2.6.5",
     "pg": "^8.11.1",
     "pg-hstore": "^2.3.4",
@@ -36,6 +40,8 @@
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "sequelize": "^6.32.1",
-    "tailwindcss": "3.3.3"
+    "swr": "^2.2.0",
+    "tailwindcss": "3.3.3",
+    "tw-elements": "^1.0.0-beta2"
   }
 }

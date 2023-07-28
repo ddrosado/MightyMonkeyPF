@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./Card.module.css";
 import Link from "next/link";
 
-const Card = ({ image }) => {
+const Card = ({image, description, name, id, courts}) => {
 
   
   return (
-    <Link href={`/detail/futbol`}>
+    <Link href={`/detail/${name}`}>
       <div className={styles.card} style={{ backgroundImage: `url(${image})` }}>
         <div className={styles.cardDetails}>
           {/* <div className={styles.sportName}>

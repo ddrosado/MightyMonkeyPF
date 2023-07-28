@@ -1,5 +1,4 @@
 import { db } from "../../db";
-db.sequelize.sync();
 const { Sport } = db;
 
 export default  async (id) => {

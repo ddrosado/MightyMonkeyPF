@@ -7,7 +7,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 150px;
 
   }
   
@@ -16,12 +15,13 @@
     cursor: pointer;
     background: none;
     border: none;
+    color: #F8EF88;
   }
   
   .imagesContainer {
     display: flex;
     align-items: center;
-    width: 1500px;
+    width: 100%;
   }
   
   .imageWrapper {

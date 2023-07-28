@@ -1,8 +1,8 @@
-import {db} from ('../../db')
+const { db } = require('../../db')
 db.sequelize.sync()
-const { User }= db
+const { Review }= db
 
 export default async(review) => {
-    const postedReview = await User.create(review)
+    const postedReview = await Review.create(review)
     return postedReview
 }

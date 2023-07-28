@@ -1,16 +1,25 @@
 const {db}= require('../../db')
-db.sequelize.sync()
+
 const {Court, Review, User} = db
 
-module.exports = async(id)=>{
+module.exports = async () => {
     const courtReview = await Review.findAll({
         where: {
-            courtId: id,
-          },
-        include: {
-            model: User,
-            attributes: ["name"],
-        }
+            isDeleted: false,
+        },
+        include: [
+            {
+                model: User,
+                as: 'user',
+                attributes: ["name", "surname"],
+            },
+            {
+                model: Court,
+                as: 'court',
+                attributes: ["name"],
+            }
+        ]
+        
     })
     return courtReview
-}
+};

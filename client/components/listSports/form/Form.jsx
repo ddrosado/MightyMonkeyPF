@@ -3,25 +3,28 @@ import React, { useState } from "react";
 import style from "./Form.module.css";
 import { FormSport } from "./formSport/FormSport";
 import { FormCourt } from "./formCourt/FormCourt";
+import { Modal } from "../modal/Modal";
 
 export const Form = ({ setCreate }) => {
 
+
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handlePageSport = (e) => {
-    setCurrentPage(2)
+  const handlePage = (num) => {
+    setCurrentPage(num)
   };
   
 
-  const handleBack = ()=>{
-    setCurrentPage(currentPage-1)
+  const handleBack = (num)=>{
+    setCurrentPage(currentPage-num)
   }
 
 
   return (
       <div className={style.container}>
-        {currentPage == 1? <FormSport setCreate={setCreate}  handlePageSport={handlePageSport}/> : null }
-        {currentPage > 1? <FormCourt handleBack={handleBack}/> : null}
+        {currentPage == 1? <FormSport setCreate={setCreate}  handlePageSport={handlePage}/> : null }
+        {currentPage == 2? <Modal handlePage={handlePage}/> : null}
+        {currentPage == 3? <FormCourt handleBack={handleBack}/> : null}
       </div>
   );
 };
