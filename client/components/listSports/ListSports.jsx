@@ -2,14 +2,15 @@
 import React, { useState } from 'react'
 import { List } from './list/List'
 import { Form } from './form/Form'
+import { Edit } from './edit/Edit'
 
 export const ListSports = () => {
 
-    const [create, setCreate] = useState(false)
+    const [current, setCurrent] = useState("list")
 
   return (
     <>
-    {create? <Form setCreate={setCreate}/> : <List setCreate={setCreate}/>}
+    {current == "list" ? <List setCurrent={setCurrent}/> : current == "form" ? <Form setCurrent={setCurrent}/> : <Edit setCurrent={setCurrent} id={current}/>}
     </>
   )
 }

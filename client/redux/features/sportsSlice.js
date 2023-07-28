@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSports, postSports } from '../actions/sportsActions';
+import { getSportById, getSports, postSports } from '../actions/sportsActions';
 
 const initialState = {
   sports: [],
+  sport:{},
   error: "",
 };
 
@@ -28,6 +29,12 @@ const sportsSlice = createSlice({
         state.error = 'Error occurred while fetching sports data.';
       })
       .addCase(postSports.fulfilled, (state, action)=>{
+        return action.payload
+      })
+      .addCase(getSportById.fulfilled, (state, action) =>{
+        state.sport = action.payload
+      })
+      .addCase(getSportById.rejected, (state, action)=>{
         return action.payload
       })
   },

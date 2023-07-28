@@ -5,7 +5,7 @@ import { FormSport } from "./formSport/FormSport";
 import { FormCourt } from "./formCourt/FormCourt";
 import { Modal } from "../modal/Modal";
 
-export const Form = ({ setCreate }) => {
+export const Form = ({ setCurrent }) => {
 
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,7 +22,7 @@ export const Form = ({ setCreate }) => {
 
   return (
       <div className={style.container}>
-        {currentPage == 1? <FormSport setCreate={setCreate}  handlePageSport={handlePage}/> : null }
+        {currentPage == 1? <FormSport setCurrent={setCurrent}  handlePageSport={handlePage}/> : null }
         {currentPage == 2? <Modal handlePage={handlePage}/> : null}
         {currentPage == 3? <FormCourt handleBack={handleBack}/> : null}
       </div>

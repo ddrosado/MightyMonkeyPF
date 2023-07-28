@@ -27,3 +27,14 @@ export const getSports = createAsyncThunk(
     }
   );
 
+  export const getSportById = createAsyncThunk(
+    'sports/getSortId',
+    async(id)=>{
+      try {
+        return (await axios(`${url}/api/sport/${id}`)).data
+      } catch (error) {
+        throw new Error(error.response.data.msg)
+      }
+    }
+  )
+
