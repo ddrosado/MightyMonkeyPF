@@ -1,18 +1,21 @@
-'use client'
-import React, { useEffect } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import style from "./Detail.module.css";
 import Calendar from "../calendar/Calendar";
-import Carrusel from "../carrusel/Carrusel.jsx";
+// import Carrusel from "../carrusel/Carrusel.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../redux/actions/sportsActions";
+import EmblaCarousel from "../carousel/Carousel";
 
 
 const Detail = () => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getSports());
-  }, []); 
+    if (!sport.sports.length) {
+      dispatch(getSports());
+    }
+  }, []);
 
   const sports = useSelector(state => state.sports);
 
@@ -36,7 +39,10 @@ const Detail = () => {
         </div>
       </div>
       <div className={style.midSlice}>
-        <Carrusel />
+      <div className={style.titleSport}>
+            <h1>Gallery</h1>
+          </div>
+        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
       <div className={style.botSlice}>
         <h1>REVIEWS</h1>

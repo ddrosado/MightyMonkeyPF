@@ -6,8 +6,22 @@ import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
 
+const userLogin = async (userData) => {
+  const data = await fetch("http://localhost:3000/api/login", {
+    method: "POST",
+    body: JSON.stringify(userData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const rep = await data.json();
+  return rep;
+};
 
 const SignIn = (props) => {
+
+
+  const router = useRouter()
 
   
   const handleGoogle = (e) => {
@@ -44,24 +58,29 @@ const SignIn = (props) => {
       [name]: value
     }));
   };
+
+
   
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validation(userData);
-    setErrors(validationErrors);
-    if (Object.keys(validationErrors).length === 0) {
-      // se submitea
+    // const validationErrors = validation(userData);
+    // setErrors(validationErrors);
+    // if (Object.keys(validationErrors).length === 0) {
+    // const res = await userLogin(form);
+    // if(res){alert('usuario logueado con exito'); router.push('/home2')}
+    // }
+    // setUserData({
+    //   username: '',
+    //   password: ''
+    // });
+    const res = await userLogin(userData);
+    if(res){
+      router.push('/home')
     }
-    setUserData({
-      username: '',
-      password: ''
-    });
   };
 
-// router sign in
 
-const router = useRouter();
 
 
   return(
@@ -105,7 +124,7 @@ const router = useRouter();
   <button 
   type="submit" 
   className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-slate-300 rounded shadow"
-  onClick={() => router.push("/home")}>
+  onClick={handleSubmit}>
     Sign In
     </button>
     </div>
