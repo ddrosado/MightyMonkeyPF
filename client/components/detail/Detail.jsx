@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import style from "./Detail.module.css";
 import Calendar from "../calendar/Calendar";
 // import Carrusel from "../carrusel/Carrusel.jsx";
@@ -7,24 +7,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../redux/actions/sportsActions";
 import EmblaCarousel from "../carousel/Carousel";
 
+const Detail = ({ sportName }) => {
+  const dispatch = useDispatch();
 
-const Detail = () => {
-
-  const dispatch = useDispatch()
   useEffect(() => {
     if (!sport.sports.length) {
       dispatch(getSports());
     }
   }, []);
 
-  const sports = useSelector(state => state.sports);
+  const OPTIONS = { align: "start", containScroll: "trimSnaps" };
+  const SLIDE_COUNT = 5;
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
+
+  const sport = useSelector((state) => state.sports);
+
+  const sportFind = sport.sports?.find((e) => e.name == sportName);
 
   return (
     <div className={style.detailContainer}>
-      <div>
-        <div className={style.containerImgCalendar}>
-          <div>
-            <h2 className={style.title}>title</h2>
+      <div className={style.topSlice}>
+        <div className={style.imageAndTitle}>
+          <div className={style.titleSport}>
+            <h1>{sportFind?.name}</h1>
           </div>
           {/* <p>{sportFind?.description}</p> */}
           <img

@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect } from "react";
+
 import {
     Carousel,
     initTE,
@@ -12,7 +13,6 @@ import Image from "next/image";
 const Banner = () => {
 
   const images = [img1, img2, img3]
-  console.log(img1)
 
     useEffect(() => {
         initTE({ Carousel });
