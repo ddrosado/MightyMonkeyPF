@@ -11,8 +11,7 @@ export const FormSport = ({ handlePageSport, setCreate}) => {
   const [sport, setSport] = useState({
     name: "",
     description: "",
-    image: "",
-    courts: [""]
+    image: ""
   });
 
   const handleChange = (e) => {
