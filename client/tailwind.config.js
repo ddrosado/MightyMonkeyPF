@@ -11,6 +11,8 @@ module.exports = {
     './client/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './client/components/**/*.{js,ts,jsx,tsx,mdx}',
     './client/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{html,js}',
+    './node_modules/tw-elements/dist/js/**/*.js'
   ],
   theme: {
     extend: {
@@ -31,5 +33,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tw-elements/dist/plugin.cjs")],
+  darkMode: "class",
 }
