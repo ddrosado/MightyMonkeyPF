@@ -12,5 +12,5 @@ export const ListSports = () => {
     <>
     {current == "list" ? <List setCurrent={setCurrent}/> : current == "form" ? <Form setCurrent={setCurrent}/> : <Edit setCurrent={setCurrent} id={current}/>}
     </>
-  )
+  ) 
 }
