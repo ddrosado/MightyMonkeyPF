@@ -6,13 +6,14 @@ import logo from "../../assets/images/logo.png";
 
 export const Navbar = () => {
   const [admin, setAdmin] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   const obj = [
     { label: "Home", route: "/home" },
     { label: "About", route: "/aboutUs" },
     { label: "Contact", route: "/contact" },
     { label: "Profile", route: "/profile" },
-    { label: "Login", route: "/" },
+    { label: "Join", route: "/join" },
   ];
 
   return (
@@ -23,7 +24,11 @@ export const Navbar = () => {
                   <li>Admin</li>
                 </Link>
               ) : null}
-              
+              </div><div className={style.adminBar}>
+      {loggedIn ? ( <Link className={style.link} key="admin" href="/">
+                  <li>Log out</li>
+                </Link>
+                ) : null }
       </div>
       <div  className={style.navContainer}>
         <Image className={style.logo} src={logo} alt="#" />
