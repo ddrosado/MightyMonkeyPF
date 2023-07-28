@@ -2,10 +2,14 @@
 import React from "react";
 import style from "./Carrusel.module.css";
 import { useState } from "react";
+import img1 from '../../public/imagen.jpg'
+import img2 from '../../public/imagen1.jpg'
+import img3 from '../../public/imagen2.jpg'
+import Image from "next/image";
 
 const Carrusel = () => {
   
-  const images = ["imagen.jpg", "imagen1.jpg", "imagen2.jpg"];
+  const images = [img1, img2, img3];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -26,21 +30,21 @@ const Carrusel = () => {
       </button>
       <div className={style.imagesContainer}>
         <div className={style.imageWrapper}>
-          <img
+          <Image
             src={images[(currentIndex - 1 + images.length) % images.length]}
             alt={`Imagen ${currentIndex}`}
             className={style.smallImage}
           />
         </div>
         <div className={style.imageWrapper}>
-          <img
+          <Image
             src={images[currentIndex]}
             alt={`Imagen ${currentIndex + 1}`}
             className={style.bigImage}
           />
         </div>
         <div className={style.imageWrapper}>
-          <img
+          <Image
             src={images[(currentIndex + 1) % images.length]}
             alt={`Imagen ${currentIndex + 2}`}
             className={style.smallImage}

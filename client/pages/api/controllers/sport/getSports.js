@@ -1,5 +1,5 @@
 const { db } = require('../../db')
-db.sequelize.sync()
+
 const Sport = db.Sport
 const Court = db.Court
 
