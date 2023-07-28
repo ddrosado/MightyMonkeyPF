@@ -4,8 +4,15 @@ import {
     Carousel,
     initTE,
   } from "tw-elements";
+import img1 from '../../assets/images/banners/publi1.jpg'
+import img2 from '../../assets/images/banners/publi2.jpg'
+import img3 from '../../assets/images/banners/publi3.jpg'
+import Image from "next/image";
 
 const Banner = () => {
+
+  const images = [img1, img2, img3]
+  console.log(img1)
 
     useEffect(() => {
         initTE({ Carousel });
@@ -25,10 +32,11 @@ const Banner = () => {
           data-te-carousel-item
           data-te-carousel-active
         >
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+          <Image
+            src={images[0]}
             className="block w-full"
             alt="Wild Landscape"
+            key={img1.src}
           />
         </div>
 
@@ -37,10 +45,11 @@ const Banner = () => {
           className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           data-te-carousel-item
         >
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+          <Image
+            src={images[1]}
             className="block w-full"
             alt="Camera"
+            key={img2.src}
           />
         </div>
 
@@ -49,10 +58,11 @@ const Banner = () => {
           className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           data-te-carousel-item
         >
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+          <Image
+            src={images[2]}
             className="block w-full"
             alt="Exotic Fruits"
+            key={img3.src}
           />
         </div>
       </div>
