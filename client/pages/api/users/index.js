@@ -3,6 +3,7 @@ import getAllUsers from '../controllers/users/getUsers'
 import postUser from '../controllers/users/postUser'
 import updateUser from '../controllers/users/putUser'
 import deleteUser from '../controllers/users/deleteUser'
+
 export default async (req, res)=>{
     
     try{
