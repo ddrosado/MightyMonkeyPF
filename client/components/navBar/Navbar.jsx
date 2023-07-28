@@ -13,39 +13,40 @@ export const Navbar = () => {
     { label: "About", route: "/aboutUs" },
     { label: "Contact", route: "/contact" },
     { label: "Profile", route: "/profile" },
-    { label: "Join", route: "/join" },
+    { label: "Join!", route: "/join" },
   ];
 
   return (
-    <div className={style.navSection}>
-      <div className={style.adminBar}>
-      {admin ? (
-                <Link className={style.link} key="admin" href="dashboard">
-                  <li>Admin</li>
-                </Link>
-              ) : null}
-              </div><div className={style.adminBar}>
-      {loggedIn ? ( <Link className={style.link} key="admin" href="/">
-                  <li>Log out</li>
-                </Link>
-                ) : null }
-      </div>
-      <div  className={style.navContainer}>
-        <Image className={style.logo} src={logo} alt="#" />
+      // <div className={style.navContainer}>
         <div className={style.barContainer}>
-          <div className={style.options}>
-            <ul className={style.ul}>
-              {obj.map(({ label, route }) => {
-                return (
-                  <Link className={style.link} key={route} href={route}>
-                    <li>{label}</li>
-                  </Link>
-                );
-              })}
-            </ul>
+          <div className={style.imageAndNav}>
+            <Image className={style.logo} src={logo} alt="#" />
+            <div className={style.options}>
+              <ul className={style.ul}>
+                {obj.map(({ label, route }) => {
+                  return (
+                    <Link className={style.link} key={route} href={route}>
+                      <li>{label}</li>
+                    </Link>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+          <div className={style.adminBar}>
+            {admin ? (
+              <Link className={style.link} key="admin" href="dashboard">
+                <li>Admin</li>
+              </Link>
+            ) : null}{" "}
+            |
+            {loggedIn ? (
+              <Link className={style.link} key="admin" href="/">
+                <li>Log out</li>
+              </Link>
+            ) : null}
           </div>
         </div>
-      </div>
-    </div>
+      // </div>
   );
 };
