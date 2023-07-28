@@ -60,6 +60,6 @@ function Login() {
   );
 }
 
-export const getStaticProps = ()=>{}
+
 
 export default Login;
