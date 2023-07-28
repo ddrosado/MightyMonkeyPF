@@ -35,8 +35,8 @@ const Banner = () => {
           <Image
             src={images[0]}
             className="block w-full"
-            alt="Wild Landscape"
-            key={img1.src}
+            alt="publi1"
+            key='publi1'
           />
         </div>
 
@@ -48,8 +48,8 @@ const Banner = () => {
           <Image
             src={images[1]}
             className="block w-full"
-            alt="Camera"
-            key={img2.src}
+            alt="publi2"
+            key='publi2'
           />
         </div>
 
@@ -61,8 +61,8 @@ const Banner = () => {
           <Image
             src={images[2]}
             className="block w-full"
-            alt="Exotic Fruits"
-            key={img3.src}
+            alt="publi3"
+            key='publi3'
           />
         </div>
       </div>

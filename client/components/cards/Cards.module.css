@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #F8EF88;
+    background: #FFDA61;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     padding: 100px 0 200px;
     width: 100%;
@@ -28,7 +28,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #F8EF88;
+    color: #FFDA61;
     background-color: black;
     width: 200px;
     height: 60px;
