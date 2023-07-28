@@ -10,10 +10,12 @@ module.exports = async () => {
         include: [
             {
                 model: User,
+                as: 'user',
                 attributes: ["name", "surname"],
             },
             {
                 model: Court,
+                as: 'court',
                 attributes: ["name"],
             }
         ]

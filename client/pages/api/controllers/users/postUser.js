@@ -1,30 +1,23 @@
-
 import { db } from "../../db";
-import { User } from '../../db';
-// import bcrypt from 'bcrypt'
+const { User } = db;
+import bcrypt from "bcrypt";
 
 export default async (info) => {
-  try {
-    // Verificar si el email ya está en uso
-    const existEmail = await User.findOne({
-      where: {
-        email: info.email,
-      },
-    });
+  const password = await bcrypt.hash(info.password, 8);
+  // const name = info.name.toLowerCase();
+  // const surname = info.surname.toLowerCase();
+  const existEmail = await User.findOne({
+    where: {
+      email: info.email,
+    },
+  });
+  if (existEmail) throw Error("This email is already in use");
 
-    if (!existEmail) {
-      // Crear un nuevo usuario con la propiedad isActive en true por defecto
-      const newUser = await User.create({
-        ...info,
-        isActive: true,
-      });
+  const newUser = await User.create({
+    ...info,
+    password,
+    isActive: true,
+  });
 
-      return newUser;
-    } else {
-      throw new Error("This email is already in use");
-    }
-  } catch (error) {
-    // Manejar cualquier error que pueda ocurrir durante el proceso
-    throw new Error("Error al crear el usuario: " + error.message);
-  }
+  return newUser;
 };

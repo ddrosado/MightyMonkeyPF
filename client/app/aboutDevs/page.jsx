@@ -4,7 +4,6 @@ import facu from "../../assets/images/devs/facuDev.png";
 import denise from "../../assets/images/devs/deniseDev.png";
 import enzo from "../../assets/images/devs/enzoDev.png";
 import lucas from "../../assets/images/devs/lucasDev.png";
-import gonza from "../../assets/images/devs/gonzaDev.png";
 import Image from "next/image";
 import {
   faLinkedin,
