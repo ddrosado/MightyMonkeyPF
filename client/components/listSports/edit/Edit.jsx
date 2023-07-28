@@ -10,19 +10,20 @@ export const Edit = ({id, setCurrent}) => {
   const dispatch = useDispatch()
   const sport = useSelector(state=> state.sports.sport)
 
-
   useEffect(()=>{
     dispatch(getSportById(id))
   },[])
+
 
   return (
     <div className={style.container}>
       <button className={style.back} onClick={()=>setCurrent("list")}>{`< Back`}</button>
       <h1>Edit {sport?.name}</h1>
-      <FormSport sport={sport? sport : null}/>
+      <FormSport sport={sport}/>
       <h1>{sport?.name} Courts </h1>
       <div className={style.courts}>
         {sport?.court?.map((court)=><FormCourt court={court} sport={sport.name}/>)}
+        <FormCourt/>
       </div>
     </div>
   )

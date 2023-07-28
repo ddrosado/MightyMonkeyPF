@@ -1,24 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from "./FormCount.module.css"
 import {useDispatch} from "react-redux"
 import { postCourt } from '../../../../redux/actions/courtsAction'
 
 export const FormCourt = (props) => {
 
-  console.log(props.court)
 
   const dispatch = useDispatch()
 
   const [court, setCourt] = useState({
-    sport: props.sport? props.sport : "",
-    name: props.court? props.court.name : "",
-    description: props.court? props.court.description : "",
-    image: props.court? props.court.image : "",
-    isAvailable: props.court? props.court.isAvailable : true,
-    nonMemberPrice: props.court? props.court.nonMemberPrice : 0,
-    memberPrice: props.court? props.court.memberPrice : 0
+    sport: "",
+    name:  "",
+    description:  "",
+    image:  "",
+    isAvailable: true,
+    nonMemberPrice:  0,
+    memberPrice:0
   });
 
+  useEffect(()=>{
+    setCourt({
+      sport: props.sport ,
+      name: props.court?.name ,
+      description: props.court?.description,
+      image: props.court?.image ,
+      isAvailable:  props.court?.isAvailable ,
+      nonMemberPrice: props.court?.nonMemberPrice,
+      memberPrice: props.court?.memberPrice
+  })
+  }, [props.court])
 
   const handleChange = (e) => {
 

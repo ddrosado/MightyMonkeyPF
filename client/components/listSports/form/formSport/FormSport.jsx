@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {useSelector} from "react-redux"
 import style from "./FormSport.module.css";
 import { useDispatch } from "react-redux";
 import { postSports } from "../../../../redux/actions/sportsActions";
@@ -7,11 +8,19 @@ export const FormSport = (props) => {
   const dispatch = useDispatch();
 
   const [sport, setSport] = useState({
-    name: props.sport ? props.sport.name : "",
-    description: props.sport ? props.sport.description : "",
-    image: props.sport ? props.sport.image : "",
+    name: "",
+    description: "",
+    image: ""
   });
 
+
+  useEffect(()=>{
+    setSport({
+      name: props.sport?.name,
+      description: props.sport?.description,
+      image: props.sport?.image
+    })
+  },[props.sport])
 
   const handleChange = (e) => {
     setSport({
@@ -115,7 +124,7 @@ export const FormSport = (props) => {
         <button className={style.submit} onClick={(e) => handleSubmit(e)}>
           {props.sport? "Edit" : "Create"}
         </button>
-      </form>
+      </form> 
     </>
   );
 };
