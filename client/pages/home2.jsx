@@ -19,7 +19,10 @@ export default function Home2(){
 
     }
     return (
-        <h1 onClick={logoutHandler}>LOGOUT</h1>
+        <>
+            <h1 onClick={logoutHandler}>LOGOUT</h1>
+            <button>only members</button>
+        </>
     )
 }
 

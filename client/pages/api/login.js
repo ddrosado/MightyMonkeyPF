@@ -7,12 +7,12 @@ async function handler(req, res) {
   try {
     if (method === "GET") {
       const user = get("user");
-      if (!user) throw Error("User not valid");
+      if (!user) res.status(403).json({ session: false})
       return res.status(200).json({ session: true });
     }
     if (method === "POST") {
-      const { name, email, id, isMember } = await userAuth(body);
-      set("user", { name, email, id, isMember });
+      const { name, email, id, isMember, isAdmin } = await userAuth(body);
+      set("user", { name, email, id, isMember, isAdmin });
       await save();
       return res.status(200).json({ session: true });
     }
