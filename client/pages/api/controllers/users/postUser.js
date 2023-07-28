@@ -1,7 +1,8 @@
 
-import { db } from "../../db";
-import { User } from '../../db';
 // import bcrypt from 'bcrypt'
+import { db } from "../../db";
+
+const {User} = db
 
 export default async (info) => {
   try {

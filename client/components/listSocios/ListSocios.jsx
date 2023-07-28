@@ -12,6 +12,8 @@ const ListSocios = () => {
     search: ""
   })
 
+  const [page, setPage] = useState(0)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,6 +40,21 @@ const ListSocios = () => {
         "member": e.target.value
       })
     }
+}
+
+const handlePage = (type)=>{
+
+  if(type == "next"){
+    const newPage = page+1
+    if((user.length / 5) >= newPage){
+      setPage(newPage)
+    }
+  } else {
+    const newPage = page-1
+    if(newPage >= 0){
+      setPage(newPage)
+    } 
+  }
 }
 
 
@@ -115,7 +132,7 @@ const ListSocios = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {user?.map(({ name, surname, email, isMember, telephone }) => {
+                  {user?.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone }) => {
                     return (
                       <tr>
                         <td className="px-5 py-5 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
@@ -173,11 +190,14 @@ const ListSocios = () => {
                 </tbody>
               </table>
               <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">
+              <span class="text-xs xs:text-sm text-gray-900">
+                            Page {page+1} the {Math.ceil(user.length/5)} of {user.length} Users
+                        </span>
                 <div className="inline-flex mt-2 xs:mt-0">
-                  <button className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
+                  <button onClick={()=>handlePage("prev")} className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
                     Prev
                   </button>
-                  <button className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
+                  <button onClick={()=>handlePage("next")} className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
                     Next
                   </button>
                 </div>

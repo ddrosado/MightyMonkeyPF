@@ -3,7 +3,7 @@ import style from "./FormSport.module.css"
 import {useDispatch} from "react-redux"
 import { postSports } from '../../../../redux/actions/sportsActions'
 
-export const FormSport = ({ handlePageSport, setCreate}) => {
+export const FormSport = ({ handlePageSport, setCurrent}) => {
 
 
   const dispatch = useDispatch()
@@ -30,8 +30,7 @@ export const FormSport = ({ handlePageSport, setCreate}) => {
       setSport({
         name: "",
         description: "",
-        image: "",
-        courts: [""]
+        image: ""
       })
     } else {
       handlePageSport(2)
@@ -43,7 +42,7 @@ export const FormSport = ({ handlePageSport, setCreate}) => {
     <form className={style.form}>
       <label className={style.title}>Sport</label>
           <svg
-            onClick={() => setCreate(false)}
+            onClick={() => setCurrent("list")}
             className={`h-14 w-14 text-white ${style.back}`}
             width="24"
             height="24"

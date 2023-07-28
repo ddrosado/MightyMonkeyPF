@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../../redux/actions/sportsActions";
 import style from "./List.module.css";
 
-export const List = ({setCreate}) => {
+export const List = ({setCurrent}) => {
   const colums = ["name", ""];
 
   const dispatch = useDispatch();
@@ -82,7 +82,7 @@ export const List = ({setCreate}) => {
                 </tr>
               </thead>
               <tbody>
-                {sports?.map(({ name }) => {
+                {sports?.map(({ name, id }) => {
                   return (
                     <tr>
                       <td className={`px-5 py-5 bg-white ${style.name}`}>
@@ -91,7 +91,7 @@ export const List = ({setCreate}) => {
                         </p>
                       </td>
                       <td className={`px-5 py-5 bg-white ${style.edit}`}>
-                        <button className=" bg-red-500 hover:bg-red-400 text-white font-semibold py-2 px-4 rounded-full">
+                        <button onClick={()=>setCurrent(id)} className=" bg-red-500 hover:bg-red-400 text-white font-semibold py-2 px-4 rounded-full">
                           edit
                         </button>
                       </td>
@@ -102,7 +102,7 @@ export const List = ({setCreate}) => {
             </table>
             <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
               <div className="inline-flex mt-2 xs:mt-0">
-                <button onClick={()=> setCreate(true)} className="text-sm bg-violet-600 hover:bg-violet-500 text-white font-semibold py-2 px-4">
+                <button onClick={()=> setCurrent("form")} className="text-sm bg-violet-600 hover:bg-violet-500 text-white font-semibold py-2 px-4">
                   Add Sport
                 </button>
               </div>
