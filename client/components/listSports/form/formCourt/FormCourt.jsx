@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import style from "./FormCount.module.css"
 import {useDispatch} from "react-redux"
 import { postCourt } from '../../../../redux/actions/courtsAction'
+import { getSports } from '../../../../redux/actions/sportsActions'
 
 export const FormCourt = (props) => {
 
@@ -53,6 +54,9 @@ export const FormCourt = (props) => {
       alert("Lo lamento no se pudo crear la cancha")
     } else{
       alert("se a creado correctamente la cancha")
+      if(props.setCreate){
+        props.setCreate(!props.create)
+      }
     }
     setCourt({
       sport: "",
@@ -202,12 +206,12 @@ export const FormCourt = (props) => {
             <div>
 
             <div>
-              <input onChange={(e)=>handleChange(e)} type="radio" name='isAvailable' id='Yes' value={true}  checked={court?.isAvailable? true : null}/>
+              <input onChange={(e)=>handleChange(e)} type="radio" name='isAvailable' id='Yes' value={true}  checked={court?.isAvailable? true : false }/>
               <label htmlFor="Yes">Yes</label>
             </div>
 
             <div>
-              <input onChange={(e)=>handleChange(e)} type="radio" name='isAvailable' id='Not' value={false} checked={court?.isAvailable? null : true}/>
+              <input onChange={(e)=>handleChange(e)} type="radio" name='isAvailable' id='Not' value={false} checked={court?.isAvailable? false : true}/>
               <label htmlFor="Not">Not</label>
             </div>
 

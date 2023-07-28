@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSportById, getSports, postSports } from '../actions/sportsActions';
+import { getSportById, getSports, postSports, putSport } from '../actions/sportsActions';
+import { postCourt } from '../actions/courtsAction';
 
 const initialState = {
   sports: [],
@@ -36,6 +37,15 @@ const sportsSlice = createSlice({
       })
       .addCase(getSportById.rejected, (state, action)=>{
         return action.payload
+      })
+      .addCase(putSport.fulfilled, (state, action)=>{
+        console.log(action.payload)
+      })
+      .addCase(postCourt.fulfilled, (state, action) =>{
+        console.log(action.payload)
+      })
+      .addCase(postCourt.rejected, (state, action)=>{
+        console.log(action.payload)
       })
   },
 });

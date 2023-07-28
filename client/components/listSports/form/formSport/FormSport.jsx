@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useSelector} from "react-redux"
 import style from "./FormSport.module.css";
 import { useDispatch } from "react-redux";
-import { postSports } from "../../../../redux/actions/sportsActions";
+import { getSports, postSports, putSport } from "../../../../redux/actions/sportsActions";
 
 export const FormSport = (props) => {
   const dispatch = useDispatch();
@@ -29,10 +29,9 @@ export const FormSport = (props) => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmitCreate = async (e) => {
     e.preventDefault();
     const resp = await dispatch(postSports(sport));
-    console.log(resp.meta.requestStatus);
     if (resp.meta.requestStatus == "rejected") {
       alert("Lo lamento no se pudo crear el deporte");
       setSport({
@@ -44,6 +43,24 @@ export const FormSport = (props) => {
       props.handlePageSport ? props.handlePageSport(2) : null;
     }
   };
+
+
+  const handleEdit = async (e)=>{
+    e.preventDefault()
+    const resp = await dispatch(putSport({...sport, id: props.sport.id}))
+    if (resp.meta.requestStatus == "rejected") {
+      alert("Lo lamento no se pudo editar el deporte");
+      setSport({
+        name: props.sport?.name,
+        description: props.sport?.description,
+        image: props.sport?.image
+      });
+    } else {
+      alert("deporte correctamente editado!")
+    }
+  }
+
+
 
   return (
     <>
@@ -121,7 +138,7 @@ export const FormSport = (props) => {
             Image(url)
           </label>
         </div>
-        <button className={style.submit} onClick={(e) => handleSubmit(e)}>
+        <button className={style.submit} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
           {props.sport? "Edit" : "Create"}
         </button>
       </form> 
