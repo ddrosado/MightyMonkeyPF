@@ -6,6 +6,8 @@ import style from "./List.module.css";
 export const List = ({setCurrent}) => {
   const colums = ["name", ""];
 
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,6 +18,7 @@ export const List = ({setCurrent}) => {
 
   return (
     <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
+      { sports.length? 
       <div className="py-8">
         <div>
           <h2 className="text-2xl font-semibold leading-tight">Users</h2>
@@ -82,7 +85,7 @@ export const List = ({setCurrent}) => {
                 </tr>
               </thead>
               <tbody>
-                {sports?.map(({ name, id }) => {
+                {sports.map(({ name, id }) => {
                   return (
                     <tr>
                       <td className={`px-5 py-5 bg-white ${style.name}`}>
@@ -96,8 +99,8 @@ export const List = ({setCurrent}) => {
                         </button>
                       </td>
                     </tr>
-                  );
-                })}
+                  )
+                }) } 
               </tbody>
             </table>
             <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
@@ -109,7 +112,7 @@ export const List = ({setCurrent}) => {
             </div>
           </div>
         </div>
-      </div>
+      </div>: <span className={style.loader}></span>}
     </div>
   );
 };

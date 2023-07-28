@@ -57,9 +57,9 @@ const handlePage = (type)=>{
   }
 }
 
-
   return (
       <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
+        {user.length? 
         <div className="py-8">
           <div>
             <h2 className="text-2xl font-semibold leading-tight">Users</h2>
@@ -132,7 +132,7 @@ const handlePage = (type)=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {user?.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone }) => {
+                  {user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone }) => {
                     return (
                       <tr>
                         <td className="px-5 py-5 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
@@ -204,7 +204,7 @@ const handlePage = (type)=>{
               </div>
             </div>
           </div>
-        </div>
+        </div> : <span className={style.loader}></span>}
       </div>
   );
 };

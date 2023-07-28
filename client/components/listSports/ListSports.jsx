@@ -10,8 +10,7 @@ export const ListSports = () => {
 
   return (
     <>
-    {current == "list" ? <List setCurrent={setCurrent}/> : current == "form" ? <Form setCurrent={setCurrent}/> : <Edit id={current}/>}
-    {/* {create? <Form setCreate={setCreate}/> : <List setCreate={setCreate}/>} */}
+    {current == "list" ? <List setCurrent={setCurrent}/> : current == "form" ? <Form setCurrent={setCurrent}/> : <Edit setCurrent={setCurrent} id={current}/>}
     </>
   )
 }
