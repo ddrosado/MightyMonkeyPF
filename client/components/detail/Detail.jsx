@@ -8,16 +8,20 @@ import { getSports } from "../../redux/actions/sportsActions";
 import EmblaCarousel from "../carousel/Carousel";
 
 
-const Detail = () => {
+const Detail = ({sport}) => {
 
   const dispatch = useDispatch()
+
+  const sports = useSelector(state => state.sports.sports);
+
   useEffect(() => {
-    if (!sport.sports.length) {
+    if (!sports.length) {
       dispatch(getSports());
     }
   }, []);
 
-  const sports = useSelector(state => state.sports);
+  const sportFind = sports.find(e=> e.name == sport)
+
 
   return (
     <div className={style.detailContainer}>
@@ -42,7 +46,7 @@ const Detail = () => {
       <div className={style.titleSport}>
             <h1>Gallery</h1>
           </div>
-        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+        {/* <EmblaCarousel slides={SLIDES} options={OPTIONS} /> */}
       </div>
       <div className={style.botSlice}>
         <h1>REVIEWS</h1>
