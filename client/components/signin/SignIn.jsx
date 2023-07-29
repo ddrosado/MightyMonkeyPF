@@ -20,6 +20,21 @@ const userLogin = async (userData) => {
 
 const SignIn = (props) => {
 
+  const [userData, setUserData] = useState({
+    username: '',
+    password: ''
+  });
+
+
+   user = firebase.auth().currentUser;
+  if (user) {
+    const email = user.email;
+
+    userData = {
+      username: email,
+    };
+  }
+  
 
   const router = useRouter()
 
@@ -36,10 +51,6 @@ const SignIn = (props) => {
       });
   };
 
-  const [userData, setUserData] = useState({
-    username: '',
-    password: ''
-  });
 
 
   
