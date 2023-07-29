@@ -60,4 +60,10 @@ function Login() {
   );
 }
 
+// export const getStaticProps = async()=>{
+//   const data = await fetch('http://localhost:3000/api/login',{method:'GET'})
+//   const res = await data.json()
+
+// }
+
 export default Login;
