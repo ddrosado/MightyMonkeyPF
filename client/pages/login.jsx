@@ -11,8 +11,8 @@ const userLogin = async (form) => {
       "Content-Type": "application/json",
     },
   });
-  const rep = await data.json();
-  return rep;
+  const {session} = await data.json();
+  return session;
 };
 
 function Login() {
@@ -39,8 +39,6 @@ function Login() {
 
   return (
     <form>
-      {/* <label>NOMBRE</label>
-            <input type="text" value={form.name} name="name" onChange={inputHandler} /> */}
       <label>EMAIL</label>
       <input
         type="text"
