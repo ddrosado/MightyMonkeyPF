@@ -1,6 +1,5 @@
 import { db } from "../../db";
 const { Sport,Court } = db;
-
 export default async (sportInfo) => {
   const sport = await Sport.update(sportInfo, {
     where: { id: sportInfo.id },
