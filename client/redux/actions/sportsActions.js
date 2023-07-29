@@ -38,3 +38,14 @@ export const getSports = createAsyncThunk(
     }
   )
 
+  export const putSport = createAsyncThunk(
+    'sports/putSport',
+    async(obj)=>{
+      try {
+        return (await axios.put(`${url}/api/sport`, obj)).data
+      } catch (error) {
+        throw new Error(error.response.data.msg)
+      }
+    }
+  )
+

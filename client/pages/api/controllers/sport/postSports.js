@@ -6,8 +6,7 @@ module.exports = async(info) => {
         where: {
             name: info.name
         }
-    })
-    
+    }) 
     if(!existSport){
         const newSport = await Sport.create(info)
         return newSport
