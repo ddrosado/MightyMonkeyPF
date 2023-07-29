@@ -42,8 +42,8 @@ Booking.belongsTo(User, {foreignKey:'userId'})
 User.hasMany(Review,{as: "review", foreignKey:'userId'})
 Review.belongsTo(User,{as: "user",foreignKey:'userId'})
 
-Court.belongsToMany(Booking,{through:'court_booking'})
-Booking.belongsToMany(Court,{through:'court_booking'})
+Court.hasMany(Booking,{as:"booking", foreignKey:"courtId"})
+Booking.belongsTo(Court,{as:"court", foreingKey:"courtId"})
 
 Court.hasMany(Review,{as:"review", foreignKey:'courtId'})
 Review.belongsTo(Court,{as: "court", foreignKey:'courtId'})
