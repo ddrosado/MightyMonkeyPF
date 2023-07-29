@@ -26,14 +26,14 @@ const SignIn = (props) => {
   });
 
 
-   user = firebase.auth().currentUser;
-  if (user) {
-    const email = user.email;
+  //  user = firebase.auth().currentUser;
+  // if (user) {
+  //   const email = user.email;
 
-    userData = {
-      username: email,
-    };
-  }
+  //   userData = {
+  //     username: email,
+  //   };
+  // }
   
 
   const router = useRouter()
