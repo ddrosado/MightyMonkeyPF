@@ -1,25 +1,45 @@
 'use client'
 import { useState } from "react";
 import styles from "../../app/login.module.css"
-import validation from "./validation";
 import { useRouter } from "next/navigation";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
 
-const userLogin = async (userData) => {
+const userLogin = async (form) => {
   const data = await fetch("http://localhost:3000/api/login", {
     method: "POST",
-    body: JSON.stringify(userData),
+    body: JSON.stringify(form),
     headers: {
       "Content-Type": "application/json",
     },
   });
-  const rep = await data.json();
-  return rep;
+  const {session} = await data.json();
+  return session;
 };
 
 const SignIn = (props) => {
 
+  const [userData, setUserData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const [allowed, setAllowed] = useState(null)
+
+
+  // /*------------------------- Firebase ------------------------- */
+
+  //  user = firebase.auth().currentUser;
+  // if (user) {
+  //   const email = user.email;
+
+  //   userData = {
+  //     username: email,
+  //   };
+  // }
+
+  // /*------------------------------------------------------------ */
+  
 
   const router = useRouter()
 
@@ -27,7 +47,15 @@ const SignIn = (props) => {
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .catch(error => {
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+
+      console.log(user)
+
+    }).catch((error) => {
         if (error.code === "auth/popup-closed-by-user") {
           console.log("Sign-in popup closed by the user.");
         } else {
@@ -36,16 +64,8 @@ const SignIn = (props) => {
       });
   };
 
-  const [userData, setUserData] = useState({
-    username: '',
-    password: ''
-  });
+  const hola = "hola";
 
-
-  
-  const [errors, setErrors] = useState({});
-  // const [isValid, setIsValid] = useState(false);
-  
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -53,52 +73,38 @@ const SignIn = (props) => {
       ...userData,
       [name]: value
     });
-    setErrors(validation({
-      ...userData,
-      [name]: value
-    }));
   };
 
 
   
   
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    // const validationErrors = validation(userData);
-    // setErrors(validationErrors);
-    // if (Object.keys(validationErrors).length === 0) {
-    // const res = await userLogin(form);
-    // if(res){alert('usuario logueado con exito'); router.push('/home2')}
-    // }
-    // setUserData({
-    //   username: '',
-    //   password: ''
-    // });
     const res = await userLogin(userData);
     if(res){
+      setAllowed(true)
       router.push('/home')
+    } else {
+      setAllowed(false)
     }
   };
 
 
-
-
   return(
 
-  <form className={styles.loginForm} onSubmit={handleSubmit}>
+  <form className={styles.loginForm} onSubmit={onSubmit}>
 
   <div className={styles.loginFormGroup}>
-    <label htmlFor="username">Email</label>
+    <label htmlFor="email">Email</label>
     <input
       type="email"
-      id="username"
-      name="username"
+      id="email"
+      name="email"
       placeholder="youremail@mail.com"
-      value={userData.username}
+      value={userData.email}
       onChange={handleChange} 
       className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     />
-    {errors.username && <p className={styles.loginError}>{errors.username}</p>}
   </div>
   
   
@@ -114,22 +120,26 @@ const SignIn = (props) => {
       onChange={handleChange} 
       className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     />
-    {errors.password && <p className={styles.loginError}>{errors.password}</p>}
+
   </div>
 
 
-
+  {/* // ------------------------- Sign In ------------------------- */}
   <div className={styles.loginButtonContainer}>
     <div className={styles.signinContainer}>
   <button 
   type="submit" 
   className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-slate-300 rounded shadow"
-  onClick={handleSubmit}>
+  onClick={onSubmit}>
     Sign In
     </button>
+    {(!allowed && allowed !== null) && (
+        <p className={styles.invalid}>Invalid username/password</p>
+      )}
     </div>
     <h3>or</h3>
 
+  {/* // ------------------------- Google ------------------------- */}
     <div className={styles.googleButtonContainer}>
     <button
     className="bg-white px-4 py-2 border flex gap-2 border-slate-300 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
@@ -148,6 +158,7 @@ const SignIn = (props) => {
 </div>
 
 
+  {/* // ------------------------- Sign Up ------------------------- */}
 <div 
         className={styles.createAccount}>
            <h1>Don't have an account? <a 

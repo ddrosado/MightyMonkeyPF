@@ -3,10 +3,32 @@ import Link from "next/link";
 import style from "./Navbar.module.css";
 import Image from "next/image";
 import logo from "../../assets/images/logo.png";
+import useSWR from "swr";
+import { useRouter } from "next/navigation";
+
+
+const logout = async () => {
+  const data = await fetch("http://localhost:3000/api/logout", {
+    method: "GET",
+  });
+  const res = await data.json();
+  return res;
+};
+
+const fetcher = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+};
+
 
 export const Navbar = () => {
-  const [admin, setAdmin] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(true);
+
+  const { data, error } = useSWR("api/user", fetcher);
+
+  console.log(data)
+
+  const router = useRouter();
 
   const obj = [
     { label: "Home", route: "/home" },
@@ -15,6 +37,16 @@ export const Navbar = () => {
     { label: "Profile", route: "/profile" },
     { label: "Join!", route: "/join" },
   ];
+
+  // ------------------------- Log out -------------------------
+  const logoutHandler = async () => {
+    const res = await logout();
+    window.location.reload();
+  };
+
+  const logInHandler = () => {
+    router.push("/");
+  };
 
   return (
       // <div className={style.navContainer}>
@@ -34,17 +66,21 @@ export const Navbar = () => {
             </div>
           </div>
           <div className={style.adminBar}>
-            {admin ? (
-              <Link className={style.link} key="admin" href="dashboard">
-                <li>Admin</li>
-              </Link>
-            ) : null}{" "}
-            |
-            {loggedIn ? (
-              <Link className={style.link} key="admin" href="/">
-                <li>Log out</li>
-              </Link>
-            ) : null}
+          {data ? (
+        <>
+          {data.isAdmin ? (
+            <Link className={style.link} key="admin" href="dashboard">
+              <li>Admin</li>
+            </Link>
+          ) : null}
+          |
+          {data.isLoggedIn ? (
+            <li onClick={logoutHandler}>Log out</li>
+          ) : (
+            <li onClick={logInHandler}>Log In</li>
+          )}
+        </>
+      ) : null}
           </div>
         </div>
       // </div>
