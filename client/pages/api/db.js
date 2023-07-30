@@ -36,8 +36,8 @@ db.Sport = SportModel(sequelize);
 const { User, Booking, Court, Review, Sport, Subscriptions } = db.sequelize.models;
 
 
-User.hasMany(Booking, {foreignKey:'userId'})
-Booking.belongsTo(User, {foreignKey:'userId'})
+User.hasMany(Booking, {as: "booking", foreignKey:'userId'})
+Booking.belongsTo(User, {as: "user", foreignKey:'userId'})
 
 User.hasMany(Review,{as: "review", foreignKey:'userId'})
 Review.belongsTo(User,{as: "user",foreignKey:'userId'})

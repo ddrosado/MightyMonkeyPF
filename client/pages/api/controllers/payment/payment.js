@@ -1,5 +1,5 @@
 const mercadopago = require('mercadopago');
-const ngrok = 'https://02c5-179-1-48-61.ngrok.io'
+const ngrok = 'https://8a79-179-1-48-61.ngrok.io'
 
 
 module.exports = async(data) => {
