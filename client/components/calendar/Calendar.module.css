@@ -1,115 +1,79 @@
 .calendarContainer {
-  display: inline-block;
-  border: 3px solid #ffffff;
-  padding: 45px;
-  background-color: #000000;
-  color: #f8ef88;
-  box-shadow: 9px 10px 20px 8px rgba(0, 0, 0, 0.75);
+    background-color: #FFDA61;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
 }
 
-.calendarHeaderContainer {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #c0bebe;
-  padding: 12px;
-  font-weight: bold;
+.inputDate {
+    color: black;
+    margin-bottom: 20px;
+    width: 150px;
 }
 
-.calendarDaysContainer {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 30px;
-  margin-top: 10px;
-  height: 300px;
-  padding: 10px;
+.turnBtn {
+    background-color: black;
+    position: relative;
+    height: 30px;
+    color: #FFDA61;
+    flex-basis: calc(30%); /* Para tener 3 botones por fila con un margen de 10px entre ellos */
+    flex-grow: 1; /* Para que los botones ocupen el espacio disponible de manera equitativa */
+    transition: all 0.2s ease;
+    box-shadow: -4px 4px 10px 0px rgba(0,0,0,0.56);
+-webkit-box-shadow: -4px 4px 10px 0px rgba(0,0,0,0.56);
+-moz-box-shadow: -4px 4px 10px 0px rgba(0,0,0,0.56);
 }
 
-.containerDay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 20px;
+.turnBtn:active {
+    top: 2px;
+    box-shadow: -3px 3px 6px 0px rgba(0,0,0,0.56);
+-webkit-box-shadow: -3px 3px 6px 0px rgba(0,0,0,0.56);
+-moz-box-shadow: -3px 3px 6px 0px rgba(0,0,0,0.56);
 }
 
-.emptyDay {
-  width: 30px;
-  height: 30px;
+.turnsContainer {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-.calendarDay {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 28px;
-  cursor: pointer;
-  background-color: rgb(1, 1, 1);
-  color: #f8ef88;
-  border: none;
-  border-radius: 2px;
-}
-.calendarDay:hover {
-  font-size: 22px;
+.selectedTurn {
+    background-color: #56c26e;
+    cursor: default;
+    top: 2px;
+    box-shadow: -3px 3px 6px 0px rgba(0,0,0,0.56);
+-webkit-box-shadow: -3px 3px 6px 0px rgba(0,0,0,0.56);
+-moz-box-shadow: -3px 3px 6px 0px rgba(0,0,0,0.56);
+  }
+  
+.yourReserve {
+    color: black;
+    font-size: 1.2rem;
 }
 
-.calendarDay.selectedDay {
-  background-color: #f8ef88;
-  color: rgb(0, 0, 0);
-  display: flex;
+.reserveBtn {
+    background-color: #56c26e;
+    padding: 5px;
+    margin-top: 20px;
 }
 
-.button {
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 30px;
-  color: #f8ef88;
+.reserveContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin-top: 20px;
+    padding: 20px;
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
 }
 
-.mesBtnContainer {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.dateTimePicker {
-  margin-top: 30px;
-}
-
-.dateTimePicker label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.dateTimePicker div {
-  display: flex;
-  align-items: center;
-}
-
-.label {
-  color: #000000;
-}
-
-.hour {
-  margin-top: 5px;
-}
-
-.reserveButton {
-  background-color: #f8ef88;
-  border-radius: 5px;
-  margin-top: 20px;
-  color: #000000;
-  padding: 6px;
-}
-
-.reserveButton:hover{
-  background-color: #fcef5c;
-}
-.parrafoSelect {
-  margin-top: 40px;
-  font-size: 20px;
+.showMoreBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

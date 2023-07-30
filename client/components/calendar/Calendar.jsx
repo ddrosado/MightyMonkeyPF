@@ -1,167 +1,138 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Calendar.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Calendar = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDateTime, setSelectedDateTime] = useState(null);
-  const [selectedHour, setSelectedHour] = useState(0);
-  const [selectedMinute, setSelectedMinute] = useState(0);
+  const today = new Date();
+  const maxDate = new Date();
+  maxDate.setDate(today.getDate() + 30); // Fecha límite: 30 días después del día actual
 
-  const handleDateTimeSelect = (day, hour, minute) => {
-    const newDate = new Date(currentDate);
-    newDate.setDate(day);
-    newDate.setHours(hour);
-    newDate.setMinutes(minute);
-    setSelectedDateTime(newDate);
-    setSelectedHour(hour);
-    setSelectedMinute(minute);
+  const getFormattedDate = (date) => {
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${year}-${month}-${day}`; // Modificamos el formato para que coincida con el atributo 'value' del input type='date'
   };
 
-  const getDaysInMonth = (year, month) => {
-    return new Date(year, month + 1, 0).getDate();
+  const formatDate = (date) => {
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const day = days[date.getDay()];
+    const month = months[date.getMonth()];
+    const dayOfMonth = date.getDate();
+
+    return `${day}, ${month} ${dayOfMonth}`;
   };
 
-  const monthNames = [
-    "Ene",
-    "Feb",
-    "Mar",
-    "Abr",
-    "May",
-    "Jun",
-    "Jul",
-    "Ago",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dic",
-  ];
+  const [turns, setTurns] = useState([]);
+  const [selectedTurns, setSelectedTurns] = useState(new Set());
+  const [selectedDate, setSelectedDate] = useState(getFormattedDate(today)); // Inicializamos con el valor del día actual
+  const [showMoreTurns, setShowMoreTurns] = useState(false); // Estado para controlar si se muestran más botones de turnos
 
-  const currentMonth = currentDate.getMonth();
-  const currentYear = currentDate.getFullYear();
-  const daysInMonth = getDaysInMonth(currentYear, currentMonth);
-
-  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-  const emptyDays = Array.from({ length: firstDayOfMonth }, (_, index) => (
-    <span className={style.emptyDay} key={`empty-${index}`} />
-  ));
-
-  const daysOfMonth = Array.from({ length: daysInMonth }, (_, index) => (
-    <div
-      className={`${style.calendarDay} ${
-        selectedDateTime && selectedDateTime.getDate() === index + 1
-          ? style.selectedDay
-          : ""
-      }`}
-      key={index + 1}
-    >
-      <span
-        onClick={() =>
-          handleDateTimeSelect(index + 1, selectedHour, selectedMinute)
-        }
-      >
-        {index + 1}
-      </span>
-    </div>
-  ));
-
-  const hours = [];
-  for (let i = 12; i < 22; i++) {
-    hours.push(
-      <option key={i} value={i}>
-        {i < 10 ? `0${i}` : i}
-      </option>
+  const getTurnsAvailable = () => {
+    const startHour = 9;
+    const endHour = 22;
+    const allTurns = Array.from(
+      { length: endHour - startHour + 1 },
+      (_, index) => {
+        const hour = startHour + index;
+        return `${hour}:00hs`;
+      }
     );
-  }
-
-  const handleNextMonth = () => {
-    setCurrentDate((prevDate) => {
-      const newDate = new Date(prevDate);
-      newDate.setMonth(prevDate.getMonth() + 1);
-      return newDate;
-    });
+    setTurns(allTurns);
   };
 
-  const handlePreviousMonth = () => {
-    setCurrentDate((prevDate) => {
-      const newDate = new Date(prevDate);
-      newDate.setMonth(prevDate.getMonth() - 1);
-      return newDate;
-    });
-  };
-
-  const handleReservationSubmit = () => {
-    if (selectedDateTime) {
-      alert(`successful reservation`);
-      setSelectedDateTime(null);
-      setSelectedHour(0);
+  const handleTurnClick = (turn) => {
+    if (selectedTurns.has(turn)) {
+      selectedTurns.delete(turn);
+    } else {
+      selectedTurns.clear();
+      selectedTurns.add(turn);
     }
+
+    setSelectedTurns(new Set(selectedTurns));
   };
+
+  useEffect(() => {
+    getTurnsAvailable();
+  }, []);
+
+  const handleDateSelect = (event) => {
+    const selectedDate = event.target.value; // Obtenemos la fecha seleccionada directamente del evento
+    setSelectedDate(selectedDate);
+    setSelectedTurns(new Set());
+  };
+
+  const handleShowMoreTurns = () => {
+    setShowMoreTurns((prevShowMoreTurns) => !prevShowMoreTurns);
+  };
+
   return (
     <div className={style.calendarContainer}>
-      <div className={style.mesBtnContainer}>
-        <h3 className={style.h3}>{monthNames[currentMonth]}</h3>
-        <button className={style.button} onClick={handlePreviousMonth}>
-          &lt;
+      <h2>Pick a date </h2>
+      <input
+        className={style.inputDate}
+        type="date" // Utilizamos el tipo 'date' para el input
+        id="datepickerId"
+        value={selectedDate}
+        onChange={handleDateSelect}
+        min={getFormattedDate(today)}
+        max={getFormattedDate(maxDate)}
+      />
+      <h2>Pick a turn </h2>
+      <div className={style.turnsContainer}>
+        {turns.slice(0, showMoreTurns ? turns.length : 8).map((turn) => (
+          <button
+            className={`${style.turnBtn} ${
+              selectedTurns.has(turn) ? style.selectedTurn : style.availableTurn
+            }`}
+            key={turn}
+            onClick={() => handleTurnClick(turn)}
+            disabled={selectedTurns.size === 1 && selectedTurns.has(turn)}
+          >
+            {selectedTurns.has(turn) ? turn : turn}
+          </button>
+        ))}
+      </div>
+      {turns.length > 8 && (
+        <button className={style.showMoreBtn} onClick={handleShowMoreTurns}>
+          {showMoreTurns ? "Show less" : "Show more" }
+          <FontAwesomeIcon icon={faChevronDown} />
         </button>
-        <button className={style.button} onClick={handleNextMonth}>
-          &gt;
-        </button>
+      )}
+      <div className={style.reserveContainer}>
+        <h2>Your reserve</h2>
+        <p className={style.yourReserve}>
+          {formatDate(new Date(selectedDate.replace(/-/g, "/")))}
+        </p>
+        <p>at {Array.from(selectedTurns)[0]}</p>
       </div>
-      <div className={style.calendarHeaderContainer}>
-        <span className={style.containerDay}>Lu</span>
-        <span className={style.containerDay}>Ma</span>
-        <span className={style.containerDay}>Mi</span>
-        <span className={style.containerDay}>Ju</span>
-        <span className={style.containerDay}>Vi</span>
-        <span className={style.containerDay}>Sá</span>
-        <span className={style.containerDay}>Do</span>
-      </div>
-      <div className={style.calendarDaysContainer}>
-        {emptyDays}
-        {daysOfMonth}
-      </div>
-      <div className={style.dateTimePicker}>
-        <hr />
-        {selectedDateTime ? (
-          <p>
-            {selectedDateTime.toLocaleDateString()} -{" "}
-            {
-              selectedDateTime
-                .toLocaleString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  hour24: true,
-                })
-                .split(":")[0]
-            }hours
-          </p>
-        ) : (
-          <p className={style.parrafoSelect}>Select a date and time</p>
-        )}
-        {selectedDateTime && (
-          <div className={style.hour}>
-            <label htmlFor="hour">Hour:</label>
-            <select
-              className={style.label}
-              id="hour"
-              onChange={(e) =>
-                handleDateTimeSelect(
-                  selectedDateTime.getDate(),
-                  parseInt(e.target.value),
-                  selectedMinute
-                )
-              }
-              value={selectedHour}
-            >
-              {hours}
-            </select>
-          </div>
-        )}
-      </div>
-      <button className={style.reserveButton} onClick={handleReservationSubmit}>
-        Reservation
-      </button>
+      <button className={style.reserveBtn}>Reserve</button>
     </div>
   );
 };

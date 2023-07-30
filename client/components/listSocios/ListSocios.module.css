@@ -3,6 +3,7 @@
     justify-content: center;
 }
 
+
 .loader {
     margin-top: 5rem;
     margin-bottom: 30rem;
@@ -25,6 +26,10 @@
     border-color: #FF3D00;
     animation: prixClipFix 2s linear infinite , rotate 0.5s linear infinite reverse;
     inset: 6px;
+  }
+  .loading {
+    margin: 150px;
+    width: 100px;
   }
 
   @keyframes rotate {
