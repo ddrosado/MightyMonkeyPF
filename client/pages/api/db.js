@@ -33,7 +33,7 @@ db.Review = ReviewModel(sequelize);
 db.User = UserModel(sequelize);
 db.Sport = SportModel(sequelize);
 
-const { User, Booking, Court, Review, Sport } = db.sequelize.models;
+const { User, Booking, Court, Review, Sport, Subscriptions } = db.sequelize.models;
 
 
 User.hasMany(Booking, {foreignKey:'userId'})
@@ -50,6 +50,7 @@ Review.belongsTo(Court,{as: "court", foreignKey:'courtId'})
 
 Sport.hasMany(Court, {as: 'court', foreignKey: 'sportId'})
 Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
+
 
 db.sequelize.sync();
 
