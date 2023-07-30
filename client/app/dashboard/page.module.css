@@ -1,7 +1,12 @@
 .home{
     width: 4rem;
     height: 2rem;
-    background-color: yellow;
+    background-color: black;
+    color: #FFDA61;
+}
+
+.container {
+    background-color: #FFDA61;
 }
 
 .options{
@@ -30,5 +35,5 @@
 }
 
 .active{
-    background-color: rgb(172, 84, 255);
+    background-color: black;
 }
