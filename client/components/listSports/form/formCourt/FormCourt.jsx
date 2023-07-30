@@ -1,23 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from "./FormCount.module.css"
 import {useDispatch} from "react-redux"
 import { postCourt } from '../../../../redux/actions/courtsAction'
+import { getSports } from '../../../../redux/actions/sportsActions'
 
-export const FormCourt = ({handleBack}) => {
+export const FormCourt = (props) => {
 
 
   const dispatch = useDispatch()
 
   const [court, setCourt] = useState({
     sport: "",
-    name: "",
-    description: "",
-    image: "",
+    name:  "",
+    description:  "",
+    image:  "",
     isAvailable: true,
-    nonMemberPrice: 0,
-    memberPrice: 0
+    nonMemberPrice:  0,
+    memberPrice:0
   });
 
+  useEffect(()=>{
+    setCourt({
+      sport: props.sport ,
+      name: props.court?.name ,
+      description: props.court?.description,
+      image: props.court?.image ,
+      isAvailable:  props.court?.isAvailable ,
+      nonMemberPrice: props.court?.nonMemberPrice,
+      memberPrice: props.court?.memberPrice
+  })
+  }, [props.court])
 
   const handleChange = (e) => {
 
@@ -42,6 +54,9 @@ export const FormCourt = ({handleBack}) => {
       alert("Lo lamento no se pudo crear la cancha")
     } else{
       alert("se a creado correctamente la cancha")
+      if(props.setCreate){
+        props.setCreate(!props.create)
+      }
     }
     setCourt({
       sport: "",
@@ -57,7 +72,7 @@ export const FormCourt = ({handleBack}) => {
   return (
     <form className={style.form}>
             <label className={style.title}>Court</label>
-          <svg
+            {props.handleBack? <svg
             onClick={()=>handleBack(2)}
             className={`h-14 w-14 text-white ${style.back}`}
             width="24"
@@ -72,7 +87,7 @@ export const FormCourt = ({handleBack}) => {
             {" "}
             <path stroke="none" d="M0 0h24v24H0z" />{" "}
             <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />
-          </svg>
+          </svg> : null}
           <div>
             <input
               onChange={(e) => handleChange(e)}
@@ -84,7 +99,7 @@ export const FormCourt = ({handleBack}) => {
             />
             <label
               className={`${style.label} ${
-                court.sport.length ? style.full : style.noFull
+                court?.sport?.length ? style.full : style.noFull
               }`}
               htmlFor="sport"
             >
@@ -102,7 +117,7 @@ export const FormCourt = ({handleBack}) => {
             />
             <label
               className={`${style.label} ${
-                court.name.length ? style.full : style.noFull
+                court?.name?.length ? style.full : style.noFull
               }`}
               htmlFor="name"
             >
@@ -120,7 +135,7 @@ export const FormCourt = ({handleBack}) => {
             />
             <label
               className={`${style.label} ${
-                court.description.length ? style.full : style.noFull
+                court?.description?.length ? style.full : style.noFull
               }`}
               htmlFor="description"
             >
@@ -138,7 +153,7 @@ export const FormCourt = ({handleBack}) => {
             />
             <label
               className={`${style.label} ${
-                court.image.length ? style.full : style.noFull
+                court?.image?.length ? style.full : style.noFull
               }`}
               htmlFor="image"
             >
@@ -190,15 +205,13 @@ export const FormCourt = ({handleBack}) => {
             <label>Is Available?</label>
             <div>
 
-            
-
             <div>
-              <input onChange={(e)=>handleChange(e)} type="radio" name='isAvailable' id='Yes' value={true} />
+              <input onChange={(e)=>handleChange(e)} type="radio" name='isAvailable' id='Yes' value={true}  checked={court?.isAvailable? true : false }/>
               <label htmlFor="Yes">Yes</label>
             </div>
 
             <div>
-              <input onChange={(e)=>handleChange(e)} type="radio" name='isAvailable' id='Not' value={false}/>
+              <input onChange={(e)=>handleChange(e)} type="radio" name='isAvailable' id='Not' value={false} checked={court?.isAvailable? false : true}/>
               <label htmlFor="Not">Not</label>
             </div>
 
@@ -206,7 +219,7 @@ export const FormCourt = ({handleBack}) => {
             </div>
           </div>
           <button className={style.submit} onClick={(e)=>handleSubmit(e)}>
-            Create
+            {props.court? "Edit" : "Create"}
           </button>
         </form>
   )

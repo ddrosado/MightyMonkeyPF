@@ -39,14 +39,14 @@ const { User, Booking, Court, Review, Sport } = db.sequelize.models;
 User.hasMany(Booking, {foreignKey:'userId'})
 Booking.belongsTo(User, {foreignKey:'userId'})
 
-User.hasMany(Review,{foreignKey:'userId'})
-Review.belongsTo(User,{foreignKey:'userId'})
+User.hasMany(Review,{as: "review", foreignKey:'userId'})
+Review.belongsTo(User,{as: "user",foreignKey:'userId'})
 
-Court.belongsToMany(Booking,{through:'court_booking'})
-Booking.belongsToMany(Court,{through:'court_booking'})
+Court.hasMany(Booking,{as:"booking", foreignKey:"courtId"})
+Booking.belongsTo(Court,{as:"court", foreingKey:"courtId"})
 
-Court.hasMany(Review,{foreignKey:'courtId'})
-Review.belongsTo(Court,{foreignKey:'courtId'})
+Court.hasMany(Review,{as:"review", foreignKey:'courtId'})
+Review.belongsTo(Court,{as: "court", foreignKey:'courtId'})
 
 Sport.hasMany(Court, {as: 'court', foreignKey: 'sportId'})
 Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})

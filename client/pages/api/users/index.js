@@ -3,6 +3,7 @@ import getAllUsers from '../controllers/users/getUsers'
 import postUser from '../controllers/users/postUser'
 import updateUser from '../controllers/users/putUser'
 import deleteUser from '../controllers/users/deleteUser'
+
 export default async (req, res)=>{
     
     try{
@@ -17,7 +18,9 @@ export default async (req, res)=>{
                     const userUpdate = await updateUser(req.body)
                     return res.status(200).json(userUpdate)
             case 'DELETE':
-                    const userDeleted = await deleteUser(req.body)
+                    const { id }= req.body
+                    if(!id || id.length < 1) throw Error('missing data')
+                    const userDeleted = await deleteUser(id)
                     return res.status(200).json(userDeleted)
             default:
                 break;

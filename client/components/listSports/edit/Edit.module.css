@@ -1,0 +1,41 @@
+.container{
+    margin-top: 5rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+}
+
+.container > h1{
+    color: yellow;
+    font-size: 1.3em;
+    border-bottom: solid 1px yellow;
+    font-weight: 600;
+}
+
+.courts{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+    justify-content: center;
+}
+
+.back{
+    position: absolute;
+    width: 5rem;
+    height: 2rem;
+    background-color: transparent;
+    top: 0;
+    left: 18rem;
+    border: solid 1px yellow;
+    border-radius: .3rem;
+    color: yellow;
+    transition: all .3s;
+}
+
+.back:hover{
+    transform: scale(1.1);
+}

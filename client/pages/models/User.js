@@ -44,7 +44,7 @@ module.exports = (sequelize) => {
       },
       isActive:{
         type: DataTypes.BOOLEAN,
-        allowNull: true,
+        allowNull: true
       }
     });
     return User
