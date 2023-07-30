@@ -6,11 +6,9 @@ module.exports = async(data) => {
     mercadopago.configure({
         access_token: 'TEST-872443940722018-072322-5276e0527cfd7c712ab71c09327023e0-1431922934'
     });
-    console.log('this is type', type);
     switch (data.type) {
         case 'buys': {
             const { items } = data
-            console.log('esto es req',items);
             const result = await mercadopago.preferences.create({
                 items: items,
                 back_urls: {
@@ -20,7 +18,7 @@ module.exports = async(data) => {
                 },
                 notification_url: `${ngrok}/api/webHookPay`
             })
-            return result
+                return result
         }
         case 'subscriptions': {
             const { email, reason, price, frequency, frequency_type } = data
@@ -34,7 +32,6 @@ module.exports = async(data) => {
                     currency_id: "COP"
                 },
                 back_url: `${ngrok}/api/users`
-                
             })
             return result
         }
