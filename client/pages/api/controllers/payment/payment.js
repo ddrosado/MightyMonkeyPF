@@ -6,7 +6,7 @@ module.exports = async(data) => {
     mercadopago.configure({
         access_token: 'TEST-872443940722018-072322-5276e0527cfd7c712ab71c09327023e0-1431922934'
     });
-    console.log('this is type', type);
+    console.log('this is type', data.type);
     switch (data.type) {
         case 'buys': {
             const { items } = data
