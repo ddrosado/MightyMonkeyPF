@@ -1,0 +1,12 @@
+.container{
+    height: 500px;
+    width: 100%;
+    background-color: antiquewhite;
+    justify-content: center;
+    text-align: center;
+}
+.imgage{
+    height: 300px;
+    width: 300px;
+    
+}
