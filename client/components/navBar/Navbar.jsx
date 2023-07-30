@@ -24,9 +24,6 @@ const fetcher = async (url) => {
 
 export const Navbar = () => {
 
-
-  const [admin, setAdmin] = useState(true);
-
   const { data, error } = useSWR("api/user", fetcher);
 
   console.log(data)

@@ -5,6 +5,9 @@ import Link from 'next/link.js'
 import style from "./page.module.css"
 import { ListSports } from '../../components/listSports/ListSports.jsx'
 
+
+
+
 const Page = () => {
 
   const [user, setUser] = useState(true)
