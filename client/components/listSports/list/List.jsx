@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../../redux/actions/sportsActions";
 import style from "./List.module.css";
+import loading from '../../../assets/images/giphy.gif'
+import Image from "next/image";
 
 export const List = ({setCurrent}) => {
   const colums = ["name", ""];
@@ -112,7 +114,7 @@ export const List = ({setCurrent}) => {
             </div>
           </div>
         </div>
-      </div>: <span className={style.loader}></span>}
+      </div>: <Image className={style.loading} src={loading} alt="gif" />}
     </div>
   );
 };

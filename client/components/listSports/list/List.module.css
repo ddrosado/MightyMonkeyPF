@@ -50,6 +50,10 @@
     0%   {transform: rotate(0deg)}
     100%   {transform: rotate(360deg)}
   }
+  .loading {
+    margin: 150px;
+    width: 100px;
+  }
 
   @keyframes prixClipFix {
       0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
