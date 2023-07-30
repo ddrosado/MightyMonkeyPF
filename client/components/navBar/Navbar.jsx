@@ -5,7 +5,7 @@ import Image from "next/image";
 import logo from "../../assets/images/logo.png";
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
-
+import { fetcher } from "../../pages/fetcher";
 
 const logout = async () => {
   const data = await fetch("http://localhost:3000/api/logout", {
@@ -15,18 +15,12 @@ const logout = async () => {
   return res;
 };
 
-const fetcher = async (url) => {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-};
-
 
 export const Navbar = () => {
 
   const { data, error } = useSWR("api/user", fetcher);
 
-  console.log(data)
+  // console.log(data)
 
   const router = useRouter();
 
