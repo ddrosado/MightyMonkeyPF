@@ -8,11 +8,12 @@ import {
 import img1 from '../../assets/images/banners/publi1.jpg'
 import img2 from '../../assets/images/banners/publi2.jpg'
 import img3 from '../../assets/images/banners/publi3.jpg'
+import img4 from '../../assets/images/banners/publi4.jpg'
 import Image from "next/image";
 
 const Banner = () => {
 
-  const images = [img1, img2, img3]
+  const images = [img1, img2, img3, img4]
 
     useEffect(() => {
         initTE({ Carousel });
@@ -63,6 +64,17 @@ const Banner = () => {
             className="block w-full"
             alt="publi3"
             key='publi3'
+          />
+        </div>
+        <div
+          className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-te-carousel-item
+        >
+          <Image
+            src={images[3]}
+            className="block w-full"
+            alt="publi4"
+            key='publi4'
           />
         </div>
       </div>
