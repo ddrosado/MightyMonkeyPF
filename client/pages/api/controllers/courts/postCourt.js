@@ -13,6 +13,7 @@ export default async (courtInfo) => {
     }
 
   const court = await Court.create(newCourt);
+  
   const courtQuery = await Court.findByPk(court.id, {
     attributes: [
     "id",

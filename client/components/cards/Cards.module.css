@@ -7,13 +7,14 @@
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     padding: 100px 0 200px;
     width: 100%;
+    margin-top: 10px;
 }
 
 .cardsContainer {
     display: flex;
     justify-content: center;
-    gap: 50px;   
-    width: 80%;
+    gap: 70px;
+    width: 75%;
     flex-wrap: wrap;
     margin-top: 40px;
 }

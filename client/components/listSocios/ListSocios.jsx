@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import style from "./ListSocios.module.css"
 import { filterUsers} from "../../redux/features/usersSlice";
+import loading from '../../assets/images/giphy.gif'
+import Image from "next/image";
 
 const ListSocios = () => {
   const colums = ["User", "Email", "Phone", "Members", ""];
@@ -212,9 +214,9 @@ const handleBanned= async (id)=>{
               </div>
             </div>
           </div>
-        </div> : <span className={style.loader}></span>}
+        </div> : <Image className={style.loading} src={loading} alt="gif" />}
       </div>
   );
 };
-
+{/* <span className={style.loader}></span> */}
 export default ListSocios;

@@ -6,10 +6,14 @@ import SignUp from "../components/register/Register"
 import logo from "../assets/images/logo.png"
 import Image from "next/image";
 import { useState } from "react"
+import Link from "next/link";
+
 
 export default function Login() {
 
   const [activeComponent, setActiveComponent] = useState('signIn');
+
+
 
   // switch between components
   const changeComponent = (componentName) => {
@@ -36,9 +40,9 @@ export default function Login() {
     <div className={styles.loginScreen}>
           
           <div className={styles.loginImgContainer}>
-            <Image 
-            src={logo}
-            className={styles.loginLogo}/>
+          <Link href="/home">
+          <Image src={logo} className={styles.loginLogo} alt="Logo" />
+      </Link>
             </div>
 
       <div className={styles.loginTrapezoid}>

@@ -4,15 +4,16 @@ import { useState } from "react";
 
 
 const userLogin = async (form) => {
-  const data = await fetch("http://localhost:3000/api/login", {
-    method: "POST",
-    body: JSON.stringify(form),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const rep = await data.json();
-  return rep;
+    const data = await fetch("http://localhost:3000/api/login", {
+      method: "POST",
+      body: JSON.stringify(form),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const session = await data.json();
+    if(!data.ok) throw Error(session)
+    return session;   
 };
 
 function Login() {
@@ -33,14 +34,16 @@ function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await userLogin(form);
-    if(res){alert('usuario logueado con exito'); router.push('/home2')}
+    try {
+      await userLogin(form);
+      alert('usuario logueado con exito'); router.push('/home2')
+    } catch (error) {
+      alert(error.message)
+    }
   };
 
   return (
     <form>
-      {/* <label>NOMBRE</label>
-            <input type="text" value={form.name} name="name" onChange={inputHandler} /> */}
       <label>EMAIL</label>
       <input
         type="text"
@@ -60,10 +63,6 @@ function Login() {
   );
 }
 
-// export const getStaticProps = async()=>{
-//   const data = await fetch('http://localhost:3000/api/login',{method:'GET'})
-//   const res = await data.json()
 
-// }
 
 export default Login;
