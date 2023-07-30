@@ -12,19 +12,22 @@ module.exports = {
     './client/components/**/*.{js,ts,jsx,tsx,mdx}',
     './client/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{html,js}',
-    './node_modules/tw-elements/dist/js/**/*.js'
+    './node_modules/tw-elements/dist/js/**/*.js',
+    "./node_modules/flowbite-react/**/*.js",
+    "./pages/**/*.{ts,tsx}",
+    "./public/**/*.html",
   ],
   theme: {
     extend: {
       colors: {
-        100: '#fefce7',  
-        200: '#fcf8cf',  
-        300: '#f9f29f',  
+        100: '#fefce7',
+        200: '#fcf8cf',
+        300: '#f9f29f',
         400: '#F8EF88', // default
-        500: '#ab9e07',  
-        600: '#605806',  
-        700: '#484304', 
-        800: '#181701',  
+        500: '#ab9e07',
+        600: '#605806',
+        700: '#484304',
+        800: '#181701',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -33,6 +36,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tw-elements/dist/plugin.cjs")],
+  plugins: [
+    require("tw-elements/dist/plugin.cjs"),
+    require('flowbite/plugin'),
+  ],
   darkMode: "class",
 }

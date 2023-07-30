@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import style from "./Detail.module.css";
 import Calendar from "../calendar/Calendar";
-// import Carrusel from "../carrusel/Carrusel.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../redux/actions/sportsActions";
 import EmblaCarousel from "../carousel/Carousel";
@@ -10,33 +9,19 @@ import EmblaCarousel from "../carousel/Carousel";
 const Detail = ({ sportName }) => {
   const dispatch = useDispatch();
 
-<<<<<<< HEAD
-=======
-const Detail = ({sport}) => {
-
-  const dispatch = useDispatch()
-
-  const sports = useSelector(state => state.sports.sports);
-
->>>>>>> 2c006b245ecfed06ff9d91e6a2c4d9e7a92c6ffb
+  const sport = useSelector((state) => state.sports);
   useEffect(() => {
-    if (!sports.length) {
+    if (!sport.length) {
       dispatch(getSports());
     }
   }, []);
 
-<<<<<<< HEAD
   const OPTIONS = { align: "start", containScroll: "trimSnaps" };
   const SLIDE_COUNT = 5;
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
-  const sport = useSelector((state) => state.sports);
 
   const sportFind = sport.sports?.find((e) => e.name == sportName);
-=======
-  const sportFind = sports.find(e=> e.name == sport)
-
->>>>>>> 2c006b245ecfed06ff9d91e6a2c4d9e7a92c6ffb
 
   return (
     <div className={style.detailContainer}>
@@ -53,7 +38,7 @@ const Detail = ({sport}) => {
           />
         </div>
         <div className={style.calendarReservation}>
-          <h2>Make your reservation</h2>
+          <h2 className={style.making}>Make your reservation</h2>
           <Calendar />
         </div>
       </div>
@@ -61,7 +46,7 @@ const Detail = ({sport}) => {
       <div className={style.titleSport}>
             <h1>Gallery</h1>
           </div>
-        {/* <EmblaCarousel slides={SLIDES} options={OPTIONS} /> */}
+        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
       <div className={style.botSlice}>
         <h1>REVIEWS</h1>

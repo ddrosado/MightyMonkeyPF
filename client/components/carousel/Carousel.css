@@ -3,6 +3,7 @@
   --slide-size: 40%;
   --slide-height: 20rem;
   padding: 1.6rem;
+  display: flex;
 }
 
 .embla__viewport {
@@ -76,9 +77,6 @@
 .embla__buttons {
   display: flex;
   align-items: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   left: 1.6rem;
 }
 
