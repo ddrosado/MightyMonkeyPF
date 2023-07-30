@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect } from "react";
-
+import './Banner.css'
 import {
     Carousel,
     initTE,
@@ -21,7 +21,7 @@ const Banner = () => {
   return (
     <div
       id="carouselExampleControls"
-      className="relative"
+      className="relative bannerContainer"
       data-te-carousel-init
       data-te-carousel-slide
     >
