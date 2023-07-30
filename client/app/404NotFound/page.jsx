@@ -11,7 +11,7 @@ const notFound = () => {
 
 return (
     <div className={styles.container}>
-        <div>
+        <div className={styles.content}>
             <Image className={styles.imgage}src={imgage} alt="404" />
             <h1>404 Not Found</h1>
         </div>
