@@ -31,3 +31,14 @@ export const createUser = createAsyncThunk(
       }
     }
   );
+
+  export const deletUser = createAsyncThunk(
+    'users/delet',
+    async (id)=>{
+      try {
+        return await axios.delete(`${url}/api/users`, {data: {id:id}})
+      } catch (error) {
+        throw error.response.data.msg;
+      }
+    }
+  )

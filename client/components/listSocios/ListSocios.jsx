@@ -1,5 +1,5 @@
 "use client";
-import { getUsers } from "../../redux/actions/userActions";
+import { deletUser, getUsers } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import style from "./ListSocios.module.css"
@@ -54,6 +54,13 @@ const handlePage = (type)=>{
     if(newPage >= 0){
       setPage(newPage)
     } 
+  }
+}
+
+const handleBanned= async (id)=>{
+  const resp = await dispatch(deletUser(id))
+  if (resp.meta.requestStatus == "rejected"){
+    console.log("no se pudo banear")
   }
 }
 
@@ -132,9 +139,10 @@ const handlePage = (type)=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone }) => {
-                    return (
+                  {user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone, id, isActive }) => {
+                    return (    
                       <tr>
+                        {console.log(id)}
                         <td className="px-5 py-5 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
                           <div className="flex items-center gap-x-2">
                             <img
@@ -180,8 +188,8 @@ const handlePage = (type)=>{
                           </span>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
-                          <button className="text-sm bg-yellow-300 hover:bg-yellow-200 text-black-900 font-semibold py-2 px-4 rounded-full">
-                            edit
+                          <button onClick={()=> handleBanned(id)} className={`text-sm  ${isActive? "bg-red-500" : "bg-blue-500" } text-black-900 font-semibold py-1 px-3`}>
+                            {isActive? "bann" : "enable"}
                           </button>
                         </td>
                       </tr>
