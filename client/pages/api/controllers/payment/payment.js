@@ -4,7 +4,7 @@ const ngrok = 'https://02c5-179-1-48-61.ngrok.io'
 
 module.exports = async(data) => {
     mercadopago.configure({
-        access_token: 'TEST-872443940722018-072322-5276e0527cfd7c712ab71c09327023e0-1431922934'
+        access_token: 'TEST-8224153938650622-073001-07e9c314a676cfd54e1dca286b6054d2-1436108503'
     });
     switch (data.type) {
         case 'buys': {
@@ -29,7 +29,7 @@ module.exports = async(data) => {
                     frequency: frequency,
                     frequency_type: frequency_type,
                     transaction_amount: price,
-                    currency_id: "COP"
+                    currency_id: "ARS"
                 },
                 back_url: `${ngrok}/api/users`
             })
