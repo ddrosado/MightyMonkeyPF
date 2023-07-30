@@ -2,7 +2,6 @@ import mercadopago from "mercadopago";
 const postBookings = require('../controllers/bookings/postBookings')
 const User = db.User
 
-
 export default async (req, res) => {
   try {
     console.log('QUERY', req.query);
@@ -27,7 +26,7 @@ export default async (req, res) => {
 
       // El pago ha sido procesado con éxito, ahora actualizamos la propiedad isMember del usuario
       if (req.body.type === 'payment' && req.body.data.status === 'approved') {
-        const externalReference = req.body.data.userId; // ID del usuario en tu sistema
+        const externalReference = req.body.data.external_reference; // ID del usuario en tu sistema
 
         // Buscamos al usuario por su externalReference en la base de datos usando Sequelize
         const user = await User.findOne({
