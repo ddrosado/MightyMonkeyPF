@@ -3,28 +3,19 @@ db.sequelize.sync()
 const { Booking, User, Court } = db
 
 module.exports = async(info) => {
-    const { date, schedule, duration, userEmail, courtName } = info
-    if(!date || !schedule || ! duration) throw new Error('Missing data')
+    const { date, hour, userId, courtId } = info
+    if(!date || ! hour) throw new Error('Missing data')
     const bookingsDay = await Booking.findAll({
-        where: { date: date, schedule: schedule }
+        where: { date: date, hour: hour, courtId: courtId }
     })
     console.log('Bookings', bookingsDay);
     if(bookingsDay.length) throw new Error('the court is already reserved at that time')
-    
-    const user = await User.findOne({ where: { email: userEmail }});
-    const court = await Court.findOne({ where: { name: courtName }});
 
-    const bookingInfo = {
-        ...info,
-        userId: user.id,
-        courtId: court.id
-    }
-
-    const newBooking = await Booking.create(bookingInfo)
+    const newBooking = await Booking.create(info)
 
     const bookingQuery = await Court.findByPk(newBooking.id, {
         attributes: [
-            'id', 'date', 'schedule', 'duration'
+            'id', 'date', 'hour'
         ],
         include: [
             {

@@ -1,4 +1,5 @@
 const mercadopago = require('mercadopago');
+const postMember = require('../memberShip/postMember')
 const ngrok = 'https://8a79-179-1-48-61.ngrok.io'
 
 
@@ -36,6 +37,7 @@ module.exports = async(data) => {
                 back_url: `${ngrok}/api/users`
                 
             })
+            await postMember( result.id, false, reason, email )
             return result
         }
         default:
