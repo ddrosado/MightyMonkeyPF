@@ -11,3 +11,15 @@
     margin-top: 5rem;
     border-bottom: solid 1px white;
 }
+
+.loading {
+    margin: 10vw auto;
+    width: 300px;
+  }
+
+.loadingMonkeyContainer{
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    justify-content: center;
+}

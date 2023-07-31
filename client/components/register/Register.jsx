@@ -70,11 +70,12 @@ const SignUp = (props) => {
     <label 
     htmlFor="name"
     className={styles.registerLabel}>
-      Name
+      
       </label>
     <input
       type="text"
       id="name"
+      placeholder="Name"
       name="name"
       value={registerData.name}
       onChange={handleChange}
@@ -87,11 +88,12 @@ const SignUp = (props) => {
     <label 
     htmlFor="surname"
     className={styles.registerLabel}>
-      Surname
+     
       </label>
     <input
       type="text"
       id="surname"
+      placeholder="Surname"
       name="surname"
       value={registerData.surname}
       onChange={handleChange}
@@ -102,10 +104,13 @@ const SignUp = (props) => {
 
   <div className={styles.div3}>
     <label htmlFor="email"
-    className={styles.registerLabel}><p>Email</p></label>
+    className={styles.registerLabel}>
+      
+      </label>
     <input
       type="email"
       id="email"
+      placeholder="Email"
       name="email"
       value={registerData.email}
       onChange={handleChange}
@@ -116,10 +121,13 @@ const SignUp = (props) => {
 
   <div className={styles.div4}>
     <label htmlFor="email"
-    className={styles.registerLabel}><p>Confirm Email</p></label>
+    className={styles.registerLabel}>
+      
+      </label>
     <input
       type="email"
       id="confirmEmail"
+      placeholder="Confirm email"
       name="confirmEmail" 
       value={registerData.confirmEmail}
       onChange={handleChange}
@@ -133,11 +141,12 @@ const SignUp = (props) => {
     <label 
     htmlFor="password"
     className={styles.registerLabel}>
-      Password
+      
       </label>
     <input
       type="password"
       id="password"
+      placeholder="Password"
       name="password"
       value={registerData.password}
       onChange={handleChange}
@@ -151,11 +160,12 @@ const SignUp = (props) => {
     <label 
     htmlFor="confirmPassword"
     className={styles.registerLabel}>
-      Confirm Password
+      
       </label>
     <input
       type="password"
       id="confirmPassword"
+      placeholder="Confirm password"
       name="confirmPassword"
       value={registerData.confirmPassword}
       onChange={handleChange}

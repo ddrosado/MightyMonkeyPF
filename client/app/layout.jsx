@@ -18,8 +18,6 @@ export default function RootLayout({ children }) {
 
   const  path = usePathname()
 
-
-
   return (
     <html lang="en">
       <body className={inter.className}>

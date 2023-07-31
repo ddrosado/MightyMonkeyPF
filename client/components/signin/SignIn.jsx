@@ -75,7 +75,6 @@ const SignIn = (props) => {
       });
   };
 
-  const hola = "hola";
 
   const handleChange = (e) => {
     const name = e.target.name;

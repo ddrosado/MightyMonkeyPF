@@ -1,33 +1,45 @@
+"use client"
 import React from 'react'
 import style from "./Profile.module.css"
+import useSWR from "swr";
+import { fetcher } from '../../pages/fetcher';
 
 const MyProfile = () => {
+  const { data, error } = useSWR("api/user", fetcher);
+  
   return (
-    <div className={style.container}>
+    data ? (
+<div className={style.container}>
         <div className={style.img}>
           <div>
-          imagen
+          {data.image}
           </div>
         </div>
         <div className={style.dates}>
           <div>
             <h2>Name:</h2>
-            <strong>Enzo Marinich</strong>
+            <strong>{data.name}</strong>
           </div>
           <div>
             <h2>Email:</h2>
-            <strong>Marinichenzo@gmail.com</strong>
+            <strong>{data.email}</strong>
           </div>
           <div>
             <h2>Phone:</h2>
-            <strong>11872387995</strong>
+            <strong>{data.telephone}</strong>
           </div>
           <div>
             <h2>Status:</h2>
-            <strong>Socio Premium</strong>
+            <strong>{data.isMember ? 
+            <p>Premium Membership</p>
+          : <p>Not associated</p>}</strong>
           </div>
         </div>
     </div> 
+    ) 
+    : null 
+   
+    
   )
 }
 
