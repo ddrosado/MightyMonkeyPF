@@ -60,6 +60,10 @@ export const FormSport = (props) => {
     }
   }
 
+  const handleDelete= async (e)=>{
+    e.preventDefault()
+    alert("deporte eliminado... proximamente")
+  }
 
 
   return (
@@ -142,7 +146,7 @@ export const FormSport = (props) => {
           <button className={style.submit} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
             {props.sport? "Edit" : "Create"}
           </button>
-          {props.sport? <button className={style.delete}>Delete</button> : null}
+          {props.sport? <button onClick={(e)=>handleDelete(e)} className={style.delete}>Delete</button> : null}
         </div>
       </form> 
     </>

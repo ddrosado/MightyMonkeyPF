@@ -95,7 +95,7 @@ export const FormCourt = (props) => {
     <form className={style.form}>
             <label className={style.title}>Court</label>
             {props.handleBack? <svg
-            onClick={()=>handleBack(2)}
+            onClick={()=>props.handleBack(2)}
             className={`h-14 w-14 text-white ${style.back}`}
             width="24"
             height="24"
