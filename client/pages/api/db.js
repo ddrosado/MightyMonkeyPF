@@ -1,4 +1,8 @@
 require('dotenv').config();
+
+
+
+
 const { Sequelize } = require('sequelize');
 const BookingModel = require('../../models/Booking')
 const CourtModel = require('../../models/Court')
@@ -9,6 +13,7 @@ const PlanModel = require('../../models/Plan');
 const MembershipModel = require('../../models/Membership')
 const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+// const { postgres_USER, postgres_HOST, postges_DATABASE, postgres_PASSWORD } = process.env;
 
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
    host:DB_HOST,
@@ -17,6 +22,9 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
    operatorAliases: false,
    logging: false,
    native: false,
+   // dialectOptions: {
+   //    ssl: true, 
+   //  },
    pool: {
       max: 5,
       min: 0,
