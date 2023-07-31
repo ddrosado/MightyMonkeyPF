@@ -44,7 +44,7 @@ const Page = () => {
             {user ? <ListSocios /> : <ListSports />}
           </div>
         ) : (
-          null
+          <NotFound />
         )
       ) : <NotFound />}
     </>

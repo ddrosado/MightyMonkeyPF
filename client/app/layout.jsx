@@ -9,14 +9,10 @@ import Whatsapp from "../components/whatsapp/Whatsapp";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "MightyMonkeyClub",
-  description: "club monito",
-};
 
 export default function RootLayout({ children }) {
 
-  const  path = usePathname()
+  const path = usePathname()
 
   return (
     <html lang="en">
