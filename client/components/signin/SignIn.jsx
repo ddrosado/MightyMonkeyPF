@@ -48,6 +48,9 @@ const SignIn = (props) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        console.log(user)
+        console.log(token)
+        console.log(credential)
       })
       .catch((error) => {
         if (error.code === "auth/popup-closed-by-user") {
@@ -58,7 +61,6 @@ const SignIn = (props) => {
       });
   };
 
-  const hola = "hola";
 
   const handleChange = (e) => {
     const name = e.target.name;
