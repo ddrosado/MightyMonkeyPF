@@ -22,7 +22,7 @@ const Profile = () => {
           <div className={style.container}>
             <h1>My Profile</h1>
             <MyProfile />
-            <h1>My Turns</h1>
+            <h1>My Turns </h1>
             <Turns />
             <Turns />
           </div>

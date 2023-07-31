@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUsers } from '../actions/userActions';
+import { deleteUser, getUsers } from '../actions/userActions';
 
 const initialState = {
   users: [],
