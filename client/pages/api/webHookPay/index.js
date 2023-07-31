@@ -12,8 +12,8 @@ export default async(req, res) => {
             const bookingsItems = (await mercadopago.payment.findById(payment['data.id'])).response.additional_info.items;
             console.log('items ?', bookingsItems);
             bookingsItems.forEach(async(item) => {
-                const [ date, schedule, duration ] = item.description.split(' ');
-                const info = { date, schedule, duration: Number(duration)}
+                const [ date, schedule, duration, userEmail, courtName ] = item.description.split(' ');
+                const info = { date, schedule, duration: Number(duration), userEmail, courtName }
                 const newBooking = await postBookings(info)
                 newBookings.push(newBooking)
             });
