@@ -6,7 +6,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
 
 const userLogin = async (form) => {
-  const data = await fetch("http://localhost:3001/api/login", {
+  const data = await fetch("http://localhost:3000/api/login", {
     method: "POST",
     body: JSON.stringify(form),
     headers: {
