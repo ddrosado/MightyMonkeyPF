@@ -4,6 +4,7 @@ import { postCourt } from '../actions/courtsAction';
 
 const initialState = {
   sports: [],
+  sportsCopy : [],
   sport:{},
   error: "",
 };
@@ -12,8 +13,9 @@ const sportsSlice = createSlice({
   name: 'sports',
   initialState,
   reducers: {
-    increment: (state, action) => {
-      state.sports = action.payload;
+    filterSports: (state, action) => {
+      const {search} = action.payload
+      state.sportsCopy = state.sports.filter(sport=> sport.name.toLowerCase().includes(search.toLowerCase()));
     },
   },
   extraReducers: (builder) => {
@@ -21,10 +23,10 @@ const sportsSlice = createSlice({
       .addCase(getSports.fulfilled, (state, action) => {
         state.error = "";
         state.sports = action.payload;
+        state.sportsCopy = action.payload;
       })
       .addCase(getSports.rejected, (state, action) => {
         state.error = 'Error occurred while fetching sports data.';
-        state.sports = [];
       })
       .addCase(postSports.rejected, (state, action)=>{
         state.error = 'Error occurred while fetching sports data.';
@@ -50,5 +52,5 @@ const sportsSlice = createSlice({
   },
 });
 
-export const { increment } = sportsSlice.actions;
+export const { filterSports } = sportsSlice.actions;
 export default sportsSlice.reducer;

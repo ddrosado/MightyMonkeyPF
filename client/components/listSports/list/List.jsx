@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../../redux/actions/sportsActions";
 import style from "./List.module.css";
 import loading from '../../../assets/images/giphy.gif'
 import Image from "next/image";
+import { filterSports } from "../../../redux/features/sportsSlice";
 
 export const List = ({setCurrent}) => {
   const colums = ["name", ""];
-
+  const [filter, setFilter] = useState({
+    search: ""
+  })
 
 
   const dispatch = useDispatch();
@@ -16,7 +19,18 @@ export const List = ({setCurrent}) => {
     dispatch(getSports());
   }, []);
 
-  const sports = useSelector((state) => state.sports.sports);
+  useEffect(()=>{
+    dispatch(filterSports(filter))
+  },[filter])
+
+  const sports = useSelector((state) => state.sports.sportsCopy);
+
+  const handleChange =(e)=>{
+    setFilter({
+      ...filter,
+      [e.target.name] : e.target.value
+    })
+  }
 
   return (
     <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
@@ -44,6 +58,9 @@ export const List = ({setCurrent}) => {
               </svg>
             </span>
             <input
+            onChange={(e)=>handleChange(e)}
+            value={filter.search}
+            name="search"
               placeholder="Search"
               className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
             />
