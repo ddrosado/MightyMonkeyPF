@@ -1,7 +1,5 @@
 "use client";
-
 import { deleteUser, getUsers, putUser } from "../../redux/actions/userActions";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import style from "./ListSocios.module.css"
