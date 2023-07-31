@@ -14,3 +14,14 @@ export const postCourt = createAsyncThunk(
       }
     }
   );
+
+  export const putCourt = createAsyncThunk(
+    'courts/putCourt',
+    async(obj)=>{
+      try {
+        return (await axios.put(`${url}/api/courts`, obj)).data
+      } catch (error) {
+        throw new Error(error.response.data.msg)
+      }
+    }
+  )

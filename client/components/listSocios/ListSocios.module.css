@@ -1,6 +1,7 @@
 .container{
     display: flex;
     justify-content: center;
+    min-height: 100vh;
 }
 
 
@@ -29,7 +30,8 @@
   }
   .loading {
     margin: 150px;
-    width: 100px;
+    width: 150px;
+    height: 150px;
   }
 
   @keyframes rotate {

@@ -1,12 +1,13 @@
 "use client"
 import React, { useState } from 'react'
-import ListSocios from '../../components/listSocios/ListSocios.jsx'
+
 import Link from 'next/link.js'
 import style from "./page.module.css"
 import { ListSports } from '../../components/listSports/ListSports.jsx'
 import { fetcher } from '../../pages/api/fetcher.js'
 import useSWR from "swr";
 import NotFound from '../404NotFound/page.jsx'
+import ListSocios from '../../components/listSocios/ListSocios'
 
 
 const Page = () => {
