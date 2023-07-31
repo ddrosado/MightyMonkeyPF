@@ -58,11 +58,6 @@ const handlePage = (type)=>{
   }
 }
 
-
-const handleBanned= async (id)=>{
-  const resp = await dispatch(deletUser(id))
-  if (resp.meta.requestStatus == "rejected"){
-    console.log("no se pudo banear")
 const handleDelete= async (id)=>{
   const resp = await dispatch(deleteUser(id))
   if (resp.meta.requestStatus == "rejected"){
@@ -85,7 +80,7 @@ const handleEnable = async(email)=>{
 
   return (
       <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
-        {user.length? 
+        {user?.length ? 
         <div className="py-8">
           <div className="my-2 flex sm:flex-row flex-col">
             <div className="flex flex-row mb-1 sm:mb-0">
@@ -131,9 +126,8 @@ const handleEnable = async(email)=>{
                 </thead>
                 <tbody>
                   {user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone, id, isActive }) => {
-                    return (    
+                    return (
                       <tr>
-                        {console.log(id)}
                         <td className="px-5 py-5 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
                           <div className="flex items-center gap-x-2">
                             <img
@@ -179,9 +173,6 @@ const handleEnable = async(email)=>{
                           </span>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
-                          <button onClick={()=> handleBanned(id)} className={`text-sm  ${isActive? "bg-red-500" : "bg-blue-500" } text-black-900 font-semibold py-1 px-3`}>
-                            {isActive? "bann" : "enable"}
-                          </button>
                           {isActive? 
                           <button onClick={()=>handleDelete(id)} className="text-sm bg-red-600 hover:bg-red-500 text-black-900 font-semibold py-2 px-4 rounded-full">
                           bann
@@ -214,9 +205,7 @@ const handleEnable = async(email)=>{
           </div>
         </div> : <Image className={style.loading} src={loading} alt="gif" />}
       </div>
-  )
-}
-}
-}
-
+  );
+};
+{/* <span className={style.loader}></span> */}
 export default ListSocios;

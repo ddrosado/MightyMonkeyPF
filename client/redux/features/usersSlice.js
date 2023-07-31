@@ -29,13 +29,7 @@ const usersSlice = createSlice({
       .addCase(getUsers.rejected, (state, action) => {
         state.error = 'Error occurred while fetching sports data.';
         state.users = [];
-      })
-      .addCase(deleteUser.fulfilled, (state, action)=>{
-        return action.payload
-      })
-      .addCase(deleteUser.rejected, (state, action)=>{
-        return action.payload
-      })
+      });
   },
 });
 
