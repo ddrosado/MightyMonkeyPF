@@ -1,0 +1,9 @@
+{
+    "routes": {
+      "exclude": [
+        {
+          "src": "/models/.*"
+        }
+      ]
+    }
+  }
