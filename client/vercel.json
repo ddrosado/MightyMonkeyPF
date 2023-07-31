@@ -1,8 +1,12 @@
 {
-    "routes": [
+    "builds": [
       {
-        "src": "/models/:path*",
-        "status": 404
+        "src": "next.config.js",
+        "use": "@vercel/next"
+      },
+      {
+        "src": "models/**/*.js",
+        "use": "@vercel/node"
       }
     ]
   }
