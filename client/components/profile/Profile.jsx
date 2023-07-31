@@ -2,7 +2,7 @@
 import React from 'react'
 import style from "./Profile.module.css"
 import useSWR from "swr";
-import { fetcher } from '../../pages/fetcher';
+import { fetcher } from '../../pages/api/fetcher';
 
 const MyProfile = () => {
   const { data, error } = useSWR("api/user", fetcher);
