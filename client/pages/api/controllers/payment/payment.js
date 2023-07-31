@@ -1,5 +1,5 @@
 const mercadopago = require('mercadopago');
-const ngrok = 'https://8a79-179-1-48-61.ngrok.io'
+const ngrok = 'https://834e-201-252-84-166.ngrok-free.app'
 
 
 module.exports = async(data) => {
@@ -31,7 +31,7 @@ module.exports = async(data) => {
                     transaction_amount: price,
                     currency_id: "ARS"
                 },
-                back_url: `${ngrok}/api/users`
+                back_url: `${ngrok}/thanksForSubscript`
             })
             return result
         }
