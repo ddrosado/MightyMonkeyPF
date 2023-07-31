@@ -1,11 +1,11 @@
 {
     "builds": [
       {
-        "src": "next.config.js",
+        "client": "next.config.js",
         "use": "@vercel/next"
       },
       {
-        "src": "models/**/*.js",
+        "client": "models/**/*.js",
         "use": "@vercel/node"
       }
     ]
