@@ -9,9 +9,9 @@
 }
 
 .container > h1{
-    color: yellow;
+    color: rgb(0, 0, 0);
     font-size: 1.3em;
-    border-bottom: solid 1px yellow;
+    border-bottom: solid 1px rgb(0, 0, 0);
     font-weight: 600;
 }
 
@@ -30,9 +30,9 @@
     background-color: transparent;
     top: 0;
     left: 18rem;
-    border: solid 1px yellow;
+    border: solid 1px rgb(0, 0, 0);
     border-radius: .3rem;
-    color: yellow;
+    color: rgb(0, 0, 0);
     transition: all .3s;
 }
 

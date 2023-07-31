@@ -9,6 +9,7 @@
     padding-top: 4rem;
     padding-bottom: 3rem;
     align-items: center;
+    background-color: black;
 }
 
 .form >div{
@@ -19,11 +20,18 @@
 }
 
 .input{
+    border: none;
     border-bottom: solid 1px white;
     width: 100%;
     background: transparent;
     outline: none;
     color: white;
+    padding: 0;
+}
+
+.input:focus{
+    --tw-ring-shadow: none;
+    border-bottom: solid 1px blueviolet;
 }
 
 .label{
@@ -118,6 +126,13 @@
     border-bottom: solid 1px white;
     outline: none;
     color: white;
+    padding: 0;
+    padding-left: 2px;
+}
+
+.inputPrice:focus{
+    --tw-ring-shadow: none;
+    border-bottom: solid 1px white;
 }
 
 

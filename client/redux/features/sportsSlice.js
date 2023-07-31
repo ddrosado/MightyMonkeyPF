@@ -38,15 +38,15 @@ const sportsSlice = createSlice({
       .addCase(getSportById.rejected, (state, action)=>{
         return action.payload
       })
-      .addCase(putSport.fulfilled, (state, action)=>{
-        console.log(action.payload)
-      })
-      .addCase(postCourt.fulfilled, (state, action) =>{
-        console.log(action.payload)
-      })
-      .addCase(postCourt.rejected, (state, action)=>{
-        console.log(action.payload)
-      })
+      // .addCase(putSport.fulfilled, (state, action)=>{
+      //   console.log(action.payload)
+      // })
+      // .addCase(postCourt.fulfilled, (state, action) =>{
+      //   console.log(action.payload)
+      // })
+      // .addCase(postCourt.rejected, (state, action)=>{
+      //   console.log(action.payload, "no s epudo")
+      // })
   },
 });
 
