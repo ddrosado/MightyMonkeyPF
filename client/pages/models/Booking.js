@@ -11,14 +11,10 @@ module.exports = (sequelize) => {
         type: DataTypes.DATE,
         allowNull: false,
       },
-      schedule: {
-        type: DataTypes.STRING,
+      hour: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
-      duration:{
-        type: DataTypes.INTEGER,
-      },
-      
     });
     return Booking;
 }

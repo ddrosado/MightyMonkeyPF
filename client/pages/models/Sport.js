@@ -19,6 +19,10 @@ module.exports = (sequelize) => {
         description: {
             type: DataTypes.TEXT,
             allowNull: false,
+        },
+        isActive: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
         }
     })
     return Sport;

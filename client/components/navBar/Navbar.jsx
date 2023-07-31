@@ -5,7 +5,7 @@ import Image from "next/image";
 import logo from "../../assets/images/logo.png";
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
-import { fetcher } from "../../pages/fetcher";
+import { fetcher } from "../../pages/api/fetcher";
 
 const logout = async () => {
   const data = await fetch("http://localhost:3000/api/logout", {
@@ -52,7 +52,7 @@ export const Navbar = () => {
                 {obj.map(({ label, route }) => {
                   return (
                     <Link className={style.link} key={route} href={route}>
-                      <li>{label}</li>
+                      <li className={style.navbarLabel}>{label}</li>
                     </Link>
                   );
                 })}

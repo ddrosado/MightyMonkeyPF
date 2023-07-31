@@ -16,6 +16,17 @@ const userLogin = async (form) => {
   const { session } = await data.json();
   return session;
 };
+const userGoogle = async (user)=>{
+  const response = await fetch("http://localhost:3001/api/google",{
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  const data = await response.json()
+  return data
+}
 
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
@@ -48,6 +59,12 @@ const SignIn = (props) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+       
+        console.log(user)
+        userGoogle(user).then(res => 
+              console.log(res)  
+            ).catch(error => console.log(error.message))
+        
       })
       .catch((error) => {
         if (error.code === "auth/popup-closed-by-user") {
