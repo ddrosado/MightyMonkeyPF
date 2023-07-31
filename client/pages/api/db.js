@@ -61,7 +61,7 @@ Membership.belongsTo(User,{as:"user", foreignKey: 'userId'})
 Plan.hasMany(Membership,{as:"membership", foreignKey:"planId"})
 Membership.belongsTo(Plan,{as:"plan", foreignKey:"planId"})
 
-db.sequelize.sync({force:true});
+db.sequelize.sync();
 
 module.exports = {
    db
