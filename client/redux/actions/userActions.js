@@ -33,27 +33,16 @@ export const createUser = createAsyncThunk(
     }
   );
 
-<<<<<<< HEAD
-  export const deletUser = createAsyncThunk(
-    'users/delet',
-    async (id)=>{
-      try {
-        return await axios.delete(`${url}/api/users`, {data: {id:id}})
-=======
   export const deleteUser = createAsyncThunk(
     'users/delete',
     async(id)=>{
       try {
         const response = await axios.delete(`${url}/api/users`, {data:{id: id}});
         return response.data;
->>>>>>> listSocios
       } catch (error) {
         throw error.response.data.msg;
       }
     }
-<<<<<<< HEAD
-  )
-=======
   );
 
 
@@ -68,4 +57,3 @@ export const createUser = createAsyncThunk(
       }
     }
   );
->>>>>>> listSocios
