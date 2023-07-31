@@ -1,10 +1,12 @@
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
-const BookingModel = require('../models/Booking')
-const CourtModel = require('../models/Court')
-const ReviewModel = require('../models/Review')
-const UserModel = require('../models/User')
-const SportModel = require('../models/Sport');
+const BookingModel = require('../../models/Booking')
+const CourtModel = require('../../models/Court')
+const ReviewModel = require('../../models/Review')
+const UserModel = require('../../models/User')
+const SportModel = require('../../models/Sport');
+const PlanModel = require('../../models/Plan');
+const MembershipModel = require('../../models/Membership')
 const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
@@ -32,8 +34,10 @@ db.Court = CourtModel(sequelize);
 db.Review = ReviewModel(sequelize);
 db.User = UserModel(sequelize);
 db.Sport = SportModel(sequelize);
+db.Plan = PlanModel(sequelize);
+db.Membership = MembershipModel(sequelize);
 
-const { User, Booking, Court, Review, Sport } = db.sequelize.models;
+const { User, Booking, Court, Review, Sport, Plan, Membership } = db.sequelize.models;
 
 
 User.hasMany(Booking, {as: "booking", foreignKey:'userId'})
@@ -50,6 +54,12 @@ Review.belongsTo(Court,{as: "court", foreignKey:'courtId'})
 
 Sport.hasMany(Court, {as: 'court', foreignKey: 'sportId'})
 Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
+
+User.hasOne(Membership,{as:"membership", foreignKey: 'userId'})
+Membership.belongsTo(User,{as:"user", foreignKey: 'userId'})
+
+Plan.hasMany(Membership,{as:"membership", foreignKey:"planId"})
+Membership.belongsTo(Plan,{as:"plan", foreignKey:"planId"})
 
 db.sequelize.sync();
 
