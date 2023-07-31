@@ -6,6 +6,8 @@ module.exports = async(info) => {
     const { date, hour, userId, courtId } = info
     if(!date || !hour || !userId || !courtId) throw new Error('Missing data')
 
+    
+
     // const bookingsDay = await Booking.findAll({
     //     where: { date: date, schedule: schedule }
     // })
