@@ -1,0 +1,12 @@
+{
+    "builds": [
+      {
+        "client": "next.config.js",
+        "use": "@vercel/next"
+      },
+      {
+        "client": "models/**/*.js",
+        "use": "@vercel/node"
+      }
+    ]
+  }

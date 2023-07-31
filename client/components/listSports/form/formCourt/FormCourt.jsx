@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import style from "./FormCount.module.css"
 import {useDispatch} from "react-redux"
-import { postCourt } from '../../../../redux/actions/courtsAction'
+import { postCourt, putCourt } from '../../../../redux/actions/courtsAction'
 import { getSports } from '../../../../redux/actions/sportsActions'
 
 export const FormCourt = (props) => {
@@ -69,11 +69,33 @@ export const FormCourt = (props) => {
     })
   }
 
+
+  const handleEdit = async (e)=>{
+    e.preventDefault()
+    const resp = await dispatch(putCourt({...court, id: props.court.id}))
+    if (resp.meta.requestStatus == "rejected") {
+      alert("Lo lamento no se pudo editar el court");
+      setCourt({
+        sport: "",
+        name: "",
+        description: "",
+        image: "",
+        isAvailable: true,
+        nonMemberPrice: 0,
+        memberPrice: 0
+      });
+    } else {
+      alert("court correctamente editado!")
+    }
+  }
+
+
+
   return (
     <form className={style.form}>
             <label className={style.title}>Court</label>
             {props.handleBack? <svg
-            onClick={()=>handleBack(2)}
+            onClick={()=>props.handleBack(2)}
             className={`h-14 w-14 text-white ${style.back}`}
             width="24"
             height="24"
@@ -218,7 +240,7 @@ export const FormCourt = (props) => {
 
             </div>
           </div>
-          <button className={style.submit} onClick={(e)=>handleSubmit(e)}>
+          <button className={style.submit} onClick={(e)=>props.court?  handleEdit(e): handleSubmit(e) }>
             {props.court? "Edit" : "Create"}
           </button>
         </form>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.0.5",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
@@ -47,5 +48,10 @@
     "swr": "^2.2.0",
     "tailwindcss": "3.3.3",
     "tw-elements": "^1.0.0-beta2"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }

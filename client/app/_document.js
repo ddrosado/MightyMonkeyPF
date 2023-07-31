@@ -1,5 +1,10 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
+export const metadata = {
+  title: "MightyMonkeyClub",
+  description: "club monito",
+};
+
 class MyDocument extends Document {
   render() {
     return (

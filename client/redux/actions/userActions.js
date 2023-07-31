@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
 const url = 'http://localhost:3000';
 
 
@@ -31,3 +32,40 @@ export const createUser = createAsyncThunk(
       }
     }
   );
+
+<<<<<<< HEAD
+  export const deletUser = createAsyncThunk(
+    'users/delet',
+    async (id)=>{
+      try {
+        return await axios.delete(`${url}/api/users`, {data: {id:id}})
+=======
+  export const deleteUser = createAsyncThunk(
+    'users/delete',
+    async(id)=>{
+      try {
+        const response = await axios.delete(`${url}/api/users`, {data:{id: id}});
+        return response.data;
+>>>>>>> listSocios
+      } catch (error) {
+        throw error.response.data.msg;
+      }
+    }
+<<<<<<< HEAD
+  )
+=======
+  );
+
+
+  export const putUser = createAsyncThunk(
+    'users/putUser',
+    async (obj) => {
+      try {
+        const response = await axios.put(`${url}/api/users`, obj);
+        return response.data;
+      } catch (error) {
+        throw error.response.data.msg;
+      }
+    }
+  );
+>>>>>>> listSocios
