@@ -26,8 +26,6 @@ export const Navbar = () => {
 
   const { data, error } = useSWR("api/user", fetcher);
 
-  console.log(data)
-
   const router = useRouter();
 
   const obj = [

@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
 import style from "./Detail.module.css";
-import Calendar from "../calendar/Calendar";
+import Reservation from "./reservation/Reservation";
 import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../redux/actions/sportsActions";
 import EmblaCarousel from "../carousel/Carousel";
 
 const Detail = ({ sportName }) => {
+  
   const dispatch = useDispatch();
 
   const sport = useSelector((state) => state.sports);
@@ -39,7 +40,7 @@ const Detail = ({ sportName }) => {
         </div>
         <div className={style.calendarReservation}>
           <h2 className={style.making}>Make your reservation</h2>
-          <Calendar />
+          <Reservation />
         </div>
       </div>
       <div className={style.midSlice}>
