@@ -44,9 +44,9 @@ const Page = () => {
             {user ? <ListSocios /> : <ListSports />}
           </div>
         ) : (
-          <NotFound />
+          null
         )
-      ) : null}
+      ) : <NotFound />}
     </>
   );
 };

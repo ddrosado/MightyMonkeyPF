@@ -52,7 +52,7 @@ export const Navbar = () => {
                 {obj.map(({ label, route }) => {
                   return (
                     <Link className={style.link} key={route} href={route}>
-                      <li>{label}</li>
+                      <li className={style.navbarLabel}>{label}</li>
                     </Link>
                   );
                 })}
