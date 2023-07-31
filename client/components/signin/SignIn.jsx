@@ -17,7 +17,7 @@ const userLogin = async (form) => {
   return session;
 };
 const userGoogle = async (user)=>{
-  const response = await fetch("http://localhost:3001/api/google",{
+  const response = await fetch("http://localhost:3000/api/google",{
     method: "POST",
     body: JSON.stringify(user),
     headers: {
