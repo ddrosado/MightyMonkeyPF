@@ -34,7 +34,6 @@ export const List = ({setCurrent}) => {
 
   return (
     <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
-      { sports.length? 
       <div className="py-8">
         <div className="my-2 flex sm:flex-row flex-col">
           <div className="flex flex-row mb-1 sm:mb-0">
@@ -83,7 +82,8 @@ export const List = ({setCurrent}) => {
                 </tr>
               </thead>
               <tbody>
-                {sports.map(({ name, id }) => {
+              { sports?.length? 
+                sports.map(({ name, id }) => {
                   return (
                     <tr>
                       <td className={`px-5 py-5 bg-white ${style.name}`}>
@@ -98,7 +98,7 @@ export const List = ({setCurrent}) => {
                       </td>
                     </tr>
                   )
-                }) } 
+                }) : <Image className={style.loading} src={loading} alt="gif" />} 
               </tbody>
             </table>
             <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
@@ -110,7 +110,7 @@ export const List = ({setCurrent}) => {
             </div>
           </div>
         </div>
-      </div>: <Image className={style.loading} src={loading} alt="gif" />}
+      </div>
     </div>
   );
 };

@@ -79,8 +79,7 @@ const handleEnable = async(email)=>{
 }
 
   return (
-      <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
-        {user.length? 
+      <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}> 
         <div className="py-8">
           <div className="my-2 flex sm:flex-row flex-col">
             <div className="flex flex-row mb-1 sm:mb-0">
@@ -125,7 +124,8 @@ const handleEnable = async(email)=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone, id, isActive }) => {
+                {user?.length?
+                  user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone, id, isActive }) => {
                     return (
                       <tr>
                         <td className="px-5 py-5 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
@@ -185,7 +185,8 @@ const handleEnable = async(email)=>{
                         </td>
                       </tr>
                     );
-                  })}
+                  })
+                  : <Image className={style.loading} src={loading} alt="gif" />}
                 </tbody>
               </table>
               <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">
@@ -203,7 +204,7 @@ const handleEnable = async(email)=>{
               </div>
             </div>
           </div>
-        </div> : <Image className={style.loading} src={loading} alt="gif" />}
+        </div> 
       </div>
   );
 };
