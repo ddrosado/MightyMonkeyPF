@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
       description:{
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      duration:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
       }
       
     });
