@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { fetcher } from "../../pages/api/fetcher";
 
 const logout = async () => {
-  const data = await fetch("http://localhost:3000/api/logout", {
+  const data = await fetch("api/logout", {
     method: "GET",
   });
   const res = await data.json();

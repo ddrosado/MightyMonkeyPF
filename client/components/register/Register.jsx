@@ -64,8 +64,8 @@ const SignUp = (props) => {
     <BackArrow changeComponent={props.changeComponent}/>
     <form 
     onSubmit={handleSubmit}>
+      <h1 className={styles.createtitle}>Create your account!</h1>
     <div className={styles.registerParent}>
-
   <div className={styles.div1}>
     <label 
     htmlFor="name"
