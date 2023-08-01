@@ -49,3 +49,13 @@ export const getSports = createAsyncThunk(
     }
   )
 
+  export const deletSport = createAsyncThunk(
+    'sport/deletSport',
+    async(id)=>{
+      try {
+        return await axios.delete(`${url}/api/sport`, {data:{id: id}})
+      } catch (error) {
+        throw new Error(error.response.data.msg)
+      }
+    }
+  )
