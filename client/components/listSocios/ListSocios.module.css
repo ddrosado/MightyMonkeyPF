@@ -1,6 +1,7 @@
 .container{
     display: flex;
     justify-content: center;
+    min-height: 100vh;
 }
 
 
@@ -28,8 +29,9 @@
     inset: 6px;
   }
   .loading {
-    margin: 150px;
-    width: 100px;
+    margin: 50px 0px 50px 270px;
+    width: 150px;
+    height: 150px;
   }
 
   @keyframes rotate {

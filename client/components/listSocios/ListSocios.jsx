@@ -1,5 +1,5 @@
 "use client";
-import { getUsers } from "../../redux/actions/userActions";
+import { deleteUser, getUsers, putUser } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import style from "./ListSocios.module.css"
@@ -7,10 +7,11 @@ import { filterUsers} from "../../redux/features/usersSlice";
 import loading from '../../assets/images/giphy.gif'
 import Image from "next/image";
 
+
 const ListSocios = () => {
   const colums = ["User", "Email", "Phone", "Members", ""];
   const [filter, setFilter] = useState({
-    member: "",
+    member: "all",
     search: ""
   })
 
@@ -30,7 +31,6 @@ const ListSocios = () => {
   const user = useSelector((state) => state.users.usersCopy)
 
   const handleFilter=(e)=>{
-    console.log(e.target.value)
     if(e.target.name == "search"){
       setFilter({
         ...filter,
@@ -45,7 +45,6 @@ const ListSocios = () => {
 }
 
 const handlePage = (type)=>{
-
   if(type == "next"){
     const newPage = page+1
     if((user.length / 5) >= newPage){
@@ -59,46 +58,37 @@ const handlePage = (type)=>{
   }
 }
 
+const handleDelete= async (id)=>{
+  const resp = await dispatch(deleteUser(id))
+  if (resp.meta.requestStatus == "rejected"){
+    alert("no se pudo bannear el usuario")
+  } else{
+    dispatch(getUsers())
+    alert("usuario banneado")
+  }
+}
+
+const handleEnable = async(email)=>{
+  const resp = await dispatch(putUser({"email": email , isActive: true}))
+  if (resp.meta.requestStatus == "rejected"){
+    alert("no se pudo bannear el usuario")
+  } else{
+    dispatch(getUsers())
+    alert("usuario activado")
+  }
+}
+
   return (
-      <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
-        {user.length? 
+      <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}> 
         <div className="py-8">
-          <div>
-            <h2 className="text-2xl font-semibold leading-tight">Users</h2>
-          </div>
           <div className="my-2 flex sm:flex-row flex-col">
             <div className="flex flex-row mb-1 sm:mb-0">
               <div className="relative">
-                <select className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                  <option>5</option>
-                  <option>10</option>
-                  <option>20</option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="relative">
                 <select onChange={(e)=>handleFilter(e)} className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                   <option value="all">All</option>
-                  <option value={true}>Active</option>
-                  <option value={false}>Inactive</option>
+                  <option value={true}>Members</option>
+                  <option value={false}>No members</option>
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
               </div>
             </div>
             <div className="block relative">
@@ -134,7 +124,8 @@ const handlePage = (type)=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone }) => {
+                {user?.length?
+                  user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone, id, isActive }) => {
                     return (
                       <tr>
                         <td className="px-5 py-5 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
@@ -182,13 +173,20 @@ const handlePage = (type)=>{
                           </span>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
-                          <button className="text-sm bg-yellow-300 hover:bg-yellow-200 text-black-900 font-semibold py-2 px-4 rounded-full">
-                            edit
-                          </button>
+                          {isActive? 
+                          <button onClick={()=>handleDelete(id)} className="text-sm bg-red-600 hover:bg-red-500 text-black-900 font-semibold py-2 px-4 rounded-full">
+                          bann
+                        </button> :
+                        <button onClick={()=>handleEnable(email)} className="text-sm bg-blue-600 hover:bg-blue-500 text-black-900 font-semibold py-2 px-4 rounded-full">
+                          enable
+                        </button>
+                        }
+                          
                         </td>
                       </tr>
                     );
-                  })}
+                  })
+                  : <Image className={style.loading} src={loading} alt="gif" />}
                 </tbody>
               </table>
               <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">
@@ -206,7 +204,7 @@ const handlePage = (type)=>{
               </div>
             </div>
           </div>
-        </div> : <Image className={style.loading} src={loading} alt="gif" />}
+        </div> 
       </div>
   );
 };

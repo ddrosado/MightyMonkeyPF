@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useSelector} from "react-redux"
 import style from "./FormSport.module.css";
 import { useDispatch } from "react-redux";
-import { getSports, postSports, putSport } from "../../../../redux/actions/sportsActions";
+import { getSports, postSports, putSport, deletSport } from "../../../../redux/actions/sportsActions";
 
 export const FormSport = (props) => {
   const dispatch = useDispatch();
@@ -60,6 +60,15 @@ export const FormSport = (props) => {
     }
   }
 
+  const handleDelete= async (e, id)=>{
+    e.preventDefault()
+    const resp = await dispatch(deletSport(id))
+    if (resp.meta.requestStatus == "rejected") {
+      alert("Lo lamento no se pudo eliminar el deporte");
+    } else {
+      alert("deporte correctamente eliminado!")
+    }
+  }
 
 
   return (
@@ -84,7 +93,7 @@ export const FormSport = (props) => {
             <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />
           </svg>
         ) : null}
-        <div>
+        <div className={style.div}>
           <input
             onChange={(e) => handleChange(e)}
             className={style.input}
@@ -102,7 +111,7 @@ export const FormSport = (props) => {
             Name
           </label>
         </div>
-        <div>
+        <div className={style.div}>
           <input
             onChange={(e) => handleChange(e)}
             className={style.input}
@@ -120,7 +129,7 @@ export const FormSport = (props) => {
             Description
           </label>
         </div>
-        <div>
+        <div className={style.div}>
           <input
             onChange={(e) => handleChange(e)}
             className={style.input}
@@ -138,9 +147,12 @@ export const FormSport = (props) => {
             Image(url)
           </label>
         </div>
-        <button className={style.submit} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
-          {props.sport? "Edit" : "Create"}
-        </button>
+        <div className={style.buttons}>
+          <button className={style.submit} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
+            {props.sport? "Edit" : "Create"}
+          </button>
+          {props.sport? <button onClick={(e)=>handleDelete(e, props.sport.id)} className={style.delete}>Delete</button> : null}
+        </div>
       </form> 
     </>
   );

@@ -5,15 +5,27 @@ const { Booking, User, Court } = db
 module.exports = async() => {
     const bookings = await Booking.findAll({
         attributes: [
-            'id', 'date', 'schedule', 'duration'
+            'id', 'date', 'hour'
         ],
         include: [
             {
                 model: User,
                 as: 'user',
                 attributes: [
+                    'id',
                     'name',
                     'email'
+                ],
+                include:[
+                    {
+                        model: Booking,
+                        as: 'booking',
+                        attributes:{
+                            exclude: [
+                                "createdAt", "updatedAt"
+                            ]
+                        }
+                    },
                 ]
             },
             {
@@ -22,6 +34,17 @@ module.exports = async() => {
                 attributes: [
                     'name',
                     'description'
+                ],
+                include:[
+                    {
+                        model: Booking,
+                        as: 'booking',
+                        attributes:{
+                            exclude: [
+                                "createdAt", "updatedAt"
+                            ]
+                        }
+                    }
                 ]
             }
         ]

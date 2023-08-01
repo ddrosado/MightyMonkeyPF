@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import {fetcher} from './fetcher'
+import {fetcher} from './api/fetcher'
 
 const logout = async () => {
   const data = await fetch("http://localhost:3000/api/logout", {

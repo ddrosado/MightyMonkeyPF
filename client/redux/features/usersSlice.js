@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUsers } from '../actions/userActions';
+import { deleteUser, getUsers } from '../actions/userActions';
 
 const initialState = {
   users: [],
@@ -14,7 +14,7 @@ const usersSlice = createSlice({
 
       const {search, member} = action.payload
       member == "all"?
-        state.usersCopy = state.users.filter(user=> user.name.toLowerCase().includes(search.toLowerCase()) || user.surname.toLowerCase().includes(search.toLowerCase()))
+        state.usersCopy = state.users.filter(user=> user.name.toLowerCase().includes(search?.toLowerCase()) || user.surname.toLowerCase().includes(search?.toLowerCase()))
         : 
         state.usersCopy = state.users.filter(user=> user.isMember === (member == "true"? true : false) && ( user.name.toLowerCase().includes(search.toLowerCase()) || user.surname.toLowerCase().includes(search.toLowerCase())) ) ;
     } 

@@ -4,9 +4,10 @@ import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
+import {useSWR} from 'swr'
 
 const userLogin = async (form) => {
-  const data = await fetch("http://localhost:3000/api/login", {
+  const data = await fetch("api/login", {
     method: "POST",
     body: JSON.stringify(form),
     headers: {
@@ -16,6 +17,17 @@ const userLogin = async (form) => {
   const { session } = await data.json();
   return session;
 };
+const userGoogle = async (user)=>{
+  const response = await fetch("api/google",{
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  const data = await response.json()
+  return data
+}
 
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
@@ -25,6 +37,7 @@ const SignIn = (props) => {
 
   const [allowed, setAllowed] = useState(null);
 
+ 
   // /*------------------------- Firebase ------------------------- */
 
   //  user = firebase.auth().currentUser;
@@ -48,9 +61,12 @@ const SignIn = (props) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+       
         console.log(user)
-        console.log(token)
-        console.log(credential)
+        userGoogle(user).then(res => 
+              console.log(res)  
+            ).catch(error => console.log(error.message))
+        
       })
       .catch((error) => {
         if (error.code === "auth/popup-closed-by-user") {

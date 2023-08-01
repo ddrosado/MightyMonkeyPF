@@ -1,0 +1,27 @@
+/* .plansContainer {
+    margin: 150px 0;
+} */
+
+.flexible {
+    color: #FFDA61;
+}
+
+.plans {
+    color: white;
+}
+
+.textYellow {
+    color: #FFDA61;
+}
+
+.bgYellow {
+    background-color: #FFDA61;
+}
+.bgBlack {
+    background-color: black;
+}
+
+.bgCard {
+    border: black 3px solid;
+    background-color: #FFDA61;
+}

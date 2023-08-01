@@ -8,17 +8,13 @@ module.exports = (sequelize) => {
         primaryKey: true,
       },
       date:{
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
       },
-      schedule: {
-        type: DataTypes.STRING,
+      hour: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
-      duration:{
-        type: DataTypes.INTEGER,
-      },
-      
     });
     return Booking;
 }

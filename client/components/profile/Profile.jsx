@@ -2,7 +2,8 @@
 import React from 'react'
 import style from "./Profile.module.css"
 import useSWR from "swr";
-import { fetcher } from '../../pages/fetcher';
+import { fetcher } from '../../pages/api/fetcher';
+// import Image from 'next/image';
 
 const MyProfile = () => {
   const { data, error } = useSWR("api/user", fetcher);
@@ -15,21 +16,23 @@ const MyProfile = () => {
           {data.image}
           </div>
         </div>
-        <div className={style.dates}>
+        <div className={style.userdata}>
           <div>
-            <h2>Name:</h2>
+            <h2 className={style.userDataLabel}>Name:</h2>
             <strong>{data.name}</strong>
           </div>
           <div>
-            <h2>Email:</h2>
+            <h2 className={style.userDataLabel}>Email:</h2>
             <strong>{data.email}</strong>
           </div>
           <div>
-            <h2>Phone:</h2>
-            <strong>{data.telephone}</strong>
+            <h2 className={style.userDataLabel}>Phone:</h2>
+            <strong>{data.telephone ?
+             data.telephone 
+             : <p>-</p>}</strong>
           </div>
           <div>
-            <h2>Status:</h2>
+            <h2 className={style.userDataLabel}>Status:</h2>
             <strong>{data.isMember ? 
             <p>Premium Membership</p>
           : <p>Not associated</p>}</strong>

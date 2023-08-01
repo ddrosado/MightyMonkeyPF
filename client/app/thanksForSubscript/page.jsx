@@ -13,8 +13,7 @@ import axios from "axios";
 const thanksForSubs = () => {
 const { data, error } = useSWR("api/user", fetcher);
 const router = useRouter();
-router.query
-console.log(router);
+
 useEffect( async () => {
 const post = await axios.put('http://localhost:3000/api/users',{
     email: data.email,
