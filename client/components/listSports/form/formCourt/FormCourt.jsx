@@ -6,7 +6,6 @@ import { getSports } from '../../../../redux/actions/sportsActions'
 
 export const FormCourt = (props) => {
 
-
   const dispatch = useDispatch()
 
   const [court, setCourt] = useState({
@@ -18,6 +17,8 @@ export const FormCourt = (props) => {
     nonMemberPrice:  0,
     memberPrice:0
   });
+
+  const [errors, setErrors] = useState({})
 
   useEffect(()=>{
     setCourt({
