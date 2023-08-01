@@ -4,9 +4,10 @@ import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
+import {useSWR} from 'swr'
 
 const userLogin = async (form) => {
-  const data = await fetch("http://localhost:3000/api/login", {
+  const data = await fetch("api/login", {
     method: "POST",
     body: JSON.stringify(form),
     headers: {
@@ -17,7 +18,7 @@ const userLogin = async (form) => {
   return session;
 };
 const userGoogle = async (user)=>{
-  const response = await fetch("http://localhost:3000/api/google",{
+  const response = await fetch("api/google",{
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -36,6 +37,7 @@ const SignIn = (props) => {
 
   const [allowed, setAllowed] = useState(null);
 
+ 
   // /*------------------------- Firebase ------------------------- */
 
   //  user = firebase.auth().currentUser;
