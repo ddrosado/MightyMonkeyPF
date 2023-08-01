@@ -11,7 +11,7 @@ import Image from "next/image";
 const ListSocios = () => {
   const colums = ["User", "Email", "Phone", "Members", ""];
   const [filter, setFilter] = useState({
-    member: "",
+    member: "all",
     search: ""
   })
 
