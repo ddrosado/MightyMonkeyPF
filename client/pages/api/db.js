@@ -12,19 +12,19 @@ const SportModel = require('../../models/Sport');
 const PlanModel = require('../../models/Plan');
 const MembershipModel = require('../../models/Membership')
 const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
-// const { postgres_USER, postgres_HOST, postges_DATABASE, postgres_PASSWORD } = process.env;
+// const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+const { POSTGRES_USER, POSTGRES_HOST, POSTGRES_DATABASE, POSTGRES_PASSWORD } = process.env;
 
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-   host:DB_HOST,
+const sequelize = new Sequelize( POSTGRES_DATABASE, POSTGRES_USER, POSTGRES_PASSWORD, {
+   host:POSTGRES_HOST,
    dialect: 'postgres',
    force: false,
    operatorAliases: false,
    logging: false,
    native: false,
-   // dialectOptions: {
-   //    ssl: true, 
-   //  },
+   dialectOptions: {
+      ssl: true, 
+    },
    pool: {
       max: 5,
       min: 0,

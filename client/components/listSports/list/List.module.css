@@ -51,7 +51,7 @@
     100%   {transform: rotate(360deg)}
   }
   .loading {
-    margin: 150px;
+    margin: 50px 0px 50px 140px;
     width: 100px;
   }
 
