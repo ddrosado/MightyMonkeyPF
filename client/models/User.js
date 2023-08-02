@@ -37,11 +37,6 @@ module.exports = (sequelize) => {
         defaultValue: false,
         allowNull: true,
       },
-      isMember:{
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
-        defaultValue: false
-      },
       isActive:{
         type: DataTypes.BOOLEAN,
         allowNull: true
