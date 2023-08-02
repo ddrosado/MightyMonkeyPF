@@ -17,7 +17,7 @@ const sportCourtIds = sportCourts.map((court) => court.id);
 const bookings = await Booking.findAll({
     where: {
     date: date,
-        CourtId: sportCourtIds, // Filtramos solo las reservas de las canchas del deporte específico encontradas en el paso anterior
+        CourtId: sportCourtIds,
     },
     include: [
     {
