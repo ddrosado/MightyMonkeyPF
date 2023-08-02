@@ -1,16 +1,14 @@
 const mercadopago = require('mercadopago');
-const ngrok = 'https://8a79-179-1-48-61.ngrok.io'
+const ngrok = 'https://834e-201-252-84-166.ngrok-free.app'
 
 
 module.exports = async(data) => {
     mercadopago.configure({
-        access_token: 'TEST-872443940722018-072322-5276e0527cfd7c712ab71c09327023e0-1431922934'
+        access_token: 'TEST-8224153938650622-073001-07e9c314a676cfd54e1dca286b6054d2-1436108503'
     });
-    console.log('this is type', data.type);
     switch (data.type) {
         case 'buys': {
             const { items } = data
-            console.log('esto es req',items);
             const result = await mercadopago.preferences.create({
                 items: items,
                 back_urls: {
@@ -20,7 +18,7 @@ module.exports = async(data) => {
                 },
                 notification_url: `${ngrok}/api/webHookPay`
             })
-            return result
+                return result
         }
         case 'subscriptions': {
             const { email, reason, price, frequency, frequency_type } = data
@@ -31,10 +29,9 @@ module.exports = async(data) => {
                     frequency: frequency,
                     frequency_type: frequency_type,
                     transaction_amount: price,
-                    currency_id: "COP"
+                    currency_id: "ARS"
                 },
-                back_url: `${ngrok}/api/users`
-                
+                back_url: `${ngrok}/thanksForSubscript`
             })
             return result
         }

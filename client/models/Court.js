@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       isAvailable:{
         type: DataTypes.BOOLEAN,
       },
-      nonMemberPrice:{
+      noMemberPrice:{
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -30,6 +30,9 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      isAvailable:{
+        type: DataTypes.BOOLEAN
+      }
     });
     return Court;
 }
