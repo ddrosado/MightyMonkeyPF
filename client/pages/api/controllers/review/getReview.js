@@ -13,11 +13,6 @@ module.exports = async () => {
                 as: 'user',
                 attributes: ["name", "surname"],
             },
-            {
-                model: Court,
-                as: 'court',
-                attributes: ["name"],
-            }
         ]
         
     })

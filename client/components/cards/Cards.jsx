@@ -16,7 +16,7 @@ const Cards = () => {
     dispatch(getSports());
   }, []); 
   
-   const sports = useSelector(state => state.sports);
+  const sports = useSelector(state => state.sports);
 
 
   return (
