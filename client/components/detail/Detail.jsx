@@ -43,7 +43,7 @@ const Detail = ({ sportName }) => {
           <Calendar />
         </div>
       </div>
-      <Turner />
+      <Turner sportFind={sportFind} />
       {/* <div className={style.midSlice}>
       <div className={style.titleSport}>
             <h1>Gallery</h1>

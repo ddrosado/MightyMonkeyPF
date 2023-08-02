@@ -4,7 +4,10 @@
     padding: 20px;
     width: 80%;
 }
-
+.imgSport {
+    width: 100px;
+    height: 100px;
+}
 .turnerRight {
 border-left: 1px solid black;
     width: 50%;
