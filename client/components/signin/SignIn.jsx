@@ -4,15 +4,10 @@ import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
-import {useSWR} from 'swr'
+import useSWR from 'swr'
 
 const userLogin = async (form) => {
-
-
-
-
-
-  const data = await fetch("api/login", {
+  const data = await fetch('api/login' , {
     method: "POST",
     body: JSON.stringify(form),
     headers: {
@@ -22,16 +17,25 @@ const userLogin = async (form) => {
   const { session } = await data.json();
   return session;
 };
-const userGoogle = async (user)=>{
-  const response = await fetch("api/google",{
+
+const fetcher = async (route)=>{
+  const response = await fetch(route,{
+    method: "GET",
+  })
+  const data = await response.json()
+  return data
+}
+
+const userGoogle = async(user)=>{
+  const data = await fetch('api/google' , {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
       "Content-Type": "application/json",
     },
-  })
-  const data = await response.json()
-  return data
+  });
+  const res = await data.json();
+  return res;
 }
 
 const SignIn = (props) => {
@@ -39,11 +43,26 @@ const SignIn = (props) => {
     email: "",
     password: "",
   });
-
+  
+  const router = useRouter();
   const [allowed, setAllowed] = useState(null);
 
+  const { data } = useSWR('/api/user', fetcher)
+  const isLoggedIn  = data?.isLoggedIn
+  if(isLoggedIn === true) router.push('/home')  
+  // /*------------------------- Firebase ------------------------- */
 
-  const router = useRouter();
+  //  user = firebase.auth().currentUser;
+  // if (user) {
+  //   const email = user.email;
+
+  //   userData = {
+  //     username: email,
+  //   };
+  // }
+
+  // /*------------------------------------------------------------ */
+
 
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
