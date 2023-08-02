@@ -26,6 +26,18 @@ const fetcher = async (route)=>{
   return data
 }
 
+const userGoogle = async(user)=>{
+  const data = await fetch('api/google' , {
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const res = await data.json();
+  return res;
+}
+
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
     email: "",
