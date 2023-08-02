@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useSelector} from "react-redux"
 import style from "./FormSport.module.css";
 import { useDispatch } from "react-redux";
-import { getSports, postSports, putSport } from "../../../../redux/actions/sportsActions";
+import { getSports, postSports, putSport, deletSport } from "../../../../redux/actions/sportsActions";
 
 export const FormSport = (props) => {
   const dispatch = useDispatch();
@@ -60,9 +60,14 @@ export const FormSport = (props) => {
     }
   }
 
-  const handleDelete= async (e)=>{
+  const handleDelete= async (e, id)=>{
     e.preventDefault()
-    alert("deporte eliminado... proximamente")
+    const resp = await dispatch(deletSport(id))
+    if (resp.meta.requestStatus == "rejected") {
+      alert("Lo lamento no se pudo eliminar el deporte");
+    } else {
+      alert("deporte correctamente eliminado!")
+    }
   }
 
 
@@ -146,7 +151,7 @@ export const FormSport = (props) => {
           <button className={style.submit} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
             {props.sport? "Edit" : "Create"}
           </button>
-          {props.sport? <button onClick={(e)=>handleDelete(e)} className={style.delete}>Delete</button> : null}
+          {props.sport? <button onClick={(e)=>handleDelete(e, props.sport.id)} className={style.delete}>Delete</button> : null}
         </div>
       </form> 
     </>

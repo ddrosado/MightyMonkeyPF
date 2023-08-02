@@ -12,7 +12,7 @@ import Image from 'next/image'
 const Profile = () => {
 
   const { data, error } = useSWR("api/user", fetcher);
-  console.log(data)
+  console.log("holis")
 
 
   return (
