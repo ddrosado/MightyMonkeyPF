@@ -3,6 +3,7 @@ const { User } = db;
 
 
 export default async (info, propertyToCompare = "email") => {
+
   try {
     // Verificar si se proporciona una propiedad válida para comparar
     const validProperties = ["name", "email", "id"]; // Lista de propiedades válidas para comparar

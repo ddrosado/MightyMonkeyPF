@@ -1,5 +1,5 @@
 "use client";
-import { deleteUser, getUsers, putUser } from "../../redux/actions/userActions";
+import { getUsers, putUser } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import style from "./ListSocios.module.css"
@@ -58,9 +58,10 @@ const handlePage = (type)=>{
   }
 }
 
-const handleDelete= async (id)=>{
-  const resp = await dispatch(deleteUser(id))
+const handleDelete= async (email)=>{
+  const resp = await dispatch(putUser({email: email , isActive: false}))
   if (resp.meta.requestStatus == "rejected"){
+    console.log(resp)
     alert("no se pudo bannear el usuario")
   } else{
     dispatch(getUsers())
@@ -69,9 +70,10 @@ const handleDelete= async (id)=>{
 }
 
 const handleEnable = async(email)=>{
-  const resp = await dispatch(putUser({"email": email , isActive: true}))
+  const resp = await dispatch(putUser({email: email , isActive: true}))
   if (resp.meta.requestStatus == "rejected"){
-    alert("no se pudo bannear el usuario")
+    console.log(resp)
+    alert("no se pudo activar el usuario")
   } else{
     dispatch(getUsers())
     alert("usuario activado")
@@ -174,7 +176,7 @@ const handleEnable = async(email)=>{
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
                           {isActive? 
-                          <button onClick={()=>handleDelete(id)} className="text-sm bg-red-600 hover:bg-red-500 text-black-900 font-semibold py-2 px-4 rounded-full">
+                          <button onClick={()=>handleDelete(email)} className="text-sm bg-red-600 hover:bg-red-500 text-black-900 font-semibold py-2 px-4 rounded-full">
                           bann
                         </button> :
                         <button onClick={()=>handleEnable(email)} className="text-sm bg-blue-600 hover:bg-blue-500 text-black-900 font-semibold py-2 px-4 rounded-full">
