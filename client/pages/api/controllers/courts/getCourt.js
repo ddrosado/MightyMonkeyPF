@@ -8,7 +8,7 @@ export default async()=>{
             'name',
             'description',
             'isAvailable',
-            'nonMemberPrice',
+            'noMemberPrice',
             'memberPrice',
         ],
         include: {

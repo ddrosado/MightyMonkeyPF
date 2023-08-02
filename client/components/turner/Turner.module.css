@@ -1,4 +1,20 @@
 .tunerContainer {
-    background-color: blueviolet;
-    width: 300px;
+    background-color: #FFDA61;
+    display: flex;
+    padding: 20px;
+    width: 80%;
+}
+
+.turnerRight {
+border-left: 1px solid black;
+    width: 50%;
+}
+
+.turnerLeft {
+
+    width: 50%;
+}
+.formContainer {
+    display: flex;
+    width: 80%;
 }
