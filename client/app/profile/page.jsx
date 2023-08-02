@@ -5,7 +5,7 @@ import style from "./page.module.css"
 import { Turns } from '../../components/turns/Turns'
 import useSWR from "swr";
 import { fetcher } from '../../pages/api/fetcher';
-import { Unauthorized } from '../unauthorized/page';
+import { Unauthorized } from '../../components/unauthorized/page';
 import loading from "../../assets/images/giphy.gif"
 import Image from 'next/image'
 
