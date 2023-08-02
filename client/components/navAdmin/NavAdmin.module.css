@@ -5,12 +5,12 @@
     width: 100%;
 }
 
-.options > .users{
+.users{
     width: 6rem;
     height: 2.5rem;
     color: white;
-    border-top-left-radius:5px ;
-    border-bottom-left-radius:5px ;
+    /* border-top-left-radius:5px ;
+    border-bottom-left-radius:5px ; */
     font-size: 1.2em;
 }
 
@@ -19,11 +19,3 @@
 }
 
 
-.options > .sports{
-    width: 6rem;
-    height: 2.5rem;
-    color: white;
-    border-top-right-radius:5px ;
-    border-bottom-right-radius:5px ;
-    font-size: 1.2em;
-}
