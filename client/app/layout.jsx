@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {path !== "/" && path !==  "/dashboard"? <Navbar /> : null }
+        {path !== "/" && !path.startsWith("/dashboard")  ? <Navbar /> : null }
         <ReduxProvider>{children}</ReduxProvider>
         <Whatsapp />
         {path !== "/"? <Footer /> : null }

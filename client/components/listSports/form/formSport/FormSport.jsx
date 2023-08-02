@@ -33,7 +33,6 @@ export const FormSport = (props) => {
       ...sport,
       [e.target.id]: e.target.value,
     }, e.target.id, errors))
-
   };
 
   const handleSubmitCreate = async (e) => {

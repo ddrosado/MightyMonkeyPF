@@ -1,0 +1,29 @@
+.options{
+    display: flex;
+    margin-top: 5rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.options > .users{
+    width: 6rem;
+    height: 2.5rem;
+    color: white;
+    border-top-left-radius:5px ;
+    border-bottom-left-radius:5px ;
+    font-size: 1.2em;
+}
+
+.active{
+    background-color: black;
+}
+
+
+.options > .sports{
+    width: 6rem;
+    height: 2.5rem;
+    color: white;
+    border-top-right-radius:5px ;
+    border-bottom-right-radius:5px ;
+    font-size: 1.2em;
+}
