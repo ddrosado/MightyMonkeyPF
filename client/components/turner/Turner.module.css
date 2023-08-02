@@ -1,4 +1,19 @@
 .tunerContainer {
     background-color: blueviolet;
-    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    width: 60%;
+}
+
+.turnerRight {
+    background-color: aqua;
+}
+
+.turnerLeft {
+    background-color: chocolate;
+}
+.formContainer {
+    display: flex;
+    width: 80%;
 }
