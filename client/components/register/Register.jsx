@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 const SignUp = (props) => {
+
   const [registerData, setRegisterData] = useState({
     name: '',
     surname:'',
@@ -173,7 +174,11 @@ const SignUp = (props) => {
       required
       className="register-input"
     />
-        {errors.password && <p className={styles.registerError}>{errors.password}</p>}
+       
+  </div>
+  <div className={styles.div7}>
+    <p> </p>
+  {errors.password && <p className={styles.registerError}>{errors.password}</p>}
   </div>
 </div>
 

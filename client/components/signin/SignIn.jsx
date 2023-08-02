@@ -7,6 +7,11 @@ import { auth } from "../../pages/api/firebaseConfig";
 import {useSWR} from 'swr'
 
 const userLogin = async (form) => {
+
+
+
+
+
   const data = await fetch("api/login", {
     method: "POST",
     body: JSON.stringify(form),
@@ -37,19 +42,6 @@ const SignIn = (props) => {
 
   const [allowed, setAllowed] = useState(null);
 
- 
-  // /*------------------------- Firebase ------------------------- */
-
-  //  user = firebase.auth().currentUser;
-  // if (user) {
-  //   const email = user.email;
-
-  //   userData = {
-  //     username: email,
-  //   };
-  // }
-
-  // /*------------------------------------------------------------ */
 
   const router = useRouter();
 
