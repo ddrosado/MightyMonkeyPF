@@ -22,10 +22,6 @@ module.exports = (sequelize) => {
       duration:{
         type: DataTypes.INTEGER,
         allowNull: false,
-      },
-      isActive:{
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
       }
       
     });

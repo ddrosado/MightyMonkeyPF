@@ -5,6 +5,7 @@ import Calendar from "../calendar/Calendar";
 import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../redux/actions/sportsActions";
 import EmblaCarousel from "../carousel/Carousel";
+import Turner from "../turner/Turner";
 
 const Detail = ({ sportName }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,8 @@ const Detail = ({ sportName }) => {
           <Calendar />
         </div>
       </div>
-      <div className={style.midSlice}>
+      <Turner />
+      {/* <div className={style.midSlice}>
       <div className={style.titleSport}>
             <h1>Gallery</h1>
           </div>
@@ -50,7 +52,7 @@ const Detail = ({ sportName }) => {
       </div>
       <div className={style.botSlice}>
         <h1>REVIEWS</h1>
-      </div>
+      </div> */}
     </div>
   );
 };
