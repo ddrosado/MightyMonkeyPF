@@ -12,7 +12,8 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
       rating: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.ENUM,
+        values: ['1','2','3','4','5']
       },
       isDeleted: {
         type: DataTypes.BOOLEAN,
