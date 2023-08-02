@@ -41,7 +41,6 @@ const MyProfile = () => {
     </div> 
     ) 
     : null 
-   
     
   )
 }

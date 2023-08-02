@@ -1,15 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-
-const url = 'http://localhost:3000';
-
-
 export const getUsers = createAsyncThunk(
     'sports/getSports',
     async () => {
       try {
-        const response = await axios.get(`${url}/api/users`);
+        const response = await axios.get("api/users");
         return response.data;
       } catch (error) {
         throw error.response.data.msg;
@@ -22,7 +18,7 @@ export const createUser = createAsyncThunk(
     'users/createUser',
     async (payload) => {
       try {
-        const response = await axios.post(`${url}/api/users`, payload);
+        const response = await axios.post("api/users", payload);
         response ? 
         alert("You have successfully registered")
         : null
@@ -37,7 +33,7 @@ export const createUser = createAsyncThunk(
     'users/delete',
     async(id)=>{
       try {
-        const response = await axios.delete(`${url}/api/users`, {data:{id: id}});
+        const response = await axios.delete(`api/users`, {data:{id: id}});
         return response.data;
       } catch (error) {
         throw error.response.data.msg;
@@ -50,7 +46,7 @@ export const createUser = createAsyncThunk(
     'users/putUser',
     async (obj) => {
       try {
-        const response = await axios.put(`${url}/api/users`, obj);
+        const response = await axios.put(`api/users`, obj);
         return response.data;
       } catch (error) {
         throw error.response.data.msg;
