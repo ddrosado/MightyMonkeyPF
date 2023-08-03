@@ -16,9 +16,10 @@ const bookingsSlice = createSlice({
     reducers:{
         filterBookings: (state, action) => {
             console.log(action.payload)
-            const {sport, date} = action.payload
-            sport !== "all"? state.bookingsCopy = state.bookings.filter(book=> book.court.sport.name == sport) : null;
-            date !== "all"? state.bookingsCopy = state.bookingsCopy.filter(book=> book.date == date) : null
+            const {sport, date, search} = action.payload
+            sport !== "all"? state.bookingsCopy = state.bookings.filter(book=> book.court.sport.name == sport) : state.bookingsCopy = state.bookings;
+            date !== "all"? state.bookingsCopy = state.bookingsCopy.filter(book=> book.date == date) : null;
+            state.bookingsCopy = state.bookingsCopy.filter(book=>book.court.sport.name.toLowerCase().includes(search.toLowerCase()) || book.court.name.toLowerCase().includes(search.toLowerCase()) || book.user.name.toLowerCase().includes(search.toLowerCase()))
         }
     },
     extraReducers: (builder) => {

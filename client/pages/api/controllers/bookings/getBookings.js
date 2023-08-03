@@ -16,17 +16,17 @@ module.exports = async() => {
                     'name',
                     'email'
                 ],
-                include:[
-                    {
-                        model: Booking,
-                        as: 'booking',
-                        attributes:{
-                            exclude: [
-                                "createdAt", "updatedAt"
-                            ]
-                        }
-                    },
-                ]
+                // include:[
+                //     {
+                //         model: Booking,
+                //         as: 'booking',
+                //         attributes:{
+                //             exclude: [
+                //                 "createdAt", "updatedAt"
+                //             ]
+                //         }
+                //     },
+                // ]
             },
             {
                 model: Court,

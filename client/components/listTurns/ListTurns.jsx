@@ -16,7 +16,8 @@ export const ListTurns = () => {
     const sports = useSelector(state=> state.sports.sports)
     const [filter, setFilter] = useState({
       sport: "",
-      date: ""
+      date: "all",
+      search: ""
     })
 
     useEffect(()=>{
@@ -35,6 +36,21 @@ export const ListTurns = () => {
       })
     }
 
+    const generateDateArray = () => {
+      const dateArray = [];
+      const today = new Date();
+    
+      for (let i = 0; i < 31; i++) {
+        const date = new Date(today);
+        date.setDate(today.getDate() + i);
+        dateArray.push(date.toISOString().split('T')[0]);
+      }
+    
+      return dateArray;
+    };
+    
+    const dates = generateDateArray();
+
   return (
     <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}> 
         <div className="py-8">
@@ -47,10 +63,14 @@ export const ListTurns = () => {
                   return <option value={sport.name}>{sport.name}</option>
                   })}
                 </select>
+              </div>
+            </div>
+            <div className="flex flex-row mb-1 sm:mb-0">
+              <div className="relative">
                 <select name='sport' onChange={(e)=>handleChange(e)} className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                   <option value="all">All</option>
-                  {sports?.map(sport=> {
-                  return <option value={sport.name}>{sport.name}</option>
+                  {dates?.map(date=> {
+                  return <option value={date}>{date}</option>
                   })}
                 </select>
               </div>
@@ -65,8 +85,10 @@ export const ListTurns = () => {
                 </svg>
               </span>
               <input
+              onChange={(e)=>handleChange(e)}
                 name="search"
                 placeholder="Search"
+                value={filter.search}
                 className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
               />
             </div>
