@@ -1,7 +1,7 @@
-"use client";
+'use client';
 import React, { useEffect } from "react";
 import styles from "./InfoReviews.module.css";
-import { getReviews } from "../../redux/actions/reviewsAction"; // Asegúrate de proporcionar la ruta correcta a tu archivo reviewAction
+import { getReviews } from "../../redux/actions/reviewsAction"; 
 import { useDispatch, useSelector } from "react-redux";
 const InfoReviews = () => {
     
@@ -11,9 +11,23 @@ const InfoReviews = () => {
  useEffect(() => {
   dispatch(getReviews());
  }, []);
+      const lastThreeReviews = reviews.slice(-3).reverse(); // Reverse the order to show the latest reviews first
 
-    const lastThreeReviews = reviews.slice(-3).reverse(); // Reverse the order to show the latest reviews first
-
+      function formatDateWithoutTime(dateString) {
+         if (!dateString) return null; // Si no hay fecha, retornar null o manejar de acuerdo a tus necesidades
+         const date = new Date(dateString);
+         return date.toISOString().split('T')[0];
+       }
+       
+       const firstreview = lastThreeReviews[0];
+       const secodreview = lastThreeReviews[1];
+       const terdreview = lastThreeReviews[2];
+       
+       const firstDateModifi = formatDateWithoutTime(firstreview?.createdAt);
+       const secondDateModifi = formatDateWithoutTime(secodreview?.createdAt);
+       const thirdDateModifi = formatDateWithoutTime(terdreview?.createdAt);
+       console.log(firstDateModifi);
+    
  return (
   <div className={styles.cardSection}>
    <div className="container my-24 mx-auto md:px-6">
@@ -41,20 +55,17 @@ const InfoReviews = () => {
           boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.2)",
           width: "150px",
          }}
-         src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).jpg"
+         src={firstreview?.user.image}
          alt="avatar"
         />
         <div className="flex flex-wrap justify-center">
          <div className="w-full shrink-0 grow-0 basis-auto px-3 lg:w-8/12">
-          <h5 className="mb-2 text-lg font-bold">Maria Kate</h5>
+          <h5 className="mb-2 text-lg font-bold">{firstreview?.user.name} {firstreview?.user.surname}</h5>
           <p className="mb-4 font-medium text-neutral-700 dark:text-neutral-400">
-           Photographer
+          {firstDateModifi}
           </p>
           <p className="mb-6 text-neutral-500 dark:text-neutral-300">
-           In ac turpis justo. Vivamus auctor quam vitae odio feugiat pulvinar.
-           Sed semper ligula sed lorem tincidunt dignissim. Nam sed cursus
-           lectus. Proin non rutrum magna. Proin gravida, justo et imperdiet
-           tristique turpis nisi viverra.
+          {firstreview?.comment}
            <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 96 960 960"
@@ -99,20 +110,17 @@ const InfoReviews = () => {
           boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.2)",
           width: "150px",
          }}
-         src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).jpg"
+         src={secodreview?.user.image}
          alt="avatar"
         />
         <div className="flex flex-wrap justify-center">
          <div className="w-full shrink-0 grow-0 basis-auto px-3 lg:w-8/12">
-          <h5 className="mb-2 text-lg font-bold">Maria Kate</h5>
+          <h5 className="mb-2 text-lg font-bold">{secodreview?.user.name} {secodreview?.user.surname}</h5>
           <p className="mb-4 font-medium text-neutral-700 dark:text-neutral-400">
-           Photographer
+          {secondDateModifi}
           </p>
           <p className="mb-6 text-neutral-500 dark:text-neutral-300">
-           In ac turpis justo. Vivamus auctor quam vitae odio feugiat pulvinar.
-           Sed semper ligula sed lorem tincidunt dignissim. Nam sed cursus
-           lectus. Proin non rutrum magna. Proin gravida, justo et imperdiet
-           tristique turpis nisi viverra.
+           {secodreview?.comment}
            <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 96 960 960"
@@ -142,7 +150,6 @@ const InfoReviews = () => {
          </div>
         </div>
        </div>
-
        {/* Testimonial 3 (Same as Testimonial 1) */}
        <div
         className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
@@ -157,20 +164,17 @@ const InfoReviews = () => {
           boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.2)",
           width: "150px",
          }}
-         src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).jpg"
+         src={terdreview?.user.image}
          alt="avatar"
         />
         <div className="flex flex-wrap justify-center">
          <div className="w-full shrink-0 grow-0 basis-auto px-3 lg:w-8/12">
-          <h5 className="mb-2 text-lg font-bold">Maria Kate</h5>
+          <h5 className="mb-2 text-lg font-bold">{terdreview?.user.name} {terdreview?.user.surname}</h5>
           <p className="mb-4 font-medium text-neutral-700 dark:text-neutral-400">
-           Photographer
+           {thirdDateModifi}
           </p>
           <p className="mb-6 text-neutral-500 dark:text-neutral-300">
-           In ac turpis justo. Vivamus auctor quam vitae odio feugiat pulvinar.
-           Sed semper ligula sed lorem tincidunt dignissim. Nam sed cursus
-           lectus. Proin non rutrum magna. Proin gravida, justo et imperdiet
-           tristique turpis nisi viverra.
+          {terdreview?.comment}
            <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 96 960 960"
