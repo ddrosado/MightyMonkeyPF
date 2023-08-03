@@ -1,0 +1,22 @@
+.cardSection {
+    
+    background: #FFDA61;
+    height: 100vh;
+    width: 100vw;
+}
+.titleBackround {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFDA61;
+    background-color: black;
+    width: 200px;
+    height: 60px;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+}
+
+
+
+  
