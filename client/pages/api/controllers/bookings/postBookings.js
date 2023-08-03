@@ -34,17 +34,17 @@ module.exports = async(info) => {
                     'name',
                     'email'
                 ],
-                include:[
-                    {
-                        model: Booking,
-                        as: 'booking',
-                        attributes:{
-                            exclude: [
-                                "createdAt", "updatedAt"
-                            ]
-                        }
-                    },
-                ]
+                // include:[
+                //     {
+                //         model: Booking,
+                //         as: 'booking',
+                //         attributes:{
+                //             exclude: [
+                //                 "createdAt", "updatedAt"
+                //             ]
+                //         }
+                //     },
+                // ]
             },
             {
                 model: Court,
@@ -53,17 +53,17 @@ module.exports = async(info) => {
                     'name',
                     'description'
                 ],
-                include:[
-                    {
-                        model: Booking,
-                        as: 'booking',
-                        attributes:{
-                            exclude: [
-                                "createdAt", "updatedAt"
-                            ]
-                        }
-                    }
-                ]
+                // include:[
+                //     {
+                //         model: Booking,
+                //         as: 'booking',
+                //         attributes:{
+                //             exclude: [
+                //                 "createdAt", "updatedAt"
+                //             ]
+                //         }
+                //     }
+                // ]
             }
         ]
     })
