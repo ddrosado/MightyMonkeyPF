@@ -21,13 +21,13 @@ export default async (info) => {
     isActive: true,
   });
 
-  var htmlstream = fs.createReadStream("content.html");
+  const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
+  
   await transporter.sendMail({
-    from: '"Mighty Monkeys :see_no_evil:" <mightymonkeys25@gmail.com>', // sender address
-    to: info.email, // list of receivers
-    subject: "Gracias por registrarte en Mighty Monkeys", // Subject line
-    // text: "Hello world?", // plain text body
-    html: htmlstream, // html body
+    from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
+    to: info.email,
+    subject: "Te damos la bienvenida a Mighty Monkeys",
+    html: htmlstream.on('data', (data) => data.toString()),
   });
   return newUser;
 };

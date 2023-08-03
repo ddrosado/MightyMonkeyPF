@@ -7,5 +7,10 @@ export const transporter = nodemailer.createTransport({
   auth: {
     user: 'mightymonkeys25@gmail.com',
     pass: 'ivioquzngtvhngjq'
+  },
+  tls: {
+    rejectUnauthorized: false
   }
 });
+
+transporter.verify().then( () => console.log('redy to send mails'))
