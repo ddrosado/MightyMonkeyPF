@@ -26,13 +26,13 @@ const Detail = ({ sportName }) => {
 
   return (
     <div className={style.detailContainer}>
-      <div className={style.topSlice}>
+      {/* <div className={style.topSlice}>
         <div className={style.imageAndTitle}>
           <div className={style.titleSport}>
             <h1>{sportFind?.name}</h1>
-          </div>
+          </div> */}
           {/* <p>{sportFind?.description}</p> */}
-          <img
+          {/* <img
             className={style.imageSport}
             src={sportFind?.image}
             alt={sportFind?.name}
@@ -42,8 +42,8 @@ const Detail = ({ sportName }) => {
           <h2 className={style.making}>Make your reservation</h2>
           <Calendar />
         </div>
-      </div>
-      <Turner />
+      </div> */}
+      <Turner sportFind={sportFind} />
       {/* <div className={style.midSlice}>
       <div className={style.titleSport}>
             <h1>Gallery</h1>
