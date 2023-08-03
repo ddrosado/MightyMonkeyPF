@@ -8,18 +8,12 @@ export default async(req, res) => {
         console.log('METHOD',req.method);
         const payment = req.query
         if(payment.type === 'payment') {
-            const newBookings = [];
-            const bookingsItems = (await mercadopago.payment.findById(payment['data.id'])).response.additional_info.items;
-            console.log('items ?', bookingsItems);
-            bookingsItems.forEach(async(item) => {
-                const [ date, schedule, duration, userEmail, courtName ] = item.description.split(' ');
-                const info = { date, schedule, duration: Number(duration), userEmail, courtName }
-                const newBooking = await postBookings(info)
-                newBookings.push(newBooking)
-            });
-            const bookingsItemslog = (await mercadopago.payment.findById(payment['data.id'])).response;
-            console.log(bookingsItemslog);
-            res.status(200).json(newBookings);
+            const [ date, hour, userId, courtId ] = (await mercadopago.payment.findById(payment['data.id'])).response.additional_info.items[0].description.split(' ');
+            
+            const info = { date, hour: hour.split(','), userId, courtId }
+            console.log(info);
+            const newBooking = await postBookings(info);
+            res.status(200).json(newBooking);
         }
     } catch (error) {
         res.status(400).json({ error: error.message });
