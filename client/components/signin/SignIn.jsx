@@ -103,13 +103,7 @@ const SignIn = (props) => {
     e.preventDefault();
     const res = await userLogin(userData);
     console.log(res)
-    if(res.session && res.isActive){
-      // setAllowed(true);
-      // router.push("/home");
 
-    } else {
-        // setAllowed(false);
-    }
   };
 
   return (
