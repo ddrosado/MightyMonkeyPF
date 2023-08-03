@@ -1,3 +1,4 @@
+
 import { getBookings } from "../actions/bookingAction";
 
 const { createSlice } = require("@reduxjs/toolkit")
@@ -13,8 +14,11 @@ const bookingsSlice = createSlice({
     name: "bookings",
     initialState,
     reducers:{
-        increment: (state, action) => {
-            state.lala = "lala"
+        filterBookings: (state, action) => {
+            console.log(action.payload)
+            const {sport, date} = action.payload
+            sport !== "all"? state.bookingsCopy = state.bookings.filter(book=> book.court.sport.name == sport) : null;
+            date !== "all"? state.bookingsCopy = state.bookingsCopy.filter(book=> book.date == date) : null
         }
     },
     extraReducers: (builder) => {
@@ -27,5 +31,5 @@ const bookingsSlice = createSlice({
 }
 )
 
-export const { increment } = bookingsSlice.actions;
+export const { filterBookings } = bookingsSlice.actions;
 export default bookingsSlice.reducer;

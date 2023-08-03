@@ -14,7 +14,7 @@ export const FormCourt = (props) => {
     description:  "",
     image:  "",
     isAvailable: true,
-    nonMemberPrice:  0,
+    noMemberPrice:  0,
     memberPrice:0
   });
 
@@ -27,13 +27,12 @@ export const FormCourt = (props) => {
       description: props.court?.description,
       image: props.court?.image ,
       isAvailable:  props.court?.isAvailable ,
-      nonMemberPrice: props.court?.nonMemberPrice,
+      noMemberPrice: props.court?.noMemberPrice,
       memberPrice: props.court?.memberPrice
   })
   }, [props.court])
 
   const handleChange = (e) => {
-
     if(e.target.type == "radio"){
       setCourt({
         ...court,
@@ -58,16 +57,16 @@ export const FormCourt = (props) => {
       if(props.setCreate){
         props.setCreate(!props.create)
       }
+      setCourt({
+        sport: "",
+        name: "",
+        description: "",
+        image: "",
+        isAvailable: true,
+        noMemberPrice: 0,
+        memberPrice: 0
+      })
     }
-    setCourt({
-      sport: "",
-      name: "",
-      description: "",
-      image: "",
-      isAvailable: true,
-      nonMemberPrice: 0,
-      memberPrice: 0
-    })
   }
 
 
@@ -82,7 +81,7 @@ export const FormCourt = (props) => {
         description: "",
         image: "",
         isAvailable: true,
-        nonMemberPrice: 0,
+        noMemberPrice: 0,
         memberPrice: 0
       });
     } else {
@@ -209,7 +208,7 @@ export const FormCourt = (props) => {
               className={style.labelPrice}
               //   court.nonMemberPrice.length ? style.full : style.noFull
               // }`}
-              htmlFor="nonMemberPrice"
+              htmlFor="noMemberPrice"
             >
               No Member:
             </label>
@@ -218,8 +217,8 @@ export const FormCourt = (props) => {
               className={style.inputPrice}
               type="text"
               name="court"
-              id="nonMemberPrice"
-              value={court.nonMemberPrice}
+              id="noMemberPrice"
+              value={court.noMemberPrice}
             />
           </div>
           </div>

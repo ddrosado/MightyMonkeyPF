@@ -1,6 +1,6 @@
 const { db } = require('../../db')
 db.sequelize.sync()
-const { Booking, User, Court } = db
+const { Booking, User, Court, Sport } = db
 
 module.exports = async() => {
     const bookings = await Booking.findAll({
@@ -35,20 +35,18 @@ module.exports = async() => {
                     'name',
                     'description'
                 ],
-                include:[
-                    {
-                        model: Booking,
-                        as: 'booking',
-                        attributes:{
-                            exclude: [
-                                "createdAt", "updatedAt"
-                            ]
-                        }
-                    }
-                ]
+                include: {
+                    model:Sport,
+                    as:'sport',
+                    attributes:[
+                        'name',
+                        'description'
+                    ]
+                }
             }
         ]
     })
 
     return bookings;
 }
+
