@@ -3,7 +3,7 @@ import sportsReducer from './features/sportsSlice';
 import usersReducer from './features/usersSlice';
 import reviewsReducer from './features/reviewsSlice';
 import bookingsSlice from './features/bookingsSlice';
-import reviewsReducer from './features/reviewsSlice';
+
 
 const store = configureStore({
   reducer: {
