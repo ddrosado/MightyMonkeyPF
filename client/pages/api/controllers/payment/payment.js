@@ -1,13 +1,11 @@
 const mercadopago = require('mercadopago');
-const ngrok = 'https://834e-201-252-84-166.ngrok-free.app'
-
 
 module.exports = async(data) => {
     mercadopago.configure({
         access_token: 'TEST-8224153938650622-073001-07e9c314a676cfd54e1dca286b6054d2-1436108503'
     });
     switch (data.type) {
-        case 'buys': {
+        case 'booking': {
             const { items } = data
             const result = await mercadopago.preferences.create({
                 items: items,
@@ -16,7 +14,7 @@ module.exports = async(data) => {
                     pending: 'https://localhost:3000/api/pending',
                     success: 'https://localhost:3000/api/success'
                 },
-                notification_url: `${ngrok}/api/webHookPay`
+                notification_url: `/api/webHookPay`
             })
                 return result
         }
@@ -31,7 +29,7 @@ module.exports = async(data) => {
                     transaction_amount: price,
                     currency_id: "ARS"
                 },
-                back_url: `${ngrok}/thanksForSubscript`
+                back_url: `/thanksForSubscript`
             })
             return result
         }
