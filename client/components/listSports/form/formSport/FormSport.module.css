@@ -115,3 +115,10 @@
 .buttons{
     display: flex;
 }
+
+.error{
+    position: absolute;
+    color: red;
+    font-size: .6em;
+    bottom: -20px;
+}

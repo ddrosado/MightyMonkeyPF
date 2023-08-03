@@ -11,6 +11,25 @@ const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
 
 const { postgres_USER, postgres_HOST, postgres_DATABASE, postgres_PASSWORD } = process.env;
 
+// const sequelize = new Sequelize( DB_NAME,DB_USER, DB_PASSWORD, {
+//    host:DB_HOST,
+//    dialect: 'postgres',
+//    dialectModule: require('pg'),
+//    force: false,
+//    operatorAliases: false,
+//    logging: false,
+//    native: false,
+//    dialectOptions: {
+//       ssl: true, 
+//     },
+//    pool: {
+//       max: 5,
+//       min: 0,
+//       acquire: 30000,
+//       idle: 10000
+//    }
+// })
+
 const sequelize = new Sequelize( postgres_DATABASE,postgres_USER, postgres_PASSWORD, {
    host:postgres_HOST,
    dialect: 'postgres',
@@ -19,9 +38,9 @@ const sequelize = new Sequelize( postgres_DATABASE,postgres_USER, postgres_PASSW
    operatorAliases: false,
    logging: false,
    native: false,
-   // dialectOptions: {
-   //    ssl: true, 
-   //  },
+   dialectOptions: {
+      ssl: true, 
+    },
    pool: {
       max: 5,
       min: 0,
