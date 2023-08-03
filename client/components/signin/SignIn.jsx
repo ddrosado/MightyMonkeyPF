@@ -49,6 +49,7 @@ const SignIn = (props) => {
 
   const { data, mutate } = useSWR("/api/user", fetcher);
   const isLoggedIn = data?.isLoggedIn;
+  
   // if (isLoggedIn === true) router.push("/home");
   // /*------------------------- Firebase ------------------------- */
 
@@ -102,15 +103,14 @@ const SignIn = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await userLogin(userData);
-    if(session && isActive){
-      
+    console.log(res)
+    if(res.session && res.isActive){
+      // setAllowed(true);
+      // router.push("/home");
+
+    } else {
+        // setAllowed(false);
     }
-    // if (res) {
-    //   setAllowed(true);
-    //   router.push("/home");
-    // } else {
-    //   setAllowed(false);
-    // }
   };
 
   return (

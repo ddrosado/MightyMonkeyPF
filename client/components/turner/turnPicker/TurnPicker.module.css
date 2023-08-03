@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
 }
 
 .btnsContainer {
@@ -16,6 +17,7 @@
 }
 .turnsContainer button {
     background-color: black;
-    color: blueviolet;
-    width: 40px;
+    color: #FFDA61;
+    width: 60px;
+    height: 30px;
 }

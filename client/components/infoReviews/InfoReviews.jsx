@@ -4,29 +4,29 @@ import styles from "./InfoReviews.module.css";
 import { getReviews } from "../../redux/actions/reviewsAction"; 
 import { useDispatch, useSelector } from "react-redux";
 const InfoReviews = () => {
-    
- const dispatch = useDispatch();
- const reviews = useSelector((state) => state.reviews.reviews);
 
- useEffect(() => {
-  dispatch(getReviews());
- }, []);
-      const lastThreeReviews = reviews.slice(-3).reverse(); // Reverse the order to show the latest reviews first
+const dispatch = useDispatch();
+const reviews = useSelector((state) => state.reviews.reviews);
 
-      function formatDateWithoutTime(dateString) {
-         if (!dateString) return null; // Si no hay fecha, retornar null o manejar de acuerdo a tus necesidades
-         const date = new Date(dateString);
-         return date.toISOString().split('T')[0];
-       }
-       
-       const firstreview = lastThreeReviews[0];
-       const secodreview = lastThreeReviews[1];
-       const terdreview = lastThreeReviews[2];
-       
-       const firstDateModifi = formatDateWithoutTime(firstreview?.createdAt);
-       const secondDateModifi = formatDateWithoutTime(secodreview?.createdAt);
-       const thirdDateModifi = formatDateWithoutTime(terdreview?.createdAt);
-       console.log(firstDateModifi);
+useEffect(() => {
+dispatch(getReviews());
+}, []);
+const lastThreeReviews = reviews.slice(-3).reverse(); 
+
+function formatDateWithoutTime(dateString) {
+   if (!dateString) return null; 
+   const date = new Date(dateString);
+   return date.toISOString().split('T')[0];
+   }
+   
+   const firstreview = lastThreeReviews[0];
+   const secodreview = lastThreeReviews[1];
+   const terdreview = lastThreeReviews[2];
+   
+   const firstDateModifi = formatDateWithoutTime(firstreview?.createdAt);
+   const secondDateModifi = formatDateWithoutTime(secodreview?.createdAt);
+   const thirdDateModifi = formatDateWithoutTime(terdreview?.createdAt);
+
     
  return (
   <div className={styles.cardSection}>
