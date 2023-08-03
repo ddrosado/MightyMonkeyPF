@@ -3,17 +3,17 @@ export default function validation(input) {
 
     const nameRegex =  /^[a-zA-Z]{2,}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
-    const passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
   
 //   // Username validation
 //   if (!nameRegex.test(input.username)) {
 //     errors.username = "Invalid username";
 //   }
 
-//   // Password validation
-//   if (!passwordRegex.test(input.password) && input.password.length < 8) {
-//     errors.password = "Invalid password";
-//   }
+  // Password validation
+  if (!passwordRegex.test(input.password)) {
+    errors.password = "Should contain at least one lowercase letter, one uppercase letter, one digit, and one special character";
+  }
 
 //   // Email validation
 //   if (!emailRegex.test(input.email) && input.email.length < 10) {

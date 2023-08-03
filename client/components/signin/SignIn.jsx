@@ -14,7 +14,7 @@ const userLogin = async (form) => {
       "Content-Type": "application/json",
     },
   });
-  const { session } = await data.json();
+  const session = await data.json();
   return session;
 };
 
@@ -49,7 +49,8 @@ const SignIn = (props) => {
 
   const { data, mutate } = useSWR("/api/user", fetcher);
   const isLoggedIn = data?.isLoggedIn;
-  if (isLoggedIn === true) router.push("/home");
+  
+  // if (isLoggedIn === true) router.push("/home");
   // /*------------------------- Firebase ------------------------- */
 
   //  user = firebase.auth().currentUser;
@@ -102,11 +103,13 @@ const SignIn = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await userLogin(userData);
-    if (res) {
-      setAllowed(true);
-      router.push("/home");
+    console.log(res)
+    if(res.session && res.isActive){
+      // setAllowed(true);
+      // router.push("/home");
+
     } else {
-      setAllowed(false);
+        // setAllowed(false);
     }
   };
 
