@@ -10,7 +10,7 @@ export default async(req, res) => {
         if(payment.type === 'payment') {
             const [ date, hour, userId, courtId ] = (await mercadopago.payment.findById(payment['data.id'])).response.additional_info.items[0].description.split(' ');
             
-            const info = { date, hour: hour.split(','), userId, courtId }
+            const info = { date, hour: hour.split(','), userId, courtId, payment }
             console.log(info);
             const newBooking = await postBookings(info);
             res.status(200).json(newBooking);
