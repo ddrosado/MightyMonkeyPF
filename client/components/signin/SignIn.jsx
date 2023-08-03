@@ -4,7 +4,11 @@ import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
+<<<<<<< HEAD
 import {useSWR} from 'swr'
+=======
+import useSWR from "swr";
+>>>>>>> 26d294b7c928629c3c93f2d24bd2d4f9a77e25e2
 
 const userLogin = async (form) => {
   const data = await fetch("api/login", {
@@ -17,17 +21,38 @@ const userLogin = async (form) => {
   const { session } = await data.json();
   return session;
 };
+<<<<<<< HEAD
 const userGoogle = async (user)=>{
   const response = await fetch("api/google",{
+=======
+
+const fetcher = async (route) => {
+  const response = await fetch(route, {
+    method: "GET",
+  });
+  const data = await response.json();
+  return data;
+};
+
+const userGoogle = async (user) => {
+  const data = await fetch("api/google", {
+>>>>>>> 26d294b7c928629c3c93f2d24bd2d4f9a77e25e2
     method: "POST",
     body: JSON.stringify(user),
     headers: {
       "Content-Type": "application/json",
     },
+<<<<<<< HEAD
   })
   const data = await response.json()
   return data
 }
+=======
+  });
+  const res = await data.json();
+  return res;
+};
+>>>>>>> 26d294b7c928629c3c93f2d24bd2d4f9a77e25e2
 
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
@@ -35,9 +60,18 @@ const SignIn = (props) => {
     password: "",
   });
 
+<<<<<<< HEAD
   const [allowed, setAllowed] = useState(null);
 
  
+=======
+  const router = useRouter();
+  const [allowed, setAllowed] = useState(null);
+
+  const { data, mutate } = useSWR("/api/user", fetcher);
+  const isLoggedIn = data?.isLoggedIn;
+  if (isLoggedIn === true) router.push("/home");
+>>>>>>> 26d294b7c928629c3c93f2d24bd2d4f9a77e25e2
   // /*------------------------- Firebase ------------------------- */
 
   //  user = firebase.auth().currentUser;
@@ -51,8 +85,11 @@ const SignIn = (props) => {
 
   // /*------------------------------------------------------------ */
 
+<<<<<<< HEAD
   const router = useRouter();
 
+=======
+>>>>>>> 26d294b7c928629c3c93f2d24bd2d4f9a77e25e2
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -61,12 +98,15 @@ const SignIn = (props) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-       
-        console.log(user)
-        userGoogle(user).then(res => 
-              console.log(res)  
-            ).catch(error => console.log(error.message))
-        
+
+        console.log(user);
+        userGoogle(user)
+          .then((res) => {
+            if (res) {
+              mutate({...data,isLoggedIn:true})
+            }
+          })
+          .catch((error) => console.log(error.message));
       })
       .catch((error) => {
         if (error.code === "auth/popup-closed-by-user") {
@@ -76,7 +116,6 @@ const SignIn = (props) => {
         }
       });
   };
-
 
   const handleChange = (e) => {
     const name = e.target.name;

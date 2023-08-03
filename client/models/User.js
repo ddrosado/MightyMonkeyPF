@@ -40,6 +40,15 @@ module.exports = (sequelize) => {
       isActive:{
         type: DataTypes.BOOLEAN,
         allowNull: true
+      },
+      isMember:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: true
+      },
+      memberId:{
+        type: DataTypes.STRING,
+        allowNull: true
       }
     });
     return User
