@@ -1,7 +1,9 @@
 import userAuth from "./controllers/userAuth/userAuth";
 import postUser from "./controllers/users/postUser";
 import { withSession } from "./controllers/sessionAuth/middleware";
-import { transporter } from "./controllers/mailer/transporter";
+import { transporter } from './controllers/utils/mails'
+const fs = require('fs')
+const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
 
 async function handler(req, res) {
   const { body } = req;
@@ -38,13 +40,12 @@ async function handler(req, res) {
         );
         set("user", { name, email, id, planId, isAdmin, image, surname, isActive });
         await save();
-        const info = await transporter.sendMail({
-          from: '"Hello there"<matiasxzca3000@gmail.com>', // sender address
-          to: email, // list of receivers
-          subject: "New Account", // Subject line
-          html: "<h1>Welcome to mightymonkey club</h1>", // html body
-        });
-        console.log(info.messageId)
+        await transporter.sendMail({
+            from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
+            to: email,
+            subject: "Te damos la bienvenida a Mighty Monkeys",
+            html: htmlstream.on('data', (data) => data.toString()),
+          });
         return res.status(200).json( {session:true} );
     }catch(error){
         return res.status(400).json(error)
