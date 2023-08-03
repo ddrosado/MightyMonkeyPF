@@ -4,7 +4,7 @@ import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
-import useSWR from 'swr'
+import useSWR from "swr";
 
 const userLogin = async (form) => {
   const data = await fetch("api/login", {
@@ -18,16 +18,16 @@ const userLogin = async (form) => {
   return session;
 };
 
-const fetcher = async (route)=>{
-  const response = await fetch(route,{
+const fetcher = async (route) => {
+  const response = await fetch(route, {
     method: "GET",
-  })
-  const data = await response.json()
-  return data
-}
+  });
+  const data = await response.json();
+  return data;
+};
 
-const userGoogle = async(user)=>{
-  const data = await fetch('api/google' , {
+const userGoogle = async (user) => {
+  const data = await fetch("api/google", {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -36,20 +36,21 @@ const userGoogle = async(user)=>{
   });
   const res = await data.json();
   return res;
-}
+};
 
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
-  
+
   const router = useRouter();
   const [allowed, setAllowed] = useState(null);
 
-  const { data } = useSWR('/api/user', fetcher)
-  const isLoggedIn  = data?.isLoggedIn
-  if(isLoggedIn === true) router.push('/home')  
+  const { data, mutate } = useSWR("/api/user", fetcher);
+  const isLoggedIn = data?.isLoggedIn;
+  
+  // if (isLoggedIn === true) router.push("/home");
   // /*------------------------- Firebase ------------------------- */
 
   //  user = firebase.auth().currentUser;
@@ -62,7 +63,6 @@ const SignIn = (props) => {
   // }
 
   // /*------------------------------------------------------------ */
-
 
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
@@ -103,15 +103,14 @@ const SignIn = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await userLogin(userData);
-    if(session && isActive){
-      
+    console.log(res)
+    if(res.session && res.isActive){
+      // setAllowed(true);
+      // router.push("/home");
+
+    } else {
+        // setAllowed(false);
     }
-    // if (res) {
-    //   setAllowed(true);
-    //   router.push("/home");
-    // } else {
-    //   setAllowed(false);
-    // }
   };
 
   return (
