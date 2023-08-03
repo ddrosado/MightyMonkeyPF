@@ -17,6 +17,7 @@
 }
 .turnsContainer button {
     background-color: black;
-    color: blueviolet;
-    width: 40px;
+    color: #FFDA61;
+    width: 60px;
+    height: 30px;
 }

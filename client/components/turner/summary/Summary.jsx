@@ -12,6 +12,7 @@ const Summary = ({sportFind}) => {
             <h3>Hour:</h3>
             <h3>Court:</h3>
         </div>
+        <button className={style.reserveBtn}>Reserve</button>
     </div>
   )
 }

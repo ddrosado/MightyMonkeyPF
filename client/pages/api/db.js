@@ -68,25 +68,6 @@ const sequelize = new Sequelize( postgres_DATABASE,postgres_USER, postgres_PASSW
 //    }
 // })
 
-const sequelize = new Sequelize( postgres_DATABASE,postgres_USER, postgres_PASSWORD, {
-   host:postgres_HOST,
-   dialect: 'postgres',
-   dialectModule: require('pg'),
-   force: false,
-   operatorAliases: false,
-   logging: false,
-   native: false,
-   // dialectOptions: {
-   //    ssl: true, 
-   //  },
-   pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-   }
-})
-
 const db = {}
 
 db.sequelize = sequelize
