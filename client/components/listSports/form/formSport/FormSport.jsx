@@ -3,6 +3,7 @@ import {useSelector} from "react-redux"
 import style from "./FormSport.module.css";
 import { useDispatch } from "react-redux";
 import { getSports, postSports, putSport, deletSport } from "../../../../redux/actions/sportsActions";
+import { validationSport } from "../validations/validations";
 
 export const FormSport = (props) => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ export const FormSport = (props) => {
     image: ""
   });
 
+  const [errors, setErrors] = useState({})
 
   useEffect(()=>{
     setSport({
@@ -27,6 +29,10 @@ export const FormSport = (props) => {
       ...sport,
       [e.target.id]: e.target.value,
     });
+    setErrors( validationSport({
+      ...sport,
+      [e.target.id]: e.target.value,
+    }, e.target.id, errors))
   };
 
   const handleSubmitCreate = async (e) => {
@@ -34,11 +40,6 @@ export const FormSport = (props) => {
     const resp = await dispatch(postSports(sport));
     if (resp.meta.requestStatus == "rejected") {
       alert("Lo lamento no se pudo crear el deporte");
-      setSport({
-        name: "",
-        description: "",
-        image: "",
-      });
     } else {
       props.handlePageSport ? props.handlePageSport(2) : null;
     }
@@ -110,6 +111,7 @@ export const FormSport = (props) => {
           >
             Name
           </label>
+          {errors.name? <label className={style.error}>{errors.name}</label> : null }
         </div>
         <div className={style.div}>
           <input
@@ -128,6 +130,7 @@ export const FormSport = (props) => {
           >
             Description
           </label>
+          {errors.description? <label className={style.error}>{errors.description}</label> : null }
         </div>
         <div className={style.div}>
           <input
@@ -146,6 +149,7 @@ export const FormSport = (props) => {
           >
             Image(url)
           </label>
+          {errors.image? <label className={style.error}>{errors.image}</label> : null }
         </div>
         <div className={style.buttons}>
           <button className={style.submit} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
