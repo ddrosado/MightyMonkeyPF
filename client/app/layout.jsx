@@ -3,7 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Navbar } from "../components/navBar/Navbar";
 import Footer from "../components/footer/Footer";
-import {redirect, usePathname} from "next/navigation"
+import { usePathname} from "next/navigation"
 import { ReduxProvider } from "../redux/provider";
 import Whatsapp from "../components/whatsapp/Whatsapp";
 
@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {path !== "/" && path !==  "/dashboard"? <Navbar /> : null }
+        {path !== "/" && !path.startsWith("/dashboard")  ? <Navbar /> : null }
         <ReduxProvider>{children}</ReduxProvider>
         <Whatsapp />
         {path !== "/"? <Footer /> : null }

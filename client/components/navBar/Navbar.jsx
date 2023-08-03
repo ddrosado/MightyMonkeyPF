@@ -61,7 +61,7 @@ export const Navbar = () => {
           {data ? (
         <>
           {data.isAdmin ? (
-            <Link className={style.link} key="admin" href="dashboard">
+            <Link className={style.link} key="admin" href="dashboard/users">
               <li>Admin</li>
             </Link>
           ) : null}
