@@ -6,8 +6,8 @@ async function handler(req, res) {
   const { set, save } = req.session;
   try {
     if (method === "POST") {
-      const { name, email, id, isMember, isAdmin } = await userAuth(body);
-      set("user", { name, email, id, isMember, isAdmin });
+      const { name, email, id, isAdmin, image, planId } = await userAuth(body);
+      set("user", { name, email, id, planId, isAdmin, image });
       await save();
       return res.status(200).json({ session: true });
     }
