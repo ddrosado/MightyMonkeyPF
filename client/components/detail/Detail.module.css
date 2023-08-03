@@ -1,4 +1,8 @@
-
+.detailContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
 .titleSport {
   display: flex;
   justify-content: center;
