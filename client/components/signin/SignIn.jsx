@@ -4,7 +4,7 @@ import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
-import {useSWR} from 'swr'
+import useSWR from 'swr'
 
 const userLogin = async (form) => {
   const data = await fetch("api/login", {
@@ -14,19 +14,28 @@ const userLogin = async (form) => {
       "Content-Type": "application/json",
     },
   });
-  const { session } = await data.json();
+  const session = await data.json();
   return session;
 };
-const userGoogle = async (user)=>{
-  const response = await fetch("api/google",{
+
+const fetcher = async (route)=>{
+  const response = await fetch(route,{
+    method: "GET",
+  })
+  const data = await response.json()
+  return data
+}
+
+const userGoogle = async(user)=>{
+  const data = await fetch('api/google' , {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
       "Content-Type": "application/json",
     },
-  })
-  const data = await response.json()
-  return data
+  });
+  const res = await data.json();
+  return res;
 }
 
 const SignIn = (props) => {
@@ -34,10 +43,13 @@ const SignIn = (props) => {
     email: "",
     password: "",
   });
-
+  
+  const router = useRouter();
   const [allowed, setAllowed] = useState(null);
 
- 
+  const { data } = useSWR('/api/user', fetcher)
+  const isLoggedIn  = data?.isLoggedIn
+  if(isLoggedIn === true) router.push('/home')  
   // /*------------------------- Firebase ------------------------- */
 
   //  user = firebase.auth().currentUser;
@@ -51,7 +63,6 @@ const SignIn = (props) => {
 
   // /*------------------------------------------------------------ */
 
-  const router = useRouter();
 
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
@@ -61,12 +72,15 @@ const SignIn = (props) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-       
-        console.log(user)
-        userGoogle(user).then(res => 
-              console.log(res)  
-            ).catch(error => console.log(error.message))
-        
+
+        console.log(user);
+        userGoogle(user)
+          .then((res) => {
+            if (res) {
+              mutate({...data,isLoggedIn:true})
+            }
+          })
+          .catch((error) => console.log(error.message));
       })
       .catch((error) => {
         if (error.code === "auth/popup-closed-by-user") {
@@ -76,7 +90,6 @@ const SignIn = (props) => {
         }
       });
   };
-
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -90,12 +103,15 @@ const SignIn = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await userLogin(userData);
-    if (res) {
-      setAllowed(true);
-      router.push("/home");
-    } else {
-      setAllowed(false);
+    if(session && isActive){
+      
     }
+    // if (res) {
+    //   setAllowed(true);
+    //   router.push("/home");
+    // } else {
+    //   setAllowed(false);
+    // }
   };
 
   return (
