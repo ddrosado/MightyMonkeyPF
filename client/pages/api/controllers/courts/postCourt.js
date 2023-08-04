@@ -21,7 +21,7 @@ export default async (courtInfo) => {
     "image",
     "description",
     "isAvailable",
-    "nonMemberPrice",
+    "noMemberPrice",
     "memberPrice",
     ],
     include:{

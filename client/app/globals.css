@@ -16,7 +16,7 @@ body {
 
 @layer utilities {
     .register-input {
-      @apply shadow appearance-none border rounded-full w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none mb-3 mt-0;
+      @apply shadow appearance-none border rounded-full w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none;
     }
     .register-input:focus {
       @apply focus:shadow;

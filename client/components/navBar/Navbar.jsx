@@ -19,9 +19,7 @@ const logout = async () => {
 export const Navbar = () => {
 
   const { data, error } = useSWR("api/user", fetcher);
-
-  // console.log(data)
-
+  console.log(data)
   const router = useRouter();
 
   const obj = [
@@ -63,7 +61,7 @@ export const Navbar = () => {
           {data ? (
         <>
           {data.isAdmin ? (
-            <Link className={style.link} key="admin" href="dashboard">
+            <Link className={style.link} key="admin" href="dashboard/users">
               <li>Admin</li>
             </Link>
           ) : null}

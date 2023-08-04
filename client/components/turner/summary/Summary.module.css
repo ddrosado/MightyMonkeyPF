@@ -1,11 +1,18 @@
 .infoContainer {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 75%;
+    background: antiquewhite;
+
 }
 
 .summaryContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+}
+
+.reserveBtn {
+    background-color: brown;
 }

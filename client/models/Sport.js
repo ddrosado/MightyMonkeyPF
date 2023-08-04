@@ -12,9 +12,14 @@ module.exports = (sequelize) => {
             allowNull: false,
             unique: true
         },
-        image:{
+        image: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
+            unique: true
+        },
+        gallery:{
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            allownull: true,
         },
         description: {
             type: DataTypes.TEXT,

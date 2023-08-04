@@ -4,8 +4,7 @@ const { User } = db;
 
 export default async (id) => {
   if ((Array.isArray(id))) {
-    const bannedUsers = await User.update(
-      { isActive: false },
+    const bannedUsers = await User.destroy(
       {
         where: {
           id: {
@@ -17,8 +16,7 @@ export default async (id) => {
     return `Deleted users ${bannedUsers}`
   }
   else{
-    await User.update(
-        { isActive: false },
+    await User.destroy(
         {where: {id : id}}
     )
     return "User deleted"
