@@ -24,7 +24,7 @@ async function handler(req, res) {
     };
     set("user", userInfo);
     await save();
-    return res.status(200).json({ session: true, isActive });
+    return res.status(200).json({ session: true, isActive: userInfo.isActive });
   } catch (error) {
     try{
         const newUser = {

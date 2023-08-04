@@ -15,10 +15,15 @@ const userLogin = async (form) => {
     },
   });
   const session = await data.json();
-  console.log(session)
-  if(session && session?.isActive){
-    return session;
-  }
+  return session
+  // console.log(session)
+  // if(session && session.isActive){
+  //   return session;
+  // }
+  // if(session && !session.isActive ){
+  //   alert("tas baneado mepa")
+  //   return null;
+  // }
 };
 
 const fetcher = async (route) => {
@@ -71,9 +76,9 @@ const SignIn = (props) => {
         console.log(user);
         userGoogle(user)
           .then((res) => {
-            if (res) {
+            console.log(res)
+            if (res?.session && res?.isActive) {
               setAllowed(true);
-              // mutate({...data,isLoggedIn:true})
               router.push("/home");
             } else if (res?.session && !res?.isActive){
               setAllowed(false);
