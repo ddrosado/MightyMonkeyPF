@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -16,14 +16,6 @@ const userLogin = async (form) => {
   });
   const session = await data.json();
   return session
-  // console.log(session)
-  // if(session && session.isActive){
-  //   return session;
-  // }
-  // if(session && !session.isActive ){
-  //   alert("tas baneado mepa")
-  //   return null;
-  // }
 };
 
 const fetcher = async (route) => {
@@ -61,7 +53,7 @@ const SignIn = (props) => {
   const router = useRouter();
   const [allowed, setAllowed] = useState(null);
 
-  const { data, mutate } = useSWR("/api/user", fetcher);
+  const { data } = useSWR("/api/user", fetcher);
 
   
   const handleGoogle = (e) => {
@@ -125,10 +117,12 @@ const SignIn = (props) => {
 
 
   const isLoggedIn = data?.isLoggedIn;
-  if(isLoggedIn && (allowed == null)){
-    alert("sos boludo? ya tas logueado")
+  useEffect(() => {
+  if (isLoggedIn && allowed === null) {
+    alert("donde vas perrito? ya tas logueado");
     router.push("/home");
   }
+});
 
 
 
