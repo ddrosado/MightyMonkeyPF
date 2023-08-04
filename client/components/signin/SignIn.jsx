@@ -15,7 +15,10 @@ const userLogin = async (form) => {
     },
   });
   const session = await data.json();
-  return session;
+  console.log(data)
+  if(session.isActive){
+    return session;
+  }
 };
 
 const fetcher = async (route) => {
@@ -82,7 +85,7 @@ const SignIn = (props) => {
         console.log(user);
         userGoogle(user)
           .then((res) => {
-            if (res.session && res.isActive) {
+            if (res?.session && res?.isActive) {
               setAllowed(true);
               mutate({...data,isLoggedIn:true})
             } else {
@@ -113,11 +116,10 @@ const SignIn = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await userLogin(userData);
-    console.log(res)
-    if(res.session && res.isActive){
+    if(res?.session && res?.isActive){
       setAllowed(true);
       router.push("/home");
-    } else if(res.session && !res.isActive){
+    } else if(res?.session && !res?.isActive){
       setAllowed(false);
       alert("TAS BANEADISIMO PERRO")
     } else {
@@ -125,9 +127,12 @@ const SignIn = (props) => {
     }
   };
 
+  console.log(data)
+  console.log(allowed)
   const isLoggedIn = data?.isLoggedIn;
-  if(isLoggedIn){
-    router.push("/home");
+  if(isLoggedIn && (allowed == null)){
+    alert("que queres hacer bro ya tas logueado")
+    router.replace("/home");
   }
 
 
