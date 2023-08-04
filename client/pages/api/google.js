@@ -1,4 +1,9 @@
-import postUser from "./controllers/users/postUser"
+import userAuth from "./controllers/userAuth/userAuth";
+import postUser from "./controllers/users/postUser";
+import { withSession } from "./controllers/sessionAuth/middleware";
+import { transporter } from './controllers/utils/mails'
+const fs = require('fs')
+const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
 
 async function handler(req, res) {
   const { body } = req;
@@ -45,4 +50,7 @@ async function handler(req, res) {
     }catch(error){
         return res.status(400).json(error)
     }
+  }
 }
+
+export default withSession(handler);
