@@ -54,9 +54,9 @@ const SignIn = (props) => {
   const [allowed, setAllowed] = useState(null);
 
   const { data, mutate } = useSWR("/api/user", fetcher);
-  const isLoggedIn = data?.isLoggedIn;
+
   
-  if (isLoggedIn === true) router.push("/home");
+
   // /*------------------------- Firebase ------------------------- */
 
   //  user = firebase.auth().currentUser;
@@ -82,8 +82,12 @@ const SignIn = (props) => {
         console.log(user);
         userGoogle(user)
           .then((res) => {
-            if (res) {
+            if (res.session && res.isActive) {
+              setAllowed(true);
               mutate({...data,isLoggedIn:true})
+            } else {
+              setAllowed(false);
+              alert("TAS BANEADISIMO CAPO")
             }
           })
           .catch((error) => console.log(error.message));
@@ -114,11 +118,18 @@ const SignIn = (props) => {
       setAllowed(true);
       router.push("/home");
     } else if(res.session && !res.isActive){
+      setAllowed(false);
       alert("TAS BANEADISIMO PERRO")
     } else {
       setAllowed(false);
     }
   };
+
+  const isLoggedIn = data?.isLoggedIn;
+  if(isLoggedIn && allowed){
+    router.push("/home");
+  }
+
 
   return (
     <form className={styles.loginForm} onSubmit={onSubmit}>
