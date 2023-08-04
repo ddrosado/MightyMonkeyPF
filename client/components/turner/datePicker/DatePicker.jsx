@@ -32,7 +32,15 @@ const DatePicker = ({ selectedDate, onDateSelected }) => {
       <h2>Pick a date</h2>
       {/* Usamos el atributo min y max para restringir la selección de fechas */}
       {/* Usamos el estado dateValue como valor por defecto */}
-      <input type="date" value={dateValue} min={currentDate} max={maxDateFormatted} onChange={handleChange} />
+      {/* Mostramos la fecha formateada en el input */}
+      <input
+        type="date"
+        value={dateValue}
+        min={currentDate}
+        max={maxDateFormatted}
+        onChange={handleChange}
+      />
+
     </div>
   );
 };
