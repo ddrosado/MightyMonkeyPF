@@ -138,6 +138,8 @@ const SignIn = (props) => {
     router.push("/home");
   }
 
+  console.log("holi")
+
 
   return (
     <form className={styles.loginForm} onSubmit={onSubmit}>
