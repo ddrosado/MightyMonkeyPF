@@ -1,13 +1,18 @@
+"use-client"
 import React from 'react'
 import style from "./FormSport.module.css" 
 import { useState } from 'react'
-import {useDispatch} from "react-redux"
-import { postPlans } from '../../../redux/actions/plansActions'
+import {useDispatch, useSelector} from "react-redux"
+import { postPlans, putPlans } from '../../../redux/actions/plansActions'
+import { useEffect } from 'react'
+import { getFindPlan } from '../../../redux/features/plansSlice'
+
 
 
 export const Form = (props) => {
 
     const dispatch = useDispatch()
+    const planFind = useSelector(state=> state.plans.onePlan)
 
     const [plan, setPlan] = useState({
         name:"",
@@ -15,6 +20,19 @@ export const Form = (props) => {
         price: "",
         duration:""
     })
+
+    useEffect(()=>{
+        props.id? dispatch(getFindPlan(props.id)) : null
+    },[])
+
+    useEffect(()=>{
+        setPlan({
+            name: planFind?.name,
+            description: planFind?.description,
+            price : planFind?.price,
+            duration : planFind?.duration
+        })
+    },[planFind])
 
     const handleChange = (e)=>{
         setPlan({
@@ -26,8 +44,35 @@ export const Form = (props) => {
     const handleCreate = async(e)=>{
         e.preventDefault()
         const resp = await dispatch(postPlans(plan))
-        console.log(resp)
+        if(resp.meta.requestStatus == "fulfilled"){
+            alert("correctamente creado!")
+            setPlan({
+                name:"",
+                description:"",
+                price: "",
+                duration:""
+            })
+        } else {
+            alert("no se pudo crear")
+        }
     }
+
+    const handleEdit = async(e, id)=>{
+        e.preventDefault()
+        const resp = await dispatch(putPlans({...plan, id: id}))
+        if(resp.meta.requestStatus == "fulfilled"){
+            alert("correctamente editado!")
+            setPlan({
+                name:"",
+                description:"",
+                price: "",
+                duration:""
+            })
+        } else {
+            alert("no se pudo editar")
+        }
+    }
+
 
   return (
     <>
@@ -98,7 +143,7 @@ export const Form = (props) => {
           />
           <label
             className={`${style.label} ${
-              plan.price?.length ? style.full : style.noFull
+              plan.price  !== "0" ? style.full : style.noFull
             }`}
             htmlFor="image"
           >
@@ -117,7 +162,7 @@ export const Form = (props) => {
           />
           <label
             className={`${style.label} ${
-              plan.duration?.length ? style.full : style.noFull
+              plan.duration !== 0 ? style.full : style.noFull
             }`}
             htmlFor="image"
           >
@@ -126,7 +171,7 @@ export const Form = (props) => {
           {/* {errors.image? <label className={style.error}>{errors.image}</label> : null } */}
         </div>
         <div className={style.buttons}>
-          <button onClick={props.id? null : (e)=>handleCreate(e)} className={style.submit} >
+          <button onClick={props.id? (e)=>handleEdit(e, props.id) : (e)=>handleCreate(e)} className={style.submit} >
             {props.id? "edit" : "create"} 
           </button>
           {/* {props.sport? <button onClick={(e)=>handleDelete(e, props.sport.id)} className={style.delete}>Delete</button> : null} */}
