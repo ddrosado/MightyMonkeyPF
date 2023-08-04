@@ -14,6 +14,7 @@ const bookingsSlice = createSlice({
     name: "bookings",
     initialState,
     reducers:{
+
         filterBookings: (state, action) => {
             const { sport, date, search } = action.payload;
             let filteredBookings = state.bookings;
