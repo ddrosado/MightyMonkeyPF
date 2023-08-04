@@ -41,7 +41,7 @@ export const Navbar = () => {
     router.push("/");
   };
 
-  console.log(data)
+  // console.log(data)
   useEffect(() => {
     if (!data?.isActive && data?.id) {
       logout().then(() => {
