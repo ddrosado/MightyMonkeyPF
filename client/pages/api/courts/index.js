@@ -12,11 +12,10 @@ export default async (req, res,next) => {
         const court = await getCourt();
         return res.status(200).json(court);
       case "POST":
-        const { name, description, isAvailable, noMemberPrice, memberPrice, sport, image } =
+        const { name, description, isAvailable, noMemberPrice, memberPrice, sport } =
           req.body;
         if (
           !name ||
-          !image ||
           !description ||
           !isAvailable.toString() ||
           !noMemberPrice ||
