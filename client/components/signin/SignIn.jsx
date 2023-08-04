@@ -126,7 +126,7 @@ const SignIn = (props) => {
   };
 
   const isLoggedIn = data?.isLoggedIn;
-  if(isLoggedIn && allowed){
+  if(isLoggedIn){
     router.push("/home");
   }
 

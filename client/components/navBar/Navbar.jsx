@@ -6,6 +6,7 @@ import logo from "../../assets/images/logo.png";
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "../../pages/api/fetcher";
+import { useEffect } from "react";
 
 const logout = async () => {
   const data = await fetch("api/logout", {
@@ -19,7 +20,6 @@ const logout = async () => {
 export const Navbar = () => {
 
   const { data } = useSWR("api/user", fetcher);
-  console.log(data)
   const router = useRouter();
 
   const obj = [
@@ -40,15 +40,27 @@ export const Navbar = () => {
     router.push("/");
   };
 
+  useEffect(() => {
+    if (!data?.isActive && data?.id) {
+      logout().then(() => {
+        router.push("/"); 
+      });
+    }
+  }, [data, router]);
+
   if (data?.id && !data?.isActive){
     router.push("/");
   }
+
+  
 
   return (
       // <div className={style.navContainer}>
         <div className={style.barContainer}>
           <div className={style.imageAndNav}>
+            <Link href="/home">
             <Image className={style.logo} src={logo} alt="#" />
+            </Link>
             <div className={style.options}>
               <ul className={style.ul}>
                 {obj.map(({ label, route }) => {
