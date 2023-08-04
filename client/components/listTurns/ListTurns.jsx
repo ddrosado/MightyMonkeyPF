@@ -109,9 +109,9 @@ export const ListTurns = () => {
                 </thead>
                 <tbody>
                 {bookings?.length?
-                  bookings.map(({ date, hour, user, court }) => {
+                  bookings.map(({ date, hour, user, court, id}) => {
                     return (
-                      <tr>
+                      <tr key={id}>
                         <td className="px-5 py-5 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {court.sport.name}

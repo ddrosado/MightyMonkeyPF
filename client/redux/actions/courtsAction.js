@@ -7,9 +7,7 @@ export const postCourt = createAsyncThunk(
     'court/postCourt',
     async (obj) => {
       try {
-        console.log(obj)
         const response = await axios.post(`${url}/api/courts`, obj);
-        console.log(response.data)
         return response.data;
       } catch (error) {
         throw new Error(error.response.data.msg)

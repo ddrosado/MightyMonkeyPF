@@ -3,6 +3,7 @@ import sportsReducer from './features/sportsSlice';
 import usersReducer from './features/usersSlice';
 import reviewsReducer from './features/reviewsSlice';
 import bookingsSlice from './features/bookingsSlice';
+import plansSlice from './features/plansSlice';
 
 
 const store = configureStore({
@@ -11,6 +12,7 @@ const store = configureStore({
     users: usersReducer,
     bookings : bookingsSlice,
     reviews: reviewsReducer,
+    plans: plansSlice
   },
 });
 
