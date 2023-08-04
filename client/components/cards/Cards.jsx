@@ -29,7 +29,7 @@ const Cards = () => {
       <div className={styles.cardsContainer}>
         {
           sports?.sports?.map(({image, description, name, id, courts}) =>
-          (<Card courts={courts} image={image} description={description} name={name} id={id} />))
+          (<Card key={id} courts={courts} image={image} description={description} name={name} id={id} />))
         }
       </div>
     </section>

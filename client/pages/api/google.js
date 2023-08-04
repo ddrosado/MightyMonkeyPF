@@ -24,7 +24,7 @@ async function handler(req, res) {
     };
     set("user", userInfo);
     await save();
-    return res.status(200).json({ session: true });
+    return res.status(200).json({ session: true, isActive: userInfo.isActive });
   } catch (error) {
     try{
         const newUser = {
@@ -46,7 +46,7 @@ async function handler(req, res) {
             subject: "Te damos la bienvenida a Mighty Monkeys",
             html: htmlstream.on('data', (data) => data.toString()),
           });
-        return res.status(200).json( {session:true} );
+        return res.status(200).json( {session:true, isActive} );
     }catch(error){
         return res.status(400).json(error)
     }

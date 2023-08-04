@@ -29,7 +29,7 @@
 }
 
 .logo {
-    width: 55px;
+    width: 90px;
     position: relative;
     z-index: 101;
 }
@@ -69,7 +69,7 @@
     align-items: center;
     font-size: 0.8rem;
     margin-right: 40px;
-    width: 10%;
+    width: 110px;
     justify-content: space-around;
 }
 .adminBar li:hover {

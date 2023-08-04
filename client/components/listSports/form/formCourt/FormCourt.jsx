@@ -12,9 +12,8 @@ export const FormCourt = (props) => {
     sport: "",
     name:  "",
     description:  "",
-    image:  "",
     isAvailable: true,
-    nonMemberPrice:  0,
+    noMemberPrice:  0,
     memberPrice:0
   });
 
@@ -25,15 +24,13 @@ export const FormCourt = (props) => {
       sport: props.sport ,
       name: props.court?.name ,
       description: props.court?.description,
-      image: props.court?.image ,
       isAvailable:  props.court?.isAvailable ,
-      nonMemberPrice: props.court?.nonMemberPrice,
+      noMemberPrice: props.court?.noMemberPrice,
       memberPrice: props.court?.memberPrice
   })
   }, [props.court])
 
   const handleChange = (e) => {
-
     if(e.target.type == "radio"){
       setCourt({
         ...court,
@@ -58,16 +55,15 @@ export const FormCourt = (props) => {
       if(props.setCreate){
         props.setCreate(!props.create)
       }
+      setCourt({
+        sport: "",
+        name: "",
+        description: "",
+        isAvailable: true,
+        noMemberPrice: 0,
+        memberPrice: 0
+      })
     }
-    setCourt({
-      sport: "",
-      name: "",
-      description: "",
-      image: "",
-      isAvailable: true,
-      nonMemberPrice: 0,
-      memberPrice: 0
-    })
   }
 
 
@@ -82,7 +78,7 @@ export const FormCourt = (props) => {
         description: "",
         image: "",
         isAvailable: true,
-        nonMemberPrice: 0,
+        noMemberPrice: 0,
         memberPrice: 0
       });
     } else {
@@ -165,24 +161,6 @@ export const FormCourt = (props) => {
               Description
             </label>
           </div>
-          <div>
-            <input
-              onChange={(e) => handleChange(e)}
-              className={style.input}
-              type="text"
-              name="court"
-              id="image"
-              value={court.image}
-            />
-            <label
-              className={`${style.label} ${
-                court?.image?.length ? style.full : style.noFull
-              }`}
-              htmlFor="image"
-            >
-              Image(url)
-            </label>
-          </div>
           <div className={style.priceCourt}>
             <label className={style.priceLabel}>Price</label>
             <div>
@@ -209,7 +187,7 @@ export const FormCourt = (props) => {
               className={style.labelPrice}
               //   court.nonMemberPrice.length ? style.full : style.noFull
               // }`}
-              htmlFor="nonMemberPrice"
+              htmlFor="noMemberPrice"
             >
               No Member:
             </label>
@@ -218,8 +196,8 @@ export const FormCourt = (props) => {
               className={style.inputPrice}
               type="text"
               name="court"
-              id="nonMemberPrice"
-              value={court.nonMemberPrice}
+              id="noMemberPrice"
+              value={court.noMemberPrice}
             />
           </div>
           </div>

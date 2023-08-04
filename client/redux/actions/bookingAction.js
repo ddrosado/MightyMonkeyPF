@@ -8,7 +8,18 @@ export const getBookings = createAsyncThunk(
     async () => {
       try {
         const response = await axios.get(`${url}/api/bookings`);
-        console.log(response.data)
+        return response.data;
+      } catch (error) {
+        throw error.response.data.msg;
+      }
+    }
+  );
+
+export const postBooking = createAsyncThunk(
+    'bookings/postBooking',
+    async () => {
+      try {
+        const response = await axios.post(`${url}/api/bookings`);
         return response.data;
       } catch (error) {
         throw error.response.data.msg;

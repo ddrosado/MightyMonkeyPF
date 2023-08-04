@@ -1,3 +1,4 @@
+
 import { getBookings } from "../actions/bookingAction";
 
 const { createSlice } = require("@reduxjs/toolkit")
@@ -13,8 +14,26 @@ const bookingsSlice = createSlice({
     name: "bookings",
     initialState,
     reducers:{
-        increment: (state, action) => {
-            state.lala = "lala"
+
+        filterBookings: (state, action) => {
+            const { sport, date, search } = action.payload;
+            let filteredBookings = state.bookings;
+        
+            if (sport !== "all") {
+                filteredBookings = filteredBookings.filter(book => book.court.sport.name === sport);
+            }
+        
+            if (date !== "all") {
+                filteredBookings = filteredBookings.filter(book => book.date == date);
+            }
+        
+            filteredBookings = filteredBookings.filter(book =>
+                book.court.sport.name.toLowerCase().includes(search.toLowerCase()) ||
+                book.court.name.toLowerCase().includes(search.toLowerCase()) ||
+                book.user.name.toLowerCase().includes(search.toLowerCase())
+            );
+        
+            state.bookingsCopy = filteredBookings;
         }
     },
     extraReducers: (builder) => {
@@ -27,5 +46,5 @@ const bookingsSlice = createSlice({
 }
 )
 
-export const { increment } = bookingsSlice.actions;
+export const { filterBookings } = bookingsSlice.actions;
 export default bookingsSlice.reducer;

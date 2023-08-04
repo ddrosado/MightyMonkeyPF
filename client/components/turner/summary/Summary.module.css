@@ -1,8 +1,17 @@
 .infoContainer {
     display: flex;
     flex-direction: column;
-    width: 75%;
-    background: antiquewhite;
+    /* align-items: center; */
+    height: 60%;
+    justify-content: space-around;
+    background: white;
+    width: 80%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    -webkit-box-shadow: -5px 5px 18px 0px rgba(130, 130, 130, 1);
+-moz-box-shadow: -5px 5px 18px 0px rgba(130, 130, 130, 1);
+box-shadow: -5px 5px 18px 0px rgba(130, 130, 130, 1);
+padding: 10px;
 
 }
 
@@ -14,5 +23,22 @@
 }
 
 .reserveBtn {
-    background-color: brown;
+    background-color: #46d250;
+    padding: 5px 10px;
+    box-shadow: -3px 3px 11px 1px rgb(0 0 0 / 42%);
+    position: relative;
+}
+
+.reserveBtn:hover {
+    top: 1px;
+    box-shadow: -2px 2px 6px 1px rgb(0 0 0 / 42%);
+}
+
+.reserveBtn:active {
+    top: 2px;
+    box-shadow: -1px 1px 6px 0px rgb(0 0 0 / 42%);
+}
+
+.monoOK {
+    width: 70px;
 }

@@ -15,13 +15,13 @@ export default function Login() {
 
 
 
-  // switch between components
   const changeComponent = (componentName) => {
     console.log('Changing component to:', componentName);
     setActiveComponent(componentName);
   };
 
-  // conditionally render the active component
+
+
   let componentToDisplay;
   if (activeComponent === 'signIn') {
     componentToDisplay = <SignIn 
