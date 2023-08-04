@@ -16,12 +16,8 @@ const userLogin = async (form) => {
   });
   const session = await data.json();
   console.log(session)
-  if(session && session.isActive){
+  if(session && session?.isActive){
     return session;
-  }
-  if(session && !session.isActive ){
-    alert("tas baneado mepa")
-    return null;
   }
 };
 
@@ -63,20 +59,6 @@ const SignIn = (props) => {
   const { data, mutate } = useSWR("/api/user", fetcher);
 
   
-
-  // /*------------------------- Firebase ------------------------- */
-
-  //  user = firebase.auth().currentUser;
-  // if (user) {
-  //   const email = user.email;
-
-  //   userData = {
-  //     username: email,
-  //   };
-  // }
-
-  // /*------------------------------------------------------------ */
-
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -89,9 +71,10 @@ const SignIn = (props) => {
         console.log(user);
         userGoogle(user)
           .then((res) => {
-            if (res?.session && res?.isActive) {
+            if (res) {
               setAllowed(true);
-              mutate({...data,isLoggedIn:true})
+              // mutate({...data,isLoggedIn:true})
+              router.push("/home");
             } else if (res?.session && !res?.isActive){
               setAllowed(false);
               alert("TAS BANEADISIMO CAPO")
@@ -129,6 +112,10 @@ const SignIn = (props) => {
     } else {
       setAllowed(false);
     }
+    setUserData({
+      email: "",
+      password: "",
+    });
   };
 
 
@@ -138,7 +125,6 @@ const SignIn = (props) => {
     router.push("/home");
   }
 
-  console.log("holi")
 
 
   return (
