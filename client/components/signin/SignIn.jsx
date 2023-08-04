@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
 import useSWR from "swr";
 
@@ -15,7 +15,14 @@ const userLogin = async (form) => {
     },
   });
   const session = await data.json();
-  return session;
+  console.log(session)
+  if(session && session.isActive){
+    return session;
+  }
+  if(session && !session.isActive ){
+    alert("tas baneado mepa")
+    return null;
+  }
 };
 
 const fetcher = async (route) => {
@@ -82,10 +89,10 @@ const SignIn = (props) => {
         console.log(user);
         userGoogle(user)
           .then((res) => {
-            if (res.session && res.isActive) {
+            if (res?.session && res?.isActive) {
               setAllowed(true);
               mutate({...data,isLoggedIn:true})
-            } else {
+            } else if (res?.session && !res?.isActive){
               setAllowed(false);
               alert("TAS BANEADISIMO CAPO")
             }
@@ -113,11 +120,10 @@ const SignIn = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await userLogin(userData);
-    console.log(res)
-    if(res.session && res.isActive){
+    if(res?.session && res?.isActive){
       setAllowed(true);
       router.push("/home");
-    } else if(res.session && !res.isActive){
+    } else if(res?.session && !res?.isActive){
       setAllowed(false);
       alert("TAS BANEADISIMO PERRO")
     } else {
@@ -125,10 +131,14 @@ const SignIn = (props) => {
     }
   };
 
+
   const isLoggedIn = data?.isLoggedIn;
-  if(isLoggedIn && allowed){
+  if(isLoggedIn && (allowed == null)){
+    alert("sos boludo? ya tas logueado")
     router.push("/home");
   }
+
+  console.log("holi")
 
 
   return (
