@@ -55,12 +55,12 @@ function formatDateWithoutTime(dateString) {
           boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.2)",
           width: "150px",
          }}
-         src={firstreview?.user.image}
+         src={firstreview?.user?.image}
          alt="avatar"
         />
         <div className="flex flex-wrap justify-center">
          <div className="w-full shrink-0 grow-0 basis-auto px-3 lg:w-8/12">
-          <h5 className="mb-2 text-lg font-bold">{firstreview?.user.name} {firstreview?.user.surname}</h5>
+          <h5 className="mb-2 text-lg font-bold">{firstreview?.user?.name} {firstreview?.user?.surname}</h5>
           <p className="mb-4 font-medium text-neutral-700 dark:text-neutral-400">
           {firstDateModifi}
           </p>
@@ -110,12 +110,12 @@ function formatDateWithoutTime(dateString) {
           boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.2)",
           width: "150px",
          }}
-         src={secodreview?.user.image}
+         src={secodreview?.user?.image}
          alt="avatar"
         />
         <div className="flex flex-wrap justify-center">
          <div className="w-full shrink-0 grow-0 basis-auto px-3 lg:w-8/12">
-          <h5 className="mb-2 text-lg font-bold">{secodreview?.user.name} {secodreview?.user.surname}</h5>
+          <h5 className="mb-2 text-lg font-bold">{secodreview?.user?.name} {secodreview?.user?.surname}</h5>
           <p className="mb-4 font-medium text-neutral-700 dark:text-neutral-400">
           {secondDateModifi}
           </p>

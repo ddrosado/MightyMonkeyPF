@@ -56,8 +56,7 @@ const SignIn = (props) => {
   const { data, mutate } = useSWR("/api/user", fetcher);
   const isLoggedIn = data?.isLoggedIn;
   
-
-  // if (isLoggedIn === true) router.push("/home");
+  if (isLoggedIn === true) router.push("/home");
   // /*------------------------- Firebase ------------------------- */
 
   //  user = firebase.auth().currentUser;

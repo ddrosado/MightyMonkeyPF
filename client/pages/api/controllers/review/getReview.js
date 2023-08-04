@@ -1,13 +1,10 @@
 const {db}= require('../../db')
 
-const {Court, Review, User} = db
+const {Review, User} = db
 
 module.exports = async () => {
-    const courtReview = await Review.findAll({
-        where: {
-            isDeleted: false,
-        },
-        include: [
+    const review = await Review.findAll({
+         include: [
             {
                 model: User,
                 as: 'user',
@@ -16,5 +13,5 @@ module.exports = async () => {
         ]
         
     })
-    return courtReview
+    return review
 };
