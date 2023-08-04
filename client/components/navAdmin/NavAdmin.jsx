@@ -25,7 +25,7 @@ const NavAdmin = ({page}) => {
           <button className={`${style.users} ${page == "plans" ? style.active :  null}`}>Plans</button>
         </Link>
       </div>
-    </>
+    </> 
   );
 };
 
