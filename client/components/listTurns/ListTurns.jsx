@@ -67,7 +67,7 @@ export const ListTurns = () => {
             </div>
             <div className="flex flex-row mb-1 sm:mb-0">
               <div className="relative">
-                <select name='sport' onChange={(e)=>handleChange(e)} className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                <select name='date' onChange={(e)=>handleChange(e)} className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                   <option value="all">All</option>
                   {dates?.map(date=> {
                   return <option value={date}>{date}</option>
@@ -141,7 +141,7 @@ export const ListTurns = () => {
                             ></img>
                             <div>
                               <h2 className="text-sm font-medium text-gray-800 dark:text-white ">
-                                {user.name}
+                                {user.name} {user.surname}
                               </h2>
                               <p className="text-xs font-normal text-gray-600 dark:text-gray-400">
                                 {user.email}

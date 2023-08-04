@@ -14,7 +14,8 @@ module.exports = async() => {
                 attributes: [
                     'id',
                     'name',
-                    'email'
+                    'email',
+                    'surname'
                 ],
                 // include:[
                 //     {

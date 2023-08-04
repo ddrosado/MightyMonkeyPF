@@ -12,7 +12,6 @@ export const FormCourt = (props) => {
     sport: "",
     name:  "",
     description:  "",
-    image:  "",
     isAvailable: true,
     noMemberPrice:  0,
     memberPrice:0
@@ -25,7 +24,6 @@ export const FormCourt = (props) => {
       sport: props.sport ,
       name: props.court?.name ,
       description: props.court?.description,
-      image: props.court?.image ,
       isAvailable:  props.court?.isAvailable ,
       noMemberPrice: props.court?.noMemberPrice,
       memberPrice: props.court?.memberPrice
@@ -61,7 +59,6 @@ export const FormCourt = (props) => {
         sport: "",
         name: "",
         description: "",
-        image: "",
         isAvailable: true,
         noMemberPrice: 0,
         memberPrice: 0
@@ -162,24 +159,6 @@ export const FormCourt = (props) => {
               htmlFor="description"
             >
               Description
-            </label>
-          </div>
-          <div>
-            <input
-              onChange={(e) => handleChange(e)}
-              className={style.input}
-              type="text"
-              name="court"
-              id="image"
-              value={court.image}
-            />
-            <label
-              className={`${style.label} ${
-                court?.image?.length ? style.full : style.noFull
-              }`}
-              htmlFor="image"
-            >
-              Image(url)
             </label>
           </div>
           <div className={style.priceCourt}>
