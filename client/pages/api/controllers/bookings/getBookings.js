@@ -17,17 +17,6 @@ module.exports = async() => {
                     'email',
                     'surname'
                 ],
-                // include:[
-                //     {
-                //         model: Booking,
-                //         as: 'booking',
-                //         attributes:{
-                //             exclude: [
-                //                 "createdAt", "updatedAt"
-                //             ]
-                //         }
-                //     },
-                // ]
             },
             {
                 model: Court,

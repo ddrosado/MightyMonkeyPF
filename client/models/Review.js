@@ -15,9 +15,9 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM,
         values: ['1','2','3','4','5']
       },
-      isDeleted: {
+      isActive: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false,
+        allowNull: true,
       }
     });
     return Review;
