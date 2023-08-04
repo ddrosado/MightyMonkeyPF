@@ -15,7 +15,7 @@ const ListPlans = () => {
 
     useEffect(()=>{
         dispatch(getPlans()) 
-    },[])
+    },[current])
 
 
 
