@@ -1,22 +1,23 @@
 'use client'
 import React, { useEffect } from "react";
 import './Banner.css'
-import {
-    Carousel,
-    initTE,
-  } from "tw-elements";
 import img1 from '../../assets/images/banners/publi1.jpg'
 import img2 from '../../assets/images/banners/publi2.jpg'
 import img3 from '../../assets/images/banners/publi3.jpg'
 import img4 from '../../assets/images/banners/publi4.jpg'
 import Image from "next/image";
 
+
 const Banner = () => {
 
   const images = [img1, img2, img3, img4]
 
-    useEffect(() => {
-        initTE({ Carousel });
+      useEffect(() => {
+        const init = async () => {
+          const { Carousel, initTE } = await import("tw-elements");
+          initTE({ Carousel });
+        };
+        init();
       }, []);
 
   return (

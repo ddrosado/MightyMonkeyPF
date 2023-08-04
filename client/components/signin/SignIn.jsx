@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
 import useSWR from "swr";
 
@@ -15,9 +15,13 @@ const userLogin = async (form) => {
     },
   });
   const session = await data.json();
-  console.log(data)
-  if(session.isActive){
+  console.log(session)
+  if(session && session.isActive){
     return session;
+  }
+  if(session && !session.isActive ){
+    alert("tas baneado mepa")
+    return null;
   }
 };
 
@@ -88,7 +92,7 @@ const SignIn = (props) => {
             if (res?.session && res?.isActive) {
               setAllowed(true);
               mutate({...data,isLoggedIn:true})
-            } else {
+            } else if (res?.session && !res?.isActive){
               setAllowed(false);
               alert("TAS BANEADISIMO CAPO")
             }
@@ -127,12 +131,11 @@ const SignIn = (props) => {
     }
   };
 
-  console.log(data)
-  console.log(allowed)
+
   const isLoggedIn = data?.isLoggedIn;
   if(isLoggedIn && (allowed == null)){
-    alert("que queres hacer bro ya tas logueado")
-    router.replace("/home");
+    alert("sos boludo? ya tas logueado")
+    router.push("/home");
   }
 
 
