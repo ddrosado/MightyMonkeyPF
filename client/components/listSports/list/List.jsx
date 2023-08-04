@@ -83,7 +83,7 @@ export const List = ({setCurrent}) => {
               { sports?.length? 
                 sports.map(({ name, id }) => {
                   return (
-                    <tr>
+                    <tr key={id}>
                       <td className={`px-5 py-5 bg-white ${style.name}`}>
                         <p className="font-medium text-gray-800 dark:text-white">
                           {name}
