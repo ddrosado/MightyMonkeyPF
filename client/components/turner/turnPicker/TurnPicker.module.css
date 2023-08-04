@@ -3,21 +3,54 @@
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-}
-
-.btnsContainer {
+  }
+  
+  .btnsContainer {
     display: flex;
     flex-wrap: wrap;
     border: none;
     outline: none;
     width: 100%;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-.turnsContainer button {
-    background-color: black;
+    justify-content: start;
+    gap: 10px;
+    height: 80px;
+    overflow-y: auto; /* Mostrar el scrollbar vertical solo cuando sea necesario */
+    overflow-x: hidden; /* Ocultar el scrollbar horizontal */
+    padding: 5px 0 5px 30px;
     color: #FFDA61;
-    width: 60px;
+  }
+  
+  /* Estilos del Scrollbar */
+  /* Firefox */
+  .btnsContainer {
+    scrollbar-width: auto;
+    scrollbar-color: #000000 #ddc678;
+  }
+  
+  /* Chrome, Edge, y Safari */
+  .btnsContainer::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .btnsContainer::-webkit-scrollbar-track {
+    background: #ffe89e;
+  }
+  
+  .btnsContainer::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 0px;
+    border: 0px none #ffffff;
+  }
+  
+  .turnsContainer button {
+    background-color: black;
+    color: #ffda61;
+    width: 68px;
     height: 30px;
-}
+  }
+
+  .activeButton {
+    background-color: #46d250;
+    color: white;
+  }

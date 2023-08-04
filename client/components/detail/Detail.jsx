@@ -6,14 +6,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../redux/actions/sportsActions";
 import EmblaCarousel from "../carousel/Carousel";
 import Turner from "../turner/Turner";
+import { getBookings } from "../../redux/actions/bookingAction";
+// import useSWR from "swr";
+// import { fetcher } from '../../pages/api/fetcher.js';
 
 const Detail = ({ sportName }) => {
+  // const { data, error } = useSWR("api/user", fetcher);
+  
   const dispatch = useDispatch();
 
   const sport = useSelector((state) => state.sports);
+  const booking = useSelector((state) => state.bookings);
+
   useEffect(() => {
     if (!sport.length) {
       dispatch(getSports());
+      dispatch(getBookings());
     }
   }, []);
 
@@ -23,26 +31,10 @@ const Detail = ({ sportName }) => {
 
 
   const sportFind = sport.sports?.find((e) => e.name == sportName);
+  console.log("sport:", sport);
 
   return (
     <div className={style.detailContainer}>
-      {/* <div className={style.topSlice}>
-        <div className={style.imageAndTitle}>
-          <div className={style.titleSport}>
-            <h1>{sportFind?.name}</h1>
-          </div> */}
-          {/* <p>{sportFind?.description}</p> */}
-          {/* <img
-            className={style.imageSport}
-            src={sportFind?.image}
-            alt={sportFind?.name}
-          />
-        </div>
-        <div className={style.calendarReservation}>
-          <h2 className={style.making}>Make your reservation</h2>
-          <Calendar />
-        </div>
-      </div> */}
       <Turner sportFind={sportFind} />
       {/* <div className={style.midSlice}>
       <div className={style.titleSport}>

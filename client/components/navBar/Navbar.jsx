@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import style from "./Navbar.module.css";
 import Image from "next/image";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/monoeye.gif";
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "../../pages/api/fetcher";

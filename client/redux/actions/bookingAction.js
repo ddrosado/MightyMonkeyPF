@@ -14,3 +14,15 @@ export const getBookings = createAsyncThunk(
       }
     }
   );
+
+export const postBooking = createAsyncThunk(
+    'bookings/postBooking',
+    async () => {
+      try {
+        const response = await axios.post(`${url}/api/bookings`);
+        return response.data;
+      } catch (error) {
+        throw error.response.data.msg;
+      }
+    }
+  );
