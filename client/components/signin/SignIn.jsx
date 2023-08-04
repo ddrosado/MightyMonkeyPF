@@ -38,6 +38,12 @@ const userGoogle = async (user) => {
   return res;
 };
 
+
+
+
+
+
+
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
     email: "",
@@ -50,7 +56,7 @@ const SignIn = (props) => {
   const { data, mutate } = useSWR("/api/user", fetcher);
   const isLoggedIn = data?.isLoggedIn;
   
-  
+
   // if (isLoggedIn === true) router.push("/home");
   // /*------------------------- Firebase ------------------------- */
 
@@ -106,11 +112,12 @@ const SignIn = (props) => {
     const res = await userLogin(userData);
     console.log(res)
     if(res.session && res.isActive){
-      // setAllowed(true);
-      // router.push("/home");
-
+      setAllowed(true);
+      router.push("/home");
+    } else if(res.session && !res.isActive){
+      alert("TAS BANEADISIMO PERRO")
     } else {
-        // setAllowed(false);
+      setAllowed(false);
     }
   };
 
