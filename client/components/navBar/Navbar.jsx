@@ -40,8 +40,6 @@ export const Navbar = () => {
   const logInHandler = () => {
     router.push("/");
   };
-
-  console.log(data)
   useEffect(() => {
     if (!data?.isActive && data?.id) {
       logout().then(() => {

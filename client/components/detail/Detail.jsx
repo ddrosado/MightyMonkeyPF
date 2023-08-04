@@ -31,7 +31,6 @@ const Detail = ({ sportName }) => {
 
 
   const sportFind = sport.sports?.find((e) => e.name == sportName);
-  console.log("sport:", sport);
 
   return (
     <div className={style.detailContainer}>

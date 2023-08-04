@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 const InfoReviews = () => {
 
 const dispatch = useDispatch();
-const reviews = useSelector((state) => state.reviews.reviews);
+const reviews = useSelector((state) => state.reviews?.reviews);
+console.log(reviews)
 
 useEffect(() => {
 dispatch(getReviews());
 }, []);
-const lastThreeReviews = reviews.slice(-3).reverse(); 
+const lastThreeReviews = reviews?.slice(-3).reverse(); 
 
 function formatDateWithoutTime(dateString) {
    if (!dateString) return null; 
@@ -19,9 +20,9 @@ function formatDateWithoutTime(dateString) {
    return date.toISOString().split('T')[0];
    }
    
-   const firstreview = lastThreeReviews[0];
-   const secodreview = lastThreeReviews[1];
-   const terdreview = lastThreeReviews[2];
+   const firstreview = lastThreeReviews && lastThreeReviews.length > 0 ? lastThreeReviews[0] : null;
+   const secodreview = lastThreeReviews && lastThreeReviews.length > 1 ? lastThreeReviews[1] : null;
+   const terdreview = lastThreeReviews && lastThreeReviews.length > 2 ? lastThreeReviews[2] : null;
    
    const firstDateModifi = formatDateWithoutTime(firstreview?.createdAt);
    const secondDateModifi = formatDateWithoutTime(secodreview?.createdAt);
@@ -40,7 +41,6 @@ function formatDateWithoutTime(dateString) {
       data-te-carousel-slide
      >
       <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-       {/* Testimonial 1 */}
        <div
         className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
         data-te-carousel-active
@@ -90,13 +90,11 @@ function formatDateWithoutTime(dateString) {
              />
             </svg>
            </li>
-           {/* Add other list items here */}
           </ul>
          </div>
         </div>
        </div>
 
-       {/* Testimonial 2 (Same as Testimonial 1) */}
        <div
         className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
         data-te-carousel-item
@@ -145,12 +143,10 @@ function formatDateWithoutTime(dateString) {
              />
             </svg>
            </li>
-           {/* Add other list items here */}
           </ul>
          </div>
         </div>
        </div>
-       {/* Testimonial 3 (Same as Testimonial 1) */}
        <div
         className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
         data-te-carousel-item
@@ -199,7 +195,6 @@ function formatDateWithoutTime(dateString) {
              />
             </svg>
            </li>
-           {/* Add other list items here */}
           </ul>
          </div>
         </div>

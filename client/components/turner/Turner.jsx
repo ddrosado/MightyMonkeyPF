@@ -24,8 +24,7 @@ const Turner = ({ sportFind }) => {
     setSelectedCourt(court);
   };
 
-  // Llamar manualmente a handleDateSelected con la fecha actual después de inicializar el componente DatePicker
-useEffect(() => {
+  useEffect(() => {
     const currentDate = new Date().toISOString().split('T')[0];
     handleDateSelected(currentDate);
   }, []);
@@ -35,9 +34,7 @@ useEffect(() => {
       <div className={style.formContainer}>
         <div className={style.turnerLeft}>
           <DatePicker onDateSelected={handleDateSelected} selectedDate={selectedDate} />
-          {/* Pasamos la función "handleTurnSelected" al componente TurnPicker */}
-          <TurnPicker onTurnSelected={handleTurnSelected} />
-          {/* Pasamos las canchas del deporte al componente CourtPicker */}
+          <TurnPicker onTurnSelected={handleTurnSelected} selectedDate={selectedDate} />
           <CourtPicker courts={sportFind?.court} onCourtSelected={handleCourtSelected} />
         </div>
         <div className={style.turnerRight}>
