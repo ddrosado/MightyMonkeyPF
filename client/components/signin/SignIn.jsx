@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../pages/api/firebaseConfig";
 import useSWR from "swr";
 
@@ -15,8 +15,13 @@ const userLogin = async (form) => {
     },
   });
   const session = await data.json();
-  if(session?.isActive){
+  console.log(session)
+  if(session && session.isActive){
     return session;
+  }
+  if(session && !session.isActive ){
+    alert("tas baneado mepa")
+    return null;
   }
 };
 
@@ -37,7 +42,6 @@ const userGoogle = async (user) => {
     },
   });
   const res = await data.json();
-  console.log(data)
   return res;
 };
 
@@ -57,9 +61,21 @@ const SignIn = (props) => {
   const [allowed, setAllowed] = useState(null);
 
   const { data, mutate } = useSWR("/api/user", fetcher);
-  const isLoggedIn = data?.isLoggedIn;
+
   
 
+  // /*------------------------- Firebase ------------------------- */
+
+  //  user = firebase.auth().currentUser;
+  // if (user) {
+  //   const email = user.email;
+
+  //   userData = {
+  //     username: email,
+  //   };
+  // }
+
+  // /*------------------------------------------------------------ */
 
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
@@ -69,13 +85,14 @@ const SignIn = (props) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+
+        console.log(user);
         userGoogle(user)
           .then((res) => {
             if (res?.session && res?.isActive) {
               setAllowed(true);
               mutate({...data,isLoggedIn:true})
-            } 
-            else if (res?.session && !res?.isActive){
+            } else if (res?.session && !res?.isActive){
               setAllowed(false);
               alert("TAS BANEADISIMO CAPO")
             }
@@ -115,11 +132,13 @@ const SignIn = (props) => {
   };
 
 
-
+  const isLoggedIn = data?.isLoggedIn;
   if(isLoggedIn && (allowed == null)){
     alert("sos boludo? ya tas logueado")
     router.push("/home");
   }
+
+  console.log("holi")
 
 
   return (
@@ -156,7 +175,6 @@ const SignIn = (props) => {
           <button
             type="submit"
             className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-slate-300 rounded shadow"
-            onClick={onSubmit}
           >
             Sign In
           </button>
