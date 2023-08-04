@@ -26,10 +26,11 @@ export const Navbar = () => {
     { label: "Home", route: "/home" },
     { label: "About", route: "/aboutUs" },
     { label: "Contact", route: "/contact" },
-    { label: "Profile", route: "/profile" },
+    ...(data?.isActive
+      ? [{ label: "Profile", route: "/profile" }]
+      : []),
     { label: "Join!", route: "/join" },
   ];
-
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
     const res = await logout();

@@ -4,7 +4,7 @@ export const Unauthorized = () => {
     return(
         <div className={styles.unauthorizedContainer}>
             <div className={styles.content}>
-                <h1>inisia sesion profabor</h1>
+                <h1>Sign in to see your profile</h1>
                 </div>
             </div>
     )
