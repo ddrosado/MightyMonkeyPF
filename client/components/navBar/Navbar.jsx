@@ -18,7 +18,7 @@ const logout = async () => {
 
 export const Navbar = () => {
 
-  const { data, error } = useSWR("api/user", fetcher);
+  const { data } = useSWR("api/user", fetcher);
   console.log(data)
   const router = useRouter();
 
@@ -39,6 +39,10 @@ export const Navbar = () => {
   const logInHandler = () => {
     router.push("/");
   };
+
+  if (data?.id && !data?.isActive){
+    router.push("/");
+  }
 
   return (
       // <div className={style.navContainer}>
