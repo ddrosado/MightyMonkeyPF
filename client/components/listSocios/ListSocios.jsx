@@ -129,7 +129,7 @@ const handleEnable = async(email)=>{
                 {user?.length?
                   user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone, id, isActive }) => {
                     return (
-                      <tr>
+                      <tr key={id}>
                         <td className="px-5 py-5 text-sm bg-white text-gray-500 dark:text-gray-300 whitespace-nowrap">
                           <div className="flex items-center gap-x-2">
                             <img
