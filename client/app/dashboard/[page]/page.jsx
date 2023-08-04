@@ -9,8 +9,7 @@ import ListSocios from '../../../components/listSocios/ListSocios'
 import NavAdmin from '../../../components/navAdmin/NavAdmin'
 import { ListSports } from '../../../components/listSports/ListSports'
 import { ListTurns } from '../../../components/listTurns/ListTurns'
-
-
+import ListPlans from '../../../components/listPlans/listPlans'
 
 
 
@@ -32,7 +31,7 @@ const Page = ({params}) => {
             {params.page == "users" ? <ListSocios/> : null }
             {params.page == "sports" ? <ListSports/> : null }
             {params.page == "turns" ? <ListTurns/> : null }
-            {params.page == "plans" ? <h1>plans</h1> : null }
+            {params.page == "plans" ? <ListPlans/> : null }
           </div>
           {/* ) : (
           <NotFound />
