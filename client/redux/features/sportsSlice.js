@@ -15,7 +15,7 @@ const sportsSlice = createSlice({
   reducers: {
     filterSports: (state, action) => {
       const {search} = action.payload
-      state.sportsCopy = state.sports.filter(sport=> sport.name.toLowerCase().includes(search.toLowerCase()));
+      state.sportsCopy = state.sports?.filter(sport=> sport.name.toLowerCase().includes(search.toLowerCase()));
     },
   },
   extraReducers: (builder) => {

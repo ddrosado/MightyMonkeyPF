@@ -18,7 +18,6 @@ export default async (courtInfo) => {
     attributes: [
     "id",
     "name",
-    "image",
     "description",
     "isAvailable",
     "noMemberPrice",
