@@ -32,6 +32,24 @@ export const List = ({setCurrent}) => {
     })
   }
 
+    const handleDelete= async (id)=>{
+    const resp = await dispatch(putSport({id: id, isActive : false}))
+    if (resp.meta.requestStatus == "rejected") {
+      alert("Lo lamento no se pudo dar de baja el deporte");
+    } else {
+      alert("deporte correctamente dado de baja!")
+    }
+  }
+
+  const handleAcitv= async (id)=>{
+    const resp = await dispatch(putSport({id: id, isActive : true}))
+    if (resp.meta.requestStatus == "rejected") {
+      alert("Lo lamento no se pudo dar de baja el deporte");
+    } else {
+      alert("deporte correctamente dado de baja!")
+    }
+  }
+
   return (
     <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
       <div className="py-8">
@@ -81,7 +99,7 @@ export const List = ({setCurrent}) => {
               </thead>
               <tbody>
               { sports?.length? 
-                sports.map(({ name, id }) => {
+                sports.map(({ name, id, isActive }) => {
                   return (
                     <tr key={id}>
                       <td className={`px-5 py-5 bg-white ${style.name}`}>
@@ -90,9 +108,19 @@ export const List = ({setCurrent}) => {
                         </p>
                       </td>
                       <td className={`px-5 py-5 bg-white ${style.edit}`}>
-                        <button onClick={()=>setCurrent(id)} className=" bg-red-500 hover:bg-red-400 text-white font-semibold py-2 px-4 rounded-full">
+                        <button onClick={()=>setCurrent(id)} className=" bg-blue-500 hover:bg-blue-400 text-white font-semibold py-2 px-4 rounded-full">
                           edit
                         </button>
+                        {isActive? 
+                        <button onClick={()=>handleDelete(id)} className=" bg-red-500 hover:bg-red-400 text-white font-semibold py-2 px-4 rounded-full">
+                          desactivar
+                        </button>
+                         :
+                         <button onClick={()=>handleAcitv(id)} className=" bg-green-500 hover:bg-green-400 text-white font-semibold py-2 px-4 rounded-full">
+                          activar
+                        </button>
+                         }
+                        
                       </td>
                     </tr>
                   )
