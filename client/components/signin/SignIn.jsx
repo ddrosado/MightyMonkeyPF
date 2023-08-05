@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -16,14 +16,6 @@ const userLogin = async (form) => {
   });
   const session = await data.json();
   return session
-  // console.log(session)
-  // if(session && session.isActive){
-  //   return session;
-  // }
-  // if(session && !session.isActive ){
-  //   alert("tas baneado mepa")
-  //   return null;
-  // }
 };
 
 const fetcher = async (route) => {
@@ -57,19 +49,7 @@ const SignIn = (props) => {
 
   const { data, mutate } = useSWR("/api/user", fetcher);
 
-  // /*------------------------- Firebase ------------------------- */
-
-  //  user = firebase.auth().currentUser;
-  // if (user) {
-  //   const email = user.email;
-
-  //   userData = {
-  //     username: email,
-  //   };
-  // }
-
-  // /*------------------------------------------------------------ */
-
+  
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -82,9 +62,9 @@ const SignIn = (props) => {
         console.log(user);
         userGoogle(user)
           .then((res) => {
-            console.log(res)
             if (res?.session && res?.isActive) {
               setAllowed(true);
+              mutate({...data,isLoggedIn:true})
               router.push("/home");
             } else if (res?.session && !res?.isActive){
               setAllowed(false);
@@ -123,19 +103,23 @@ const SignIn = (props) => {
     } else {
       setAllowed(false);
     }
+    setUserData({
+      email: "",
+      password: "",
+    });
   };
 
 
   const isLoggedIn = data?.isLoggedIn;
-  if(isLoggedIn && (allowed == null)){
-    alert("sos boludo? ya tas logueado")
+  useEffect(() => {
+  if (isLoggedIn && allowed === null) {
+    alert("donde vas perrito? ya tas logueado");
     router.push("/home");
   }
-
-  console.log("holi")
-
+});
 
   return (
+    <div>
     <form className={styles.loginForm} onSubmit={onSubmit}>
       <div className={styles.loginFormGroup}>
         <label htmlFor="email">Email</label>
@@ -169,7 +153,6 @@ const SignIn = (props) => {
           <button
             type="submit"
             className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-slate-300 rounded shadow"
-            onClick={onSubmit}
           >
             Sign In
           </button>
@@ -177,6 +160,10 @@ const SignIn = (props) => {
             <p className={styles.invalid}>Invalid username/password</p>
           )}
         </div>
+        </div>
+
+        </form>
+
         <h3>or</h3>
 
         {/* // ------------------------- Google ------------------------- */}
@@ -226,7 +213,12 @@ const SignIn = (props) => {
           </a>
         </div>
       </div>
-    </form>
+
+
+
+
+
+
   );
 };
 

@@ -9,7 +9,6 @@ export default async function Home() {
       <Banner/>
       <Cards />
       <InfoReviews/>
-      
     </div>
   )
 }

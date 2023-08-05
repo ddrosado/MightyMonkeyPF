@@ -6,13 +6,13 @@
     gap: 3rem;
     border: solid 1px white;
     border-radius: 1.4rem;
-    padding-top: 6rem;
+    padding-top: 5rem;
     padding-bottom: 3rem;
     align-items: center;
     background-color: black;
 }
 
-.form >div{
+.form .div{
     display: flex;
     flex-direction: column;
     position: relative;
@@ -30,7 +30,7 @@
 }
 
 .input:focus{
-    --tw-ring-shadow: none;
+    --tw-ring-shadow:none;
     border-bottom: solid 1px blueviolet;
 }
 
@@ -78,7 +78,6 @@
 
 .submit:hover{
     background-color: rgb(160, 73, 241);
-    
 }
 
 .back{
@@ -101,78 +100,25 @@
     border-bottom: solid 1px blueviolet;
 }
 
-
-.priceCourt{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.priceLabel{
+.delete{
+    background-color: red;
     color: white;
+    width: 5rem;
+    height: 2rem;
+    border-radius: .3rem;
+    transition: all .3s;
+}
+.delete:hover{
+    background-color: rgb(236, 143, 143);
 }
 
-.priceCourt >div{
+.buttons{
     display: flex;
-    margin-top: 1.3rem;
-    justify-content: center;
-    width: 100%;
 }
 
-.inputPrice{
-    width: 40%;
-    background-color: transparent;
-    border: none;
-    border-bottom: solid 1px white;
-    outline: none;
-    color: white;
-    padding: 0;
-    padding-left: 2px;
-}
-
-.inputPrice:focus{
-    --tw-ring-shadow: none;
-    border-bottom: solid 1px white;
-}
-
-
-.priceCourt >div>div{
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.labelPrice{
-    color: gray;
-    font-size: .9em;
-}
-
-.isAvailable{
-    display: flex;
-    color: white;
-    align-items: center;
-}
-
-.isAvailable>div{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 1.3rem;
-    color: gray;
-}
-
-.select{
-    background-color: transparent;
-    color: white;
-}
-
-.select:focus{
-    --tw-ring-color: #6f0d9c;
-    border-color: rgb(160, 73, 241);
-}
-
-.select > option{
-    color: blueviolet;
-    background-color: black;
+.error{
+    position: absolute;
+    color: red;
+    font-size: .6em;
+    bottom: -20px;
 }

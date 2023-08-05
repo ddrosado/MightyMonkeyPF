@@ -1,8 +1,7 @@
 const mercadopago = require('mercadopago');
 const { db } = require('../../db');
-const Plan = require('../../../../models/Plan');
-const { User, Court, Booking } = db
-const ngrok = 'https://1d38-179-1-48-61.ngrok-free.app'
+const { User, Court, Plan, Booking } = db
+const ngrok = 'https://e580-179-1-48-61.ngrok-free.app'
 
 module.exports = async(data) => {
     mercadopago.configure({
@@ -41,6 +40,8 @@ module.exports = async(data) => {
             const plan = await Plan.findOne({ where: { id: planId } })
             const user = await User.findOne({ where: { id: userId } })
 
+            console.log(user);
+
             const result = await mercadopago.preapproval.create({
                 payer_email: user.email, //"test_user_1751930390@testuser.com",
                 reason: plan.name,
@@ -50,8 +51,9 @@ module.exports = async(data) => {
                     transaction_amount: plan.price,
                     currency_id: "COP"
                 },
-                back_url: `${ngrok}/thanksForSubscript`
+                back_url: `${ngrok}/thanks`
             })
+            await user.update({memberId: result.body.id, planId})
             return result
         }
         default:

@@ -57,7 +57,7 @@ Booking.belongsTo(Court,{as:"court", foreingKey:"courtId"})
 Sport.hasMany(Court, {as: 'court', foreignKey: 'sportId'})
 Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
 
-User.hasOne(Plan,{as:"membership", foreignKey: 'planId'})
+User.hasOne(Plan,{as:"plan", foreignKey: 'planId'})
 Plan.belongsTo(User,{as:"user", foreignKey: 'planId'})
 
 db.sequelize.sync();

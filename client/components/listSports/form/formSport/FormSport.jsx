@@ -63,7 +63,7 @@ export const FormSport = (props) => {
 
   const handleDelete= async (e, id)=>{
     e.preventDefault()
-    const resp = await dispatch(deletSport(id))
+    const resp = await dispatch(putSport({id: id, isActive : false}))
     if (resp.meta.requestStatus == "rejected") {
       alert("Lo lamento no se pudo eliminar el deporte");
     } else {
@@ -155,7 +155,7 @@ export const FormSport = (props) => {
           <button className={style.submit} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
             {props.sport? "Edit" : "Create"}
           </button>
-          {props.sport? <button onClick={(e)=>handleDelete(e, props.sport.id)} className={style.delete}>Delete</button> : null}
+          <button onClick={(e)=>handleDelete(e, props.sport.id)} className={style.delete}>Delete</button> 
         </div>
       </form> 
     </>

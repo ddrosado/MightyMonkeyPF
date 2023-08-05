@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
       },
       name:{
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
         allowNull:false,
       },
       price:{

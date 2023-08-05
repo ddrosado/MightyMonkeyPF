@@ -7,11 +7,15 @@ import { getSports } from "../../redux/actions/sportsActions";
 import EmblaCarousel from "../carousel/Carousel";
 import Turner from "../turner/Turner";
 import { getBookings } from "../../redux/actions/bookingAction";
-// import useSWR from "swr";
-// import { fetcher } from '../../pages/api/fetcher.js';
+import useSWR from "swr";
+import { fetcher } from '../../pages/api/fetcher.js';
 
 const Detail = ({ sportName }) => {
-  // const { data, error } = useSWR("api/user", fetcher);
+  
+  const { data } = useSWR('/api/user', fetcher);
+
+  const user = data;
+  console.log(user)
   
   const dispatch = useDispatch();
 
@@ -31,11 +35,10 @@ const Detail = ({ sportName }) => {
 
 
   const sportFind = sport.sports?.find((e) => e.name == sportName);
-  console.log("sport:", sport);
 
   return (
     <div className={style.detailContainer}>
-      <Turner sportFind={sportFind} />
+      <Turner sportFind={sportFind} user={user} />
       {/* <div className={style.midSlice}>
       <div className={style.titleSport}>
             <h1>Gallery</h1>
