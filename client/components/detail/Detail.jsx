@@ -7,11 +7,16 @@ import { getSports } from "../../redux/actions/sportsActions";
 import EmblaCarousel from "../carousel/Carousel";
 import Turner from "../turner/Turner";
 import { getBookings } from "../../redux/actions/bookingAction";
-// import useSWR from "swr";
-// import { fetcher } from '../../pages/api/fetcher.js';
+import useSWR from "swr";
+import { fetcher } from '../../pages/api/fetcher.js';
 
 const Detail = ({ sportName }) => {
-  // const { data, error } = useSWR("api/user", fetcher);
+  
+  const { data } = useSWR('/api/user', fetcher);
+
+  // objeto con propiedades de la sesion actual del usuario
+  console.log(data)
+
   
   const dispatch = useDispatch();
 
