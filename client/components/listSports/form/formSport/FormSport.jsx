@@ -63,7 +63,7 @@ export const FormSport = (props) => {
 
   const handleDelete= async (e, id)=>{
     e.preventDefault()
-    const resp = await dispatch(putSport({id: id, isActive : false}))
+    const resp = await dispatch(deletSport(id))
     if (resp.meta.requestStatus == "rejected") {
       alert("Lo lamento no se pudo eliminar el deporte");
     } else {
