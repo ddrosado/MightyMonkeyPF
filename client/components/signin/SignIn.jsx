@@ -38,12 +38,6 @@ const userGoogle = async (user) => {
   return res;
 };
 
-
-
-
-
-
-
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
     email: "",
@@ -53,7 +47,7 @@ const SignIn = (props) => {
   const router = useRouter();
   const [allowed, setAllowed] = useState(null);
 
-  const { data } = useSWR("/api/user", fetcher);
+  const { data, mutate } = useSWR("/api/user", fetcher);
 
   
   const handleGoogle = (e) => {
@@ -70,6 +64,7 @@ const SignIn = (props) => {
           .then((res) => {
             if (res?.session && res?.isActive) {
               setAllowed(true);
+              mutate({...data,isLoggedIn:true})
               router.push("/home");
             } else if (res?.session && !res?.isActive){
               setAllowed(false);
@@ -117,13 +112,11 @@ const SignIn = (props) => {
 
   const isLoggedIn = data?.isLoggedIn;
   useEffect(() => {
-  if (isLoggedIn && allowed === null || isLoggedIn && allowed === true) {
+  if (isLoggedIn && allowed === null) {
     alert("donde vas perrito? ya tas logueado");
     router.push("/home");
   }
 });
-
-
 
   return (
     <form className={styles.loginForm} onSubmit={onSubmit}>
