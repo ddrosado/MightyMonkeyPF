@@ -68,7 +68,6 @@ const SignIn = (props) => {
         console.log(user);
         userGoogle(user)
           .then((res) => {
-            console.log(res)
             if (res?.session && res?.isActive) {
               setAllowed(true);
               router.push("/home");
@@ -118,7 +117,7 @@ const SignIn = (props) => {
 
   const isLoggedIn = data?.isLoggedIn;
   useEffect(() => {
-  if (isLoggedIn && allowed === null) {
+  if (isLoggedIn && allowed === null || isLoggedIn && allowed === true) {
     alert("donde vas perrito? ya tas logueado");
     router.push("/home");
   }
