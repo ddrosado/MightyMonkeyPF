@@ -4,13 +4,20 @@ import { getPlans } from "../actions/plansActions";
 
 
 const initialState = {
-    plans: []
-}
+    plans: [],
+    onePlan: {}
+};
 
 const plansSlice = createSlice({
     name: "plans",
     initialState,
     reducers:{
+        getFindPlan: (state, action)=>{
+            const id = action.payload
+            console.log(id)
+            console.log(state.plans)
+            state.onePlan = state.plans.find(plan=> plan.id == id)
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -21,4 +28,5 @@ const plansSlice = createSlice({
 }
 )
 
+export const { getFindPlan } = plansSlice.actions;
 export default plansSlice.reducer;
