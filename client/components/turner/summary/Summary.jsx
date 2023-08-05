@@ -16,15 +16,21 @@ const Summary = ({ sportFind, selectedDate, selectedTurn, selectedCourt, user })
   const dispatch = useDispatch();
 
   const handleReserve = () => {
-    const courtFiltered = sportFind?.court.filter((c)=> c.name == selectedCourt)
+    const courtFiltered = sportFind?.court.filter((c) => c.name === selectedCourt);
     const bookingData = {
       date: formatDate(selectedDate),
       hour: [selectedTurn],
-      userId: user.id, 
-      courtId: courtFiltered[0].id, 
+      userId: user.id,
+      courtId: courtFiltered[0].id,
     };
-console.log(bookingData)
-    dispatch(postBooking(bookingData));
+    dispatch(postBooking(bookingData))
+      .then((response) => {
+        alert('Booking was successful!');
+      })
+      .catch((error) => {
+        alert('An error occurred while making the booking.');
+        console.error(error);
+      });
   };
 
   return (
