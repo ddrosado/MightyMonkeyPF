@@ -119,6 +119,7 @@ const SignIn = (props) => {
 });
 
   return (
+    <div>
     <form className={styles.loginForm} onSubmit={onSubmit}>
       <div className={styles.loginFormGroup}>
         <label htmlFor="email">Email</label>
@@ -159,6 +160,10 @@ const SignIn = (props) => {
             <p className={styles.invalid}>Invalid username/password</p>
           )}
         </div>
+        </div>
+
+        </form>
+
         <h3>or</h3>
 
         {/* // ------------------------- Google ------------------------- */}
@@ -208,7 +213,12 @@ const SignIn = (props) => {
           </a>
         </div>
       </div>
-    </form>
+
+
+
+
+
+
   );
 };
 
