@@ -18,20 +18,28 @@ export const Form = (props) => {
         name:"",
         description:"",
         price: "",
-        duration:""
+        duration: ""
     })
 
     useEffect(()=>{
-        props.id? dispatch(getFindPlan(props.id)) : null
+        props.id? dispatch(getFindPlan(props.id)) : 
+        setPlan({
+          name:"",
+          description:"",
+          price: "",
+          duration: ""
+      })
     },[])
 
     useEffect(()=>{
+      props.id?
         setPlan({
             name: planFind?.name,
             description: planFind?.description,
             price : planFind?.price,
             duration : planFind?.duration
-        })
+        }) :
+        null
     },[planFind])
 
     const handleChange = (e)=>{
@@ -62,12 +70,6 @@ export const Form = (props) => {
         const resp = await dispatch(putPlans({...plan, id: id}))
         if(resp.meta.requestStatus == "fulfilled"){
             alert("correctamente editado!")
-            setPlan({
-                name:"",
-                description:"",
-                price: "",
-                duration:""
-            })
         } else {
             alert("no se pudo editar")
         }
@@ -143,9 +145,9 @@ export const Form = (props) => {
           />
           <label
             className={`${style.label} ${
-              plan.price  !== "0" ? style.full : style.noFull
+              typeof plan.duration != "number"? style.noFull : style.full
             }`}
-            htmlFor="image"
+            htmlFor="price"
           >
             Price
           </label>
@@ -162,9 +164,9 @@ export const Form = (props) => {
           />
           <label
             className={`${style.label} ${
-              plan.duration !== 0 ? style.full : style.noFull
-            }`}
-            htmlFor="image"
+              typeof plan.duration != "number"? style.noFull : style.full 
+              }`}
+            htmlFor="duration"
           >
             Duration
           </label>

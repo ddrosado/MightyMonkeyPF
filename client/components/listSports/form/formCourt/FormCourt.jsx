@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import style from "./FormCount.module.css"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { postCourt, putCourt } from '../../../../redux/actions/courtsAction'
-import { getSports } from '../../../../redux/actions/sportsActions'
+
 
 export const FormCourt = (props) => {
 
@@ -16,6 +16,7 @@ export const FormCourt = (props) => {
     noMemberPrice:  0,
     memberPrice:0
   });
+  const sports = useSelector(state=>state.sports.sports)
 
   const [errors, setErrors] = useState({})
 
@@ -64,6 +65,7 @@ export const FormCourt = (props) => {
         memberPrice: 0
       })
     }
+
   }
 
 
@@ -87,10 +89,9 @@ export const FormCourt = (props) => {
   }
 
 
-
   return (
     <form className={style.form}>
-            <label className={style.title}>Court</label>
+            <label className={style.title}>{props.court? props.sport : "Court"}</label>
             {props.handleBack? <svg
             onClick={()=>props.handleBack(2)}
             className={`h-14 w-14 text-white ${style.back}`}
@@ -107,24 +108,12 @@ export const FormCourt = (props) => {
             <path stroke="none" d="M0 0h24v24H0z" />{" "}
             <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />
           </svg> : null}
+          {props.court? null : 
           <div>
-            <input
-              onChange={(e) => handleChange(e)}
-              className={style.input}
-              type="text"
-              name="court"
-              id="sport"
-              value={court.sport}
-            />
-            <label
-              className={`${style.label} ${
-                court?.sport?.length ? style.full : style.noFull
-              }`}
-              htmlFor="sport"
-            >
-              Sport
-            </label>
-          </div>
+            <select placeholder='Sport' onChange={(e)=>handleChange(e)} className={style.select} name="court" id="sport">
+              {sports?.map(sport=> <option value={sport.name}>{sport.name}</option>)}
+            </select>
+          </div>}
           <div>
             <input
               onChange={(e) => handleChange(e)}
