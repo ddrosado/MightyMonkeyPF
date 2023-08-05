@@ -19,7 +19,7 @@ const logout = async () => {
 
 export const Navbar = () => {
 
-  const { data } = useSWR("api/user", fetcher);
+  const { data } = useSWR("/api/user", fetcher);
   const router = useRouter();
 
   const obj = [
@@ -41,7 +41,7 @@ export const Navbar = () => {
     router.push("/");
   };
 
-  console.log(data)
+  // console.log(data)
   useEffect(() => {
     if (!data?.isActive && data?.id) {
       logout().then(() => {
