@@ -5,20 +5,9 @@ import { getReviews } from "../../redux/actions/reviewsAction";
 import { useDispatch, useSelector } from "react-redux";
 const InfoReviews = () => {
 
-<<<<<<< HEAD
-const dispatch = useDispatch();
-const reviews = useSelector((state) => state.reviews?.reviews);
-console.log(reviews)
-
-useEffect(() => {
-dispatch(getReviews());
-}, []);
-const lastThreeReviews = reviews?.slice(-3).reverse(); 
-=======
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews.reviews);
 
->>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
 
   
   useEffect(() => {
@@ -63,23 +52,12 @@ const terdreview = lastThreeReviews[2];
       </li>
      );
    }
-<<<<<<< HEAD
-   
-   const firstreview = lastThreeReviews && lastThreeReviews.length > 0 ? lastThreeReviews[0] : null;
-   const secodreview = lastThreeReviews && lastThreeReviews.length > 1 ? lastThreeReviews[1] : null;
-   const terdreview = lastThreeReviews && lastThreeReviews.length > 2 ? lastThreeReviews[2] : null;
-   
-   const firstDateModifi = formatDateWithoutTime(firstreview?.createdAt);
-   const secondDateModifi = formatDateWithoutTime(secodreview?.createdAt);
-   const thirdDateModifi = formatDateWithoutTime(terdreview?.createdAt);
-=======
    return list
  }
  const stars = li(firstreview?.rating)
  const stars1 = li(secodreview?.rating)
  const stars2 = li(terdreview?.rating)
  
->>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
 
  return (
   <div className={styles.cardSection}>
@@ -130,23 +108,8 @@ const terdreview = lastThreeReviews[2];
            </svg>
           </p>
           <ul className="mb-0 flex justify-center">
-<<<<<<< HEAD
-           <li>
-            <svg
-             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 96 960 960"
-             className="w-5 text-warning"
-            >
-             <path
-              fill="currentColor"
-              d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
-             />
-            </svg>
-           </li>
-=======
            {stars}
            {/* Add other list items here */}
->>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
           </ul>
          </div>
         </div>
@@ -188,23 +151,8 @@ const terdreview = lastThreeReviews[2];
            </svg>
           </p>
           <ul className="mb-0 flex justify-center">
-<<<<<<< HEAD
-           <li>
-            <svg
-             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 96 960 960"
-             className="w-5 text-warning"
-            >
-             <path
-              fill="currentColor"
-              d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
-             />
-            </svg>
-           </li>
-=======
           {stars1}
            {/* Add other list items here */}
->>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
           </ul>
          </div>
         </div>
@@ -247,23 +195,8 @@ const terdreview = lastThreeReviews[2];
            </svg>
           </p>
           <ul className="mb-0 flex justify-center">
-<<<<<<< HEAD
-           <li>
-            <svg
-             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 96 960 960"
-             className="w-5 text-warning"
-            >
-             <path
-              fill="currentColor"
-              d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
-             />
-            </svg>
-           </li>
-=======
           {stars2}
            {/* Add other list items here */}
->>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
           </ul>
          </div>
         </div>

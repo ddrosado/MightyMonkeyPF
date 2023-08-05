@@ -14,9 +14,8 @@ const Detail = ({ sportName }) => {
   
   const { data } = useSWR('/api/user', fetcher);
 
-  // objeto con propiedades de la sesion actual del usuario
-  console.log(data)
-
+  const user = data;
+  console.log(user)
   
   const dispatch = useDispatch();
 
@@ -39,7 +38,7 @@ const Detail = ({ sportName }) => {
 
   return (
     <div className={style.detailContainer}>
-      <Turner sportFind={sportFind} />
+      <Turner sportFind={sportFind} user={user} />
       {/* <div className={style.midSlice}>
       <div className={style.titleSport}>
             <h1>Gallery</h1>

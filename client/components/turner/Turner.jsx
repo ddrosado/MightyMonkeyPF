@@ -7,7 +7,7 @@ import Summary from './summary/Summary';
 import Image from 'next/image';
 import CourtPicker from './courtPicker/CourtPicker';
 
-const Turner = ({ sportFind }) => {
+const Turner = ({ sportFind, user }) => {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTurn, setSelectedTurn] = useState('');
   const [selectedCourt, setSelectedCourt] = useState('');
@@ -38,7 +38,7 @@ const Turner = ({ sportFind }) => {
           <CourtPicker courts={sportFind?.court} onCourtSelected={handleCourtSelected} />
         </div>
         <div className={style.turnerRight}>
-          <Summary sportFind={sportFind} selectedCourt={selectedCourt} selectedDate={selectedDate} selectedTurn={selectedTurn} />
+          <Summary user={user} sportFind={sportFind} selectedCourt={selectedCourt} selectedDate={selectedDate} selectedTurn={selectedTurn} />
         </div>
       </div>
     </div>

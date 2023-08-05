@@ -16,14 +16,14 @@ const Summary = ({ sportFind, selectedDate, selectedTurn, selectedCourt, user })
   const dispatch = useDispatch();
 
   const handleReserve = () => {
-    const courtFiltered = sportFind.court.filter((c)=> c.name == selectedCourt)
+    const courtFiltered = sportFind?.court.filter((c)=> c.name == selectedCourt)
     const bookingData = {
       date: formatDate(selectedDate),
       hour: [selectedTurn],
-      // userId: user.id, 
-      courtId: courtFiltered.id, 
+      userId: user.id, 
+      courtId: courtFiltered[0].id, 
     };
-
+console.log(bookingData)
     dispatch(postBooking(bookingData));
   };
 
