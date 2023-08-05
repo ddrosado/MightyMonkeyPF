@@ -16,6 +16,7 @@ export default async (req, res) => {
         return res.status(200).json(plan);
     }
       if (method === "PUT") {
+        console.log(body)
         const { id } = body;
         if (!id) throw Error("missing id");
         const plan = await putPlans(body);

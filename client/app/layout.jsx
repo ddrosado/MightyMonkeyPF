@@ -7,7 +7,6 @@ import { usePathname} from "next/navigation"
 import { ReduxProvider } from "../redux/provider";
 import Whatsapp from "../components/whatsapp/Whatsapp";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 

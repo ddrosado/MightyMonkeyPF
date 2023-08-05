@@ -1,10 +1,11 @@
-'use client';
+"use client";
 import React, { useEffect } from "react";
 import styles from "./InfoReviews.module.css";
-import { getReviews } from "../../redux/actions/reviewsAction"; 
+import { getReviews } from "../../redux/actions/reviewsAction";
 import { useDispatch, useSelector } from "react-redux";
 const InfoReviews = () => {
 
+<<<<<<< HEAD
 const dispatch = useDispatch();
 const reviews = useSelector((state) => state.reviews?.reviews);
 console.log(reviews)
@@ -13,12 +14,56 @@ useEffect(() => {
 dispatch(getReviews());
 }, []);
 const lastThreeReviews = reviews?.slice(-3).reverse(); 
+=======
+  const dispatch = useDispatch();
+  const reviews = useSelector((state) => state.reviews.reviews);
 
-function formatDateWithoutTime(dateString) {
-   if (!dateString) return null; 
-   const date = new Date(dateString);
-   return date.toISOString().split('T')[0];
+>>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
+
+  
+  useEffect(() => {
+    dispatch(getReviews());
+ }, []);
+
+ const lastThreeReviews = reviews.slice(-3).reverse();
+ 
+ function formatDateWithoutTime(dateString) {
+  if (!dateString) return null;
+  const date = new Date(dateString);
+  return date.toISOString().split("T")[0];
+}
+
+
+const firstreview = lastThreeReviews[0];
+const secodreview = lastThreeReviews[1];
+const terdreview = lastThreeReviews[2];
+ 
+ 
+ const firstDateModifi = formatDateWithoutTime(firstreview?.createdAt);
+ const secondDateModifi = formatDateWithoutTime(secodreview?.createdAt);
+ const thirdDateModifi = formatDateWithoutTime(terdreview?.createdAt);
+ 
+ 
+ 
+ function li(rating){
+   let list = [];
+   for (let i = 1; i <= rating; i++) {
+     list.push(
+       <li>
+       <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 96 960 960"
+        className="w-5 text-warning"
+       >
+        <path
+         fill="currentColor"
+         d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+        />
+       </svg>
+      </li>
+     );
    }
+<<<<<<< HEAD
    
    const firstreview = lastThreeReviews && lastThreeReviews.length > 0 ? lastThreeReviews[0] : null;
    const secodreview = lastThreeReviews && lastThreeReviews.length > 1 ? lastThreeReviews[1] : null;
@@ -27,8 +72,15 @@ function formatDateWithoutTime(dateString) {
    const firstDateModifi = formatDateWithoutTime(firstreview?.createdAt);
    const secondDateModifi = formatDateWithoutTime(secodreview?.createdAt);
    const thirdDateModifi = formatDateWithoutTime(terdreview?.createdAt);
+=======
+   return list
+ }
+ const stars = li(firstreview?.rating)
+ const stars1 = li(secodreview?.rating)
+ const stars2 = li(terdreview?.rating)
+ 
+>>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
 
-    
  return (
   <div className={styles.cardSection}>
    <div className="container my-24 mx-auto md:px-6">
@@ -62,10 +114,10 @@ function formatDateWithoutTime(dateString) {
          <div className="w-full shrink-0 grow-0 basis-auto px-3 lg:w-8/12">
           <h5 className="mb-2 text-lg font-bold">{firstreview?.user?.name} {firstreview?.user?.surname}</h5>
           <p className="mb-4 font-medium text-neutral-700 dark:text-neutral-400">
-          {firstDateModifi}
+           {firstDateModifi}
           </p>
           <p className="mb-6 text-neutral-500 dark:text-neutral-300">
-          {firstreview?.comment}
+           {firstreview?.comment}
            <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 96 960 960"
@@ -78,6 +130,7 @@ function formatDateWithoutTime(dateString) {
            </svg>
           </p>
           <ul className="mb-0 flex justify-center">
+<<<<<<< HEAD
            <li>
             <svg
              xmlns="http://www.w3.org/2000/svg"
@@ -90,6 +143,10 @@ function formatDateWithoutTime(dateString) {
              />
             </svg>
            </li>
+=======
+           {stars}
+           {/* Add other list items here */}
+>>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
           </ul>
          </div>
         </div>
@@ -115,7 +172,7 @@ function formatDateWithoutTime(dateString) {
          <div className="w-full shrink-0 grow-0 basis-auto px-3 lg:w-8/12">
           <h5 className="mb-2 text-lg font-bold">{secodreview?.user?.name} {secodreview?.user?.surname}</h5>
           <p className="mb-4 font-medium text-neutral-700 dark:text-neutral-400">
-          {secondDateModifi}
+           {secondDateModifi}
           </p>
           <p className="mb-6 text-neutral-500 dark:text-neutral-300">
            {secodreview?.comment}
@@ -131,6 +188,7 @@ function formatDateWithoutTime(dateString) {
            </svg>
           </p>
           <ul className="mb-0 flex justify-center">
+<<<<<<< HEAD
            <li>
             <svg
              xmlns="http://www.w3.org/2000/svg"
@@ -143,6 +201,10 @@ function formatDateWithoutTime(dateString) {
              />
             </svg>
            </li>
+=======
+          {stars1}
+           {/* Add other list items here */}
+>>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
           </ul>
          </div>
         </div>
@@ -165,12 +227,14 @@ function formatDateWithoutTime(dateString) {
         />
         <div className="flex flex-wrap justify-center">
          <div className="w-full shrink-0 grow-0 basis-auto px-3 lg:w-8/12">
-          <h5 className="mb-2 text-lg font-bold">{terdreview?.user.name} {terdreview?.user.surname}</h5>
+          <h5 className="mb-2 text-lg font-bold">
+           {terdreview?.user.name} {terdreview?.user.surname}
+          </h5>
           <p className="mb-4 font-medium text-neutral-700 dark:text-neutral-400">
            {thirdDateModifi}
           </p>
           <p className="mb-6 text-neutral-500 dark:text-neutral-300">
-          {terdreview?.comment}
+           {terdreview?.comment}
            <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 96 960 960"
@@ -183,6 +247,7 @@ function formatDateWithoutTime(dateString) {
            </svg>
           </p>
           <ul className="mb-0 flex justify-center">
+<<<<<<< HEAD
            <li>
             <svg
              xmlns="http://www.w3.org/2000/svg"
@@ -195,6 +260,10 @@ function formatDateWithoutTime(dateString) {
              />
             </svg>
            </li>
+=======
+          {stars2}
+           {/* Add other list items here */}
+>>>>>>> f3addba11cb2d11d7fe7747f5d709c920f73cfec
           </ul>
          </div>
         </div>
