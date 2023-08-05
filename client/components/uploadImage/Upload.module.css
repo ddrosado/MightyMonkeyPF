@@ -1,0 +1,13 @@
+.avatarContainer{
+    background: blue; 
+   
+    display: flex; 
+    color:white;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+}
+.avatarContainer img {
+    width: 200px;
+    border-radius:100px;
+}

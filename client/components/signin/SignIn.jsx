@@ -46,12 +46,6 @@ const userGoogle = async (user) => {
   return res;
 };
 
-
-
-
-
-
-
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
     email: "",
@@ -62,8 +56,6 @@ const SignIn = (props) => {
   const [allowed, setAllowed] = useState(null);
 
   const { data, mutate } = useSWR("/api/user", fetcher);
-
-  
 
   // /*------------------------- Firebase ------------------------- */
 
