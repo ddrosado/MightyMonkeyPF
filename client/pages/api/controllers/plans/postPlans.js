@@ -1,4 +1,5 @@
 const { db } = require('../../db')
+db.sequelize.sync()
 const Plan = db.Plan
 
 module.exports = async(info) => {
