@@ -110,11 +110,11 @@ const SignIn = (props) => {
 
   const isLoggedIn = data?.isLoggedIn;
   useEffect(() => {
-    if (isLoggedIn && allowed === null) {
-      alert("donde vas perrito? ya tas logueado");
-      router.push("/home");
-    }
-  });
+  if (isLoggedIn && allowed === null) {
+    // alert("donde vas perrito? ya tas logueado");
+    router.push("/home");
+  }
+});
 
   return (
     <div>

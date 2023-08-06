@@ -12,7 +12,7 @@ export default function Login() {
   const [activeComponent, setActiveComponent] = useState("signIn");
 
   const changeComponent = (componentName) => {
-    console.log("Changing component to:", componentName);
+    // console.log('Changing component to:', componentName);
     setActiveComponent(componentName);
   };
 

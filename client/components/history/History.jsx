@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./Turns.module.css"
 
-export const Turns = () => {
+export const History = () => {
   return (
     <div className={style.container}>
         <div className={style.turn}>
