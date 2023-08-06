@@ -4,18 +4,13 @@
     align-items: center;
     width: 40rem;
     gap: 1.5rem;
-    /* border: solid; */
     position: relative;
-    padding: 1rem;
-    height: 30rem;
-    background-color: #F8EF88;
+    background-color: #FFDA61;
+    padding: 6rem 2rem 4rem 2rem;
 }
 
 .logo{
-    position: absolute;
-    right: -4rem;
-    top: -3rem;
-    width: 10rem;
+    width: 12rem;
 }
 
 .container > div{
@@ -30,7 +25,7 @@
 .container > div > input{
     width: 19rem;
     border: none;
-    /* height: 2rem; */
+
     padding: .35rem;
 }
 
@@ -40,21 +35,4 @@
     border: none;
     padding: .8rem;
     font-size: 1em;
-}
-
-.container > button{
-    width: 100%;
-    height: 2rem;
-    border: none;
-    background-color: black;
-    color: #F8EF88;
-    cursor: pointer;
-    transition: all .3s;
-    font-weight: 600;
-    /* border-radius: 5px; */
-}
-
-.container > button:hover{
-    color: black;
-    background-color: white;
 }

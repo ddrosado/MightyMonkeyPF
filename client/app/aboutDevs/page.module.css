@@ -1,6 +1,7 @@
 .devsContainer {
-    background-color: #F8EF88;
+    background-color:#FFDA61;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     align-items: center;
@@ -18,9 +19,23 @@
     bottom: 55px;
     left: 25px;
 }
+.developers {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    width: 77%;
+    margin-top: 70px;
+}
+
+.developers h1 span {
+    color: #FFDA61;
+    background-color: black;
+    padding: 10px;
+}
 
 .devsGrid {
-    margin: 150px 0;
     width: 90%;
     display: flex;
     justify-content: center;

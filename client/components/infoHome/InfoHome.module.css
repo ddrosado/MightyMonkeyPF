@@ -1,0 +1,136 @@
+.infoContainerRest {
+    background-color: #FFDA61;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.titleContainer {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    width: 77%;
+    margin-top: 50px;
+}
+
+.titleContainer h1 span {
+    color: #FFDA61;
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.pContainer {
+    margin-top: 30px;
+}
+
+.infoDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoContainerPool {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.titleContainerPool {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    width: 80%;
+    margin-top: 50px;
+      
+}
+
+.titleContainerPool h1 span {
+    color: #FFDA61;
+    padding: 10px;
+}
+
+.pContainerPool {
+    margin-top: 30px;
+    color: white;
+}
+
+
+ /* RESPONSIVE */
+
+   /* Mobile hasta smartphone grande */
+@media (max-width: 720px) {
+    .pContainerPool {
+        width: 75%;
+    }
+    .pContainer {
+        width: 75%;
+    }
+}
+
+/* Smartphone grande hasta ordenador portátil medio */
+@media (min-width: 721px) and (max-width: 1366px) {
+
+    .carousel {
+        width: 70%;
+    }
+
+    .pContainer {
+        columns: 2;
+        column-gap: 30px;
+        width: 75%;
+    }
+    .pContainerPool {
+        columns: 2;
+        column-gap: 30px;
+        width: 75%;
+    }
+   
+}
+
+/* Ordenador portátil medio hasta ordenador de escritorio medio */
+@media (min-width: 1367px) and (max-width: 1440px) {
+
+    .carousel {
+        width: 70%;
+    }
+
+    .pContainer {
+        columns: 2;
+        column-gap: 30px;
+        width: 75%;
+    }
+    .pContainerPool {
+        columns: 2;
+        column-gap: 30px;
+        width: 75%;
+    }
+}
+
+/* PC de escritorio medio y pantallas más grandes */
+@media (min-width: 1441px) {
+ 
+    .carousel {
+        width: 70%;
+    }
+
+    .pContainer {
+        columns: 2;
+        column-gap: 30px;
+        width: 75%;
+    }
+    .pContainerPool {
+        columns: 2;
+        column-gap: 30px;
+        width: 75%;
+    }
+}
+
