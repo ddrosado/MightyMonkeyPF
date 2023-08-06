@@ -1,11 +1,18 @@
 import React from 'react'
 import style from './page.module.css'
-import Carrusel from '../../components/carrusel/Carrusel'
+import Image from 'next/image'
+import mmc from '../../assets/images/mmc.jpg'
 
 const aboutUs = () => {
+
   return (
     <div className={style.aboutContainer}>
-      <h1 className={style.clubTitle}>Mighty Monkey Club</h1>
+      <div className={style.aboutStructure}>
+      <div className={style.titleContainer}>
+      <h1 className={style.clubTitle}>Get to <span>KNOW US</span> a little more</h1>
+      </div>
+      
+      <Image src={mmc} alt='#' />
        <p className={style.infoClub}>
         The Mighty Monkey Club was a magical and special place in the heart of
         the town of Vicente López. Founded by a family passionate about sports and
@@ -40,8 +47,6 @@ const aboutUs = () => {
         unity, creating happy and lasting moments for all who were part of this
         endearing sports community.
       </p>
-      <div className={style.imagesContainer}>
-      <Carrusel />
       </div>
     </div>
   )

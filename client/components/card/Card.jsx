@@ -8,12 +8,12 @@ const Card = ({image, description, name, id, courts}) => {
   return (
     <Link href={`/detail/${name}`}>
       <div className={styles.card} style={{ backgroundImage: `url(${image})` }}>
-        <div className={styles.cardDetails}>
-          {/* <div className={styles.sportName}>
+          <div className={styles.sportName}>
           <h1>{name}</h1>
-        </div> */}
         </div>
-        <button className={styles.cardButton}>Take a turn</button>
+        <div className={styles.cardDetails}>
+        </div>
+        <button className={styles.cardButton}>RESERVE</button>
       </div>
     </Link>
   );

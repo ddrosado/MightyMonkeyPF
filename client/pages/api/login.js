@@ -7,15 +7,15 @@ async function handler(req, res) {
   const { set, save, get } = req.session;
   try {
     if (method === "POST") {
-      const { name, email, id, isAdmin, image, planId, isActive } = await userAuth(body);
-      set("user", { name, email, id, planId, isAdmin, image, isActive });
+      const { name, email, id, isAdmin, image, planId, isActive, surname, telephone } = await userAuth(body);
+      set("user", { name, email, id, isAdmin, image, planId, isActive, surname, telephone });
       await save();
       return res.status(200).json({ session: true, isActive });
     }
     if(method === "GET"){
       const user = get('user')
-      const { name, email, id, isAdmin, image, planId, isActive } = await getUserById(user.id)
-      set("user", { name, email, id, isAdmin, image, planId, isActive });
+      const { name, email, id, isAdmin, image, planId, isActive, surname, telephone } = await getUserById(user.id)
+      set("user", { name, email, id, isAdmin, image, planId, isActive, surname, telephone });
       await save();
       return res.status(200).json({ session: true, isActive });
     }

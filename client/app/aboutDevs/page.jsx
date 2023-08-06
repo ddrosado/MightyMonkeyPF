@@ -50,11 +50,16 @@ export default function page() {
   ];
   return (
     <div className={style.devsContainer}>
+      <div className={style.developers}>
+        <h1>
+          Contact our <span> DEVELOPERS !</span>
+        </h1>
+      </div>
       <div className={style.devsGrid}>
         {devs.map((dev) => (
           <div className={style.devInfo}>
             <Image className={style.imageDev} src={dev.image} alt="#" />
-            <h1 className={style.names}>{dev.name + ' ' + dev.surname}</h1>
+            <h1 className={style.names}>{dev.name + " " + dev.surname}</h1>
             <div className={style.infoIcons}>
               <Link href={dev.instagram} target="blank">
                 <FontAwesomeIcon
