@@ -1,11 +1,10 @@
 .container{
     width: 100%;
-    border-bottom: solid #FFDA60 1px;
-    border-right: solid #FFDA60 1px;
     justify-content: space-between;
-    background-color: #000000aa;
+    background-color: #000000e2;
     margin: 2vw;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 1px solid #FFDA60;
 }
 
 .img{
@@ -19,8 +18,8 @@
 .img > div{
     width: 60%;
     height: 60%;
-    border-radius: 50%;
-    border: solid 1px #FFDA60;
+    border-radius: 5px;
+    border: solid 1px #ffda603b;
 }
 
 .userdata{
@@ -43,11 +42,11 @@
 
 .userDataLabel{
     font-size: 1rem;
-    color: white;
+    color: #f4f4f56c;
 }
 
 .profileInput{
-    color: white;
+    color: #f4f4f5;
 }
 
 .profileForm{
@@ -57,11 +56,11 @@
 }
 
 .actualData{
-    color: white;
+    color: #f4f4f5;
 }
 
 .cancelButton{
-    color: white;
+    color: #f4f4f5;
 }
 
 .profileInput{
@@ -117,7 +116,49 @@
     margin-right: 10px;
     font-size: 1rem;
     background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    transition: all .2s ease-in-out; 
 }
+
+.cancelButton:hover{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: left;
+    padding: 5px;
+    padding-left: 10px;
+    width: 9rem;
+    margin-right: 10px;
+    font-size: 1rem;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 5px;
+    transform: scale(1.1); 
+}
+
+.saveButton{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: left;
+    padding: 5px;
+    padding-left: 10px;
+    width: 9rem;
+    margin-right: 10px;
+    font-size: 1rem;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    transition: all .2s ease-in-out; 
+}
+
+.saveButton:hover{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: left;
+    padding: 5px;
+    padding-left: 10px;
+    width: 9rem;
+    margin-right: 10px;
+    font-size: 1rem;
+    background-color: rgba(0, 255, 0, 0.5);
+    border-radius: 5px;
+    transform: scale(1.1); 
+}
+
 
 .fileInput{
     color: black;
@@ -141,4 +182,10 @@
     display: flex;
     width: 100%;
     flex-direction: row !important; 
+    gap: 3px;
+    color: #fafafa;
+}
+
+.check{
+    margin-left: 10px;
 }

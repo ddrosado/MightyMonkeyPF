@@ -3,7 +3,7 @@ import style from "./EditProfile.module.css"
 import { putUser } from "../../redux/actions/userActions";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen, faFloppyDisk, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faFloppyDisk, faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 
@@ -100,11 +100,6 @@ return (
       onChange={handleChange}
       className={style.profileInput}
     />
-
-      <FontAwesomeIcon 
-      icon={faFloppyDisk}
-      className={style.saveIcon} />
-
     </div>
         ) : (
     <div className={style.actualData}>
@@ -127,10 +122,6 @@ return (
               onChange={handleChange}
               className={style.profileInput}
             />
-            
-            <FontAwesomeIcon 
-            icon={faFloppyDisk}
-            className={style.saveIcon} />
             </div>
           ) : (
             <div className={style.actualData}>
@@ -153,10 +144,6 @@ return (
               onChange={handleChangePhone}
             />
             </div>
-
-            <FontAwesomeIcon 
-            icon={faFloppyDisk}
-            className={style.saveIcon} />
             </div>
           ) : (
             <div className={style.actualData}>
@@ -201,9 +188,12 @@ return (
             <div className={style.buttonsContainer}>
         
           <button 
-          className={style.cancelButton}
+          className={style.saveButton}
           value="save"
-          type="submit">Save</button>
+          type="submit">
+            <FontAwesomeIcon icon={faCheck} />
+             <span> Save changes</span>
+             </button>
         
 
         

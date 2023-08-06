@@ -22,23 +22,23 @@ const MyProfile = (props) => {
         <div className={style.userdata}>
           <div>
             <h2 className={style.userDataLabel}>Name:</h2>
-            <strong>{data.name} {data.surname}</strong>
+            <span>{data.name} {data.surname}</span>
           </div>
           <div>
             <h2 className={style.userDataLabel}>Email:</h2>
-            <strong>{data.email}</strong>
+            <span>{data.email}</span>
           </div>
           <div>
             <h2 className={style.userDataLabel}>Phone:</h2>
-            <strong>{data.telephone ?
+            <span>{data.telephone ?
              data.telephone 
-             : <p>-</p>}</strong>
+             : <p>-</p>}</span>
           </div>
           <div>
             <h2 className={style.userDataLabel}>Status:</h2>
-            <strong>{data.isMember ? 
+            <span>{data.isMember ? 
             <p>Premium Membership</p>
-          : <p>Not associated</p>}</strong>
+          : <p>Not associated</p>}</span>
 
           </div>
 

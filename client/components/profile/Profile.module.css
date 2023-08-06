@@ -1,13 +1,12 @@
 .container{
     width: 100%;
     height: 30rem;
-    border-bottom: solid #FFDA60 1px;
-    border-right: solid #FFDA60 1px;
     display: flex;
     justify-content: space-between;
-    background-color: #000000aa;
+    background-color: #000000e2;
     margin: 2vw;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 1px solid #FFDA60;
 }
 
 .img{
@@ -21,8 +20,8 @@
 .img > div{
     width: 60%;
     height: 60%;
-    border-radius: 50%;
-    border: solid 1px yellow;
+    border-radius: 5px;
+    border: solid 1px #ffda603b;
 }
 
 .userdata{
@@ -41,16 +40,16 @@
     display: flex;
     flex-direction: column;
     font-size: 1.5em;
-    color: white;
+    color: #f4f4f5;
 }
 
 .userDataLabel{
     font-size: 1rem;
-    color: white;
+    color: #f4f4f56c;
 }
 
 .profileInput{
-    color: white;
+    color: #f4f4f5;
 }
 
 .profileform{
@@ -58,7 +57,7 @@
 }
 
 .editContainer{
-    color: white;
+    color: #f4f4f5;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -69,17 +68,30 @@
     text-align: left;
     padding: 5px;
     width: 8rem;
-    margin-right: 10px;
+    margin-right: 20px;
     font-size: 1rem;
-    background-color: rgb(0, 0, 0);
+    background-color: #0000004b;
+    transition: all .2s ease-in-out; 
+    border-radius: 5px;
+}
+
+.editButton:hover{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px;
+    width: 8rem;
+    margin-right: 20px;
+    font-size: 1rem;
+    transform: scale(1.1); 
 }
 
 .buttonText{
     margin-left: 8px;
-    color: rgba(255, 255, 255, 0.20);
+    color: rgba(255, 255, 255, 0.463);
 }
 
 .iconButton{
     margin-left: 4px;
-    color: rgba(255, 255, 255, 0.20);
+    color: rgba(255, 255, 255, 0.463);
 }
