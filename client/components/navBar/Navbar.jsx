@@ -10,8 +10,6 @@ import { fetcher } from "../../pages/api/fetcher";
 import { useEffect } from "react";
 import { Collapse, Dropdown, initTE } from "tw-elements";
 
-initTE({ Collapse, Dropdown });
-
 const logout = async () => {
   const data = await fetch("api/logout", {
     method: "GET",
@@ -42,6 +40,7 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
+    initTE({ Collapse, Dropdown });
     if (!data?.isActive && data?.id) {
       logout().then(() => {
         router.push("/");

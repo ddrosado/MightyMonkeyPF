@@ -9,7 +9,7 @@ const aboutUs = () => {
     <div className={style.aboutContainer}>
       <div className={style.aboutStructure}>
       <div className={style.titleContainer}>
-      <h1 className={style.clubTitle}>Get to <span>KNOW US</span> a little more</h1>
+      <h1 className={style.clubTitle}>Get to<span>KNOW US</span>a little more</h1>
       </div>
       
       <Image src={mmc} alt='#' />
