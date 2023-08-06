@@ -16,7 +16,7 @@ export default function Login() {
 
 
   const changeComponent = (componentName) => {
-    console.log('Changing component to:', componentName);
+    // console.log('Changing component to:', componentName);
     setActiveComponent(componentName);
   };
 

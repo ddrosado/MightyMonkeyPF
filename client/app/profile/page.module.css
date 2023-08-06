@@ -5,11 +5,17 @@
     align-items: center;
 }
 
+.profileContainer{
+    width: 80%;
+    /* border: 1px solid red; */
+    margin: auto;
+}
+
 .container >h1{
     font-size: 2em;
     color: white;
-    margin-top: 5rem;
-    border-bottom: solid 1px white;
+    margin-top: 3rem;
+    margin-bottom: 0rem;
 }
 
 .loading {
@@ -22,4 +28,28 @@
     height: 100vh;
     text-align: center;
     justify-content: center;
+}
+
+.gear{
+    font-size: 10rem;
+    color: white;
+}
+
+.profileSpan{
+    font-family: 'Raleway', sans-serif;
+    background-color: #FFDA60;
+    color: black;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.swingSpan{
+    color: rgba(255, 255, 255, 0.800);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.angle{
+    color: rgba(255, 255, 255, 0.800);
 }

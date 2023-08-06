@@ -5,9 +5,12 @@ import styles from "./Register.module.css"
 import validation from "./validation";
 import { createUser, getUsers } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 
 const SignUp = (props) => {
+
+  const router = useRouter()
 
   const [registerData, setRegisterData] = useState({
     name: '',
@@ -46,6 +49,7 @@ const SignUp = (props) => {
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
       dispatch(createUser(registerData))
+      router.push("/")
     }
     setRegisterData({
       name: '',
