@@ -69,10 +69,10 @@
    /* Mobile hasta smartphone grande */
 @media (max-width: 720px) {
     .pContainerPool {
-        width: 75%;
+        width: 70%;
     }
     .pContainer {
-        width: 75%;
+        width: 70%;
     }
 }
 
@@ -86,12 +86,15 @@
     .pContainer {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
     .pContainerPool {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
+    }
+    .carousel {
+        border-radius: 10px;
     }
    
 }
@@ -101,17 +104,18 @@
 
     .carousel {
         width: 70%;
+        border-radius: 10px;
     }
 
     .pContainer {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
     .pContainerPool {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
 }
 
@@ -120,17 +124,18 @@
  
     .carousel {
         width: 70%;
+        border-radius: 10px;
     }
 
     .pContainer {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
     .pContainerPool {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
 }
 

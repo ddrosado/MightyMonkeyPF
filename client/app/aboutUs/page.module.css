@@ -40,3 +40,48 @@
     color: #FFDA61;
     padding: 10px;
 }
+
+/* RESPONSIVE */
+
+   /* Mobile hasta smartphone grande */
+   @media (max-width: 720px) {
+}
+
+/* Smartphone grande hasta ordenador portátil medio */
+@media (min-width: 721px) and (max-width: 1366px) {  
+    .photo {
+        width: 70%;
+        border-radius: 10px;
+    } 
+    .infoClub {
+        columns: 2;
+        column-gap: 30px;
+        width: 70%;
+    }
+}
+
+/* Ordenador portátil medio hasta ordenador de escritorio medio */
+@media (min-width: 1367px) and (max-width: 1440px) {
+    .photo {
+        width: 70%;
+        border-radius: 10px;
+    }
+    .infoClub {
+        columns: 2;
+        column-gap: 30px;
+        width: 70%;
+    }
+}
+
+/* PC de escritorio medio y pantallas más grandes */
+@media (min-width: 1441px) {
+    .photo {
+        width: 70%;
+        border-radius: 10px;
+    }
+    .infoClub {
+        columns: 2;
+        column-gap: 30px;
+        width: 70%;
+    }
+}
