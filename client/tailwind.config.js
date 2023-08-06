@@ -40,6 +40,7 @@ module.exports = withMT({
   plugins: [
     require("tw-elements/dist/plugin.cjs"),
     require('flowbite/plugin'),
+
   ],
   darkMode: "class",
 })

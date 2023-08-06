@@ -61,5 +61,8 @@
     "fs": false,
     "os": false,
     "path": false
+  },
+  "devDependencies": {
+    "daisyui": "^3.5.1"
   }
 }

@@ -3,6 +3,8 @@ import { useState } from "react";
 import uploadImage from "../../pages/api/uploadImage";
 import useSWR from "swr";
 import { fetcher } from "../../pages/api/fetcher";
+import style from './Upload.module.css'
+import  Modal from "../modal_avatar/Modal_avatar"
 
 const updateUser = async (email, image) => {
   const res = await fetch("api/users", {
@@ -25,20 +27,12 @@ const updateSession = async () => {
 
 export default function Upload() {
   const [file, setFile] = useState("");
-  const [img, setImg] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const { data } = useSWR("api/user", fetcher);
-  const inputFile = useRef();
+  
 
-  const uploadFileHandler = async (e) => {
-    const archive = e.target.files[0];
-    setFile(archive);
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImg(reader.result);
-    };
-    reader.readAsDataURL(archive);
-  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (file) {
@@ -62,22 +56,18 @@ export default function Upload() {
     setFile(null);
     setImg(null);
   };
-  const handleClickOverFileInput = () => {
-    inputFile.current.click()
-  };
+
 
   return (
  
       <>
-      
-<img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar"/>
-
-
-      {/* <div className={style.avatarContainer} onClick={handleClickOverFileInput}>
-        <img src={data?.image} alt="" />
-        <span>CAMBIAR AVATAR</span>
-      </div> */}
-     {/* <Modal></Modal> */}
+      <div >
+        <img src={data?.image} alt="" className={style.avatar}/>
+      </div>
+      <Modal
+        source={data?.image}
+        handleSubmit={handleSubmit}
+      ></Modal>
       </>
   );
 }
