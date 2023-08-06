@@ -39,6 +39,10 @@ export const Navbar = () => {
     router.push("/");
   };
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> c278ea793dd27ccee172534c7ab262db0cd2c044
   useEffect(() => {
     if (!data?.isActive && data?.id) {
       logout().then(() => {
