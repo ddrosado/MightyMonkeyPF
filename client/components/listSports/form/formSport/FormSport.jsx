@@ -4,15 +4,19 @@ import style from "./FormSport.module.css";
 import { useDispatch } from "react-redux";
 import { getSports, postSports, putSport, deletSport } from "../../../../redux/actions/sportsActions";
 import { validationSport } from "../validations/validations";
+import { uploadImage } from "../../../../pages/api/firebaseConfig";
+
 
 export const FormSport = (props) => {
   const dispatch = useDispatch();
-
   const [sport, setSport] = useState({
     name: "",
     description: "",
-    image: ""
+    image: "",
+    gallery : []
   });
+
+  const [arrayGallery , setArrayGallery] = useState([])
 
   const [errors, setErrors] = useState({})
 
@@ -24,15 +28,31 @@ export const FormSport = (props) => {
     })
   },[props.sport])
 
-  const handleChange = (e) => {
-    setSport({
-      ...sport,
-      [e.target.id]: e.target.value,
-    });
-    setErrors( validationSport({
-      ...sport,
-      [e.target.id]: e.target.value,
-    }, e.target.id, errors))
+  const handleChange = async(e) => {
+    if(e.target.id == "gallery"){
+      const res = await uploadImage(e.target.files[0], sport.name)
+      setArrayGallery([...arrayGallery, res])
+      setSport({
+        ...sport,
+        gallery : [...arrayGallery, res]
+      })
+    
+    } else if(e.target.id == "image"){
+     const resp  = await uploadImage(e.target.files[0],  sport.name)
+      setSport({
+        ...sport,
+        [e.target.id] : resp
+      })
+    } else {
+      setSport({
+        ...sport,
+        [e.target.id]: e.target.value,
+      });
+    }
+    // setErrors( validationSport({
+    //   ...sport,
+    //   [e.target.id]: e.target.value,
+    // }, e.target.id, errors))
   };
 
   const handleSubmitCreate = async (e) => {
@@ -44,6 +64,7 @@ export const FormSport = (props) => {
       props.handlePageSport ? props.handlePageSport(2) : null;
     }
   };
+  
 
 
   const handleEdit = async (e)=>{
@@ -70,6 +91,7 @@ export const FormSport = (props) => {
       alert("deporte correctamente eliminado!")
     }
   }
+
 
 
   return (
@@ -136,26 +158,41 @@ export const FormSport = (props) => {
           <input
             onChange={(e) => handleChange(e)}
             className={style.input}
-            type="text"
+            type="file"
             name="sport"
             id="image"
-            value={sport.image}
           />
-          <label
-            className={`${style.label} ${
-              sport.image?.length ? style.full : style.noFull
-            }`}
-            htmlFor="image"
-          >
-            Image(url)
-          </label>
-          {errors.image? <label className={style.error}>{errors.image}</label> : null }
+          <div className={style.containerImg}>
+            
+            {sport.image? <div style={{ backgroundImage: `url(${sport.image})` }}></div> : null}
+          </div>
+          {/* {errors.image? <label className={style.error}>{errors.image}</label> : null } */}
         </div>
+        <div className={style.div}>
+          <input
+            onChange={(e) => handleChange(e)}
+            className={style.input}
+            type="file"
+            multiple
+            name="sport"
+            id="gallery"
+          />
+          <div className={style.containerImg}>
+            {arrayGallery?.map(file=> {
+              return(
+              <div style={{ backgroundImage: `url(${file})` }}>
+                <button>x</button>
+              </div>)
+            }
+            )}
+          </div> 
+          <button style={{backgroundColor:"white"}} onClick={e=>confirmGallery(e)}>confirm gallery</button>
+          </div>
         <div className={style.buttons}>
           <button className={style.submit} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
             {props.sport? "Edit" : "Create"}
           </button>
-          {props.sport? <button onClick={(e)=>handleDelete(e, props.sport.id)} className={style.delete}>Delete</button> : null}
+          <button onClick={(e)=>handleDelete(e, props.sport.id)} className={style.delete}>Delete</button> 
         </div>
       </form> 
     </>

@@ -1,8 +1,29 @@
 'use client'
 import React from 'react';
 import './pricingPLans.css'
+import useSWR from 'swr';
+import { fetcher } from '../../pages/api/fetcher';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const PricingPlans = () => {
+
+  const plans = useSWR('api/plans', fetcher)
+  const user = useSWR('api/user', fetcher)
+  const router = useRouter()
+  console.log(user.data);
+  console.log(plans.data);
+
+  const urlPay = async(planId) => {
+    const url = await axios.post('http://localhost:3000/api/pay', {
+      type: 'subscriptions',
+      userId: user.data.id,
+      planId,
+    }).then(({data}) => data.init_point)
+    console.log(url);
+    router.push(url);
+  }
+
   return (
     <div className="font-sans plansContainer">
       <div className="min-h-screen flex justify-center items-center">
@@ -18,7 +39,7 @@ const PricingPlans = () => {
           </div>
           <div className="pt-24 flex flex-row">
             {/* Basic Card */}
-            <div className="w-96 p-8 bg-white text-center rounded-3xl pr-16 shadow-xl">
+            {/* <div className="w-96 p-8 bg-white text-center rounded-3xl pr-16 shadow-xl">
               <h1 className="text-black font-semibold text-2xl">1 Month</h1>
               <p className="pt-2 tracking-wide">
                 <span className="text-gray-400 align-top">$ </span>
@@ -47,43 +68,47 @@ const PricingPlans = () => {
                   </p>
                 </a>
               </div>
-            </div>
+            </div> */}
             {/* Startup Card */}
-            <div className="w-80 p-8 bgCard text-center rounded-3xl text-white border-4 shadow-xl transform scale-125">
-              <h1 className="text-white font-semibold text-2xl">3 Months</h1>
-              <p className="pt-2 tracking-wide">
-                <span className="text-gray-400 align-top">$ </span>
-                <span className="text-3xl font-semibold">24</span>
-                <span className="text-gray-400 font-medium">/ user</span>
-              </p>
-              <hr className="mt-4 border-1 border-gray-600" />
-              <div className="pt-8">
-                <p className="font-semibold text-gray-400 text-left">
-                  <span className="material-icons align-middle">done</span>
-                  <span className="pl-2">All features in <span className="text-white">Basic</span></span>
-                </p>
-                <p className="font-semibold text-gray-400 text-left pt-5">
-                  <span className="material-icons align-middle">done</span>
-                  <span className="pl-2">Flexible <span className="text-white">call scheduling</span></span>
-                </p>
-                <p className="font-semibold text-gray-400 text-left pt-5">
-                  <span className="material-icons align-middle">done</span>
-                  <span className="pl-2"><span className="text-white">15 TB</span> cloud storage</span>
-                </p>
-
-                <a href="#">
-                  <p className="w-full py-4 bgBlack mt-8 rounded-xl textYellow">
-                    <span className="font-medium">Choose Plan</span>
-                    <span className="pl-2 material-icons align-middle text-sm">east</span>
+            { plans?.data?.map( plan => {
+              return(
+                <div id={plan.id} className="w-80 p-8 bgCard text-center rounded-3xl text-white border-4 shadow-xl">
+                  <h1 className="text-white font-semibold text-2xl">{plan.duration} Months</h1>
+                  <p className="pt-2 tracking-wide">
+                    <span className="text-gray-400 align-top">$ </span>
+                    <span className="text-3xl font-semibold">{plan.price}</span>
+                    <span className="font-medium text-black">/ user</span>
                   </p>
-                </a>
-              </div>
-              <div className="absolute top-4 right-4">
-                <p className="bgBlack font-semibold px-4 py-1 rounded-full uppercase text-xs">Popular</p>
-              </div>
-            </div>
+                  <hr className="mt-4 border-1 border-gray-600" />
+                  <div className="pt-8">
+                    <p className="font-semibold text-gray-400 text-left">
+                      <span className="material-icons align-middle text-black">done</span>
+                      <span className="pl-2 text-black">All features in <span className="text-white">Basic</span></span>
+                    </p>
+                    <p className="font-semibold text-gray-400 text-left pt-5">
+                      <span className="material-icons align-middle text-black">done</span>
+                      <span className="pl-2 text-black">Flexible <span className="text-white">call scheduling</span></span>
+                    </p>
+                    <p className="font-semibold text-gray-400 text-left pt-5">
+                      <span className="material-icons align-middle text-black">done</span>
+                      <span className="pl-2 text-black"><span className="text-white">15 TB</span> cloud storage</span>
+                    </p>
+
+                    <a onClick={() => urlPay(plan.id)}>
+                      <p className="w-full py-4 bgBlack mt-8 rounded-xl textYellow">
+                        <span className="font-medium">Choose Plan</span>
+                        <span className="pl-2 material-icons align-middle text-sm">east</span>
+                      </p>
+                    </a>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    {/* <p className="bgBlack font-semibold px-4 py-1 rounded-full uppercase text-xs">Popular</p> */}
+                  </div>
+                </div>
+              )
+            })}
             {/* Enterprise Card */}
-            <div className="w-96 p-8 bg-white text-center rounded-3xl pl-16 shadow-xl">
+            {/* <div className="w-96 p-8 bg-white text-center rounded-3xl pl-16 shadow-xl">
               <h1 className="text-black font-semibold text-2xl">1 Year</h1>
               <p className="pt-2 tracking-wide">
                 <span className="text-gray-400 align-top">$ </span>
@@ -112,7 +137,7 @@ const PricingPlans = () => {
                   </p>
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

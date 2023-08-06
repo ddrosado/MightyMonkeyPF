@@ -15,6 +15,14 @@ module.exports = (sequelize) => {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
+      userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+      },
+      courtId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+      }
     });
     return Booking;
 }

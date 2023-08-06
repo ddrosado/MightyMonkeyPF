@@ -1,17 +1,19 @@
 "use client";
 import React, { useEffect } from "react";
 import style from "./Detail.module.css";
-import Calendar from "../calendar/Calendar";
 import { useDispatch, useSelector } from "react-redux";
 import { getSports } from "../../redux/actions/sportsActions";
-import EmblaCarousel from "../carousel/Carousel";
 import Turner from "../turner/Turner";
 import { getBookings } from "../../redux/actions/bookingAction";
-// import useSWR from "swr";
-// import { fetcher } from '../../pages/api/fetcher.js';
+import useSWR from "swr";
+import { fetcher } from '../../pages/api/fetcher.js';
 
 const Detail = ({ sportName }) => {
-  // const { data, error } = useSWR("api/user", fetcher);
+  
+  const { data } = useSWR('/api/user', fetcher);
+
+  const user = data;
+  console.log(user)
   
   const dispatch = useDispatch();
 
@@ -25,26 +27,11 @@ const Detail = ({ sportName }) => {
     }
   }, []);
 
-  const OPTIONS = { align: "start", containScroll: "trimSnaps" };
-  const SLIDE_COUNT = 5;
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
-
-
   const sportFind = sport.sports?.find((e) => e.name == sportName);
-  console.log("sport:", sport);
 
   return (
     <div className={style.detailContainer}>
-      <Turner sportFind={sportFind} />
-      {/* <div className={style.midSlice}>
-      <div className={style.titleSport}>
-            <h1>Gallery</h1>
-          </div>
-        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
-      </div>
-      <div className={style.botSlice}>
-        <h1>REVIEWS</h1>
-      </div> */}
+      <Turner sportFind={sportFind} user={user} />
     </div>
   );
 };

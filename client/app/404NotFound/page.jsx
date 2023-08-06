@@ -14,7 +14,6 @@ return (
             <Image className={styles.imgage}src={imgage} alt="404" />
             <h1>404 Not Found </h1>
             </Link>
-            
         </div>
     </div>
 );

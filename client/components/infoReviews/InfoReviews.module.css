@@ -1,20 +1,24 @@
 .cardSection {
-    
     background: #FFDA61;
-    height: 100vh;
-    width: 100vw;
-}
-.titleBackround {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center;   
+}
+
+.titleContainer {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.titleContainer h1 span {
     color: #FFDA61;
     background-color: black;
-    width: 200px;
-    height: 60px;
-    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
-    font-size: 1.5rem;
-    margin-bottom: 50px;
+    padding: 10px;
 }
 
 

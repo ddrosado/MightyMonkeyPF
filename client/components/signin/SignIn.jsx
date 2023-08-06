@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../app/login.module.css";
 import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -15,15 +15,7 @@ const userLogin = async (form) => {
     },
   });
   const session = await data.json();
-  return session
-  // console.log(session)
-  // if(session && session.isActive){
-  //   return session;
-  // }
-  // if(session && !session.isActive ){
-  //   alert("tas baneado mepa")
-  //   return null;
-  // }
+  return session;
 };
 
 const fetcher = async (route) => {
@@ -46,12 +38,6 @@ const userGoogle = async (user) => {
   return res;
 };
 
-
-
-
-
-
-
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
     email: "",
@@ -62,21 +48,6 @@ const SignIn = (props) => {
   const [allowed, setAllowed] = useState(null);
 
   const { data, mutate } = useSWR("/api/user", fetcher);
-
-  
-
-  // /*------------------------- Firebase ------------------------- */
-
-  //  user = firebase.auth().currentUser;
-  // if (user) {
-  //   const email = user.email;
-
-  //   userData = {
-  //     username: email,
-  //   };
-  // }
-
-  // /*------------------------------------------------------------ */
 
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
@@ -90,13 +61,13 @@ const SignIn = (props) => {
         console.log(user);
         userGoogle(user)
           .then((res) => {
-            console.log(res)
             if (res?.session && res?.isActive) {
               setAllowed(true);
+              mutate({ ...data, isLoggedIn: true });
               router.push("/home");
-            } else if (res?.session && !res?.isActive){
+            } else if (res?.session && !res?.isActive) {
               setAllowed(false);
-              alert("TAS BANEADISIMO CAPO")
+              alert("TAS BANEADISIMO CAPO");
             }
           })
           .catch((error) => console.log(error.message));
@@ -122,119 +93,123 @@ const SignIn = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await userLogin(userData);
-    if(res?.session && res?.isActive){
+    if (res?.session && res?.isActive) {
       setAllowed(true);
       router.push("/home");
-    } else if(res?.session && !res?.isActive){
+    } else if (res?.session && !res?.isActive) {
       setAllowed(false);
-      alert("TAS BANEADISIMO PERRO")
+      alert("TAS BANEADISIMO PERRO");
     } else {
       setAllowed(false);
     }
+    setUserData({
+      email: "",
+      password: "",
+    });
   };
 
-
   const isLoggedIn = data?.isLoggedIn;
-  if(isLoggedIn && (allowed == null)){
-    alert("sos boludo? ya tas logueado")
+  useEffect(() => {
+  if (isLoggedIn && allowed === null) {
+    // alert("donde vas perrito? ya tas logueado");
     router.push("/home");
   }
-
-  console.log("holi")
-
+});
 
   return (
-    <form className={styles.loginForm} onSubmit={onSubmit}>
-      <div className={styles.loginFormGroup}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="youremail@mail.com"
-          value={userData.email}
-          onChange={handleChange}
-          className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
-
-      <div className={styles.loginFormGroup}>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          value={userData.password}
-          onChange={handleChange}
-          className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
-
-      {/* // ------------------------- Sign In ------------------------- */}
-      <div className={styles.loginButtonContainer}>
-        <div className={styles.signinContainer}>
-          <button
-            type="submit"
-            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-slate-300 rounded shadow"
-            onClick={onSubmit}
+    <div>
+      <form className={styles.loginForm} onSubmit={onSubmit}>
+        <div className="relative mb-3">
+          <input
+            type="email"
+            className="peer m-0 block h-[58px] w-full border-black border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]"
+            id="email"
+            name="email"
+            value={userData.email}
+            onChange={handleChange}
+          />
+          <label
+            for="floatingInput"
+            className="pointer-events-none absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-neutral-500 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
           >
-            Sign In
-          </button>
-          {!allowed && allowed !== null && (
-            <p className={styles.invalid}>Invalid username/password</p>
-          )}
+            Email address
+          </label>
         </div>
+        <div className="relative mb-3">
+          <input
+             type="password"
+             id="password"
+             name="password"
+             value={userData.password}
+             onChange={handleChange}
+            className="peer m-0 block h-[58px] w-full border-black border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:shadow-te-primary focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]"
+           
+          />
+          <label
+            for="floatingPassword"
+            className="pointer-events-none absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-neutral-500 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >
+            Password
+          </label>
+        </div>
+
+        {/* // ------------------------- Sign In ------------------------- */}
+        <div className={styles.loginButtonContainer}>
+          <div className={styles.signinContainer}>
+            <button type="submit" className={styles.signInBtn}>
+              Sign In
+            </button>
+            {!allowed && allowed !== null && (
+              <p className={styles.invalid}>Invalid username/password</p>
+            )}
+          </div>
+        </div>
+      </form>
+      {/* // ------------------------- Google ------------------------- */}
+      <div className={styles.googleButtonContainer}>
         <h3>or</h3>
+        <button className={styles.googleBtn} onClick={handleGoogle}>
+          <img
+            className="w-6 h-6"
+            src="https://www.svgrepo.com/show/475656/google-color.svg"
+            loading="lazy"
+            alt="google logo"
+          />
 
-        {/* // ------------------------- Google ------------------------- */}
-        <div className={styles.googleButtonContainer}>
-          <button
-            className="bg-white px-4 py-2 border flex gap-2 border-slate-300 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
-            onClick={handleGoogle}
-          >
-            <img
-              className="w-6 h-6"
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              loading="lazy"
-              alt="google logo"
-            />
+          <span>Sign in with Google</span>
+        </button>
+      </div>
 
-            <span>Sign in with Google</span>
-          </button>
-        </div>
-
-        {/* // ------------------------- Sign Up ------------------------- */}
-        <div className={styles.createAccount}>
-          <h1>
-            Don't have an account?{" "}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault(); // Prevent the default link behavior
-                props.changeComponent("register"); // Call the changeComponent function
-              }}
-            >
-              <span className={styles.signUp}>
-                <u>Sign Up!</u>
-              </span>
-            </a>
-          </h1>
-        </div>
-
-        <div className={styles.forgotPass}>
+      {/* // ------------------------- Sign Up ------------------------- */}
+      <div className={styles.createAccount}>
+        <h1>
+          Don't have an account?{" "}
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault(); // Prevent the default link behavior
-              props.changeComponent("recoverPass"); // Call the changeComponent function
+              props.changeComponent("register"); // Call the changeComponent function
             }}
           >
-            Forgot your password?
+            <span className={styles.signUp}>
+              <u>Sign Up!</u>
+            </span>
           </a>
-        </div>
+        </h1>
       </div>
-    </form>
+
+      <div className={styles.forgotPass}>
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            props.changeComponent("recoverPass"); // Call the changeComponent function
+          }}
+        >
+          Forgot your password?
+        </a>
+      </div>
+    </div>
   );
 };
 

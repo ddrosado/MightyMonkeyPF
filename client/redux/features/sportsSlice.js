@@ -14,8 +14,13 @@ const sportsSlice = createSlice({
   initialState,
   reducers: {
     filterSports: (state, action) => {
-      const {search} = action.payload
-      state.sportsCopy = state.sports?.filter(sport=> sport.name.toLowerCase().includes(search.toLowerCase()));
+      const {search, isAct} = action.payload
+      console.log(isAct)
+      if (isAct == "all"){
+        state.sportsCopy = state.sports?.filter(sport=> sport.name.toLowerCase().includes(search.toLowerCase()))
+      } else {
+        state.sportsCopy = state.sports?.filter(sport=> sport.isActive == (isAct == "active"? true : false) && sport.name.toLowerCase().includes(search.toLowerCase()))
+      } 
     },
   },
   extraReducers: (builder) => {

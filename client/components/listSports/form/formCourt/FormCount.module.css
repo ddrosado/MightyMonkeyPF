@@ -6,7 +6,7 @@
     gap: 3rem;
     border: solid 1px white;
     border-radius: 1.4rem;
-    padding-top: 4rem;
+    padding-top: 6rem;
     padding-bottom: 3rem;
     align-items: center;
     background-color: black;
@@ -160,4 +160,19 @@
     gap: 3rem;
     margin-top: 1.3rem;
     color: gray;
+}
+
+.select{
+    background-color: transparent;
+    color: white;
+}
+
+.select:focus{
+    --tw-ring-color: #6f0d9c;
+    border-color: rgb(160, 73, 241);
+}
+
+.select > option{
+    color: blueviolet;
+    background-color: black;
 }

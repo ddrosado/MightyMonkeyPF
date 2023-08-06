@@ -15,13 +15,15 @@ export const getBookings = createAsyncThunk(
     }
   );
 
-export const postBooking = createAsyncThunk(
+  export const postBooking = createAsyncThunk(
     'bookings/postBooking',
-    async () => {
+    async (form) => {
       try {
-        const response = await axios.post(`${url}/api/bookings`);
+        const response = await axios.post(`${url}/api/bookings`, form);
+        console.log(response.data);
         return response.data;
       } catch (error) {
+        console.error('Error during postBooking:', error);
         throw error.response.data.msg;
       }
     }

@@ -9,7 +9,8 @@ import { filterSports } from "../../../redux/features/sportsSlice";
 export const List = ({setCurrent}) => {
   const colums = ["name", ""];
   const [filter, setFilter] = useState({
-    search: ""
+    search: "",
+    isAct: "all"
   })
 
 
@@ -32,16 +33,35 @@ export const List = ({setCurrent}) => {
     })
   }
 
+    const handleDelete= async (id)=>{
+    const resp = await dispatch(putSport({id: id, isActive : false}))
+    if (resp.meta.requestStatus == "rejected") {
+      alert("Lo lamento no se pudo dar de baja el deporte");
+    } else {
+      alert("deporte correctamente dado de baja!")
+    }
+  }
+
+  const handleAcitv= async (id)=>{
+    const resp = await dispatch(putSport({id: id, isActive : true}))
+    if (resp.meta.requestStatus == "rejected") {
+      alert("Lo lamento no se pudo dar de baja el deporte");
+    } else {
+      alert("deporte correctamente dado de baja!")
+    }
+  }
+
+
   return (
     <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}>
       <div className="py-8">
         <div className="my-2 flex sm:flex-row flex-col">
           <div className="flex flex-row mb-1 sm:mb-0">
             <div className="relative">
-              <select className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                <option>All</option>
-                <option>Active</option>
-                <option>Inactive</option>
+              <select onClick={(e)=>handleChange(e)} name="isAct" className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                <option value="all">All</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
               </select>
             </div>
           </div>
@@ -81,7 +101,7 @@ export const List = ({setCurrent}) => {
               </thead>
               <tbody>
               { sports?.length? 
-                sports.map(({ name, id }) => {
+                sports.map(({ name, id, isActive }) => {
                   return (
                     <tr key={id}>
                       <td className={`px-5 py-5 bg-white ${style.name}`}>
@@ -90,9 +110,19 @@ export const List = ({setCurrent}) => {
                         </p>
                       </td>
                       <td className={`px-5 py-5 bg-white ${style.edit}`}>
-                        <button onClick={()=>setCurrent(id)} className=" bg-red-500 hover:bg-red-400 text-white font-semibold py-2 px-4 rounded-full">
+                        <button onClick={()=>setCurrent(id)} className=" bg-blue-500 hover:bg-blue-400 text-white font-semibold py-2 px-4 rounded-full">
                           edit
                         </button>
+                        {isActive? 
+                        <button onClick={()=>handleDelete(id)} className=" bg-red-500 hover:bg-red-400 text-white font-semibold py-2 px-4 rounded-full">
+                          desactivar
+                        </button>
+                         :
+                         <button onClick={()=>handleAcitv(id)} className=" bg-green-500 hover:bg-green-400 text-white font-semibold py-2 px-4 rounded-full">
+                          activar
+                        </button>
+                         }
+                        
                       </td>
                     </tr>
                   )

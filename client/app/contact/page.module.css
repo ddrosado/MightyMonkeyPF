@@ -1,5 +1,8 @@
 .container{
-    
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .portada{
@@ -20,9 +23,16 @@
 .sectionForm{
     display: flex;
     width: 100%;
-    height: 50rem;
-    background-color: black;
     align-items: center;
     justify-content: center;
+    margin-bottom: 50px;
+}
+
+.logo {
+    color: transparent;
+    z-index: 1000;
+    position: relative;
+    width: 22rem;
+    top: 80px;
 }
 
