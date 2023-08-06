@@ -115,7 +115,7 @@
     }
 }
 
-/* Ordenador de escritorio medio y pantallas más grandes */
+/* PC de escritorio medio y pantallas más grandes */
 @media (min-width: 1441px) {
  
     .carousel {
@@ -133,3 +133,4 @@
         width: 75%;
     }
 }
+
