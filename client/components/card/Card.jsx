@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Card.module.css";
 import Link from "next/link";
 
-const Card = ({image, description, name, id, courts}) => {
+const Card = ({image, name}) => {
 
   
   return (
