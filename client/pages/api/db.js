@@ -60,6 +60,9 @@ Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
 User.hasOne(Plan,{as:"plan", foreignKey: 'planId'})
 Plan.belongsTo(User,{as:"user", foreignKey: 'planId'})
 
+Plan.hasMany(Membership,{as:"membership", foreignKey:"planId"})
+Membership.belongsTo(Plan,{as:"plan", foreignKey:"planId"})
+
 db.sequelize.sync();
 
 module.exports = {
