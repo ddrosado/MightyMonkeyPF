@@ -3,7 +3,6 @@ import { useState } from "react";
 import uploadImage from "../../pages/api/uploadImage";
 import useSWR from "swr";
 import { fetcher } from "../../pages/api/fetcher";
-import style from "./Upload.module.css";
 
 const updateUser = async (email, image) => {
   const res = await fetch("api/users", {
@@ -68,33 +67,17 @@ export default function Upload() {
   };
 
   return (
-    <>
-      <div className={style.avatarContainer} onClick={handleClickOverFileInput}>
-        <img src={img || data?.image} alt="" />
-        <span>CAMBIAR AVATAR</span>
-      </div>
+ 
+      <>
+      
+<img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar"/>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          id={"archive"}
-          type="file"
-          accept=".jpg, .png, .gif"
-          onChange={uploadFileHandler}
-          ref={inputFile}
-        />
-        {file ? (
-          <>
-            <button>Upload</button>
-            {loading ? (
-              <>{`  Loading...`}</>
-            ) : (
-              <button type="button" onClick={handleDiscard}>
-                Discard
-              </button>
-            )}
-          </>
-        ) : null}
-      </form>
-    </>
+
+      {/* <div className={style.avatarContainer} onClick={handleClickOverFileInput}>
+        <img src={data?.image} alt="" />
+        <span>CAMBIAR AVATAR</span>
+      </div> */}
+     {/* <Modal></Modal> */}
+      </>
   );
 }
