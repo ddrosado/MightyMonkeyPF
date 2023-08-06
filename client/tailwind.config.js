@@ -17,6 +17,7 @@ module.exports = withMT({
     "./pages/**/*.{ts,tsx}",
     "./public/**/*.html",
     "./pages/**/*.{js,ts,jsx,tsx}",
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -40,6 +41,7 @@ module.exports = withMT({
   plugins: [
     require("tw-elements/dist/plugin.cjs"),
     require('flowbite/plugin'),
+    require("daisyui"),
   ],
   darkMode: "class",
 })
