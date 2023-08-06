@@ -4,7 +4,7 @@ import style from "./Profile.module.css"
 import useSWR from "swr";
 import { fetcher } from '../../pages/api/fetcher';
 import axios from 'axios';
-
+import { mutate } from 'swr';
 const MyProfile = () => {
   const { data, error } = useSWR("api/user", fetcher);
   const [isEditing, setIsEditing] = useState(false);
@@ -29,10 +29,12 @@ const MyProfile = () => {
     try {
       await axios.put("api/users", editedData);
       setIsEditing(false);
-      // Puedes hacer una nueva solicitud SWR aquí para actualizar los datos en el componente con los datos actualizados desde el servidor.
+
+      // Después de una actualización exitosa, desencadena una revalidación de datos para actualizar la interfaz de usuario
+      mutate("api/user"); // Esto volverá a obtener los datos para el endpoint "api/user"
+
     } catch (error) {
       console.error('Error al guardar los cambios:', error);
-      // Puedes manejar el error aquí, por ejemplo, mostrando un mensaje de error al usuario.
     }
   };
 
@@ -40,9 +42,7 @@ const MyProfile = () => {
     data ? (
       <div className={style.container}>
         <div className={style.img}>
-          <div>
-            <img src={editedData.image || ''} alt="Profile" />
-          </div>
+          <img className={style.imgProfile} src={editedData.image || ''} alt="Profile" />
         </div>
         <div className={style.userdata}>
           <div>
@@ -55,7 +55,7 @@ const MyProfile = () => {
                 onChange={handleChange}
               />
             ) : (
-              <strong>{data.name}</strong>
+              <strong>{data.name} </strong>
             )}
             {isEditing ? (
               <button onClick={handleSaveClick}>Save</button>
