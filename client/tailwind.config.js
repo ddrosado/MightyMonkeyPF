@@ -43,5 +43,5 @@ module.exports = withMT({
     require('flowbite/plugin'),
     require("daisyui"),
   ],
-  darkMode: "class",
+  // darkMode: "class",
 })

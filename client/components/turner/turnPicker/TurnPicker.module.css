@@ -15,10 +15,10 @@
     justify-content: start;
     gap: 10px;
     height: 80px;
-    overflow-y: auto; /* Mostrar el scrollbar vertical solo cuando sea necesario */
-    overflow-x: hidden; /* Ocultar el scrollbar horizontal */
-    padding: 5px 0 5px 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
     color: #FFDA61;
+    margin-top: 10px;
   }
   
   /* Estilos del Scrollbar */
