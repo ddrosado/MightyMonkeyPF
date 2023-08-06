@@ -199,14 +199,14 @@ return (
 
 
             <div className={style.buttonsContainer}>
-        <div>
+        
           <button 
           className={style.cancelButton}
           value="save"
           type="submit">Save</button>
-        </div>
+        
 
-        <div>
+        
     <button
     className={style.cancelButton}
     value="cancel"
@@ -217,7 +217,7 @@ return (
       >
         <FontAwesomeIcon icon={faXmark} /> Cancel editing
       </button>
-      </div>
+      
       </div>
 
       </div>
