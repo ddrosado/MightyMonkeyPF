@@ -1,0 +1,191 @@
+.container{
+    width: 100%;
+    justify-content: space-between;
+    background-color: #000000e2;
+    margin: 2vw;
+    border-radius: 5px;
+    border: 1px solid #FFDA60;
+}
+
+.img{
+    /* border: solid 1px green;  */
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img > div{
+    width: 60%;
+    height: 60%;
+    border-radius: 5px;
+    border: solid 1px #ffda603b;
+}
+
+.userdata{
+    /* border: solid 1px cyan; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    /* padding-left: 2rem; */
+}
+
+.userdata >div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5em;
+}
+
+.userDataLabel{
+    font-size: 1rem;
+    color: #f4f4f56c;
+}
+
+.profileInput{
+    color: #f4f4f5;
+}
+
+.profileForm{
+    /* border: 1cap solid fuchsia; */
+    display: flex;
+    height: 30rem;
+}
+
+.actualData{
+    color: #f4f4f5;
+}
+
+.cancelButton{
+    color: #f4f4f5;
+}
+
+.profileInput{
+    color: black;
+    border-radius: 5px;
+    height: 35px;
+    position: relative;
+    font-size: 14px;
+    letter-spacing: .01rem;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 8px;
+    margin-left: 0;
+    background: #FFFFFF;
+    border: 1px solid #CACACA;
+    line-height: 25px;
+    width: 300px;
+    outline: none;
+}
+
+
+
+.saveIcon{
+    color: #FFDA60;
+    margin: 5px;
+    margin-left: 10px;
+    text-align: center;
+    transition: all .2s ease-in-out; 
+
+}
+
+.saveIcon:hover{
+    margin-left: 10px;
+    text-align: center;
+    transform: scale(1.2); 
+}
+
+.inputContainer{
+    display: flex;
+
+}
+
+.phoneContainer{
+    height: 35px;
+}
+
+.cancelButton{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: left;
+    padding: 5px;
+    padding-left: 10px;
+    width: 9rem;
+    margin-right: 10px;
+    font-size: 1rem;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    transition: all .2s ease-in-out; 
+}
+
+.cancelButton:hover{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: left;
+    padding: 5px;
+    padding-left: 10px;
+    width: 9rem;
+    margin-right: 10px;
+    font-size: 1rem;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 5px;
+    transform: scale(1.1); 
+}
+
+.saveButton{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: left;
+    padding: 5px;
+    padding-left: 10px;
+    width: 9rem;
+    margin-right: 10px;
+    font-size: 1rem;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    transition: all .2s ease-in-out; 
+}
+
+.saveButton:hover{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: left;
+    padding: 5px;
+    padding-left: 10px;
+    width: 9rem;
+    margin-right: 10px;
+    font-size: 1rem;
+    background-color: rgba(0, 255, 0, 0.5);
+    border-radius: 5px;
+    transform: scale(1.1); 
+}
+
+
+.fileInput{
+    color: black;
+    border-radius: 5px;
+    height: 35px;
+    position: relative;
+    font-size: 14px;
+    letter-spacing: .01rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 8px;
+    margin-left: 0;
+    background: #FFFFFF;
+    border: 1px solid #CACACA;
+    line-height: 25px;
+    width: 300px;
+    outline: none;
+}
+
+.buttonsContainer{
+    display: flex;
+    width: 100%;
+    flex-direction: row !important; 
+    gap: 3px;
+    color: #fafafa;
+}
+
+.check{
+    margin-left: 10px;
+}

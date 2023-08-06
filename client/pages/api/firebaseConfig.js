@@ -9,12 +9,13 @@ const firebaseConfig = {
   storageBucket: "mightymonkeyclub-861ae.appspot.com",
   messagingSenderId: "81000800451",
   appId: "1:81000800451:web:cbde0eb0e5a4492fbc0276",
-  measurementId: "G-XE07K6MKRR"
+  measurementId: "G-XE07K6MKRR",
 };
-
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+
 export default app;
 
 export const storage = getStorage(app)
