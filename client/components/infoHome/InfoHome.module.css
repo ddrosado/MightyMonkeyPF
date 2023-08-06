@@ -21,6 +21,7 @@
     color: #FFDA61;
     background-color: black;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .pContainer {
@@ -47,7 +48,7 @@
     font-weight: bold;
     text-align: center;
     color: white;
-    width: 75%;
+    width: 80%;
     margin-top: 50px;
       
 }
@@ -114,7 +115,7 @@
     }
 }
 
-/* Ordenador de escritorio medio y pantallas más grandes */
+/* PC de escritorio medio y pantallas más grandes */
 @media (min-width: 1441px) {
  
     .carousel {
@@ -132,3 +133,4 @@
         width: 75%;
     }
 }
+
