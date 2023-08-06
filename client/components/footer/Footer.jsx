@@ -14,12 +14,14 @@ const Footer = () => {
   return (
     <div className={style.footerContainer}>
       <Image src={logo} alt="logos" className={style.logo} />
-      <p className={style.copyright}>
-      © Mighty Monky Club. Todos los derechos reservados
-      </p>
-      <Link href='/aboutDevs'>
-        <p className={style.aboutDevs}>Our Developers</p>
-      </Link>
+      <div className={style.footerText}>
+        <p className={style.copyright}>
+          © Mighty Monkey Club. All rights reserved
+        </p>
+        <Link href="/aboutDevs">
+          <p className={style.aboutDevs}>Our Developers</p>
+        </Link>
+      </div>
       <div className={style.socialIcons}>
         <Link href="https://instagram.com/" target="blank">
           <FontAwesomeIcon

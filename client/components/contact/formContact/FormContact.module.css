@@ -4,18 +4,13 @@
     align-items: center;
     width: 40rem;
     gap: 1.5rem;
-    /* border: solid; */
     position: relative;
-    padding: 1rem;
-    height: 30rem;
-    background-color: #F8EF88;
+    background-color: #FFDA61;
+    padding: 6rem 2rem 4rem 2rem;
 }
 
 .logo{
-    position: absolute;
-    right: -4rem;
-    top: -3rem;
-    width: 10rem;
+    width: 12rem;
 }
 
 .container > div{
@@ -30,7 +25,7 @@
 .container > div > input{
     width: 19rem;
     border: none;
-    /* height: 2rem; */
+
     padding: .35rem;
 }
 
@@ -43,7 +38,7 @@
 }
 
 .container > button{
-    width: 100%;
+    width: 100px;
     height: 2rem;
     border: none;
     background-color: black;
