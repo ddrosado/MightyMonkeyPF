@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import style from "./Navbar.module.css";
 import Image from "next/image";
-import logo from "../../assets/images/monitos.png";
+import logo from "../../assets/images/mighty.png";
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "../../pages/api/fetcher";
@@ -40,13 +40,20 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
-    initTE({ Collapse, Dropdown });
     if (!data?.isActive && data?.id) {
       logout().then(() => {
         router.push("/");
       });
     }
   }, [data, router]);
+
+  useEffect(() => {
+    const init = async () => {
+      const { Collapse, Dropdown, initTE } = await import("tw-elements");
+      initTE({ Collapse, Dropdown });
+    };
+    init();
+  }, []);
 
   if (data?.id && !data?.isActive) {
     router.push("/");
@@ -56,6 +63,7 @@ export const Navbar = () => {
     <div className={style.navContainer}>
       <Image className={style.logo} src={logo} alt="#" />
       <nav
+      style={{color:'black'}}
         class="relative flex w-full flex-nowrap items-center justify-between py-2 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:flex-wrap lg:justify-start lg:py-4"
         data-te-navbar-ref
       >
@@ -69,7 +77,7 @@ export const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="[&>svg]:w-7">
+            <span class="[&>svg]:w-7" style={{color:'black'}}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
