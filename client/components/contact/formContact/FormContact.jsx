@@ -19,7 +19,7 @@ const FormContact = () => {
             <input type="text" placeholder='Phone'/>    
         </div>
         <textarea name="" id="" cols="30" rows="10" placeholder='Aqui deje su mensaje...'></textarea>
-        <button>Enviar</button>
+        <button className="btn btn-outline btn-success">Send</button>
         
     </form>
   )
