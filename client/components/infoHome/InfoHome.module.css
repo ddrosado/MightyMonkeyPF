@@ -21,6 +21,7 @@
     color: #FFDA61;
     background-color: black;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .pContainer {
@@ -47,7 +48,7 @@
     font-weight: bold;
     text-align: center;
     color: white;
-    width: 75%;
+    width: 80%;
     margin-top: 50px;
       
 }
@@ -68,10 +69,10 @@
    /* Mobile hasta smartphone grande */
 @media (max-width: 720px) {
     .pContainerPool {
-        width: 75%;
+        width: 70%;
     }
     .pContainer {
-        width: 75%;
+        width: 70%;
     }
 }
 
@@ -85,12 +86,15 @@
     .pContainer {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
     .pContainerPool {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
+    }
+    .carousel {
+        border-radius: 10px;
     }
    
 }
@@ -100,35 +104,38 @@
 
     .carousel {
         width: 70%;
+        border-radius: 10px;
     }
 
     .pContainer {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
     .pContainerPool {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
 }
 
-/* Ordenador de escritorio medio y pantallas más grandes */
+/* PC de escritorio medio y pantallas más grandes */
 @media (min-width: 1441px) {
  
     .carousel {
         width: 70%;
+        border-radius: 10px;
     }
 
     .pContainer {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
     .pContainerPool {
         columns: 2;
         column-gap: 30px;
-        width: 75%;
+        width: 70%;
     }
 }
+

@@ -2,14 +2,15 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import style from "./page.module.css"
-import { fetcher } from '../../../pages/api/fetcher.js'
 import useSWR from "swr";
 import NotFound from '../../404NotFound/page.jsx'
-import ListSocios from '../../../components/listSocios/ListSocios'
 import NavAdmin from '../../../components/navAdmin/NavAdmin'
-import { ListSports } from '../../../components/listSports/ListSports'
-import { ListTurns } from '../../../components/listTurns/ListTurns'
-import ListPlans from '../../../components/listPlans/listPlans'
+import ListSocios from '../../../components/admin/listSocios/ListSocios'
+import { ListSports } from '../../../components/admin/listSports/ListSports'
+import { ListTurns } from '../../../components/admin/listTurns/ListTurns'
+import ListPlans from '../../../components/admin/listPlans/ListPlans'
+import { fetcher } from '../../../pages/api/fetcher';
+
 
 
 
@@ -33,7 +34,7 @@ const Page = ({params}) => {
             {params.page == "turns" ? <ListTurns/> : null }
             {params.page == "plans" ? <ListPlans/> : null }
           </div>
-          {/* ) : (
+          {/* )  : (
           <NotFound />
         )
       ) : <NotFound />} */}

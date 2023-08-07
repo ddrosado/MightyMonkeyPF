@@ -7,8 +7,8 @@ const BackArrow = (props) => {
     <div className={styles.recoverArrow}>
       <FontAwesomeIcon icon={faCircleLeft}
       onClick={(e) => {
-        e.preventDefault(); // Prevent the default link behavior
-        props.changeComponent('signIn'); // Call the changeComponent function
+        e.preventDefault(); 
+        props.changeComponent('signIn'); 
       }} />
       </div>
   )

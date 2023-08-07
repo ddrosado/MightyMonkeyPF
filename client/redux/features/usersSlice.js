@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { deleteUser, getUsers } from '../actions/userActions';
+import { deleteUser, getUsers, putUser, updateUser } from '../actions/userActions';
 
 const initialState = {
   users: [],
-  usersCopy: []
+  usersCopy: [],
+  user: []
 };
 
 const usersSlice = createSlice({
@@ -29,6 +30,14 @@ const usersSlice = createSlice({
       .addCase(getUsers.rejected, (state, action) => {
         state.error = 'Error occurred while fetching sports data.';
         state.users = [];
+      })
+      .addCase(putUser.fulfilled, (state, action) => {
+        state.error = "";
+        state.users = action.payload;
+        state.usersCopy = action.payload;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload;
       });
   },
 });

@@ -20,7 +20,7 @@ const Restaurant = () => {
       <div className={style.infoDisplay}>
         <CarouselDefault images={imagesRest} />
         <div className={style.pContainer}>
-          <p>
+          <p style={{color:'black'}} >
             Welcome to our exquisite restaurant, where culinary delights await!
             Indulge in a delectable array of dishes crafted with passion and
             precision by our talented chefs. From savory starters to

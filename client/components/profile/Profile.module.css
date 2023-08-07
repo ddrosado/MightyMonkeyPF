@@ -1,16 +1,14 @@
 .container{
-    width: 80%;
-    height: 34rem;
-    border-bottom: solid white 1px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: #00000084;
-    margin: 2vw;
-    border-radius: 10px;
+    background-color: #000000e2;
+    border-radius: 5px;
+    border: 1px solid #FFDA60;
 }
 
 .img{
-    /* border: solid 1px white; */
+    /* border: solid 1px green;  */
     width: 100%;
     height: auto;
     display: flex;
@@ -18,20 +16,22 @@
     justify-content: center;
 }
 .img > div{
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    border: solid 1px yellow;
+    width: 90%;
+    height: 100%;
+    border-radius: 5px;
+    border: solid 1px #ffda603b;
 }
 
 .userdata{
-    /* border: solid 1px white; */
+    /* border: solid 1px cyan; */
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
+
+    margin-left: 20px;
     /* padding-left: 2rem; */
 }
 
@@ -39,11 +39,71 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    color: white;
     font-size: 1.5em;
-    margin-left: 5rem;
+    color: #f4f4f5;
 }
 
 .userDataLabel{
     font-size: 1rem;
+    color: #f4f4f56c;
 }
+
+.profileInput{
+    color: #f4f4f5;
+}
+
+/* .profileform{
+    border: 1px solid fuchsia;
+} */
+
+.editContainer{
+    color: #f4f4f5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.editButton{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: left;
+    padding: 5px;
+    width: 8rem;
+    margin-right: 20px;
+    font-size: 1rem;
+    background-color: #0000004b;
+    transition: all .2s ease-in-out; 
+    border-radius: 5px;
+}
+
+.editButton:hover{
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px;
+    width: 8rem;
+    margin-right: 20px;
+    font-size: 1rem;
+    transform: scale(1.1); 
+}
+
+.buttonText{
+    margin-left: 8px;
+    color: rgba(255, 255, 255, 0.463);
+}
+
+.iconButton{
+    margin-left: 4px;
+    color: rgba(255, 255, 255, 0.463);
+}
+
+
+
+
+.container{
+    /* border: 1px solid fuchsia; */
+    padding: 40px
+}
+
+/* .marginContainer{
+    border: 1px solid green;
+} */

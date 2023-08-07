@@ -1,0 +1,39 @@
+
+.rating {
+    display: inline-block;
+    position: relative;
+    font-size: 0;
+    line-height: 1;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .rating label:before {
+    content: "\2606"; /* Estrella sin rellenar */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    font-size: 24px;
+    line-height: 1;
+  }
+  
+  .rating label:hover:before,
+  .rating label:hover ~ label:before,
+  .rating input:checked ~ label:before {
+    content: "\2605"; /* Estrella rellenada */
+  }
+  

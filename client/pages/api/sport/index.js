@@ -25,6 +25,7 @@ export default async (req, res) => {
     }
     if (method === "DELETE") {
       const { id } = body;
+      console.log( "styo ejecutando deleete" + id)
       if (!id) throw Error("missing id");
       const sport = await deleteSport(id);
       return res.status(200).json(sport);

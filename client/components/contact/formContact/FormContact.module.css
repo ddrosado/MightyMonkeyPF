@@ -37,19 +37,27 @@
     font-size: 1em;
 }
 
-.container > button{
-    width: 100px;
-    height: 2rem;
-    border: none;
-    background-color: black;
-    color: #F8EF88;
-    cursor: pointer;
-    transition: all .3s;
-    font-weight: 600;
-    /* border-radius: 5px; */
+
+@media (max-width: 720px) {
 }
 
-.container > button:hover{
-    color: black;
-    background-color: white;
+/* Smartphone grande hasta ordenador portátil medio */
+@media (min-width: 721px) and (max-width: 1366px) {  
+    .container {
+        border-radius: 10px;
+    }    
+}
+
+/* Ordenador portátil medio hasta ordenador de escritorio medio */
+@media (min-width: 1367px) and (max-width: 1440px) {
+    .container {
+        border-radius: 10px;
+    } 
+}
+
+/* PC de escritorio medio y pantallas más grandes */
+@media (min-width: 1441px) {
+    .container {
+        border-radius: 10px;
+    }   
 }

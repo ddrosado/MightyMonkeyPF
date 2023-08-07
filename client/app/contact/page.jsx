@@ -5,6 +5,7 @@ import style from "./page.module.css";
 import { SectionDate } from "../../components/contact/sectionDate/SectionDate";
 import monkeymsg from '../../assets/images/monomsg.png'
 import Image from "next/image";
+import Querys from "../../components/contact/querys/Querys";
 
 const Contact = () => {
   return (
@@ -16,6 +17,7 @@ const Contact = () => {
       <div className={style.sectionForm}>
         <FormContact />
       </div>
+      <Querys />
       <SectionDate/>
     </div>
   );
