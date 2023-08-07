@@ -3,9 +3,10 @@ import React from 'react'
 import style from "./FormSport.module.css" 
 import { useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
-import { postPlans, putPlans } from '../../../redux/actions/plansActions'
+import { deletePlans, postPlans, putPlans } from '../../../../redux/actions/plansActions'
 import { useEffect } from 'react'
-import { getFindPlan } from '../../../redux/features/plansSlice'
+import { getFindPlan } from '../../../../redux/features/plansSlice'
+import { validationPlans } from '../../validations/validations'
 
 
 
@@ -46,6 +47,14 @@ export const Form = (props) => {
         null
     },[planFind])
 
+    useEffect(()=>{
+        
+        setErrors(validationPlans(plan))
+      
+    }, [plan])
+
+    //------------HANDLERS----------------------
+
     const handleChange = (e)=>{
         setPlan({
             ...plan,
@@ -55,17 +64,20 @@ export const Form = (props) => {
 
     const handleCreate = async(e)=>{
         e.preventDefault()
-        const resp = await dispatch(postPlans(plan))
-        if(resp.meta.requestStatus == "fulfilled"){
-            alert("correctamente creado!")
-            setPlan({
-                name:"",
-                description:"",
-                price: "",
-                duration:""
-            })
-        } else {
-            alert("no se pudo crear")
+        if (Object.keys(errors).length === 0){
+
+          const resp = await dispatch(postPlans(plan))
+          if(resp.meta.requestStatus == "fulfilled"){
+              alert("correctamente creado!")
+              setPlan({
+                  name:"",
+                  description:"",
+                  price: "",
+                  duration:""
+              })
+          } else {
+              alert("no se pudo crear")
+          }
         }
     }
 
@@ -77,6 +89,16 @@ export const Form = (props) => {
         } else {
             alert("no se pudo editar")
         }
+    }
+
+    const handleDelete = async(id)=>{
+      const resp = await dispatch(deletePlans(id))
+    if (resp.meta.requestStatus == "rejected") {
+      alert("Lo lamento no se pudo eliminar el plan");
+    } else {
+      alert("plan correctamente eliminado!")
+      props.setCurrent("list")
+    }
     }
 
 
@@ -117,7 +139,7 @@ export const Form = (props) => {
           >
             Name
           </label>
-          {/* {errors.name? <label className={style.error}>{errors.name}</label> : null } */}
+          {errors.name? <label className={style.error}>{errors.name}</label> : null }
         </div>
         <div className={style.div}>
           <input
@@ -136,51 +158,51 @@ export const Form = (props) => {
           >
             Description
           </label>
-          {/* {errors.description? <label className={style.error}>{errors.description}</label> : null } */}
+          {errors.description? <label className={style.error}>{errors.description}</label> : null }
         </div>
         <div className={style.div}>
           <input
             onChange={(e) => handleChange(e)}
             className={style.input}
-            type="number"
+            type="text"
             name="plan"
             id="price"
             value={plan.price}
           />
           <label
             className={`${style.label} ${
-              typeof plan.duration != "number"? style.noFull : style.full
+              !plan.duration? style.noFull : style.full
             }`}
             htmlFor="price"
           >
             Price
           </label>
-          {/* {errors.image? <label className={style.error}>{errors.image}</label> : null } */}
+          {errors.price? <label className={style.error}>{errors.price}</label> : null }
         </div>
         <div className={style.div}>
           <input
             onChange={(e) => handleChange(e)}
             className={style.input}
-            type="number"
+            type="text"
             name="plan"
             id="duration"
             value={plan.duration}
           />
           <label
             className={`${style.label} ${
-              typeof plan.duration != "number"? style.noFull : style.full 
+              !plan.duration? style.noFull : style.full 
               }`}
             htmlFor="duration"
           >
             Duration
           </label>
-          {/* {errors.image? <label className={style.error}>{errors.image}</label> : null } */}
+          {errors.duration? <label className={style.error}>{errors.duration}</label> : null }
         </div>
         <div className={style.buttons}>
-          <button onClick={props.id? (e)=>handleEdit(e, props.id) : (e)=>handleCreate(e)} className={style.submit} >
+          <button onClick={props.id? (e)=>handleEdit(e, props.id) : (e)=>handleCreate(e)} className={`${style.submit} ${Object.keys(errors).length? style.errors : null }`} >
             {props.id? "edit" : "create"} 
           </button>
-          {/* {props.sport? <button onClick={(e)=>handleDelete(e, props.sport.id)} className={style.delete}>Delete</button> : null} */}
+          {planFind? <button type='button' onClick={()=>handleDelete( planFind.id)} className={style.delete}>Delete</button> : null}
         </div>
       </form> 
     </>

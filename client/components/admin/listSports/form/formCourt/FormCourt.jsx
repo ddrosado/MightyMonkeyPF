@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import style from "./FormCount.module.css"
 import {useDispatch, useSelector} from "react-redux"
-import { postCourt, putCourt } from '../../../../redux/actions/courtsAction'
-import { validationCourt } from '../validations/validations'
+import { postCourt, putCourt } from '../../../../../redux/actions/courtsAction'
+import { validationCourt } from '../../../validations/validations'
 
 
 export const FormCourt = (props) => {

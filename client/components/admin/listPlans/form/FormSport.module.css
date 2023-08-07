@@ -122,3 +122,11 @@
     font-size: .6em;
     bottom: -20px;
 }
+
+.errors{
+    cursor: no-drop;
+    background-color: gray;
+}
+.errors:hover{
+    background-color: gray;
+}

@@ -1,8 +1,5 @@
 "use-client"
 import React, { useState } from 'react'
-import { useEffect } from "react";
-import {useDispatch} from "react-redux"
-import { getPlans } from '../../redux/actions/plansActions'
 import { List } from './list/List';
 import { Form } from './form/Form';
 

@@ -1,11 +1,11 @@
 "use client";
-import { getUsers, putUser } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import style from "./ListSocios.module.css"
-import { filterUsers} from "../../redux/features/usersSlice";
-import loading from '../../assets/images/giphy.gif'
+import loading from '../../../assets/images/giphy.gif'
 import Image from "next/image";
+import { getUsers, putUser } from "../../../redux/actions/userActions";
+import { filterUsers } from "../../../redux/features/usersSlice";
 
 
 const ListSocios = () => {

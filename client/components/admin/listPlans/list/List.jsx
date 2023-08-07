@@ -1,10 +1,10 @@
 import React from 'react'
 import style from "./ListPlans.module.css"
-import loading from '../../../assets/images/giphy.gif'
+import loading from '../../../../assets/images/giphy.gif'
 import Image from "next/image";
 import { useSelector, useDispatch} from "react-redux"
 import { useState, useEffect } from 'react';
-import { getPlans } from '../../../redux/actions/plansActions';
+import { getPlans } from '../../../../redux/actions/plansActions';
 
 
 export const List = (props) => {

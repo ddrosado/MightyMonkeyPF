@@ -14,8 +14,6 @@ const plansSlice = createSlice({
     reducers:{
         getFindPlan: (state, action)=>{
             const id = action.payload
-            console.log(id)
-            console.log(state.plans)
             state.onePlan = state.plans.find(plan=> plan.id == id)
         }
     },

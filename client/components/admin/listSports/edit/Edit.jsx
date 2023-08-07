@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
-import { getSportById } from '../../../redux/actions/sportsActions'
+import { getSportById } from '../../../../redux/actions/sportsActions'
 import { FormSport } from '../form/formSport/FormSport'
 import { FormCourt } from '../form/formCourt/FormCourt'
 import style from "./Edit.module.css"

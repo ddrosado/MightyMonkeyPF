@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import {useSelector} from "react-redux"
 import style from "./FormSport.module.css";
 import { useDispatch } from "react-redux";
-import { getSports, postSports, putSport, deletSport } from "../../../../redux/actions/sportsActions";
-import { validationSport } from "../validations/validations";
-import { uploadImage } from "../../../../pages/api/firebaseConfig";
+import { getSports, postSports, putSport, deletSport } from "../../../../../redux/actions/sportsActions";
+import { validationSport } from "../../../validations/validations";
+import { uploadImage } from "../../../../../pages/api/firebaseConfig";
 
 
 export const FormSport = (props) => {
@@ -30,9 +30,11 @@ export const FormSport = (props) => {
   },[props.sport])
 
   useEffect(()=>{
-    setErrors( validationSport({
-      ...sport,
-    }, sports))
+    if(!props.sport){
+      setErrors( validationSport({
+        ...sport,
+      }, sports))
+    }
   },[sport])
 
 

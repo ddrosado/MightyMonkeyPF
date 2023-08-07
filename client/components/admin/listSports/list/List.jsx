@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSports, putSport } from "../../../redux/actions/sportsActions";
+import { getSports, putSport } from "../../../../redux/actions/sportsActions";
 import style from "./List.module.css";
-import loading from '../../../assets/images/giphy.gif'
+import loading from '../../../../assets/images/giphy.gif'
 import Image from "next/image";
-import { filterSports } from "../../../redux/features/sportsSlice";
+import { filterSports } from "../../../../redux/features/sportsSlice";
 
 export const List = ({setCurrent}) => {
   const colums = ["name", ""];

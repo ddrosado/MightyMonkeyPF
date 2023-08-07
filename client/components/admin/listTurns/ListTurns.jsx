@@ -1,13 +1,13 @@
 "use-cient"
 import React, { useState } from 'react'
-import { getBookings } from '../../redux/actions/bookingAction'
+import { getBookings } from '../../../redux/actions/bookingAction'
 import { useDispatch, useSelector } from "react-redux";
 import style from "./ListTurns.module.css"
-import loading from '../../assets/images/giphy.gif'
+import loading from '../../../assets/images/giphy.gif'
 import Image from "next/image";
 import { useEffect } from 'react';
-import { filterBookings } from '../../redux/features/bookingsSlice';
-import { getSports } from '../../redux/actions/sportsActions';
+import { filterBookings } from '../../../redux/features/bookingsSlice';
+import { getSports } from '../../../redux/actions/sportsActions';
 
 export const ListTurns = () => {
 
@@ -57,7 +57,7 @@ export const ListTurns = () => {
     };
     
     const dates = generateDateArray();
-    console.log(bookings)
+
 
   return (
     <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}> 
