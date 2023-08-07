@@ -48,7 +48,6 @@ const Profile = () => {
              : 
             <MyProfile changeComponent={changeComponent}/>
             }
-            <h1>My Turns </h1>
             <History />
           </div>
         ) : (

@@ -1,15 +1,23 @@
 'use client'
 import React, { useEffect } from "react";
 import style from './Querys.module.css'
-import {
-    Collapse,
-    initTE,
-  } from "tw-elements";
-  
+// import {
+//     Collapse,
+//     initTE,
+//   } from "tw-elements";
+
 const Querys = () => {
-    useEffect(() => {
-        initTE({ Collapse });   
-      }, []); 
+
+
+      useEffect(() => {
+        const init = async () => {
+          const { Collapse, initTE } = await import("tw-elements");
+          initTE({ Collapse });
+        };
+        init();
+      }, []);
+
+
   return (
     <div className={style.querysContainer} id="accordionExample">
     <div
