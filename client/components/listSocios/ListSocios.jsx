@@ -14,13 +14,18 @@ const ListSocios = () => {
     member: "all",
     search: ""
   })
-
+  const user = useSelector((state) => state.users.usersCopy)
+  const [get , setGet] = useState("pending")
   const [page, setPage] = useState(0)
-
   const dispatch = useDispatch();
 
+  const getPag = async()=>{
+    await dispatch(getUsers());
+    setGet("resolv")
+  }
+  
   useEffect(() => {
-    dispatch(getUsers());
+    getPag()
   }, []);
 
 
@@ -28,7 +33,6 @@ const ListSocios = () => {
     dispatch(filterUsers(filter))
   }, [filter])
 
-  const user = useSelector((state) => state.users.usersCopy)
 
   const handleFilter=(e)=>{
     if(e.target.name == "search"){
@@ -126,7 +130,9 @@ const handleEnable = async(email)=>{
                   </tr>
                 </thead>
                 <tbody>
-                {user?.length?
+                { get == "pending"? <Image className={style.loading} src={loading} alt="gif" /> :
+                
+                user?.length?
                   user.slice((5 * page), ((page+1) * 5)).map(({ name, surname, email, isMember, telephone, id, isActive }) => {
                     return (
                       <tr key={id}>
@@ -188,7 +194,9 @@ const handleEnable = async(email)=>{
                       </tr>
                     );
                   })
-                  : <Image className={style.loading} src={loading} alt="gif" />}
+                  : 
+                  <h1>No existes usuarios</h1>
+                 }
                 </tbody>
               </table>
               <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">

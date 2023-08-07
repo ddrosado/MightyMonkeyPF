@@ -16,26 +16,36 @@ export const FormSport = (props) => {
     gallery : []
   });
 
-  const [arrayGallery , setArrayGallery] = useState([])
-
   const [errors, setErrors] = useState({})
+  const sports = useSelector(state=>state.sports.sports)
 
+  //-----------------USE EFECTS------------------------
   useEffect(()=>{
     setSport({
       name: props.sport?.name,
       description: props.sport?.description,
-      image: props.sport?.image
+      image: props.sport?.image,
+      gallery: Array.isArray(props.sport?.gallery) ? [...props.sport.gallery] : []
     })
   },[props.sport])
 
+  useEffect(()=>{
+    setErrors( validationSport({
+      ...sport,
+    }, sports))
+  },[sport])
+
+
+  //-----------------------HANDLERS---------------------------
   const handleChange = async(e) => {
     if(e.target.id == "gallery"){
       const res = await uploadImage(e.target.files[0], sport.name)
-      setArrayGallery([...arrayGallery, res])
-      setSport({
-        ...sport,
-        gallery : [...arrayGallery, res]
-      })
+      setSport((prevSport) => {
+        return {
+          ...prevSport,
+          gallery: [...(prevSport.gallery || []), res],
+        };
+      });
     
     } else if(e.target.id == "image"){
      const resp  = await uploadImage(e.target.files[0],  sport.name)
@@ -49,19 +59,17 @@ export const FormSport = (props) => {
         [e.target.id]: e.target.value,
       });
     }
-    // setErrors( validationSport({
-    //   ...sport,
-    //   [e.target.id]: e.target.value,
-    // }, e.target.id, errors))
   };
 
   const handleSubmitCreate = async (e) => {
     e.preventDefault();
-    const resp = await dispatch(postSports(sport));
-    if (resp.meta.requestStatus == "rejected") {
-      alert("Lo lamento no se pudo crear el deporte");
-    } else {
-      props.handlePageSport ? props.handlePageSport(2) : null;
+    if (Object.keys(errors).length === 0){
+      const resp = await dispatch(postSports(sport));
+      if (resp.meta.requestStatus == "rejected") {
+        alert("Lo lamento no se pudo crear el deporte");
+      } else {
+        props.handlePageSport ? props.handlePageSport(2) : null;
+    }
     }
   };
   
@@ -69,16 +77,19 @@ export const FormSport = (props) => {
 
   const handleEdit = async (e)=>{
     e.preventDefault()
-    const resp = await dispatch(putSport({...sport, id: props.sport.id}))
-    if (resp.meta.requestStatus == "rejected") {
-      alert("Lo lamento no se pudo editar el deporte");
-      setSport({
-        name: props.sport?.name,
-        description: props.sport?.description,
-        image: props.sport?.image
-      });
-    } else {
-      alert("deporte correctamente editado!")
+    if (Object.keys(errors).length === 0){
+      const resp = await dispatch(putSport({...sport, id: props.sport.id}))
+      if (resp.meta.requestStatus == "rejected") {
+        alert("Lo lamento no se pudo editar el deporte");
+        setSport({
+          name: props.sport?.name,
+          description: props.sport?.description,
+          image: props.sport?.image,
+          gallery: props.sport?.gallery
+        });
+      } else {
+        alert("deporte correctamente editado!")
+      }
     }
   }
 
@@ -89,7 +100,16 @@ export const FormSport = (props) => {
       alert("Lo lamento no se pudo eliminar el deporte");
     } else {
       alert("deporte correctamente eliminado!")
+      props.setCurrent("list")
     }
+  }
+
+  const deleteImage = (url)=>{
+    const newGallery = sport.gallery.filter(file=> file !== url)
+    setSport({
+      ...sport,
+      gallery : newGallery
+    })
   }
 
 
@@ -98,7 +118,7 @@ export const FormSport = (props) => {
     <>
       <form className={style.form}>
         <label className={style.title}>Sport</label>
-        {props.setCurrent ? (
+        {!props.sport ? (
           <svg
             onClick={() => props.setCurrent("list")}
             className={`h-14 w-14 text-white ${style.back}`}
@@ -166,7 +186,7 @@ export const FormSport = (props) => {
             
             {sport.image? <div style={{ backgroundImage: `url(${sport.image})` }}></div> : null}
           </div>
-          {/* {errors.image? <label className={style.error}>{errors.image}</label> : null } */}
+          {errors.image? <label className={style.error}>{errors.image}</label> : null }
         </div>
         <div className={style.div}>
           <input
@@ -178,21 +198,24 @@ export const FormSport = (props) => {
             id="gallery"
           />
           <div className={style.containerImg}>
-            {arrayGallery?.map(file=> {
+            {sport.gallery?.map(file=> {
               return(
               <div style={{ backgroundImage: `url(${file})` }}>
-                <button>x</button>
+                <button type="button" onClick={()=>deleteImage(file)}>x</button>
               </div>)
             }
             )}
           </div> 
-          <button style={{backgroundColor:"white"}} onClick={e=>confirmGallery(e)}>confirm gallery</button>
+          {errors.gallery? <label className={style.error}>{errors.gallery}</label> : null }
           </div>
         <div className={style.buttons}>
-          <button className={style.submit} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
+          <button className={`${style.submit} ${Object.keys(errors).length? style.errors : null }`} onClick={(e) => props.sport? handleEdit(e) : handleSubmitCreate(e)}>
             {props.sport? "Edit" : "Create"}
           </button>
+          {props.sport? 
           <button onClick={(e)=>handleDelete(e, props.sport.id)} className={style.delete}>Delete</button> 
+          : null 
+          }
         </div>
       </form> 
     </>

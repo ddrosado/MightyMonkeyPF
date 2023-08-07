@@ -21,7 +21,7 @@ export const Edit = ({id, setCurrent}) => {
     <div className={style.container}>
       <button className={style.back} onClick={()=>setCurrent("list")}>{`< Back`}</button>
       <h1>Edit {sport?.name}</h1>
-      <FormSport sport={sport}/>
+      <FormSport setCurrent={setCurrent} sport={sport}/>
       <h1>{sport?.name} Courts </h1>
       <div className={style.courts}>
         {sport?.court?.map((court)=><FormCourt  court={court} sport={sport.name}/>)}

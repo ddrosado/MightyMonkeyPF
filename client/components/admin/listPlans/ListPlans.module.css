@@ -13,12 +13,16 @@
 }
 
 .edit >button{
-    width: 70%;
-    font-size: 1em;
+    width: 100%;
+    font-size: 0.8em;
 }
 
 .name{
-    font-size: 1.5em;
+    font-size: 1.2em;
+}
+
+.duration{
+  font-size: 1.4;
 }
 
 
@@ -61,15 +65,4 @@
       50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
       75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
       100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
-  }
-
-  .addSport{
-    background-color: #14ba14;
-    padding: 5px 10px;
-    color: white;
-    border-radius: 5px;
-  }
-
-  .addSport:hover{
-    background-color:#34bd34
   }

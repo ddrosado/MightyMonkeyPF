@@ -39,10 +39,6 @@ export const Navbar = () => {
     router.push("/");
   };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> c278ea793dd27ccee172534c7ab262db0cd2c044
   useEffect(() => {
     if (!data?.isActive && data?.id) {
       logout().then(() => {
@@ -126,7 +122,7 @@ export const Navbar = () => {
           {data ? (
             <>
               {data.isAdmin ? (
-                <Link className={style.link} key="admin" href="dashboard/users">
+                <Link className={style.link} key="admin" href="http://localhost:3000/dashboard/users">
                   <li>Admin</li>
                 </Link>
               ) : null}

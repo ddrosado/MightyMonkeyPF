@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 40rem;
+    width: 25rem;
     gap: 3rem;
     border: solid 1px white;
     border-radius: 1.4rem;
@@ -121,37 +121,4 @@
     color: red;
     font-size: .6em;
     bottom: -20px;
-}
-
-.containerImg{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: space-around;
-}
-
-.containerImg > div{
-    width: 40%;
-    height: 10rem;
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.containerImg > div > button{
-    position: absolute;
-    background-color: red;
-    color: black;
-    width: 10px;
-    right: 0;
-}
-
-.errors{
-    cursor: no-drop;
-    background-color: gray;
-}
-.errors:hover{
-    background-color: gray;
 }

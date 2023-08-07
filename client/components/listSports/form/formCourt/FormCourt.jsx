@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import style from "./FormCount.module.css"
 import {useDispatch, useSelector} from "react-redux"
 import { postCourt, putCourt } from '../../../../redux/actions/courtsAction'
+import { validationCourt } from '../validations/validations'
 
 
 export const FormCourt = (props) => {
@@ -20,6 +21,8 @@ export const FormCourt = (props) => {
 
   const [errors, setErrors] = useState({})
 
+//----------------------useEffects------------------------
+
   useEffect(()=>{
     setCourt({
       sport: props.sport ,
@@ -31,6 +34,13 @@ export const FormCourt = (props) => {
   })
   }, [props.court])
 
+  useEffect(()=>{
+    if(!props.court){
+      setErrors(validationCourt(court, sports))
+    }
+  },[court])
+
+  // ---------------------handlers------------------------------------
   const handleChange = (e) => {
     if(e.target.type == "radio"){
       setCourt({
@@ -41,31 +51,34 @@ export const FormCourt = (props) => {
       setCourt({
         ...court,
         [e.target.id] : e.target.value
-      })
+      }) 
     }
   };
 
   const handleSubmit=async(e)=>{
     e.preventDefault()
-    const resp = await dispatch(postCourt(court))
-    if(resp.meta.requestStatus == "rejected"){
-      console.log(resp)
-      alert("Lo lamento no se pudo crear la cancha")
-    } else{
-      alert("se a creado correctamente la cancha")
-      if(props.setCreate){
-        props.setCreate(!props.create)
-      }
-      setCourt({
-        sport: "",
-        name: "",
-        description: "",
-        isAvailable: true,
-        noMemberPrice: 0,
-        memberPrice: 0
-      })
-    }
+    if (Object.keys(errors).length === 0){
 
+      const resp = await dispatch(postCourt(court))
+      if(resp.meta.requestStatus == "rejected"){
+        console.log(resp)
+        alert("Lo lamento no se pudo crear la cancha")
+      } else{
+        alert("se a creado correctamente la cancha")
+        if(props.setCreate){
+          props.setCreate(!props.create)
+        }
+        setCourt({
+          sport: "",
+          name: "",
+          description: "",
+          isAvailable: true,
+          noMemberPrice: 0,
+          memberPrice: 0
+        })
+      }
+
+    }
   }
 
 
@@ -78,7 +91,6 @@ export const FormCourt = (props) => {
         sport: "",
         name: "",
         description: "",
-        image: "",
         isAvailable: true,
         noMemberPrice: 0,
         memberPrice: 0
@@ -111,8 +123,10 @@ export const FormCourt = (props) => {
           {props.court? null : 
           <div>
             <select placeholder='Sport' onChange={(e)=>handleChange(e)} className={style.select} name="court" id="sport">
+              <option disabled selected value="">Select in sport...</option>
               {sports?.map(sport=> <option value={sport.name}>{sport.name}</option>)}
             </select>
+            {errors.sport? <label className={style.error}>{errors.sport}</label> : null }
           </div>}
           <div>
             <input
@@ -131,6 +145,7 @@ export const FormCourt = (props) => {
             >
               Name
             </label>
+            {errors.name? <label className={style.error}>{errors.name}</label> : null }
           </div>
           <div>
             <input
@@ -149,6 +164,7 @@ export const FormCourt = (props) => {
             >
               Description
             </label>
+            {errors.description? <label className={style.error}>{errors.description}</label> : null }
           </div>
           <div className={style.priceCourt}>
             <label className={style.priceLabel}>Price</label>
@@ -170,6 +186,7 @@ export const FormCourt = (props) => {
               id="memberPrice"
               value={court.memberPrice}
             />
+            {errors.memberPrice? <label className={style.error}>{errors.memberPrice}</label> : null }
           </div>
           <div>
             <label
@@ -188,6 +205,7 @@ export const FormCourt = (props) => {
               id="noMemberPrice"
               value={court.noMemberPrice}
             />
+            {errors.noMemberPrice? <label className={style.error}>{errors.noMemberPrice}</label> : null }
           </div>
           </div>
           </div>
@@ -208,7 +226,7 @@ export const FormCourt = (props) => {
 
             </div>
           </div>
-          <button className={style.submit} onClick={(e)=>props.court?  handleEdit(e): handleSubmit(e) }>
+          <button className={`${style.submit} ${Object.keys(errors).length? style.errors : null }`} onClick={(e)=>props.court?  handleEdit(e): handleSubmit(e) }>
             {props.court? "Edit" : "Create"}
           </button>
         </form>

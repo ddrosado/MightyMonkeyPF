@@ -15,15 +15,22 @@ export const ListTurns = () => {
     const bookings = useSelector(state=> state.bookings.bookingsCopy)
     const sports = useSelector(state=> state.sports.sports)
     const [filter, setFilter] = useState({
-      sport: "",
+      sport: "all",
       date: "all",
       search: ""
     })
+    const [get, setGet] = useState("pending")
 
-    useEffect(()=>{
-        dispatch(getSports())
-        dispatch(getBookings())
-    },[])
+    const getPag = async()=>{
+      await dispatch(getSports())
+      await dispatch(getBookings())
+      setGet("resolv")
+    }
+
+    useEffect(() => {
+      getPag()
+    }, []);
+  
     
     useEffect(()=>{
       dispatch(filterBookings(filter))
@@ -50,6 +57,7 @@ export const ListTurns = () => {
     };
     
     const dates = generateDateArray();
+    console.log(bookings)
 
   return (
     <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}> 
@@ -108,13 +116,15 @@ export const ListTurns = () => {
                   </tr>
                 </thead>
                 <tbody>
-                {bookings?.length?
+                {get == "pending"? <Image className={style.loading} src={loading} alt="gif" /> :
+  
+                bookings?.length?
                   bookings.map(({ date, hour, user, court, id}) => {
                     return (
                       <tr key={id}>
                         <td className="px-5 py-5 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {court.sport.name}
+                            {court.sport?.name}
                           </p>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
@@ -152,7 +162,7 @@ export const ListTurns = () => {
                       </tr>
                     );
                   })
-                   : <Image className={style.loading} src={loading} alt="gif" />}
+                   : <h1>No hay turns</h1> }
                 </tbody>
               </table>
               <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">

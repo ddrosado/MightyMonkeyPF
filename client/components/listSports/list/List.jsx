@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSports } from "../../../redux/actions/sportsActions";
+import { getSports, putSport } from "../../../redux/actions/sportsActions";
 import style from "./List.module.css";
 import loading from '../../../assets/images/giphy.gif'
 import Image from "next/image";
@@ -12,19 +12,23 @@ export const List = ({setCurrent}) => {
     search: "",
     isAct: "all"
   })
-
-
   const dispatch = useDispatch();
+  const sports = useSelector((state) => state.sports.sportsCopy);
+  const [get, setGet] = useState("pending")
+  
+  const getPag = async()=>{
+    await dispatch(getSports())
+    setGet("resolv")
+  }
 
   useEffect(() => {
-    dispatch(getSports());
+    getPag()
   }, []);
 
   useEffect(()=>{
     dispatch(filterSports(filter))
   },[filter])
 
-  const sports = useSelector((state) => state.sports.sportsCopy);
 
   const handleChange =(e)=>{
     setFilter({
@@ -33,12 +37,13 @@ export const List = ({setCurrent}) => {
     })
   }
 
-    const handleDelete= async (id)=>{
+    const handleDesactiv= async (id)=>{
     const resp = await dispatch(putSport({id: id, isActive : false}))
     if (resp.meta.requestStatus == "rejected") {
       alert("Lo lamento no se pudo dar de baja el deporte");
     } else {
       alert("deporte correctamente dado de baja!")
+      dispatch(getSports())
     }
   }
 
@@ -48,6 +53,7 @@ export const List = ({setCurrent}) => {
       alert("Lo lamento no se pudo dar de baja el deporte");
     } else {
       alert("deporte correctamente dado de baja!")
+      dispatch(getSports())
     }
   }
 
@@ -100,7 +106,8 @@ export const List = ({setCurrent}) => {
                 </tr>
               </thead>
               <tbody>
-              { sports?.length? 
+              { get == "pending"? <Image className={style.loading} src={loading} alt="gif" /> :
+              sports?.length? 
                 sports.map(({ name, id, isActive }) => {
                   return (
                     <tr key={id}>
@@ -114,7 +121,7 @@ export const List = ({setCurrent}) => {
                           edit
                         </button>
                         {isActive? 
-                        <button onClick={()=>handleDelete(id)} className=" bg-red-500 hover:bg-red-400 text-white font-semibold py-2 px-4 rounded-full">
+                        <button onClick={()=>handleDesactiv(id)} className=" bg-red-500 hover:bg-red-400 text-white font-semibold py-2 px-4 rounded-full">
                           desactivar
                         </button>
                          :
@@ -126,12 +133,12 @@ export const List = ({setCurrent}) => {
                       </td>
                     </tr>
                   )
-                }) : <Image className={style.loading} src={loading} alt="gif" />} 
+                }) : <h1>No existen deportes</h1>} 
               </tbody>
             </table>
             <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
               <div className="inline-flex mt-2 xs:mt-0">
-                <button onClick={()=> setCurrent("form")} className="text-sm bg-violet-600 hover:bg-violet-500 text-white font-semibold py-2 px-4">
+                <button onClick={()=> setCurrent("form")} className={style.addSport}>
                   Add Sport
                 </button>
               </div>
