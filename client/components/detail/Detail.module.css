@@ -2,6 +2,10 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  margin-bottom: 220px;
 }
 .titleSport {
   display: flex;
@@ -71,4 +75,11 @@
   justify-content: center;
   padding: 300px;
   clip-path: polygon(0 17%, 100% 0, 100% 100%, 0 100%);
+}
+
+.logo {
+  width: 230px;
+  margin-top: 130px;
+  position: relative;
+  top: 28px;
 }

@@ -14,11 +14,12 @@
     align-items: center;
     justify-content: start;
     gap: 10px;
-    height: 80px;
+    height: 85px;
     overflow-y: auto;
     overflow-x: hidden;
     color: #FFDA61;
     margin-top: 10px;
+    padding: 10px;
   }
   
   /* Estilos del Scrollbar */
@@ -48,11 +49,10 @@
     color: #ffda61;
     width: 68px;
     height: 30px;
-    box-shadow: -2px 2px 11px 0px rgba(0,0,0,0.54);
-    -webkit-box-shadow: -2px 2px 11px 0px rgba(0,0,0,0.54);
-    -moz-box-shadow: -2px 2px 11px 0px rgba(0,0,0,0.54);
+    box-shadow: 0px 0px 13px -4px rgba(0, 0, 0, 1);
     transition: all 0.2s ease;
     position: relative;
+    border-radius: 10px;
   }
 
   .activeButton {
@@ -61,4 +61,9 @@
     box-shadow: -1px 1px 7px 0px rgba(0,0,0,0.92);
     -webkit-box-shadow: -1px 1px 7px 0px rgba(0,0,0,0.92);
     -moz-box-shadow: -1px 1px 7px 0px rgba(0,0,0,0.92);
+  }
+
+  .noTurns {
+    color: rgb(247, 82, 82);
+    margin-top: 10px;
   }

@@ -12,8 +12,8 @@ const Membership = () => {
   const plans = useSWR('api/plans', fetcher)
   const user = useSWR('api/user', fetcher)
   const router = useRouter()
-  console.log(user.data);
-  console.log(plans.data);
+  // console.log(user.data);
+  // console.log(plans.data);
 
   const urlPay = async(planId) => {
     console.log(planId);
