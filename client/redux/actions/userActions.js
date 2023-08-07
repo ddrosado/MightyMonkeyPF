@@ -36,8 +36,7 @@ export const createUser = createAsyncThunk(
     'users/putUser',
     async (obj) => {
       try {
-        const response = await axios.put(`api/users`, obj);
-        console.log(response.data)
+        const response = await axios.put(`/api/users`, obj);
         return response.data;
       } catch (error) {
         throw error.response.data.msg;

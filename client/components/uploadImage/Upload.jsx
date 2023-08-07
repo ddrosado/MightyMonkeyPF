@@ -3,6 +3,8 @@ import { useState } from "react";
 import uploadImage from "../../pages/api/uploadImage";
 import useSWR from "swr";
 import { fetcher } from "../../pages/api/fetcher";
+import style from './Upload.module.css'
+import  Modal from "../modal_avatar/Modal"
 
 const updateUser = async (email, image) => {
   const res = await fetch("api/users", {
@@ -17,6 +19,7 @@ const updateUser = async (email, image) => {
   });
   return await res.json();
 };
+
 const updateSession = async () => {
   const res = await fetch("api/login");
   const data = await res.json();
@@ -24,11 +27,14 @@ const updateSession = async () => {
 };
 
 export default function Upload() {
+  
   const [file, setFile] = useState("");
   const [img, setImg] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { data } = useSWR("api/user", fetcher);
-  const inputFile = useRef();
+  const [show,setShow] = useState(false)
+  const { data, mutate } = useSWR("api/user", fetcher);
+
+  const inputFile = useRef()
 
   const uploadFileHandler = async (e) => {
     const archive = e.target.files[0];
@@ -39,17 +45,20 @@ export default function Upload() {
     };
     reader.readAsDataURL(archive);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (file) {
       try {
         setLoading(true);
         const res = await uploadImage(file, `avatar/${data.email}`);
-        setLoading(!Boolean(res));
         await updateUser(data.email, res);
         await updateSession();
-        alert("Update succesful");
+        setShow(false)
+        mutate({...data,image:img})
         setFile(null);
+        setImg(null);
+        setLoading(!Boolean(res));
       } catch (error) {
         console.log(error);
         alert("Upload has failed, try again");
@@ -57,27 +66,38 @@ export default function Upload() {
     }
   };
 
-  const handleDiscard = (e) => {
-    e.preventDefault();
-    setFile(null);
-    setImg(null);
-  };
-  const handleClickOverFileInput = () => {
-    inputFile.current.click()
-  };
-
   return (
- 
-      <>
-      
-<img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar"/>
-
-
-      {/* <div className={style.avatarContainer} onClick={handleClickOverFileInput}>
-        <img src={data?.image} alt="" />
-        <span>CAMBIAR AVATAR</span>
-      </div> */}
-     {/* <Modal></Modal> */}
-      </>
+    <>
+      <img src={data?.image} className={style.avatar} onClick={()=>{setShow(true)}}/>
+      {
+        show ?
+      <Modal 
+        uploadFileHandler={uploadFileHandler}
+        handleSubmit={ handleSubmit}
+        data={data}
+        img={img}
+        loading={loading}
+        onClose={()=>setShow(false)}
+      >     
+       <hr/>
+          <img src={img || data?.image} alt="" className={style.avatarModal} onClick={()=> inputFile.current.click()}/>
+          <hr/>
+          <form onSubmit={handleSubmit}>
+            <input
+              id="file"
+              type="file"
+              accept=".jpg, .png, .gif"
+              onChange={uploadFileHandler}
+              ref={inputFile}
+              style={{display:'none'}}
+            />
+            {loading ? <p>Processing...</p> : null}
+            <button style={{display: loading && 'none'}} value="avatar">ACCEPT</button>
+            <button disabled={img ? false : true} style={{display: loading && 'none'}} onClick={()=>{setFile(null); setImg(null)}} type="button">RESET</button>
+          </form>
+      </Modal>
+      :null
+      }
+    </>
   );
 }
