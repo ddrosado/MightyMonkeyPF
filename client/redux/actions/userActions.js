@@ -45,4 +45,15 @@ export const createUser = createAsyncThunk(
     }
   );
 
+export const updateUser = createAsyncThunk(
+  'users/updateUser',
+  async () => {
+    try {
+      const response = await axios.get("/api/login");
+      return response.data;
+    } catch (error) {
+      throw error.response.data.msg;
+    }
+  }
+);
 

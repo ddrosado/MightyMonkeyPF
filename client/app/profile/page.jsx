@@ -18,7 +18,7 @@ const Profile = () => {
 
   const { data } = useSWR("api/user", fetcher);
 
-console.log(data)
+// console.log(data)
 
   const [editing, setEditing] = useState(false);
 
