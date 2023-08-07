@@ -36,3 +36,28 @@
     padding: .8rem;
     font-size: 1em;
 }
+
+
+@media (max-width: 720px) {
+}
+
+/* Smartphone grande hasta ordenador portátil medio */
+@media (min-width: 721px) and (max-width: 1366px) {  
+    .container {
+        border-radius: 10px;
+    }    
+}
+
+/* Ordenador portátil medio hasta ordenador de escritorio medio */
+@media (min-width: 1367px) and (max-width: 1440px) {
+    .container {
+        border-radius: 10px;
+    } 
+}
+
+/* PC de escritorio medio y pantallas más grandes */
+@media (min-width: 1441px) {
+    .container {
+        border-radius: 10px;
+    }   
+}

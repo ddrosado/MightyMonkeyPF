@@ -12,11 +12,13 @@ const MyProfile = (props) => {
 
   return (
     data ? (
-      
+  <div className={style.marginContainer}>
 <div className={style.container}>
+  
         <div className={style.img}>
           <div>
-          <img src={data.image} alt="profile-image" />
+          {/* <img src={data.image} alt="profile-image" /> */}
+          <img src="https://cdn.vox-cdn.com/thumbor/t6AzoiyJqvYjXaDiOW107siZaO0=/0x0:1280x720/1220x813/filters:focal(477x157:681x361):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/51965569/Ditto_Number_1.0.png" alt="profile-image" />
           </div>
         </div>
         <div className={style.userdata}>
@@ -54,7 +56,7 @@ const MyProfile = (props) => {
   <span className={style.buttonText}>Edit profile </span>
 </button>
 </div>
-
+</div>
         </div>
         
     </div> 
