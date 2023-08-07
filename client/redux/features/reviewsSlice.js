@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getReviews } from "../../redux/actions/reviewsAction";
-
+import { postReviews } from "../../redux/actions/reviewsAction";
 const initialState = {
  reviews: [],
  loading: false,
@@ -25,6 +25,10 @@ const reviewsSlice = createSlice({
    .addCase(getReviews.rejected, (state, action) => {
     state.loading = false;
     state.error = action.error.message;
+   })
+   .addCase(postReviews.fulfilled, (state, action) => {
+    state.loading = false;
+    state.reviews = action.payload;
    });
  },
 });

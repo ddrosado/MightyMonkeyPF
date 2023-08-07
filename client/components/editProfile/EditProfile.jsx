@@ -10,6 +10,7 @@ import 'react-phone-input-2/lib/style.css'
 import { useRouter } from "next/navigation";
 import { mutate } from 'swr';
 import Image from "next/image";
+import Upload from "../uploadImage/Upload";
 
 const EditProfile = (props) => {
 
@@ -87,16 +88,11 @@ const handleUserUpdate = async (e) => {
 return (
   <div className={style.container}>
     <div className={style.profileContainer}>
+      <Upload></Upload>
     <form 
     onSubmit={handleUserUpdate}
     className={style.profileForm}>
       <div className={style.img}>
-        <div>
-          <Image 
-          className={style.profilePic} 
-          // src={props.data.image} 
-          alt="#"/>
-        </div>
       </div>
 
       <div className={style.userdata}>
