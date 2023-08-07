@@ -92,7 +92,7 @@ export default function Upload() {
               style={{display:'none'}}
             />
             {loading ? <p>Processing...</p> : null}
-            <button style={{display: loading && 'none'}}>ACCEPT</button>
+            <button style={{display: loading && 'none'}} value="avatar">ACCEPT</button>
             <button disabled={img ? false : true} style={{display: loading && 'none'}} onClick={()=>{setFile(null); setImg(null)}} type="button">RESET</button>
           </form>
       </Modal>
