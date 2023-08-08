@@ -3,6 +3,8 @@ import style from './page.module.css'
 import Membership from '../../components/membership/Membership'
 
 const page = () => {
+
+  //fix
   return (
     <div className={style.joinContainer}>
     <Membership/>
