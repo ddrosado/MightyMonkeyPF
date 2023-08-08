@@ -10,7 +10,7 @@ export default async function Home() {
       <Banner/>
       <Cards />
       <InfoHome />
-      {/* <InfoReviews/> */}
+      <InfoReviews/>
     </div>
   )
 }

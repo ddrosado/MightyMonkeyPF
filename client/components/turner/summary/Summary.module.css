@@ -44,3 +44,20 @@ border-radius: 10px;
 .monoOK {
     width: 70px;
 }
+
+.noMemberPrice {
+    font-weight: bolder;
+}
+
+.memberPrice {
+    background-color: black;
+    color: #FFDA61;
+    font-weight: bolder;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 20px;
+}
+
+.pricesContainer p {
+    margin-bottom: 20px;
+}

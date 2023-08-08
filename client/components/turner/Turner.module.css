@@ -6,16 +6,59 @@
     width: 80%;
     border-radius: 10px;
 }
-.imgSport {
-    width: 100px;
-    height: 100px;
-}
+
 .turnerRight {
-border-top: 1px solid black;    
+    border-top: 1px solid black;
 }
 
 .formContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.imgContainer {
+    height: 150px;
+    background-size: cover;
+    /* Ajusta la imagen para cubrir todo el contenedor */
+    background-position: center;
+    /* Centra la imagen dentro del contenedor */
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 2px solid;
+}
+
+/* RESPONSIVE */
+/* Estilos para pantallas con ancho máximo de 576px (por ejemplo, smartphones en orientación vertical) */
+@media (max-width: 576px) {}
+
+/* Estilos para pantallas con ancho entre 577px y 991px (por ejemplo, tabletas en orientación vertical) */
+@media (min-width: 577px) and (max-width: 991px) {
+
+}
+
+/* Estilos para pantallas con ancho mínimo de 992px (por ejemplo, laptops y pantallas de escritorio) */
+@media (min-width: 992px) {}
+
+/* Estilos para pantallas con ancho mínimo de 1200px (por ejemplo, pantallas de escritorio grandes) */
+@media (min-width: 1200px) {
+    .formContainer {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .turnerLeft {
+        width: 50%;
+    }
+
+    .turnerRight {
+        border-top: none;
+        width: 250px;
+    }
+
+    .imgContainer {
+        width: 250px;
+        height: auto;
+    }
 }
