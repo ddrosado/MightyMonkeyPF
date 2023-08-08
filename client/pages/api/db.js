@@ -60,7 +60,7 @@ Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
 User.hasOne(Plan,{as:"plan", foreignKey: 'planId'})
 Plan.belongsTo(User,{as:"user", foreignKey: 'planId'})
 
-db.sequelize.sync();
+db.sequelize.sync({force: false});
 
 module.exports = {
    db
