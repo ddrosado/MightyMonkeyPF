@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       hour: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       userId: {

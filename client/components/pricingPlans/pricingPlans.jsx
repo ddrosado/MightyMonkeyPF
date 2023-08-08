@@ -38,8 +38,8 @@ const PricingPlans = () => {
             </p>
           </div>
           <div className="pt-24 flex flex-row">
-            {/* Basic Card */}
-            {/* <div className="w-96 p-8 bg-white text-center rounded-3xl pr-16 shadow-xl">
+            Basic Card
+            <div className="w-96 p-8 bg-white text-center rounded-3xl pr-16 shadow-xl">
               <h1 className="text-black font-semibold text-2xl">1 Month</h1>
               <p className="pt-2 tracking-wide">
                 <span className="text-gray-400 align-top">$ </span>
@@ -68,8 +68,8 @@ const PricingPlans = () => {
                   </p>
                 </a>
               </div>
-            </div> */}
-            {/* Startup Card */}
+            </div>
+            Startup Card
             { plans?.data?.map( plan => {
               return(
                 <div id={plan.id} className="w-80 p-8 bgCard text-center rounded-3xl text-white border-4 shadow-xl">
@@ -102,13 +102,13 @@ const PricingPlans = () => {
                     </a>
                   </div>
                   <div className="absolute top-4 right-4">
-                    {/* <p className="bgBlack font-semibold px-4 py-1 rounded-full uppercase text-xs">Popular</p> */}
+                    <p className="bgBlack font-semibold px-4 py-1 rounded-full uppercase text-xs">Popular</p>
                   </div>
                 </div>
               )
             })}
-            {/* Enterprise Card */}
-            {/* <div className="w-96 p-8 bg-white text-center rounded-3xl pl-16 shadow-xl">
+            Enterprise Card
+            <div className="w-96 p-8 bg-white text-center rounded-3xl pl-16 shadow-xl">
               <h1 className="text-black font-semibold text-2xl">1 Year</h1>
               <p className="pt-2 tracking-wide">
                 <span className="text-gray-400 align-top">$ </span>
@@ -137,7 +137,7 @@ const PricingPlans = () => {
                   </p>
                 </a>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

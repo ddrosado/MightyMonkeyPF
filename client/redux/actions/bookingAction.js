@@ -17,14 +17,14 @@ export const getBookings = createAsyncThunk(
 
   export const postBooking = createAsyncThunk(
     'bookings/postBooking',
-    async (form) => {
+    async (form, { rejectWithValue }) => {
       try {
         const response = await axios.post(`${url}/api/bookings`, form);
         console.log(response.data);
         return response.data;
       } catch (error) {
         console.error('Error during postBooking:', error);
-        throw error.response.data.msg;
+        return rejectWithValue(error.response.data); // Devuelve el error para que el reducer lo maneje
       }
     }
   );

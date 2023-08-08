@@ -1,4 +1,4 @@
-"use-cient"
+"use client"
 import React, { useState } from 'react'
 import { getBookings } from '../../../redux/actions/bookingAction'
 import { useDispatch, useSelector } from "react-redux";

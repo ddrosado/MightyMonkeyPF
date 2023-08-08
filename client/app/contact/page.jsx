@@ -13,7 +13,8 @@ const Contact = () => {
       <div className={style.portada}>
         <h1 className={style.title}>Contact</h1>
       </div>
-      <Image className={style.logo} src={monkeymsg} alt='#' ></Image>
+      <Image className={style.logo} src={monkeymsg} alt='#' width={300} 
+            height={300}></Image>
       <div className={style.sectionForm}>
         <FormContact />
       </div>

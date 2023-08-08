@@ -1,11 +1,11 @@
 const mercadopago = require('mercadopago');
 const { db } = require('../../db');
 const { User, Court, Plan, Booking } = db
-const ngrok = 'https://e580-179-1-48-61.ngrok-free.app'
+const ngrok = 'https://16fa-201-252-85-88.ngrok-free.app'
 
 module.exports = async(data) => {
     mercadopago.configure({
-        access_token: 'TEST-5280417047762022-072715-6cdc99477060d48978bc1cf779776e2e-1431922934'
+        access_token: 'TEST-8224153938650622-073001-07e9c314a676cfd54e1dca286b6054d2-1436108503'
     });
     switch (data.type) {
         case 'bookings': {
@@ -22,7 +22,7 @@ module.exports = async(data) => {
                         description: `${date} ${hour} ${userId} ${courtId}`,
                         picture_url: court.image,
                         unit_price: user.isMember ? court.memberPrice*hour.length : court.noMemberPrice*hour.length,
-                        currency_id: 'COP',
+                        currency_id: "ARS",
                         quantity: 1
                     }
                 ],

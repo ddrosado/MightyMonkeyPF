@@ -58,7 +58,8 @@ export default function page() {
       <div className={style.devsGrid}>
         {devs.map((dev) => (
           <div className={style.devInfo}>
-            <Image className={style.imageDev} src={dev.image} alt="#" />
+            <Image className={style.imageDev} src={dev.image} alt="#" width={300} 
+            height={300}/>
             <h1 className={style.names}>{dev.name + " " + dev.surname}</h1>
             <div className={style.infoIcons}>
               <Link href={dev.instagram} target="blank">

@@ -2,7 +2,12 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 250px;
+  margin-bottom: 430px;
 }
+
 .titleSport {
   display: flex;
   justify-content: center;
@@ -14,12 +19,13 @@
   font-size: 1.5rem;
 }
 
-.imageAndTitle{
+.imageAndTitle {
   display: flex;
   flex-direction: column;
   justify-content: start;
   height: 100%;
 }
+
 .imageSport {
   width: 35rem;
   clip-path: polygon(8% 14%, 90% 0, 100% 100%, 0 85%);
@@ -37,7 +43,7 @@
   flex-wrap: wrap;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 83%);
   padding: 50px 50px 100px 50px;
-  
+
 }
 
 .calendarReservation {
@@ -71,4 +77,51 @@
   justify-content: center;
   padding: 300px;
   clip-path: polygon(0 17%, 100% 0, 100% 100%, 0 100%);
+}
+
+.logo {
+  width: 230px;
+  margin-top: 110px;
+  position: relative;
+  top: 28px;
+}
+
+.wideScreen {
+  width: 696px;
+    position: relative;
+    top: 42px;
+    margin-top: 0;
+    right: 0px; 
+}
+
+/* RESPONSIVE */
+/* Estilos para pantallas con ancho máximo de 576px (por ejemplo, smartphones en orientación vertical) */
+@media (max-width: 576px) {}
+
+/* Estilos para pantallas con ancho entre 577px y 991px (por ejemplo, tabletas en orientación vertical) */
+@media (min-width: 577px) and (max-width: 991px) {
+  .wideScreen {
+    width: 450px;
+    position: relative;
+    top: 27px;
+    margin-top: 0px;
+    right: -5px; 
+  }
+}
+
+/* Estilos para pantallas con ancho mínimo de 992px (por ejemplo, laptops y pantallas de escritorio) */
+@media (min-width: 992px) {
+  .wideScreen {
+    margin-top: 70px;
+  }
+}
+
+/* Estilos para pantallas con ancho mínimo de 1200px (por ejemplo, pantallas de escritorio grandes) */
+@media (min-width: 1200px) {
+  .detailContainer {    
+    padding-top: 0px;
+  }
+  .logo {
+    margin-top: 0px;
+  }
 }

@@ -1,0 +1,26 @@
+.container{
+    margin-top: 10vh;
+    border: 1px solid red;
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFDA60;
+}
+
+.contentContainer{
+    border: 1px solid lightseagreen;
+    margin: auto;
+    width: 80%;
+    height: 100vh;
+}
+
+.historyTitle{
+    display: flex;
+    width: 100%;
+    /* border: 1px solid red; */
+    font-size: 2.5rem;
+    margin: 1rem 0;
+}
+
+.bookingsTitle{
+    margin: auto;
+}

@@ -1,22 +1,30 @@
 'use client'
 import React, { useEffect } from "react";
 import style from './Querys.module.css'
-import {
-    Collapse,
-    initTE,
-  } from "tw-elements";
-  
+// import {
+//     Collapse,
+//     initTE,
+//   } from "tw-elements";
+
 const Querys = () => {
-    useEffect(() => {
-        initTE({ Collapse });   
-      }, []); 
+
+
+      useEffect(() => {
+        const init = async () => {
+          const { Collapse, initTE } = await import("tw-elements");
+          initTE({ Collapse });
+        };
+        init();
+      }, []);
+
+
   return (
     <div className={style.querysContainer} id="accordionExample">
     <div
-      class="border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-      <h2 class="mb-0" id="headingOne">
+      className="border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+      <h2 className="mb-0" id="headingOne">
         <button
-          class="group relative flex w-full items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+          className="group relative flex w-full items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
           type="button"
           data-te-collapse-init
           data-te-target="#collapseOne"
@@ -24,17 +32,17 @@ const Querys = () => {
           aria-controls="collapseOne">
           How do I join the club?
           <span
-            class="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+            className="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              class="h-6 w-6">
+              className="h-6 w-6">
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </span>
@@ -42,12 +50,12 @@ const Querys = () => {
       </h2>
       <div
         id="collapseOne"
-        class="!visible"
+        className="!visible"
         data-te-collapse-item
         data-te-collapse-show
         aria-labelledby="headingOne"
         data-te-parent="#accordionExample">
-        <div class="px-5 py-4">
+        <div className="px-5 py-4">
           <strong>This is the first item's accordion body.</strong> It is
           shown by default, until the collapse plugin adds the appropriate
           classes that we use to style each element. These classes control
@@ -60,10 +68,10 @@ const Querys = () => {
       </div>
     </div>
     <div
-      class="border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-      <h2 class="mb-0" id="headingTwo">
+      className="border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+      <h2 className="mb-0" id="headingTwo">
         <button
-          class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+          className="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
           type="button"
           data-te-collapse-init
           data-te-collapse-collapsed
@@ -72,17 +80,17 @@ const Querys = () => {
           aria-controls="collapseTwo">
          Can I reserve an appointment for any sport if I am not a member?
           <span
-            class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+            className="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              class="h-6 w-6">
+              className="h-6 w-6">
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </span>
@@ -90,11 +98,11 @@ const Querys = () => {
       </h2>
       <div
         id="collapseTwo"
-        class="!visible hidden"
+        className="!visible hidden"
         data-te-collapse-item
         aria-labelledby="headingTwo"
         data-te-parent="#accordionExample">
-        <div class="px-5 py-4">
+        <div className="px-5 py-4">
           <strong>This is the second item's accordion body.</strong> It is
           hidden by default, until the collapse plugin adds the appropriate
           classes that we use to style each element. These classes control
@@ -107,10 +115,10 @@ const Querys = () => {
       </div>
     </div>
     <div
-      class="border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-      <h2 class="accordion-header mb-0" id="headingThree">
+      className="border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+      <h2 className="accordion-header mb-0" id="headingThree">
         <button
-          class="group relative flex w-full items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)] [&[data-te-collapse-collapsed]]: [&[data-te-collapse-collapsed]]:transition-none"
+          className="group relative flex w-full items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)] [&[data-te-collapse-collapsed]]: [&[data-te-collapse-collapsed]]:transition-none"
           type="button"
           data-te-collapse-init
           data-te-collapse-collapsed
@@ -119,17 +127,17 @@ const Querys = () => {
           aria-controls="collapseThree">
           What payment methods do you have?
           <span
-            class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+            className="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              class="h-6 w-6">
+              className="h-6 w-6">
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </span>
@@ -137,11 +145,11 @@ const Querys = () => {
       </h2>
       <div
         id="collapseThree"
-        class="!visible hidden"
+        className="!visible hidden"
         data-te-collapse-item
         aria-labelledby="headingThree"
         data-te-parent="#accordionExample">
-        <div class="px-5 py-4">
+        <div className="px-5 py-4">
           <strong>This is the third item's accordion body.</strong> It is
           hidden by default, until the collapse plugin adds the appropriate
           classes that we use to style each element. These classes control

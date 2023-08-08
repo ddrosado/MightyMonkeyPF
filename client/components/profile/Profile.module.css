@@ -8,7 +8,7 @@
 }
 
 .img{
-    /* border: solid 1px green;  */
+    border: solid 1px green; 
     width: 100%;
     height: auto;
     display: flex;

@@ -8,6 +8,7 @@ export default async ({ body, method }, res) => {
     if (method === "POST") {
       const { comment, rating, userId } = body;
       if (comment.length < 10) throw Error("Comment is too short");
+      if (comment.length > 450) throw Error("Comment is too long");
       if(rating > 5 || rating < 1) throw Error('Rating value min 1 max 5')
       if (!comment || !rating || !userId) throw Error("Missing Data");
       const reviews = await postReview(body);

@@ -17,9 +17,9 @@
 }
 
 .logo {
-    width: 38%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 81%;
+    position: relative;
+    top: 4%;
 }
 
 .guestBtn {
@@ -27,6 +27,8 @@
     background-color: #FFDA61;
     padding: 8px;
     position: relative;
+    transition: all 0.2s ease;
+    border-radius: 10px;
 }
 
 .guestBtn:hover {
