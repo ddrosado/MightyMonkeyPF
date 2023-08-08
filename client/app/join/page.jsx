@@ -1,7 +1,6 @@
 import React from 'react'
 import style from './page.module.css'
-import Membership from '../../components/membership/Membership'
-import PricingPlans from '../../components/pricingPlans/pricingPlans'
+import Membership from '../../components/membership/membership'
 
 const page = () => {
   return (
