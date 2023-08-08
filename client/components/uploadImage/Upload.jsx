@@ -4,7 +4,7 @@ import uploadImage from "../../pages/api/uploadImage";
 import useSWR from "swr";
 import { fetcher } from "../../pages/api/fetcher";
 import style from './Upload.module.css'
-import  Modal from "../modal_avatar/Modal"
+import  Modal from "../modal/Modal"
 
 const updateUser = async (email, image) => {
   const res = await fetch("api/users", {

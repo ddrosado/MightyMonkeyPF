@@ -11,7 +11,12 @@ return (
     <div className={styles.container}>
         <div className={styles.content}>
             <Link href="/home">
-            <Image className={styles.imgage}src={imgage} alt="404" />
+            <Image 
+            className={styles.imgage}
+            src={imgage} 
+            alt="404" 
+            width={300} 
+            height={300}/>
             <h1>404 Not Found </h1>
             </Link>
         </div>

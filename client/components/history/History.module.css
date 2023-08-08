@@ -8,4 +8,17 @@
 
 .contentContainer{
     border: 1px solid lightseagreen;
+    margin: auto;
+    width: 80%;
+    height: 100vh;
+}
+
+.historyTitle{
+    display: flex;
+    width: 100%;
+    border: 1px solid red;
+}
+
+.bookingsTitle{
+    margin: auto;
 }

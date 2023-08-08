@@ -4,10 +4,12 @@ import { useDispatch } from "react-redux";
 import { postReviews } from "../../redux/actions/reviewsAction";
 import useSWR from "swr";
 import { fetcher } from "../../pages/api/fetcher";
+import  Modal  from "../modal/Modal";
 
 const ReviewForm = () => {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(1);
+  const [show, setShow] = useState(false);
 
   const { data } = useSWR("/api/user", fetcher);
 
@@ -38,8 +40,20 @@ const ReviewForm = () => {
   };
 
   return (
+    <>
+    <button
+      type="button"
+      onClick={() => setShow(true)}
+      className="bg-primary text-white rounded-md px-4 py-2 font-medium"
+    >
+      Escribe tu opinión
+    </button>
+    
+    {
+    show === true ?
+    <Modal onClose={() => setShow(false)}>
     <div className="">
-    <h1 className="text-xl font-bold">Escribe tu opinión</h1>
+    <h1 className="text-xl font-bold">Escribe tu opinión aqui</h1>
     <form onSubmit={handleSubmit}>
       <textarea
         id="comment"
@@ -84,9 +98,13 @@ const ReviewForm = () => {
       </ul>
       <br />
 
-      <button type="submit">Enviar Revisión</button>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white flex items-center justify-center py-2 px-4 rounded" type="submit">Enviar Revisión</button>
     </form>
     </div>
+    </Modal>
+    : null
+    }
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ import InfoHome from "../../components/infoHome/InfoHome";
 export default async function Home() {
   return (
     <div className={styles.homeContainer}>
-      <Banner/>
+      <Banner />
       <Cards />
       <InfoHome />
     </div>
