@@ -21,7 +21,7 @@ const DatePicker = ({ selectedDate, onDateSelected }) => {
     const selectedDate = e.target.value;
     setDateValue(selectedDate);
     onDateSelected(selectedDate);
-  };
+  };  
 
   return (
     <div className={style.dateContainer}>
