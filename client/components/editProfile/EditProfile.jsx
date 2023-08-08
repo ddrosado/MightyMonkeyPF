@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "../../pages/api/fetcher";
 import Upload from "../uploadImage/Upload";
-import { putUser, updateSession } from "./actions_profile";
+import { putUser, updateSession } from "../../redux/actions/userActions";
 
 const EditProfile = (props) => {
 
