@@ -3,13 +3,12 @@ import PricingPlans from '../../components/pricingPlans/pricingPlans'
 import style from './page.module.css'
 import Membership from '../../components/membership/Membership'
 
-const page = () => {
+export const page = () => {
   return (
     <div className={style.joinContainer}>
       <Membership/>
-        {/* <PricingPlans /> */}
+        {/* <PricingPlans /> .*/}
+        
     </div>
   )
 }
-
-export default page
