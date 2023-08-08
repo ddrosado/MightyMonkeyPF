@@ -8,7 +8,7 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 const MyProfile = (props) => {
   
-  const { data } = useSWR("api/user", fetcher);
+  const { data, mutate } = useSWR("api/user", fetcher);
 
   return data ? (
     <div className={style.marginContainer}>
