@@ -47,7 +47,7 @@ const SignIn = (props) => {
   const router = useRouter();
   const [allowed, setAllowed] = useState(null);
 
-  const { data, mutate } = useSWR("/api/user", fetcher);
+  const { data, mutate } = useSWR("api/user", fetcher);
 
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
@@ -67,7 +67,7 @@ const SignIn = (props) => {
               router.push("/home");
             } else if (res?.session && !res?.isActive) {
               setAllowed(false);
-              alert("TAS BANEADISIMO CAPO");
+              alert("You are banned");
             }
           })
           .catch((error) => console.log(error.message));
@@ -98,7 +98,7 @@ const SignIn = (props) => {
       router.push("/home");
     } else if (res?.session && !res?.isActive) {
       setAllowed(false);
-      alert("TAS BANEADISIMO PERRO");
+      alert("You are banned");
     } else {
       setAllowed(false);
     }
