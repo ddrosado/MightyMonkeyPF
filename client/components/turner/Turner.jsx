@@ -7,10 +7,12 @@ import Summary from './summary/Summary';
 import Image from 'next/image';
 import CourtPicker from './courtPicker/CourtPicker';
 
-const Turner = ({ sportFind, user }) => {
+const Turner = ({ sportFind, user, bookings}) => {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTurn, setSelectedTurn] = useState('');
   const [selectedCourt, setSelectedCourt] = useState('');
+
+  console.log(sportFind)
 
   const handleDateSelected = (date) => {
     setSelectedDate(date);
@@ -32,9 +34,10 @@ const Turner = ({ sportFind, user }) => {
   return (
     <div className={style.tunerContainer}>
       <div className={style.formContainer}>
+        <div className={style.imgContainer} style={{backgroundImage:`url(${sportFind?.image})`}}></div>
         <div className={style.turnerLeft}>
           <DatePicker onDateSelected={handleDateSelected} selectedDate={selectedDate} />
-          <TurnPicker onTurnSelected={handleTurnSelected} selectedDate={selectedDate} />
+          <TurnPicker onTurnSelected={handleTurnSelected} selectedDate={selectedDate} bookings={bookings} sportFind={sportFind} />
           <CourtPicker courts={sportFind?.court} onCourtSelected={handleCourtSelected} />
         </div>
         <div className={style.turnerRight}>

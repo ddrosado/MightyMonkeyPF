@@ -3,7 +3,7 @@ import styles from "./login.module.css";
 import RecoverPass from "../components/recoverPass/RecoverPass";
 import SignIn from "../components/signin/SignIn";
 import SignUp from "../components/register/Register";
-import logo from "../assets/images/monkeylog.png";
+import logo from "../assets/images/monologin.png";
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
