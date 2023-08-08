@@ -1,0 +1,89 @@
+.publicityContainer {
+    display: flex;
+    background-image: radial-gradient(circle at center center, transparent,rgb(0,0,0)),repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 2px,transparent 2px, transparent 10px,rgb(0,0,0) 10px, rgb(0,0,0) 11px,transparent 11px, transparent 21px),repeating-linear-gradient(45deg, rgb(46,40,40) 0px, rgb(46,40,40) 4px,transparent 4px, transparent 8px),linear-gradient(90deg, rgb(0,0,0),rgb(0,0,0));
+    width: 100%;
+    padding: 50px;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.logo {
+    width: 400px;
+}
+
+.separator {
+    border-left: #FFDA61 solid 3px;
+    height: 20rem;
+}
+
+.textContainer {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    width: 40%;
+    margin-top: 50px;
+}
+
+.textContainer h1 span {
+    color: #FFDA61;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.reserve {
+    color: rgb(70, 210, 80);
+    padding: 10px;
+    border-radius: 10px;    
+    transition: all 0.2s ease;
+}
+
+.reserve:hover {
+    text-decoration: underline;
+}
+
+.logoContainer {
+    width: 40%;
+}
+
+/* RESPONSIVE */
+/* Estilos para pantallas con ancho máximo de 576px (por ejemplo, smartphones en orientación vertical) */
+@media (max-width: 576px) {
+    .publicityContainer {
+        width: 100%;
+        padding:10px;
+        align-items: center;
+        justify-content: space-around;
+        height: 100vh;
+        flex-direction: column-reverse;
+    }
+    .textContainer {
+        font-size: 2rem;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .separator {
+        border-bottom: #FFDA61 solid 3px;
+        height: 0px;
+        width: 20rem;
+    }
+    .logoContainer {
+        width: 75%;
+    }
+}
+
+/* Estilos para pantallas con ancho entre 577px y 991px (por ejemplo, tabletas en orientación vertical) */
+@media (min-width: 577px) and (max-width: 991px) {
+
+}
+
+/* Estilos para pantallas con ancho mínimo de 992px (por ejemplo, laptops y pantallas de escritorio) */
+@media (min-width: 992px) {}
+
+/* Estilos para pantallas con ancho mínimo de 1200px (por ejemplo, pantallas de escritorio grandes) */
+@media (min-width: 1200px) {
+  
+}

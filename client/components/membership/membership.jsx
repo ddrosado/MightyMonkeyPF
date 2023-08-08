@@ -97,7 +97,7 @@ const Membership = () => {
             <h2 class="cursive text-6xl font-thin text-white">beneficios</h2>
         </div>
         <button onClick={cancelSupscription} class="relative  shadow-xl group flex items-center text-white justify-center bg-gradient-to-r from-cyan-500 to-blue-500 px-5 py-2">
-        <div class="absolute  inset-0 w-0 bg-white opacity-10 transition-all duration-[0.3s] ease-out group-hover:w-full"></div>
+        <div className="absolute  inset-0 w-0 bg-white opacity-10 transition-all duration-[0.3s] ease-out group-hover:w-full"></div>
         <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
         </svg>
