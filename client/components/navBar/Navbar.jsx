@@ -8,7 +8,7 @@ import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { fetcher } from "../../pages/api/fetcher";
 import { useEffect } from "react";
-import { Collapse, Dropdown, initTE } from "tw-elements";
+
 
 const logout = async () => {
   const data = await fetch("http://localhost:3000/api/logout", {
@@ -61,7 +61,7 @@ export const Navbar = () => {
 
   return (
     <div className={style.navContainer}>
-      <Image className={style.logo} src={logo} alt="#" />
+      <Image className={style.logo} src={logo} alt="#" width={300} height={300}/>
       <nav
       style={{color:'black'}}
         className="relative flex w-full flex-nowrap items-center justify-between py-2 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:flex-wrap lg:justify-start lg:py-4"

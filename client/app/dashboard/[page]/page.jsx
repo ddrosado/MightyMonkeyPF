@@ -31,7 +31,7 @@ const Page = ({params}) => {
             <NavAdmin page={params.page}/>
             {params.page == "users" ? <ListSocios/> : null }
             {params.page == "sports" ? <ListSports/> : null }
-            {params.page == "turns" ? <ListTurns/> : null }
+            {/* {params.page == "turns" ? <ListTurns/> : null } */}
             {params.page == "plans" ? <ListPlans/> : null }
           </div>
           {/* )  : (
