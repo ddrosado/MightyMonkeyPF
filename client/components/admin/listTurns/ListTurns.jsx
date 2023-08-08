@@ -124,7 +124,7 @@ export const ListTurns = () => {
                       <tr key={id}>
                         <td className="px-5 py-5 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {court.sport?.name}
+                            {court.sport? court.sport.name : "deleted"}
                           </p>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
