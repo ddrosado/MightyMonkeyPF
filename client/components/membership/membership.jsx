@@ -1,24 +1,35 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import useSWR from 'swr';
 import { fetcher } from '../../pages/api/fetcher';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+// import { useDispatch, useSelector } from "react-redux";
+// import getPlans from '../../pages/api/controllers/plans/getPlans';
 
 
 const Membership = () => {
 
+  const [ member, setMember ] = useState(false)
+  // const dispatch = useDispatch()
+  // const plans = useSelector(state => state.plans.plans)
+
   const plans = useSWR('api/plans', fetcher)
   const user = useSWR('api/user', fetcher)
   const router = useRouter()
-  // console.log(user.data);
-  // console.log(plans.data);
+  console.log(plans);
+
+  // useEffect(async () => {
+  //   dispatch(getPlans())
+  // }, [])
 
   const urlPay = async(planId) => {
     console.log(planId);
     console.log(user.data.id);
-    const url = await axios.post('https://16fa-201-252-85-88.ngrok-free.app/api/pay', {
+    if(!user.data.id) router.push("/")
+    const url = await axios.post('/api/pay', {
       type: 'subscriptions',
       userId: user.data.id,
       planId,
@@ -27,13 +38,20 @@ const Membership = () => {
     router.push(url);
   }
 
+  const cancelSupscription = async() => {
+    const cancel = await axios.put('/api/pay', {
+      type: 'cancel',
+      userId: user.data.id
+    }).then(({data}) => data)
+  }
+
 
   return (
     <div>
-      <div className="container mx-auto max-w-4xl">
-        <div className="mt-10 text-center">
-          <h1 className="text-4xl font-bold text-yellow-200">Choose your plan</h1>
-          <p className="text-white mt-3 font-semibold">Every plan includes 30 day free trial</p>
+      { !member ? <div class="container mx-auto max-w-4xl">
+        <div class="mt-10 text-center">
+          <h1 class="text-4xl font-bold text-yellow-200">Choose your plan</h1>
+          <p class="text-white mt-3 font-semibold">Every plan includes 30 day free trial</p>
         </div>
         <div className="mt-8">
           <div className="flex justify-between">
@@ -74,7 +92,21 @@ const Membership = () => {
           )
         })}
         </div>
-      </div>
+      </div> : <div class="container mx-auto max-w-4xl">
+        {/* <h1 class="text-4xl font-bold text-yellow-200">Ya estas suscripto</h1> */}
+        <div id="main_container" 
+          class="relative grid place-content-center place-items-center gap-2 before:bg-gradient-to-t before:from-teal-500/70 before:via-fuchsia-600 before:to-transparent before:blur-xl before:filter">
+            <h1 class="title text-6xl font-black text-teal-500">Mighty Monkeys Basic</h1>
+            <h2 class="cursive text-6xl font-thin text-white">beneficios</h2>
+        </div>
+        <button onClick={cancelSupscription} class="relative  shadow-xl group flex items-center text-white justify-center bg-gradient-to-r from-cyan-500 to-blue-500 px-5 py-2">
+        <div className="absolute  inset-0 w-0 bg-white opacity-10 transition-all duration-[0.3s] ease-out group-hover:w-full"></div>
+        <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+        <span>Cancel</span>
+    </button>
+        </div>}
     </div>
   )
 }
