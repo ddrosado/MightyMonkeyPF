@@ -1,11 +1,10 @@
 
 .logo {
-  width: 75px;
-    margin-top: 2px;
+  width: 120px;
+  margin-top: 2px;
   position: absolute;
   z-index: 101;
-  left: 35%; /* Coloca el punto central del logo en el centro de la página */
-  /* transform: translateX(-50%); */
+  left: 26%;
 }
 
 .adminBar {

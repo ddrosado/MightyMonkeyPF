@@ -1,21 +1,17 @@
 "use client"
-import React, { useState } from 'react'
 import Link from 'next/link'
 import style from "./page.module.css"
-import useSWR from "swr";
-import NotFound from '../../404NotFound/page.jsx'
 import NavAdmin from '../../../components/navAdmin/NavAdmin'
 import ListSocios from '../../../components/admin/listSocios/ListSocios'
 import { ListSports } from '../../../components/admin/listSports/ListSports'
 import { ListTurns } from '../../../components/admin/listTurns/ListTurns'
 import ListPlans from '../../../components/admin/listPlans/ListPlans'
-import { fetcher } from '../../../pages/api/fetcher';
+
 
 
 
 
 const Page = ({params}) => {
-
 
   // const { data, error } = useSWR("api/user", fetcher);
 

@@ -11,11 +11,25 @@ const ThanksSuscription = () => {
     const { data, error } = useSWR("api/user", fetcher);
     console.log('esto es el data ',data);
 
-    useEffect( async () => {
-    const post = await axios.put('https://16fa-201-252-85-88.ngrok-free.app/api/users',{
-        email: data.email,
-        isMember: true
-    })
+    useEffect(() => {
+        if(data){
+            const updateUser = async () => {
+                try {
+                    const email = await data.email
+                    console.log(email);
+                    const put = await axios.put('https://e580-179-1-48-61.ngrok-free.app/api/users',{
+                        email: email,
+                        isMember: true
+                    })
+                    console.log('Success');
+                } catch (error) {
+                    console.log('Error: ' + error);
+                }
+            }
+            updateUser()
+        } else {
+            console.log('no hizo put');
+        }
     },[]);
 
         

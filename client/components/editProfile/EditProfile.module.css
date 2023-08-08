@@ -192,5 +192,6 @@
 
 .profileContainer{
     /* border: 1px solid cyan; */
+    display: flex;
     margin: 40px;
 }
