@@ -2,36 +2,28 @@
 
 import React from 'react';
 import useSWR from "swr";
-import { useRouter } from "next/router";
 import axios from "axios";
 import { fetcher } from "../../pages/api/fetcher";
-import { useEffect } from 'react';
 
 const ThanksSuscription = () => {
     const { data, error } = useSWR("api/user", fetcher);
     console.log('esto es el data ',data);
-
-    useEffect(() => {
-        if(data){
-            const updateUser = async () => {
-                try {
-                    const email = await data.email
-                    console.log(email);
-                    const put = await axios.put('/api/users',{
-                        email: email,
-                        isMember: true
-                    })
-                    console.log('Success');
-                } catch (error) {
-                    console.log('Error: ' + error);
-                }
+    if(data){
+        const updateUser = async () => {
+            try {
+                const email = await data.email
+                console.log(email);
+                const put = await axios.put('/api/users',{
+                    email: email,
+                    isMember: true
+                })
+                console.log('Success');
+            } catch (error) {
+                console.log('Error: ' + error);
             }
-            updateUser()
-        } else {
-            console.log('no hizo put');
         }
-    },[]);
-
+        updateUser()
+    }
         
     return (
 

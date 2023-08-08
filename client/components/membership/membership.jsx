@@ -12,19 +12,17 @@ import { useState } from 'react';
 
 const Membership = () => {
 
-  const [ member, setMember ] = useState(false)
-  // const dispatch = useDispatch()
-  // const plans = useSelector(state => state.plans.plans)
+  const [ member, setMember ] = useState(true)
 
   const plans = useSWR('api/plans', fetcher)
   const user = useSWR('api/user', fetcher)
   const router = useRouter()
-  console.log(plans);
-
-  // useEffect(async () => {
-  //   dispatch(getPlans())
-  // }, [])
-
+  
+  if(user.data){
+    setMember(user.data.isMember)
+  }
+  
+  console.log('acaaaaaaa',user.data);
   const urlPay = async(planId) => {
     console.log(planId);
     console.log(user.data.id);
@@ -34,7 +32,6 @@ const Membership = () => {
       userId: user.data.id,
       planId,
     }).then(({data}) => data.init_point)
-    console.log("aaaaaaaaaaaaaaaaaaaaaaa",url);
     router.push(url);
   }
 
