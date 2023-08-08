@@ -12,17 +12,23 @@ import { useState } from 'react';
 
 const Membership = () => {
 
-  const [ member, setMember ] = useState(true)
+  let [ member, setMember ] = useState(true)
+  let [ count, setCount ] = useState(0)
 
   const plans = useSWR('api/plans', fetcher)
   const user = useSWR('api/user', fetcher)
   const router = useRouter()
   
-  if(user.data){
-    setMember(user.data.isMember)
+  if(user.data && count <= 5){
+    console.log('acaaaaaaa',user.data);
+    console.log(count);
+    const isMember = () => {
+      setMember(user.data.isMember)
+    }
+    isMember()
+    setCount(count + 1)
   }
   
-  console.log('acaaaaaaa',user.data);
   const urlPay = async(planId) => {
     console.log(planId);
     console.log(user.data.id);
