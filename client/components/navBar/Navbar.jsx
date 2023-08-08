@@ -24,6 +24,7 @@ export const Navbar = () => {
 
   const obj = [
     { label: "Home", route: "/home" },
+    { label: "Sports", route: "/sports" },
     { label: "About", route: "/aboutUs" },
     { label: "Contact", route: "/contact" },
     ...(data?.isActive ? [{ label: "Profile", route: "/profile" }] : []),
