@@ -23,7 +23,7 @@ module.exports = async(info) => {
 
     const newBooking = await Booking.create(bookingInfo)
 
-    const bookingQuery = await Court.findByPk(newBooking.id, {
+    const bookingQuery = await Booking.findByPk(newBooking.id, {
         attributes: [
             'id', 'date', 'hour'
         ],
