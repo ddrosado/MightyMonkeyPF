@@ -51,7 +51,7 @@ Booking.belongsTo(User, { as: "user", foreignKey: 'userId' });
 User.hasMany(Review,{as: "review", foreignKey:'userId'})
 Review.belongsTo(User,{as: "user", foreignKey:'userId'})
 
-Court.hasMany(Booking, { as: "courtBooking", foreignKey: "courtId" });
+Court.hasMany(Booking, { as: "booking", foreignKey: "courtId" });
 Booking.belongsTo(Court, { as: "court", foreignKey: "courtId" });
 
 Sport.hasMany(Court, {as: 'court', foreignKey: 'sportId'})
@@ -60,7 +60,7 @@ Court.belongsTo(Sport, {as: 'sport', foreignKey: 'sportId'})
 User.hasOne(Plan,{as:"plan", foreignKey: 'planId'})
 Plan.belongsTo(User,{as:"user", foreignKey: 'planId'})
 
-db.sequelize.sync();
+db.sequelize.sync({force: false});
 
 module.exports = {
    db

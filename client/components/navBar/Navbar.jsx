@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { Collapse, Dropdown, initTE } from "tw-elements";
 
 const logout = async () => {
-  const data = await fetch("api/logout", {
+  const data = await fetch("http://localhost:3000/api/logout", {
     method: "GET",
   });
   const res = await data.json();

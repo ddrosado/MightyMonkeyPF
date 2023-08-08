@@ -72,11 +72,6 @@ export default function Upload() {
       {
         show ?
       <Modal 
-        uploadFileHandler={uploadFileHandler}
-        handleSubmit={ handleSubmit}
-        data={data}
-        img={img}
-        loading={loading}
         onClose={()=>setShow(false)}
       >     
        <hr/>
