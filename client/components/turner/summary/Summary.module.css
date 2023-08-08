@@ -1,17 +1,15 @@
 .infoContainer {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     height: 60%;
     justify-content: space-around;
-    background: #ffe89e;
+    background: #ffffff;
     width: 80%;
     margin-bottom: 20px;
     margin-top: 20px;
-    -webkit-box-shadow: -5px 5px 18px 0px rgba(130, 130, 130, 1);
--moz-box-shadow: -5px 5px 18px 0px rgba(130, 130, 130, 1);
-box-shadow: -5px 5px 18px 0px rgba(130, 130, 130, 1);
+    box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.68);
 padding: 10px;
+border-radius: 10px;
 
 }
 
@@ -20,6 +18,8 @@ padding: 10px;
     flex-direction: column;
     align-items: center;
     height: 100%;
+    margin-top: 20px;
+
 }
 
 .reserveBtn {
@@ -27,6 +27,8 @@ padding: 10px;
     padding: 5px 10px;
     box-shadow: -3px 3px 11px 1px rgb(0 0 0 / 42%);
     position: relative;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .reserveBtn:hover {
@@ -41,4 +43,21 @@ padding: 10px;
 
 .monoOK {
     width: 70px;
+}
+
+.noMemberPrice {
+    font-weight: bolder;
+}
+
+.memberPrice {
+    background-color: black;
+    color: #FFDA61;
+    font-weight: bolder;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 20px;
+}
+
+.pricesContainer p {
+    margin-bottom: 20px;
 }

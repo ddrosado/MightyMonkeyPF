@@ -5,7 +5,9 @@ export const History = () => {
   return (
     <div className={style.container}>
        <div className={style.contentContainer}>
-        
+        <div className={style.historyTitle}>
+        <span className={style.bookingsTitle}>Jungle Chronicles: Your Court Booking History</span>
+        </div>
        </div>
     </div>
   )

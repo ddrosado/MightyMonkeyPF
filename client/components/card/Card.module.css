@@ -38,6 +38,7 @@
   opacity: 0;
   transition: 0.3s ease-out;
   font-weight: 400;
+  border-radius: 10px;
  }
  
  .text-body {
@@ -67,12 +68,12 @@
   background-color: black;
   color: white;
   width: fit-content;
+  border-radius: 7px 0 10px 0;
 }
  .sportName h1{
   font-size: 1.5rem;
     margin: 0 20px;
     font-weight: 400;
-    border-radius: 7px 0 0 0;
  }
 
  .sportImage {

@@ -12,18 +12,18 @@ const Membership = () => {
   const plans = useSWR('api/plans', fetcher)
   const user = useSWR('api/user', fetcher)
   const router = useRouter()
-  console.log(user.data);
-  console.log(plans.data);
+  // console.log(user.data);
+  // console.log(plans.data);
 
   const urlPay = async(planId) => {
     console.log(planId);
     console.log(user.data.id);
-    const url = await axios.post('https://e580-179-1-48-61.ngrok-free.app/api/pay', {
+    const url = await axios.post('https://16fa-201-252-85-88.ngrok-free.app/api/pay', {
       type: 'subscriptions',
       userId: user.data.id,
       planId,
     }).then(({data}) => data.init_point)
-    console.log(url);
+    console.log("aaaaaaaaaaaaaaaaaaaaaaa",url);
     router.push(url);
   }
 
