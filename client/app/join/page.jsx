@@ -5,7 +5,7 @@ import Membership from '../../components/membership/Membership'
 const page = () => {
   return (
     <div className={style.joinContainer}>
-      <Membership/>
+    <Membership/>
     </div>
   )
 }
