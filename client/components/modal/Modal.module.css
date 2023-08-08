@@ -18,7 +18,7 @@
 
 }
   .modalContainer{
-    width: 300px;
+    display: flex;
     min-height: 100px;
     background: #fff;
     position: relative;
@@ -27,7 +27,7 @@
   }
   .close{
     position: absolute;
-    top: 20px;
+    top: 5px;
     right: 20px;
     background-color: black;
     width: 30px;
