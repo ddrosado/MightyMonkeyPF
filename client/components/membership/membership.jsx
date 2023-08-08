@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 
-const Membership = () => {
+export const Membership = () => {
 
   const plans = useSWR('api/plans', fetcher)
   const user = useSWR('api/user', fetcher)
@@ -79,4 +79,4 @@ const Membership = () => {
   )
 }
 
-export default Membership
+
