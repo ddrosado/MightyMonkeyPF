@@ -7,7 +7,6 @@ const ReviewModel = require('../../models/Review')
 const UserModel = require('../../models/User')
 const SportModel = require('../../models/Sport');
 const PlanModel = require('../../models/Plan');
-const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
 
 const { postgres_DATABASE,postgres_USER, postgres_PASSWORD, postgres_HOST } = process.env;
 
@@ -19,9 +18,9 @@ const sequelize = new Sequelize( postgres_DATABASE,postgres_USER, postgres_PASSW
    operatorAliases: false,
    logging: false,
    native: false,
-   // dialectOptions: {
-   //    ssl: true, 
-   //  },
+   dialectOptions: {
+      ssl: true, 
+    },
    pool: {
       max: 5,
       min: 0,
