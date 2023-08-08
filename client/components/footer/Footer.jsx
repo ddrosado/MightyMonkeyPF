@@ -13,7 +13,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className={style.footerContainer}>
-      <Image src={logo} alt="logos" className={style.logo} />
+      <Image src={logo} alt="logos" className={style.logo} width={300} height={300}/>
       <div className={style.footerText}>
         <p className={style.copyright}>
           © Mighty Monkey Club. All rights reserved
