@@ -12,7 +12,8 @@ const aboutUs = () => {
       <h1 className={style.clubTitle}>Get to<span>KNOW US</span>a little more</h1>
       </div>
       
-      <Image className={style.photo} src={mmc} alt='#' />
+      <Image className={style.photo} src={mmc} alt='#' width={300} 
+            height={300}/>
        <p className={style.infoClub}>
         The Mighty Monkey Club was a magical and special place in the heart of
         the town of Vicente López. Founded by a family passionate about sports and

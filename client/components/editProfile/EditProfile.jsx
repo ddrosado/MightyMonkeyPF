@@ -1,17 +1,14 @@
-"use client";
-import { useDispatch } from "react-redux";
+"use client"
 import style from "./EditProfile.module.css";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPen,
-  faFloppyDisk,
   faXmark,
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { fetcher } from "../../pages/api/fetcher";
 import Upload from "../uploadImage/Upload";
