@@ -1,7 +1,7 @@
-// import React from 'react'
+import React from 'react'
 
-// const page = () => {
-//   return (
+const page = () => {
+  return (
 // <div>
 //         //! vista mobile
 //     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -85,7 +85,7 @@
 //         </div>
 //     </div>
 // </div>
-//   )
-// }
+  )
+}
 
-// export default page
+export default page
