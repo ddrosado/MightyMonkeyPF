@@ -1,15 +1,23 @@
+'use client'
 import { useDispatch, useSelector } from "react-redux";
 import style from "./EditProfile.module.css"
-import { putUser } from "../../redux/actions/userActions";
+import { putUser, updateUser } from "../../redux/actions/userActions";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faFloppyDisk, faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
+import { useRouter } from "next/navigation";
+import { mutate } from 'swr';
+import Image from "next/image";
+import Upload from "../uploadImage/Upload";
 
 const EditProfile = (props) => {
 
+
+
 console.log(props.data)
+console.log(props.data.image)
 
 const [newData, setNewData] = useState({
   name: props.data.name,
@@ -28,7 +36,9 @@ const [editingProfilePhoto, setEditingProfilePhoto] = useState(false);
 
 const dispatch = useDispatch();
 
-//handle change
+
+const router = useRouter()
+
 const handleChange = (e) => {
   const name = e.target.name;
   const value = e.target.value;
@@ -38,13 +48,6 @@ const handleChange = (e) => {
   });
 };
 
-
-const handleChangePhone = (phone) => {
-  setNewData(({
-    ...newData,
-    phone: phone,
-  }));
-};
 
 // está editando
 const onClick = (field) => {
@@ -67,24 +70,29 @@ const onClick = (field) => {
   }
 };
 
-console.log(newData)
+//  console.log(newData)
 
 // mandar la data
-const handleUserUpdate = (e) => {
+const handleUserUpdate = async (e) => {
   e.preventDefault();
-  dispatch(putUser(newData));
+  try {
+    await dispatch(putUser(newData));
+    await dispatch(updateUser());
+    mutate('/api/user');
+  } catch (error) {
+    console.error('Error updating user:', error);
+  }
 };
+
 
 return (
   <div className={style.container}>
-
+    <div className={style.profileContainer}>
+      <Upload></Upload>
     <form 
     onSubmit={handleUserUpdate}
     className={style.profileForm}>
       <div className={style.img}>
-        <div>
-          image
-        </div>
       </div>
 
       <div className={style.userdata}>
@@ -140,8 +148,10 @@ return (
               <div className={style.phoneInput}>
             <PhoneInput
               country={'ar'}
-              value={newData.phone}
-              onChange={handleChangePhone}
+              value={newData.telephone}
+              onChange={(telephone) =>
+                setNewData((prevData) => ({ ...prevData, telephone }))
+              }
             />
             </div>
             </div>
@@ -189,7 +199,6 @@ return (
         
           <button 
           className={style.saveButton}
-          value="save"
           type="submit">
             <FontAwesomeIcon icon={faCheck} />
              <span> Save changes</span>
@@ -215,7 +224,7 @@ return (
 
     
 
-
+    </div>
   </div>
 );
 }

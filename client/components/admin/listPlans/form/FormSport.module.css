@@ -1,0 +1,132 @@
+.form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    gap: 3rem;
+    border: solid 1px white;
+    border-radius: 1.4rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    align-items: center;
+    background-color: black;
+}
+
+.form .div{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 70%;
+}
+
+.input{
+    border: none;
+    border-bottom: solid 1px white;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    color: white;
+    padding: 0;
+}
+
+.input:focus{
+    --tw-ring-shadow:none;
+    border-bottom: solid 1px blueviolet;
+}
+
+.label{
+    position: absolute;
+    bottom: 5px;
+    transition: all .3s;
+    cursor: pointer;
+    color: rgb(190, 189, 189);
+}
+
+.input:focus ~ .label{
+    bottom:1.8rem;
+    font-size: .7em;
+}
+
+.full{
+    bottom:1.8rem;
+    font-size: .7em;
+}
+
+.addCourt{
+    width: 7rem;
+    height: 1.5rem;
+    border: solid .1rem white;
+    background-color: transparent;
+    color: white;
+    border-radius: 1rem;
+    font-size: .8em;
+    transition: all .3s;
+}
+
+.addCourt:hover{
+    transform: scale(1.1);
+}
+
+.submit{
+    background-color: blueviolet;
+    color: white;
+    width: 5rem;
+    height: 2rem;
+    border-radius: .3rem;
+    transition: all .3s;
+}
+
+.submit:hover{
+    background-color: rgb(160, 73, 241);
+}
+
+.back{
+    position: absolute;
+    top: .3rem;
+    right: .5rem;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.back:hover{
+    transform: scale(1.1);
+}
+
+.title{
+    color: blueviolet;
+    position: absolute;
+    top: 1rem;
+    font-size: 1.1rem;
+    border-bottom: solid 1px blueviolet;
+}
+
+.delete{
+    background-color: red;
+    color: white;
+    width: 5rem;
+    height: 2rem;
+    border-radius: .3rem;
+    transition: all .3s;
+}
+.delete:hover{
+    background-color: rgb(236, 143, 143);
+}
+
+.buttons{
+    display: flex;
+}
+
+.error{
+    position: absolute;
+    color: red;
+    font-size: .6em;
+    bottom: -20px;
+}
+
+.errors{
+    cursor: no-drop;
+    background-color: gray;
+}
+.errors:hover{
+    background-color: gray;
+}

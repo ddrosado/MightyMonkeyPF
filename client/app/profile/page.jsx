@@ -18,7 +18,7 @@ const Profile = () => {
 
   const { data } = useSWR("api/user", fetcher);
 
-console.log(data)
+// console.log(data)
 
   const [editing, setEditing] = useState(false);
 
@@ -48,7 +48,6 @@ console.log(data)
              : 
             <MyProfile changeComponent={changeComponent}/>
             }
-            <h1>My Turns </h1>
             <History />
           </div>
         ) : (

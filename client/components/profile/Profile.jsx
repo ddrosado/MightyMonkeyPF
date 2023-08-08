@@ -12,11 +12,13 @@ const MyProfile = (props) => {
 
   return (
     data ? (
-      
+  <div className={style.marginContainer}>
 <div className={style.container}>
+  
         <div className={style.img}>
           <div>
           <img src={data.image} alt="profile-image" />
+          {/* <img alt="profile-image" /> */}
           </div>
         </div>
         <div className={style.userdata}>
@@ -54,7 +56,7 @@ const MyProfile = (props) => {
   <span className={style.buttonText}>Edit profile </span>
 </button>
 </div>
-
+</div>
         </div>
         
     </div> 

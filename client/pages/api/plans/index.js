@@ -1,3 +1,4 @@
+import deletePlans from "../controllers/plans/deletePlans";
 import getPlans from "../controllers/plans/getPlans";
 import postPlans from "../controllers/plans/postPlans";
 import putPlans from "../controllers/plans/putPlans";
@@ -22,12 +23,12 @@ export default async (req, res) => {
         const plan = await putPlans(body);
         return res.status(200).json(plan);
       }
-    //   if (method === "DELETE") {
-    //     const { id } = body;
-    //     if (!id) throw Error("missing id");
-    //     const sport = await deleteSport(id);
-    //     return res.status(200).json(sport);
-    //   }
+      if (method === "DELETE") {
+        const { id } = body;
+        if (!id) throw Error("missing id");
+        const plan = await deletePlans(id);
+        return res.status(200).json(plan);
+      }
     } catch (error) {
       return res.status(400).json(error.message);
     }

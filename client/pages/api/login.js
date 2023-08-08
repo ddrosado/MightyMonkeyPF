@@ -4,7 +4,7 @@ import getUserById from "./controllers/users/getUserById";
 
 async function handler(req, res) {
   const { method, body } = req;
-  const { set, save, get } = req.session;
+  const { set, save, get, destroy } = req.session;
   try {
     if (method === "POST") {
       const { name, email, id, isAdmin, image, planId, isActive, surname, telephone } = await userAuth(body);

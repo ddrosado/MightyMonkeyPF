@@ -38,3 +38,15 @@ export const putPlans = createAsyncThunk(
         }
     }
 )
+
+export const deletePlans = createAsyncThunk(
+    'plans/deletePlans',
+    async (id) =>{
+        try {
+            const resp = await axios.delete(url+"/api/plans" , {data:{id:id}})
+            return resp.data
+        } catch (error) {
+            throw new Error(error.response.data.msg)
+        }
+    }
+)

@@ -2,7 +2,6 @@
     width: 100%;
     justify-content: space-between;
     background-color: #000000e2;
-    margin: 2vw;
     border-radius: 5px;
     border: 1px solid #FFDA60;
 }
@@ -16,20 +15,21 @@
     justify-content: center;
 }
 .img > div{
-    width: 60%;
-    height: 60%;
+    width: 90%;
+    height: 100%;
     border-radius: 5px;
     border: solid 1px #ffda603b;
 }
 
 .userdata{
-    /* border: solid 1px cyan; */
+    /* border: solid 1px red; */
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 2rem;
+    margin-left: 20px;
     /* padding-left: 2rem; */
 }
 
@@ -52,7 +52,7 @@
 .profileForm{
     /* border: 1cap solid fuchsia; */
     display: flex;
-    height: 30rem;
+
 }
 
 .actualData{
@@ -188,4 +188,9 @@
 
 .check{
     margin-left: 10px;
+}
+
+.profileContainer{
+    /* border: 1px solid cyan; */
+    margin: 40px;
 }

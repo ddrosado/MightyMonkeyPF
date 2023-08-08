@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { deleteUser, getUsers, putUser } from '../actions/userActions';
+import { deleteUser, getUsers, putUser, updateUser } from '../actions/userActions';
 
 const initialState = {
   users: [],
-  usersCopy: []
+  usersCopy: [],
+  user: []
 };
 
 const usersSlice = createSlice({
@@ -34,6 +35,9 @@ const usersSlice = createSlice({
         state.error = "";
         state.users = action.payload;
         state.usersCopy = action.payload;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload;
       });
   },
 });

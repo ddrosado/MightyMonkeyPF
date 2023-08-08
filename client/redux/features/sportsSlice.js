@@ -15,7 +15,6 @@ const sportsSlice = createSlice({
   reducers: {
     filterSports: (state, action) => {
       const {search, isAct} = action.payload
-      console.log(isAct)
       if (isAct == "all"){
         state.sportsCopy = state.sports?.filter(sport=> sport.name.toLowerCase().includes(search.toLowerCase()))
       } else {

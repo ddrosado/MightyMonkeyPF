@@ -12,8 +12,8 @@ const ThanksSuscription = () => {
     console.log('esto es el data ',data);
 
     useEffect( async () => {
-    const post = await axios.put('https://e580-179-1-48-61.ngrok-free.app/api/users',{
-        email: 'test_user_1751930390@testuser.com',
+    const post = await axios.put('https://16fa-201-252-85-88.ngrok-free.app/api/users',{
+        email: data.email,
         isMember: true
     })
     },[]);
