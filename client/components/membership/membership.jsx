@@ -29,7 +29,7 @@ const Membership = () => {
     console.log(planId);
     console.log(user.data.id);
     if(!user.data.id) router.push("/")
-    const url = await axios.post('https://e580-179-1-48-61.ngrok-free.app/api/pay', {
+    const url = await axios.post('/api/pay', {
       type: 'subscriptions',
       userId: user.data.id,
       planId,
@@ -39,7 +39,7 @@ const Membership = () => {
   }
 
   const cancelSupscription = async() => {
-    const cancel = await axios.put('https://e580-179-1-48-61.ngrok-free.app/api/pay', {
+    const cancel = await axios.put('/api/pay', {
       type: 'cancel',
       userId: user.data.id
     }).then(({data}) => data)

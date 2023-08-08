@@ -1,11 +1,11 @@
 const mercadopago = require('mercadopago');
 const { db } = require('../../db');
 const { User, Court, Plan, Booking } = db
-const ngrok = 'https://16fa-201-252-85-88.ngrok-free.app'
+// const ngrok = 'https://a82d-179-1-48-61.ngrok-free.app.app'
 
 module.exports = async(data) => {
     mercadopago.configure({
-        access_token: 'TEST-8224153938650622-073001-07e9c314a676cfd54e1dca286b6054d2-1436108503'
+        access_token: 'TEST-5280417047762022-072715-6cdc99477060d48978bc1cf779776e2e-1431922934'
     });
     switch (data.type) {
         case 'bookings': {
@@ -22,7 +22,7 @@ module.exports = async(data) => {
                         description: `${date} ${hour} ${userId} ${courtId}`,
                         picture_url: court.image,
                         unit_price: user.isMember ? court.memberPrice*hour.length : court.noMemberPrice*hour.length,
-                        currency_id: "ARS",
+                        currency_id: 'ARS',
                         quantity: 1
                     }
                 ],
@@ -31,7 +31,7 @@ module.exports = async(data) => {
                     pending: 'https://localhost:3000/api/pending',
                     success: 'https://localhost:3000/api/success'
                 },
-                notification_url: `${ngrok}/api/webHookPay`
+                notification_url: '/api/webHookPay'
             })
             return result
         }
@@ -49,9 +49,9 @@ module.exports = async(data) => {
                     frequency: plan.duration,
                     frequency_type: 'months',
                     transaction_amount: plan.price,
-                    currency_id: 'COP'
+                    currency_id: 'ARS'
                 },
-                back_url: `${ngrok}/thanks`
+                back_url: '/thanks'
             })
             await user.update({memberId: result.body.id, planId})
             return result

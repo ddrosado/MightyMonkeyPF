@@ -17,7 +17,7 @@ const ThanksSuscription = () => {
                 try {
                     const email = await data.email
                     console.log(email);
-                    const put = await axios.put('https://e580-179-1-48-61.ngrok-free.app/api/users',{
+                    const put = await axios.put('/api/users',{
                         email: email,
                         isMember: true
                     })
