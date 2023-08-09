@@ -9,6 +9,7 @@ import { useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import getPlans from '../../pages/api/controllers/plans/getPlans';
 
+
 const Membership = () => {
   let [member, setMember] = useState(true);
   let [count, setCount] = useState(0);
@@ -30,16 +31,14 @@ const Membership = () => {
   const urlPay = async (planId) => {
     console.log(planId);
     console.log(user.data.id);
-    if (!user.data.id) router.push("/");
-    const url = await axios
-      .post("/api/pay", {
-        type: "subscriptions",
-        userId: user.data.id,
-        planId,
-      })
-      .then(({ data }) => data.init_point);
+    if(!user.data.id) router.push("/")
+    const url = await axios.post('/api/pay', {
+      type: 'subscriptions',
+      userId: user.data.id,
+      planId,
+    }).then(({data}) => data.init_point)
     router.push(url);
-  };
+  }
 
   const cancelSupscription = async () => {
     const cancel = await axios

@@ -1,7 +1,7 @@
 const mercadopago = require('mercadopago');
 const { db } = require('../../db');
 const { User, Court, Plan, Booking } = db
-const ngrok = 'https://9e2a-179-1-48-61.ngrok-free.app'
+// const ngrok = 'https://9e2a-179-1-48-61.ngrok-free.app'
 
 module.exports = async(data) => {
     mercadopago.configure({
@@ -31,11 +31,12 @@ module.exports = async(data) => {
                     pending: '/pending',
                     success: '/success'
                 },
-                notification_url: '/api/webHookPay'
+                notification_url: 'https://mighty-monkey-pf-git-devs-monosfeos.vercel.app/api/webHookPay'
             })
             return result
         }
         case 'subscriptions': {
+            console.log('llego al back');
             const { userId, planId } = data
             
             const plan = await Plan.findOne({ where: { id: planId } })
@@ -44,7 +45,7 @@ module.exports = async(data) => {
             console.log(user);
 
             const result = await mercadopago.preapproval.create({
-                payer_email: user.email, //"test_user_1751930390@testuser.com",
+                payer_email: "test_user_1751930390@testuser.com",
                 reason: plan.name,
                 auto_recurring: {
                     frequency: plan.duration,
