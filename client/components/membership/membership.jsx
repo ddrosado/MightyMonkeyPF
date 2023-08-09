@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 // import { useDispatch, useSelector } from "react-redux";
 // import getPlans from '../../pages/api/controllers/plans/getPlans';
+import { initMercadoPago } from "@mercadopago/sdk-react";
 
 initMercadoPago("APP_USR-fbbbd75b-f4ad-4e7b-80d8-47326f8f5b79");
 
