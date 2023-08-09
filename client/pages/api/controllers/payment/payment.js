@@ -44,7 +44,7 @@ module.exports = async(data) => {
             console.log(user);
 
             const result = await mercadopago.preapproval.create({
-                payer_email: user.email, //"test_user_1751930390@testuser.com",
+                payer_email: "test_user_1751930390@testuser.com",
                 reason: plan.name,
                 auto_recurring: {
                     frequency: plan.duration,
