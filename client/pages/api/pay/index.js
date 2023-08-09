@@ -6,11 +6,8 @@ export default async(req, res) => {
     try {
         switch (req.method) {
             case 'POST':
-                const pay = await payment(req.body, {
-                    headers: {
-                        Authorization: `Bearer ${process.env.mercadoPagoAccessToken}`,
-                    },
-                });
+                console.log('aaaaadsssssdsdds');
+                const pay = await payment(req.body);
                 console.log("Payment information: ", pay);
                 res.status(200).json(pay.body);
             case 'PUT':
