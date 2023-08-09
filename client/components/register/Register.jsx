@@ -43,17 +43,25 @@ const SignUp = (props) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validation(registerData);
     setErrors(validationErrors);
+  
     if (Object.keys(validationErrors).length === 0) {
-      dispatch(createUser(registerData))
-      router.push("/")
+      try {
+        // Use async/await with dispatch
+        await dispatch(createUser(registerData));
+        router.push("/");
+      } catch (error) {
+        // Handle any errors that occurred during dispatch
+        console.error("Error creating user:", error);
+      }
     }
+  
     setRegisterData({
       name: '',
-      surname:'',
+      surname: '',
       password: '',
       confirmPassword: '',
       email: '',
