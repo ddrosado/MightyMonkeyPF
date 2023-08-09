@@ -73,3 +73,8 @@
   .addSport:hover{
     background-color:#34bd34
   }
+
+  .not{
+    margin-left: 6rem;
+    font-weight: 600;
+  }

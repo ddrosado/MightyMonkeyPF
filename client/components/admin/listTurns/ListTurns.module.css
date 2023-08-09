@@ -46,3 +46,8 @@
       75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
       100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
   }
+
+  .not{
+    margin-left: 19rem;
+    font-weight: 600;
+  }
