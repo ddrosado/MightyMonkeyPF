@@ -49,6 +49,7 @@ const Membership = () => {
     const res = await fetch("api/login");
     const data = await res.json();
     mutate({...data, isMember: false});
+    setMember(false);
     return data;
   }
 
