@@ -33,14 +33,13 @@ const Membership = () => {
     console.log(planId);
     console.log(user.data.id);
     if(!user.data.id) router.push("/")
-    const url = await fetch('/api/pay', {
-      method: 'POST',
-      data:{
+    const url = await axios.post('/api/pay', {
       type: 'subscriptions',
       userId: user.data.id,
       planId,
-    }}).then(({data}) => data.init_point)
-    router.push(url);
+    }).then(({data}) => data)
+    console.log(url);
+    // router.push(url);
   }
 
   const cancelSupscription = async() => {
