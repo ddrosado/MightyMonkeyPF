@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 const Membership = () => {
 
-  let [ member, setMember ] = useState(true)
+  let [ member, setMember ] = useState(false)
   let [ count, setCount ] = useState(0)
 
   const plans = useSWR('api/plans', fetcher)
@@ -46,6 +46,11 @@ const Membership = () => {
       type: 'cancel',
       userId: user.data.id
     }).then(({data}) => data)
+    const res = await fetch("api/login");
+    const data = await res.json();
+    mutate({...data, isMember: false});
+    setMember(false);
+    return data;
   }
 
 
@@ -70,7 +75,7 @@ const Membership = () => {
           <div></div>
         </div>
         <hr className="mt-10" />
-        <div className="flex space-x-10 pt-10">
+        <div className="flex content-center justify-center space-x-10 pt-10">
         { plans?.data?.map( plan => {
           return(
             <div className="py-12">
@@ -81,7 +86,7 @@ const Membership = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </div>
                   <h1 className="text-4xl text-center font-bold">${plan.price}</h1>
-                  <p className="px-4 text-center text-sm ">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem</p>
+                  <p className="px-4 text-center text-sm ">{plan.description}</p>
                   <ul className="text-center">
                     <li><a href="#" className="font-semibold"></a></li>
                     <li><a href="#" className="font-semibold"></a></li>
@@ -95,19 +100,20 @@ const Membership = () => {
           )
         })}
         </div>
-      </div> : <div class="container mx-auto max-w-4xl">
+      </div> : <div class="container mx-auto h-screen max-w-4xl border-white">
         {/* <h1 class="text-4xl font-bold text-yellow-200">Ya estas suscripto</h1> */}
         <div id="main_container" 
           class="relative grid place-content-center place-items-center gap-2 before:bg-gradient-to-t before:from-teal-500/70 before:via-fuchsia-600 before:to-transparent before:blur-xl before:filter">
+            <h2 class="cursive text-3xl font-thin text-white">Estas suscripto a</h2>
             <h1 class="title text-6xl font-black text-teal-500">Mighty Monkeys Basic</h1>
-            <h2 class="cursive text-6xl font-thin text-white">beneficios</h2>
         </div>
+            <h2 class="cursive text-3xl font-thin text-white my-6">Unirse a un club deportivo con una suscripción ofrece acceso a una comunidad apasionada, eventos exclusivos, instalaciones de calidad y descuentos en entrenamientos y equipamiento, fomentando un estilo de vida activo y conexiones sociales duraderas.</h2>
         <button onClick={cancelSupscription} class="relative  shadow-xl group flex items-center text-white justify-center bg-gradient-to-r from-cyan-500 to-blue-500 px-5 py-2">
         <div className="absolute  inset-0 w-0 bg-white opacity-10 transition-all duration-[0.3s] ease-out group-hover:w-full"></div>
         <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
         </svg>
-        <span>Cancel</span>
+        <span>Cancelar suscripcion</span>
     </button>
         </div>}
     </div>
