@@ -21,30 +21,14 @@ export default async (info) => {
     isActive: true,
   });
 
-
-  try {
-    const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
-
-    await transporter.sendMail({
-      from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
-      to: info.email,
-      subject: "Te damos la bienvenida a Mighty Monkeys",
-      html: await new Promise((resolve, reject) => {
-        let data = '';
-        htmlstream.on('data', (chunk) => {
-          data += chunk.toString();
-        });
-        htmlstream.on('end', () => {
-          resolve(data);
-        });
-        htmlstream.on('error', (error) => {
-          reject(error);
-        });
-      }),
-    });
-  } catch (error) {
-    console.error('Error reading HTML file:', error);
-  }
+  // const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
+  
+  // await transporter.sendMail({
+  //   from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
+  //   to: info.email,
+  //   subject: "Te damos la bienvenida a Mighty Monkeys",
+  //   html: htmlstream.on('data', (data) => data.toString()),
+  // });
 
 
   return newUser;
