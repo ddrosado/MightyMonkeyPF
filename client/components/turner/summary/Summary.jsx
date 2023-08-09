@@ -1,27 +1,39 @@
-'use client'
-import React from 'react';
-import style from './Summary.module.css';
-import { useDispatch } from 'react-redux';
-import { postBooking } from '../../../redux/actions/bookingAction';
-import Link from 'next/link';
+"use client";
+import React from "react";
+import style from "./Summary.module.css";
+import { useDispatch } from "react-redux";
+import { getBookings, postBooking } from "../../../redux/actions/bookingAction";
+import Link from "next/link";
+import { filterBookings } from "../../../redux/features/bookingsSlice";
 
-const Summary = ({ sportFind, selectedDate, selectedTurn, selectedCourt, user }) => {
-  
+const Summary = ({
+  sportFind,
+  selectedDate,
+  selectedTurn,
+  selectedCourt,
+  user,
+}) => {
+  console.log(selectedTurn)
   const formatDate = (dateString) => {
     const dateObject = new Date(dateString);
-    
+
     dateObject.setUTCHours(0, 0, 0, 0);
-  
+
     const year = dateObject.getUTCFullYear();
-    const month = (dateObject.getUTCMonth() + 1).toString().padStart(2, '0');
-    const day = dateObject.getUTCDate().toString().padStart(2, '0');
-    
+    const month = (dateObject.getUTCMonth() + 1).toString().padStart(2, "0");
+    const day = dateObject.getUTCDate().toString().padStart(2, "0");
+
     return `${year}-${month}-${day}`;
   };
   const dispatch = useDispatch();
   const courtFinded = sportFind?.court.find((c) => c.name === selectedCourt);
-  const handleReserve = () => {
 
+  const setAsyncBookings = async () => {
+    await dispatch(getBookings())
+    dispatch(filterBookings({sport:sportFind?.name, date:selectedDate, search:""}))
+  }
+  
+  const handleReserve = () => {
     const bookingData = {
       date: formatDate(selectedDate),
       hour: selectedTurn,
@@ -29,15 +41,22 @@ const Summary = ({ sportFind, selectedDate, selectedTurn, selectedCourt, user })
       courtId: courtFinded.id,
     };
     console.log(bookingData)
+
     dispatch(postBooking(bookingData))
       .then((response) => {
-        alert('Booking was successful!');
+        setAsyncBookings()
+        // setSelectedData()
+        alert("Booking was successful!");
+        if(response){
+          window.location.href = '/successfully-reserve';
+        }
       })
       .catch((error) => {
-        alert('An error occurred while making the booking.');
+        alert("An error occurred while making the booking.");
         console.error(error);
       });
   };
+
 
   return (
     <div className={style.summaryContainer}>
@@ -50,12 +69,30 @@ const Summary = ({ sportFind, selectedDate, selectedTurn, selectedCourt, user })
       </div>
       {selectedCourt && (
         <div className={style.pricesContainer}>
-          <h3>Total: <span className={style.noMemberPrice}>${courtFinded?.noMemberPrice}</span></h3>
-          
-          <p><Link href={'/join'} style={{ textDecoration:'underline', fontWeight:'bold'}}>Join us!</Link> and the total will be <span className={style.memberPrice}>${courtFinded?.memberPrice}</span></p>
+          <h3>
+            Total:{" "}
+            <span className={style.noMemberPrice}>
+              ${courtFinded?.noMemberPrice}
+            </span>
+          </h3>
+
+          <p>
+            <Link
+              href={"/join"}
+              style={{ textDecoration: "underline", fontWeight: "bold" }}
+            >
+              Join us!
+            </Link>{" "}
+            and the total will be{" "}
+            <span className={style.memberPrice}>
+              ${courtFinded?.memberPrice}
+            </span>
+          </p>
         </div>
       )}
-      <button className={style.reserveBtn} onClick={handleReserve}>Reserve</button>
+      <button className={style.reserveBtn} onClick={handleReserve}>
+        Reserve
+      </button>
     </div>
   );
 };

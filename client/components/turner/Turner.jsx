@@ -1,16 +1,16 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import DatePicker from './datePicker/DatePicker';
-import style from './Turner.module.css';
-import TurnPicker from './turnPicker/TurnPicker';
-import Summary from './summary/Summary';
-import Image from 'next/image';
-import CourtPicker from './courtPicker/CourtPicker';
+"use client";
+import React, { useState, useEffect } from "react";
+import DatePicker from "./datePicker/DatePicker";
+import style from "./Turner.module.css";
+import TurnPicker from "./turnPicker/TurnPicker";
+import Summary from "./summary/Summary";
+import Image from "next/image";
+import CourtPicker from "./courtPicker/CourtPicker";
 
-const Turner = ({ sportFind, user, bookings}) => {
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTurn, setSelectedTurn] = useState('');
-  const [selectedCourt, setSelectedCourt] = useState('');
+const Turner = ({ sportFind, user, bookings }) => {
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTurn, setSelectedTurn] = useState("");
+  const [selectedCourt, setSelectedCourt] = useState("");
 
   const handleDateSelected = (date) => {
     setSelectedDate(date);
@@ -24,22 +24,50 @@ const Turner = ({ sportFind, user, bookings}) => {
     setSelectedCourt(court);
   };
 
+  // const setSelectedData = () => {
+  //   setSelectedTurn('')
+  //   setSelectedCourt('')
+  // }
+
   useEffect(() => {
-    const currentDate = new Date().toISOString().split('T')[0];
+    const currentDate = new Date().toISOString().split("T")[0];
     handleDateSelected(currentDate);
   }, []);
 
   return (
     <div className={style.tunerContainer}>
       <div className={style.formContainer}>
-        <div className={style.imgContainer} style={{backgroundImage:`url(${sportFind?.image})`}}></div>
+        <div
+          className={style.imgContainer}
+          style={{ backgroundImage: `url(${sportFind?.image})` }}
+        ></div>
         <div className={style.turnerLeft}>
-          <DatePicker onDateSelected={handleDateSelected} selectedDate={selectedDate} bookings={bookings} sportFind={sportFind} />
-          <TurnPicker onTurnSelected={handleTurnSelected} selectedDate={selectedDate} bookings={bookings} sportFind={sportFind} />
-          <CourtPicker courts={sportFind?.court} onCourtSelected={handleCourtSelected} />
+          <DatePicker
+            onDateSelected={handleDateSelected}
+            selectedDate={selectedDate}
+            bookings={bookings}
+            sportFind={sportFind}
+          />
+          <TurnPicker
+            onTurnSelected={handleTurnSelected}
+            selectedDate={selectedDate}
+            bookings={bookings}
+            sportFind={sportFind}
+          />
+          <CourtPicker
+            courts={sportFind?.court}
+            onCourtSelected={handleCourtSelected}
+          />
         </div>
         <div className={style.turnerRight}>
-          <Summary user={user} sportFind={sportFind} selectedCourt={selectedCourt} selectedDate={selectedDate} selectedTurn={selectedTurn} />
+          <Summary
+            user={user}
+            sportFind={sportFind}
+            selectedCourt={selectedCourt}
+            selectedDate={selectedDate}
+            selectedTurn={selectedTurn}
+            // setSelectedData={setSelectedData}
+          />
         </div>
       </div>
     </div>

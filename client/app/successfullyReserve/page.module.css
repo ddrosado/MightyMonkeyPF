@@ -1,0 +1,23 @@
+.successContainer {
+    width: 100%;
+    display: flex;
+}
+
+/* .image {} */
+
+.separator {
+    width: 2px;
+    border-right: #FFDA61 solid 2px;
+    height: 60%;
+}
+
+
+
+.text {
+    font-size: 2rem;
+    color: white;
+}
+
+.acent {
+    color: #FFDA61;
+}

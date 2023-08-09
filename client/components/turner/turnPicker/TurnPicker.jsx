@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import style from "./TurnPicker.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import { filterBookingsByHour } from "../../../redux/features/bookingsSlice";
+
 
 const TurnPicker = ({ onTurnSelected, selectedDate, sportFind }) => {
   const dispatch = useDispatch();
@@ -42,39 +44,44 @@ dateBookings.forEach((booking) => {
   const [selectedTurnIndex, setSelectedTurnIndex] = useState(null);
   const [allBookings, setAllBookings] = useState([]);
 
-  const handleTurnClick = (turnIndex) => {
-    setSelectedTurnIndex(turnIndex);
-    onTurnSelected(turns[turnIndex]);
-  };
-
+  
   for (let i = 0; i < reservationsByHour.length; i++) {
     if (reservationsByHour[i].turns.length == sportFind?.court.length ) {
       disabledTurns.push(reservationsByHour[i].hour)     
     }
   }
   const availableTurns = turns.filter(turn => !disabledTurns.includes(turn));
-  console.log(disabledTurns)
+  // console.log('todos: ' + turns)
+  // console.log('disabled: ' + disabledTurns)
+  // console.log('habilitado: ' + availableTurns)
+  
+  const handleTurnClick = (turnIndex) => {
+    setSelectedTurnIndex(turnIndex);
+    onTurnSelected(turnIndex);
 
-  const noTurnsAvailable = turns.length === 0;
-
-  const filteredBookingsForSelectedDate = allBookings.filter(
-    (booking) => booking.date === selectedDate
-  );
-
-  const availableCourtsForSelectedDate = 2; // Número de canchas disponibles para esa fecha y hora (puedes cambiarlo según tus necesidades)
-
-  const isTurnAvailable = (turn) => {
-    // Verificar cuántas canchas están disponibles para esa fecha y hora específica
-    const selectedTurnBookings = filteredBookingsForSelectedDate.filter(
-      (booking) => booking.hour === turn
-    );
-
-    return selectedTurnBookings.length < availableCourtsForSelectedDate;
   };
+ 
+  // const noTurnsAvailable = turns.length === 0;
+
+  // const filteredBookingsForSelectedDate = allBookings.filter(
+  //   (booking) => booking.date === selectedDate
+  // );
+
+  // const availableCourtsForSelectedDate = 2;
+
+  // const isTurnAvailable = (turn) => {
+
+  //   const selectedTurnBookings = filteredBookingsForSelectedDate.filter(
+  //     (booking) => booking.hour === turn
+  //   );
+
+  //   return selectedTurnBookings.length < availableCourtsForSelectedDate;
+  // };
 
   useEffect(() => {
-    dispatch()    
-  },[])
+    dispatch(filterBookingsByHour(selectedTurnIndex))
+  },[selectedTurnIndex])
+
 
   return (
     <div
@@ -82,21 +89,18 @@ dateBookings.forEach((booking) => {
       style={{ overflowY: "auto", overflowX: "hidden" }}
     >
       <h2>Pick a turn</h2>
-      {noTurnsAvailable ? (
+      {!availableTurns ? (
         <p className={style.noTurns}>
           There are no shifts available for this date.
         </p>
       ) : (
         <div className={style.btnsContainer}>
           {availableTurns.map((turn, index) => {
-            // Mostrar los turnos solo si hay canchas disponibles para esa fecha y hora
-            const isAvailable = isTurnAvailable(turn);
-
-            return (
+             return (
               <button
                 key={index}
                 style={
-                  index === selectedTurnIndex
+                  turn === selectedTurnIndex
                     ? {
                         backgroundColor: "black",
                         color: "#FFDA61",
@@ -104,8 +108,8 @@ dateBookings.forEach((booking) => {
                       }
                     : {}
                 }
-                onClick={() => handleTurnClick(index)}
-                disabled={!isAvailable} // Deshabilitar el botón si no hay canchas disponibles
+                onClick={() => handleTurnClick(turn)}
+                disabled={!availableTurns} 
               >
                 {turn}hs
               </button>
