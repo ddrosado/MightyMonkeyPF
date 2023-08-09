@@ -47,7 +47,9 @@
 .monkey {
     width: 249px;
     position: absolute;
-    left: -62px;
+    left: -50px;
+    top: -47px;
+    transform: rotate(53deg);
 }
 
 /* RESPONSIVE */
@@ -63,13 +65,20 @@
 
 /* Estilos para pantallas con ancho entre 577px y 991px (por ejemplo, tabletas en orientación vertical) */
 @media (min-width: 577px) and (max-width: 991px) {
-
+    .monkey {
+        width: 150px;
+        left: -29px;
+    top: -18px;
+    }
 }
 
 /* Estilos para pantallas con ancho mínimo de 992px (por ejemplo, laptops y pantallas de escritorio) */
 @media (min-width: 992px) {
     .titleContainer {
         margin-top: 100px;
+    }
+    .titleContainer {
+        width: 50%;
     }
 }
 
