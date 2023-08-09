@@ -33,11 +33,27 @@ const Membership = () => {
     console.log(planId);
     console.log(user.data.id);
     if(!user.data.id) router.push("/")
-    const url = await axios.post('/api/pay', {
-      type: 'subscriptions',
-      userId: user.data.id,
-      planId,
-    }).then(({data}) => data.init_point)
+    // const url = await axios.post('https://9e2a-179-1-48-61.ngrok-free.app/api/pay', {
+    //   type: 'subscriptions',
+    //   userId: user.data.id,
+    //   planId,
+    // }).then(({data}) => data.init_point)
+    const url = await axios.post('https://api.mercadopago.com/preapproval',{
+      headers: {
+          Authorization: 'Bearer TEST-5280417047762022-072715-6cdc99477060d48978bc1cf779776e2e-1431922934',
+          'Content-Type': 'application/json'
+      }
+  },{
+      payer_email: "test_user_1751930390@testuser.com",
+      reason: 'plan.name',
+      auto_recurring: {
+          frequency: 1,
+          frequency_type: 'months',
+          transaction_amount: 5000,
+          currency_id: 'COP'
+      },
+      back_url: `/thanks`
+  }).then(({data}) => data.init_point)
     router.push(url);
   }
 
@@ -48,7 +64,7 @@ const Membership = () => {
     }).then(({data}) => data)
     const res = await fetch("api/login");
     const data = await res.json();
-    mutate({...data, isMember: false});
+    user.mutate({...data, isMember: false});
     setMember(false);
     return data;
   }
@@ -104,10 +120,10 @@ const Membership = () => {
         {/* <h1 class="text-4xl font-bold text-yellow-200">Ya estas suscripto</h1> */}
         <div id="main_container" 
           class="relative grid place-content-center place-items-center gap-2 before:bg-gradient-to-t before:from-teal-500/70 before:via-fuchsia-600 before:to-transparent before:blur-xl before:filter">
-            <h2 class="cursive text-3xl font-thin text-white">Estas suscripto a</h2>
-            <h1 class="title text-6xl font-black text-teal-500">Mighty Monkeys Basic</h1>
+            <h2 class="cursive text-3xl font-thin text-white">Ya estas suscripto a</h2>
+            <h1 class="title text-6xl font-black text-teal-500">Mighty Monkeys</h1>
         </div>
-            <h2 class="cursive text-3xl font-thin text-white my-6">Unirse a un club deportivo con una suscripción ofrece acceso a una comunidad apasionada, eventos exclusivos, instalaciones de calidad y descuentos en entrenamientos y equipamiento, fomentando un estilo de vida activo y conexiones sociales duraderas.</h2>
+            <h2 class="cursive text-3xl font-thin text-white my-6">Tu suscripción te ofrece acceso a una comunidad apasionada, eventos exclusivos, instalaciones de calidad y descuentos en entrenamientos y equipamiento, fomentando un estilo de vida activo y conexiones sociales duraderas.</h2>
         <button onClick={cancelSupscription} class="relative  shadow-xl group flex items-center text-white justify-center bg-gradient-to-r from-cyan-500 to-blue-500 px-5 py-2">
         <div className="absolute  inset-0 w-0 bg-white opacity-10 transition-all duration-[0.3s] ease-out group-hover:w-full"></div>
         <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
