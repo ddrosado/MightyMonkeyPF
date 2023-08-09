@@ -33,11 +33,13 @@ const Membership = () => {
     console.log(planId);
     console.log(user.data.id);
     if(!user.data.id) router.push("/")
-    const url = await axios.post('/api/pay', {
+    const url = await fetch('/api/pay', {
+      method: 'POST',
+      data:{
       type: 'subscriptions',
       userId: user.data.id,
       planId,
-    }).then(({data}) => data.init_point)
+    }}).then(({data}) => data.init_point)
     router.push(url);
   }
 

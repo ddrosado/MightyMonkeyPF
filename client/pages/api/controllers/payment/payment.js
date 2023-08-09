@@ -31,7 +31,7 @@ module.exports = async(data) => {
                     pending: '/pending',
                     success: '/success'
                 },
-                notification_url: '/api/webHookPay'
+                notification_url: 'https://mighty-monkey-pf-git-devs-monosfeos.vercel.app/api/webHookPay'
             })
             return result
         }
