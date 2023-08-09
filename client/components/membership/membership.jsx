@@ -31,8 +31,8 @@ const Membership = () => {
     if(!user.data.id) router.push("/")
     const url = await axios.post('api/pay', {
       type: 'subscriptions',
-      userId: user.data.id,
-      planId,
+      userId: '75a97490-3674-11ee-9242-65f1bf6f956b',
+      planId: '24e800a0-3672-11ee-9242-65f1bf6f956b',
     }).then(({data}) => data.init_point)
     console.log("aaaaaaaaaaaaaaaaaaaaaaa",url);
     router.push(url);
