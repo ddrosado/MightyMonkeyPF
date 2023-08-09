@@ -5,6 +5,7 @@ import InfoHome from "../../components/infoHome/InfoHome";
 import Publicity from "../../components/publicity/Publicity";
 
 
+
 export default async function Home() {
   return (
     <div className={styles.homeContainer}>
@@ -12,7 +13,7 @@ export default async function Home() {
       <Publicity />
       {/* <Cards /> */}
       <InfoHome />
-      <InfoReviews />
+
     </div>
   )
 }
