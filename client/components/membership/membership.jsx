@@ -10,7 +10,7 @@ import { useState } from 'react';
 // import getPlans from '../../pages/api/controllers/plans/getPlans';
 import { initMercadoPago } from "@mercadopago/sdk-react";
 
-initMercadoPago("APP_USR-fbbbd75b-f4ad-4e7b-80d8-47326f8f5b79");
+initMercadoPago("TEST-8c446ca2-a3d3-4718-9e84-584f9c36833e");
 
 
 const Membership = () => {
