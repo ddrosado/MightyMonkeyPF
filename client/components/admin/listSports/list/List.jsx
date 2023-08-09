@@ -40,9 +40,9 @@ export const List = ({setCurrent}) => {
     const handleDesactiv= async (id)=>{
     const resp = await dispatch(putSport({id: id, isActive : false}))
     if (resp.meta.requestStatus == "rejected") {
-      alert("Lo lamento no se pudo dar de baja el deporte");
+      alert("Could not cancel the sport");
     } else {
-      alert("deporte correctamente dado de baja!")
+      alert("Sport successfully discharged!")
       dispatch(getSports())
     }
   }
@@ -50,9 +50,9 @@ export const List = ({setCurrent}) => {
   const handleAcitv= async (id)=>{
     const resp = await dispatch(putSport({id: id, isActive : true}))
     if (resp.meta.requestStatus == "rejected") {
-      alert("Lo lamento no se pudo dar de baja el deporte");
+      alert("Could not activate the sport");
     } else {
-      alert("deporte correctamente dado de baja!")
+      alert("Sport successfully activated!")
       dispatch(getSports())
     }
   }
@@ -133,7 +133,7 @@ export const List = ({setCurrent}) => {
                       </td>
                     </tr>
                   )
-                }) : <h1>No existen deportes</h1>} 
+                }) : <h1 className={style.not}>No existen deportes</h1>} 
               </tbody>
             </table>
             <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">

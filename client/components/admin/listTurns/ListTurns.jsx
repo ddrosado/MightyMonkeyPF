@@ -124,7 +124,7 @@ export const ListTurns = () => {
                       <tr key={id}>
                         <td className="px-5 py-5 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {court.sport?.name}
+                            {court.sport? court.sport.name : "deleted"}
                           </p>
                         </td>
                         <td className="px-5 py-5 bg-white text-sm">
@@ -162,7 +162,7 @@ export const ListTurns = () => {
                       </tr>
                     );
                   })
-                   : <h1>No hay turns</h1> }
+                   : <h1 className={style.not} >There is not Turns</h1> }
                 </tbody>
               </table>
               <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">

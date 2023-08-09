@@ -68,7 +68,7 @@ export const Form = (props) => {
 
           const resp = await dispatch(postPlans(plan))
           if(resp.meta.requestStatus == "fulfilled"){
-              alert("correctamente creado!")
+              alert("Successfully created!")
               setPlan({
                   name:"",
                   description:"",
@@ -76,7 +76,7 @@ export const Form = (props) => {
                   duration:""
               })
           } else {
-              alert("no se pudo crear")
+              alert("Could not create :(")
           }
         }
     }
@@ -85,18 +85,18 @@ export const Form = (props) => {
         e.preventDefault()
         const resp = await dispatch(putPlans({...plan, id: id}))
         if(resp.meta.requestStatus == "fulfilled"){
-            alert("correctamente editado!")
+            alert("Successfully edited!")
         } else {
-            alert("no se pudo editar")
+            alert("Could not edit :(")
         }
     }
 
     const handleDelete = async(id)=>{
       const resp = await dispatch(deletePlans(id))
     if (resp.meta.requestStatus == "rejected") {
-      alert("Lo lamento no se pudo eliminar el plan");
+      alert("Could not delete plan :(");
     } else {
-      alert("plan correctamente eliminado!")
+      alert("Plan successfully removed!")
       props.setCurrent("list")
     }
     }

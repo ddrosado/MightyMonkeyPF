@@ -48,7 +48,7 @@ export const List = (props) => {
                 })}
               </tr>
             </thead>
-            <tbody>
+            <tbody className={style.tbody}>
             {get == "pending"? <Image className={style.loading} src={loading} alt="gif" /> :
              plans?.length? 
               plans.map(({ name, price, duration, id }) => {
@@ -69,12 +69,12 @@ export const List = (props) => {
                     </td>
                     <td className={`px-5 py-5 bg-white ${style.edit}`}>
                       <button onClick={()=>props.setCurrent(id)} className=" bg-red-500 hover:bg-red-400 text-white font-semibold py-2 px-4 rounded-full">
-                        edit
+                        Edit
                       </button>
                     </td>
                   </tr>
                 )
-              }) : <h1>no hay plans</h1>} 
+              }) : <h1 className={style.not}>There is no plan</h1>} 
             </tbody>
           </table>
           <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-center">
