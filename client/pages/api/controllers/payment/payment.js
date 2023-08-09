@@ -37,6 +37,7 @@ module.exports = async(data) => {
         }
         case 'subscriptions': {
             const { userId, planId } = data
+            
             const plan = await Plan.findOne({ where: { id: planId } })
             const user = await User.findOne({ where: { id: userId } })
 
