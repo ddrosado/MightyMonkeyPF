@@ -6,6 +6,7 @@ export default async(req, res) => {
     try {
         switch (req.method) {
             case 'POST':
+                console.log('aaaaadsssssdsdds');
                 const pay = await payment(req.body);
                 console.log("Payment information: ", pay);
                 res.status(200).json(pay.body);
