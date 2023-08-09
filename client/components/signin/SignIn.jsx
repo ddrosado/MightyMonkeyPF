@@ -41,7 +41,7 @@ const userGoogle = async (user) => {
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   const router = useRouter();
