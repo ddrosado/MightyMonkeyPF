@@ -8,9 +8,6 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 // import { useDispatch, useSelector } from "react-redux";
 // import getPlans from '../../pages/api/controllers/plans/getPlans';
-import { initMercadoPago } from "@mercadopago/sdk-react";
-
-initMercadoPago("TEST-8c446ca2-a3d3-4718-9e84-584f9c36833e");
 
 
 const Membership = () => {
@@ -36,32 +33,16 @@ const Membership = () => {
     console.log(planId);
     console.log(user.data.id);
     if(!user.data.id) router.push("/")
-    // const url = await axios.post('https://9e2a-179-1-48-61.ngrok-free.app/api/pay', {
-    //   type: 'subscriptions',
-    //   userId: user.data.id,
-    //   planId,
-    // }).then(({data}) => data.init_point)
-    const url = await axios.post('https://api.mercadopago.com/preapproval',{
-      headers: {
-          Authorization: 'Bearer TEST-5280417047762022-072715-6cdc99477060d48978bc1cf779776e2e-1431922934',
-          'Content-Type': 'application/json'
-      }
-  },{
-      payer_email: "test_user_1751930390@testuser.com",
-      reason: 'plan.name',
-      auto_recurring: {
-          frequency: 1,
-          frequency_type: 'months',
-          transaction_amount: 5000,
-          currency_id: 'COP'
-      },
-      back_url: `/thanks`
-  }).then(({data}) => data.init_point)
+    const url = await axios.post('/api/pay', {
+      type: 'subscriptions',
+      userId: user.data.id,
+      planId,
+    }).then(({data}) => data.init_point)
     router.push(url);
   }
 
   const cancelSupscription = async() => {
-    const cancel = await axios.put('api/pay', {
+    const cancel = await axios.put('/api/pay', {
       type: 'cancel',
       userId: user.data.id
     }).then(({data}) => data)
@@ -121,7 +102,7 @@ const Membership = () => {
         </div>
       </div> : <div class="container mx-auto h-screen max-w-4xl border-white">
         {/* <h1 class="text-4xl font-bold text-yellow-200">Ya estas suscripto</h1> */}
-        <div id="main_container"
+        <div id="main_container" 
           class="relative grid place-content-center place-items-center gap-2 before:bg-gradient-to-t before:from-teal-500/70 before:via-fuchsia-600 before:to-transparent before:blur-xl before:filter">
             <h2 class="cursive text-3xl font-thin text-white">Ya estas suscripto a</h2>
             <h1 class="title text-6xl font-black text-teal-500">Mighty Monkeys</h1>
