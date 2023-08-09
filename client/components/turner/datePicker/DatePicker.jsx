@@ -2,23 +2,27 @@
 
 import React, { useState, useEffect } from "react";
 import style from "./DatePicker.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { filterBookings } from "../../../redux/features/bookingsSlice";
 
-const DatePicker = ({ selectedDate, onDateSelected, bookings }) => {
-  const reservationsByHour = {};
+const DatePicker = ({ selectedDate, onDateSelected, bookings, sportFind }) => {
+
   const currentDate = new Date().toISOString().split("T")[0];
+
+  const dateBookings = useSelector(state => state.bookings.bookingsCopy)
 
   const maxDate = new Date();
   maxDate.setDate(maxDate.getDate() + 30);
   const maxDateFormatted = maxDate.toISOString().split("T")[0];
 
   const [dateValue, setDateValue] = useState(currentDate);
-
+  const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(filterBookings({sport: sportFind?.name, date:selectedDate, search:""}))
     setDateValue(selectedDate);
   }, [selectedDate]);
-  let bookingsArr = bookings.bookings;
   
-  const bookingsOnDate = bookingsArr?.filter(
+  const bookingsOnDate = dateBookings?.filter(
     (booking) => booking.date === selectedDate
   );
   const handleChange = (e) => {
@@ -26,18 +30,8 @@ const DatePicker = ({ selectedDate, onDateSelected, bookings }) => {
     setDateValue(selectedDate);
     onDateSelected(selectedDate);
     console.log(bookingsOnDate);
-    console.log(reservationsByHour)
   };
-
   
-  bookingsOnDate.forEach((booking) => {
-    const { hour } = booking;
-    if (!reservationsByHour[hour]) {
-      reservationsByHour[hour] = [];
-    }
-    reservationsByHour[hour].push(booking);
-  });
-
   return (
     <div className={style.dateContainer}>
       <h2>Pick a date</h2>

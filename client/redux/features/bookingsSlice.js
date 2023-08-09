@@ -17,7 +17,7 @@ const bookingsSlice = createSlice({
       let filteredBookings = state.bookings;
   
       if (sport !== "all") {
-          filteredBookings = filteredBookings.filter(book => book.court.sport?.name === sport);
+          filteredBookings = filteredBookings.filter(book => book.court?.sport?.name === sport);
       }
   
       if (date !== "all") {
