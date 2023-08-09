@@ -12,8 +12,6 @@ const Turner = ({ sportFind, user, bookings}) => {
   const [selectedTurn, setSelectedTurn] = useState('');
   const [selectedCourt, setSelectedCourt] = useState('');
 
-  console.log(sportFind)
-
   const handleDateSelected = (date) => {
     setSelectedDate(date);
   };
@@ -36,7 +34,7 @@ const Turner = ({ sportFind, user, bookings}) => {
       <div className={style.formContainer}>
         <div className={style.imgContainer} style={{backgroundImage:`url(${sportFind?.image})`}}></div>
         <div className={style.turnerLeft}>
-          <DatePicker onDateSelected={handleDateSelected} selectedDate={selectedDate} />
+          <DatePicker onDateSelected={handleDateSelected} selectedDate={selectedDate} bookings={bookings} />
           <TurnPicker onTurnSelected={handleTurnSelected} selectedDate={selectedDate} bookings={bookings} sportFind={sportFind} />
           <CourtPicker courts={sportFind?.court} onCourtSelected={handleCourtSelected} />
         </div>

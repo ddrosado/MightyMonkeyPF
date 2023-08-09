@@ -9,7 +9,7 @@ const TurnPicker = ({ onTurnSelected, selectedDate, bookings }) => {
   const currentHour = currentDateTime.getHours();
   let bookingsArr = bookings.bookings;
 
-console.log(bookingsArr)
+// console.log(bookingsArr)
 
   for (let hour = 8; hour <= 21; hour++) {
     if (selectedDate === currentDate) {
@@ -57,12 +57,9 @@ console.log(bookingsArr)
   const availableCourtsForSelectedDate = 2; // Número de canchas disponibles para esa fecha y hora (puedes cambiarlo según tus necesidades)
 
   const isTurnAvailable = (turn) => {
-    // Verificar cuántas canchas están disponibles para esa fecha y hora específica
-    const selectedTurnBookings = filteredBookingsForSelectedDate.filter(
-      (booking) => booking.hour === turn
-    );
-
-    return selectedTurnBookings.length < availableCourtsForSelectedDate;
+    const selectedTurnBookings = reservationsByHour[turn] || [];
+    const hasAllCourtsBooked = selectedTurnBookings.length >= sportFind?.courts.length;
+    return !hasAllCourtsBooked;
   };
 
   return (
