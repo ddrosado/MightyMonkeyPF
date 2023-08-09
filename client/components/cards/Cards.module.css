@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-}
+    background-image: radial-gradient(circle at center center, transparent,rgb(0,0,0)),repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 2px,transparent 2px, transparent 10px,rgb(0,0,0) 10px, rgb(0,0,0) 11px,transparent 11px, transparent 21px),repeating-linear-gradient(45deg, rgb(46,40,40) 0px, rgb(46,40,40) 4px,transparent 4px, transparent 8px),linear-gradient(90deg, rgb(0,0,0),rgb(0,0,0));}
 
 .cardsContainer {
     display: flex;
@@ -22,7 +22,7 @@
     text-align: center;
     color: white;
     width: 70%;
-    margin-top: 50px;
+    margin-top: 190px;
 }
 
 .titleContainer h1 span {
@@ -42,4 +42,49 @@
 
 .titleBackround h1 {
     margin-top: -8px;
+}
+
+.monkey {
+    width: 249px;
+    position: absolute;
+    left: -50px;
+    top: -47px;
+    transform: rotate(53deg);
+}
+
+/* RESPONSIVE */
+/* Estilos para pantallas con ancho máximo de 576px (por ejemplo, smartphones en orientación vertical) */
+@media (max-width: 576px) {
+    .monkey {
+        width: 150px;
+    transform: rotate(90deg) translateY(-55%);
+    left: 0px;
+    top: -25px;
+    }
+}
+
+/* Estilos para pantallas con ancho entre 577px y 991px (por ejemplo, tabletas en orientación vertical) */
+@media (min-width: 577px) and (max-width: 991px) {
+    .monkey {
+        width: 150px;
+        left: -29px;
+    top: -18px;
+    }
+}
+
+/* Estilos para pantallas con ancho mínimo de 992px (por ejemplo, laptops y pantallas de escritorio) */
+@media (min-width: 992px) {
+    .titleContainer {
+        margin-top: 100px;
+    }
+    .titleContainer {
+        width: 50%;
+    }
+}
+
+/* Estilos para pantallas con ancho mínimo de 1200px (por ejemplo, pantallas de escritorio grandes) */
+@media (min-width: 1200px) {
+    .titleContainer {
+        margin-top: 100px;
+    }
 }

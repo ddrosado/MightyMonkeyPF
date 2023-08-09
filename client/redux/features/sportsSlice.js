@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSportById, getSports, postSports, putSport } from '../actions/sportsActions';
+import {getSports, postSports, putSport } from '../actions/sportsActions';
 import { postCourt } from '../actions/courtsAction';
 
 const initialState = {
@@ -21,6 +21,9 @@ const sportsSlice = createSlice({
         state.sportsCopy = state.sports?.filter(sport=> sport.isActive == (isAct == "active"? true : false) && sport.name.toLowerCase().includes(search.toLowerCase()))
       } 
     },
+    getSportById: (state, action)=>{
+      state.sport = state.sports.find(spor=> spor.id == action.payload)
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -38,12 +41,6 @@ const sportsSlice = createSlice({
       .addCase(postSports.fulfilled, (state, action)=>{
         return action.payload
       })
-      .addCase(getSportById.fulfilled, (state, action) =>{
-        state.sport = action.payload
-      })
-      .addCase(getSportById.rejected, (state, action)=>{
-        return action.payload
-      })
       // .addCase(putSport.fulfilled, (state, action)=>{
       //   console.log(action.payload)
       // })
@@ -56,5 +53,5 @@ const sportsSlice = createSlice({
   },
 });
 
-export const { filterSports } = sportsSlice.actions;
+export const { filterSports, getSportById } = sportsSlice.actions;
 export default sportsSlice.reducer;

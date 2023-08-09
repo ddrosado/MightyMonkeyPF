@@ -11,7 +11,7 @@ import { useEffect } from "react";
 
 
 const logout = async () => {
-  const data = await fetch("http://localhost:3000/api/logout", {
+  const data = await fetch("api/logout", {
     method: "GET",
   });
   const res = await data.json();
@@ -19,11 +19,12 @@ const logout = async () => {
 };
 
 export const Navbar = () => {
-  const { data } = useSWR("/api/user", fetcher);
+  const { data } = useSWR("api/user", fetcher);
   const router = useRouter();
 
   const obj = [
     { label: "Home", route: "/home" },
+    { label: "Sports", route: "/sports" },
     { label: "About", route: "/aboutUs" },
     { label: "Contact", route: "/contact" },
     ...(data?.isActive ? [{ label: "Profile", route: "/profile" }] : []),

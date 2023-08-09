@@ -1,12 +1,11 @@
 import React from 'react'
+import Cards from '../../components/cards/Cards'
 import style from './page.module.css'
-import Membership from '../../components/membership/membership'
 
 const page = () => {
   return (
-    <div className={style.joinContainer}>
-      <Membership/>
-    
+    <div className={style.cardsContainer}>
+        <Cards />
     </div>
   )
 }
