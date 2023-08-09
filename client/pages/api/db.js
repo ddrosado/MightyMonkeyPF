@@ -7,6 +7,7 @@ const ReviewModel = require('../../models/Review')
 const UserModel = require('../../models/User')
 const SportModel = require('../../models/Sport');
 const PlanModel = require('../../models/Plan');
+const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
 
 const { postgres_DATABASE,postgres_USER, postgres_PASSWORD, postgres_HOST } = process.env;
 
