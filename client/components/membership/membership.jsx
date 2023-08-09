@@ -9,6 +9,8 @@ import { useState } from 'react';
 // import { useDispatch, useSelector } from "react-redux";
 // import getPlans from '../../pages/api/controllers/plans/getPlans';
 
+initMercadoPago("APP_USR-fbbbd75b-f4ad-4e7b-80d8-47326f8f5b79");
+
 
 const Membership = () => {
 
@@ -33,7 +35,8 @@ const Membership = () => {
       type: 'subscriptions',
       userId: '75a97490-3674-11ee-9242-65f1bf6f956b',
       planId: '24e800a0-3672-11ee-9242-65f1bf6f956b',
-    }).then(({data}) => data.init_point)
+    })
+    .then(({data}) => data.init_point)
     console.log("aaaaaaaaaaaaaaaaaaaaaaa",url);
     router.push(url);
   }
@@ -94,7 +97,7 @@ const Membership = () => {
         </div>
       </div> : <div class="container mx-auto max-w-4xl">
         {/* <h1 class="text-4xl font-bold text-yellow-200">Ya estas suscripto</h1> */}
-        <div id="main_container" 
+        <div id="main_container"
           class="relative grid place-content-center place-items-center gap-2 before:bg-gradient-to-t before:from-teal-500/70 before:via-fuchsia-600 before:to-transparent before:blur-xl before:filter">
             <h1 class="title text-6xl font-black text-teal-500">Mighty Monkeys Basic</h1>
             <h2 class="cursive text-6xl font-thin text-white">beneficios</h2>
