@@ -5,7 +5,7 @@ const { User, Court, Plan, Booking } = db
 
 module.exports = async(data) => {
     mercadopago.configure({
-        access_token: 'TEST-3840529657724541-080815-fba912c6e91d677be2f3b4e4aa59e138-1445796506'
+        access_token: "TEST-3840529657724541-080815-fba912c6e91d677be2f3b4e4aa59e138-1445796506"
     });
     switch (data.type) {
         case 'bookings': {
@@ -33,6 +33,7 @@ module.exports = async(data) => {
                 },
                 notification_url: '/api/webHookPay'
             })
+            console.log(result)
             return result
         }
         case 'subscriptions': {
@@ -43,7 +44,7 @@ module.exports = async(data) => {
             console.log(user);
 
             const result = await mercadopago.preapproval.create({
-                payer_email: user.email, //"test_user_1751930390@testuser.com",
+                payer_email: "test_user_1808462247@testuser.com", //"test_user_1808462247@testuser.com", user.email
                 reason: plan.name,
                 auto_recurring: {
                     frequency: plan.duration,
@@ -51,7 +52,7 @@ module.exports = async(data) => {
                     transaction_amount: plan.price,
                     currency_id: 'ARS'
                 },
-                back_url: '/thanks'
+                back_url: "https://mighty-monkey-pf.vercel.app/thanks"
             })
             await user.update({memberId: result.body.id, planId})
             return result

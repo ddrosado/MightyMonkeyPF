@@ -15,7 +15,7 @@ const PricingPlans = () => {
   console.log(plans.data);
 
   const urlPay = async(planId) => {
-    const url = await axios.post('http://localhost:3000/api/pay', {
+    const url = await axios.post('/api/pay', {
       type: 'subscriptions',
       userId: user.data.id,
       planId,
