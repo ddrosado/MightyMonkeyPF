@@ -1,11 +1,11 @@
 const mercadopago = require('mercadopago');
 const { db } = require('../../db');
 const { User, Court, Plan, Booking } = db
-const ngrok = 'https://16fa-201-252-85-88.ngrok-free.app'
+// const ngrok = 'https://a82d-179-1-48-61.ngrok-free.app.app'
 
 module.exports = async(data) => {
     mercadopago.configure({
-        access_token: 'TEST-8224153938650622-073001-07e9c314a676cfd54e1dca286b6054d2-1436108503'
+        access_token: "TEST-3840529657724541-080815-fba912c6e91d677be2f3b4e4aa59e138-1445796506"
     });
     switch (data.type) {
         case 'bookings': {
@@ -22,7 +22,7 @@ module.exports = async(data) => {
                         description: `${date} ${hour} ${userId} ${courtId}`,
                         picture_url: court.image,
                         unit_price: user.isMember ? court.memberPrice*hour.length : court.noMemberPrice*hour.length,
-                        currency_id: "ARS",
+                        currency_id: 'ARS',
                         quantity: 1
                     }
                 ],
@@ -31,8 +31,9 @@ module.exports = async(data) => {
                     pending: 'https://localhost:3000/api/pending',
                     success: 'https://localhost:3000/api/success'
                 },
-                notification_url: `${ngrok}/api/webHookPay`
+                notification_url: '/api/webHookPay'
             })
+            console.log(result)
             return result
         }
         case 'subscriptions': {
@@ -43,15 +44,15 @@ module.exports = async(data) => {
             console.log(user);
 
             const result = await mercadopago.preapproval.create({
-                payer_email: user.email, //"test_user_1751930390@testuser.com",
+                payer_email: "test_user_1808462247@testuser.com", //"test_user_1808462247@testuser.com", user.email
                 reason: plan.name,
                 auto_recurring: {
                     frequency: plan.duration,
                     frequency_type: 'months',
                     transaction_amount: plan.price,
-                    currency_id: 'COP'
+                    currency_id: 'ARS'
                 },
-                back_url: `${ngrok}/thanks`
+                back_url: "https://mighty-monkey-pf.vercel.app/thanks"
             })
             await user.update({memberId: result.body.id, planId})
             return result

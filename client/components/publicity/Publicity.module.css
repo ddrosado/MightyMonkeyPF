@@ -1,0 +1,222 @@
+.publicityContainer {
+    display: flex;
+    background-image: radial-gradient(circle at center center, transparent,rgb(0,0,0)),repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 2px,transparent 2px, transparent 10px,rgb(0,0,0) 10px, rgb(0,0,0) 11px,transparent 11px, transparent 21px),repeating-linear-gradient(45deg, rgb(46,40,40) 0px, rgb(46,40,40) 4px,transparent 4px, transparent 8px),linear-gradient(90deg, rgb(0,0,0),rgb(0,0,0));
+    width: 100%;
+    padding: 50px;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.logo {
+    width: 400px;
+}
+
+.separator {
+    border-left: #FFDA61 solid 3px;
+    height: 20rem;
+}
+
+.btnsContainer {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    width: 40%;
+    margin-top: 50px;
+    height: calc(auto + 40%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnReserve {
+  padding: 15px 20px;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  z-index: 1;
+  min-width: 208px;
+}
+.btnReserve:hover {
+  color: black;
+}
+
+.btnReserve::after,
+.btnReserve::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+  color: black;
+}
+
+.btnReserve::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: rgb(70, 210, 80);
+  border-radius: 10px;
+}
+
+.btnReserve::after {
+    transform: translate(-185px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  border-radius: 50px;
+  color: black;
+}
+
+.btnReserve:hover::before {
+  transform: translate(5%, 20%);
+  background: #FFDA61;
+  color: black;
+  width: 110%;
+  height: 110%;
+}
+
+.btnReserve:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+
+.btnReserve:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+
+
+.btnJoin {
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    position: relative;
+    color: #f0f0f0;
+    z-index: 1;
+    margin-bottom: 40px;
+    min-width: 126px;
+  }
+  .btnJoin:hover {
+    color: black;
+  }
+  
+  .btnJoin::after,
+  .btnJoin::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99999;
+    transition: all .4s;
+    color: black;
+  }
+  
+  .btnJoin::before {
+    transform: translate(0%, 0%);
+    width: 100%;
+    height: 100%;
+    background: rgb(70, 210, 80);
+    border-radius: 10px;
+  }
+  
+  .btnJoin::after {
+    transform: translate(10px, 10px);
+    width: 35px;
+    height: 35px;
+    background: #ffffff15;
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
+    color: black;
+  }
+  
+  .btnJoin:hover::before {
+    transform: translate(5%, 20%);
+    background: #FFDA61;
+    color: black;
+    width: 110%;
+    height: 110%;
+  }
+  
+  .btnJoin:hover::after {
+    border-radius: 10px;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
+    color: black;
+  }
+  
+  .btnJoin:active::after {
+    transition: 0s;
+    transform: translate(0, 5%);
+  }
+
+.textContainer h1 span {
+    color: #FFDA61;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.reserve {
+    color: rgb(70, 210, 80);
+    padding: 10px;
+    border-radius: 10px;    
+    transition: all 0.2s ease;
+}
+
+.reserve:hover {
+    text-decoration: underline;
+}
+
+.logoContainer {
+    width: 40%;
+}
+
+/* RESPONSIVE */
+/* Estilos para pantallas con ancho máximo de 576px (por ejemplo, smartphones en orientación vertical) */
+@media (max-width: 576px) {
+    .publicityContainer {
+        width: 100%;
+        padding:10px;
+        align-items: center;
+        justify-content: space-around;
+        height: 100vh;
+        flex-direction: column;
+    }
+    .textContainer {
+        font-size: 2rem;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .separator {
+        border-bottom: #FFDA61 solid 3px;
+        height: 0px;
+        width: 20rem;
+    }
+    .logoContainer {
+        width: 75%;
+    }
+}
+
+/* Estilos para pantallas con ancho entre 577px y 991px (por ejemplo, tabletas en orientación vertical) */
+@media (min-width: 577px) and (max-width: 991px) {
+
+}
+
+/* Estilos para pantallas con ancho mínimo de 992px (por ejemplo, laptops y pantallas de escritorio) */
+@media (min-width: 992px) {}
+
+/* Estilos para pantallas con ancho mínimo de 1200px (por ejemplo, pantallas de escritorio grandes) */
+@media (min-width: 1200px) {
+  
+}

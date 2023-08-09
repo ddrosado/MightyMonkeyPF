@@ -43,6 +43,9 @@
 
 /* Estilos para pantallas con ancho mínimo de 1200px (por ejemplo, pantallas de escritorio grandes) */
 @media (min-width: 1200px) {
+    .tunerContainer {
+        width: 60%;
+    }
     .formContainer {
         flex-direction: row;
         width: 100%;

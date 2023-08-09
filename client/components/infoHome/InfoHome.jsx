@@ -5,10 +5,10 @@ import Restaurant from "./restaurant/Restaurant";
 import Pool from "./pool/Pool";
 const InfoHome = () => {
   return (
-    <div className={style.infoContainer}>
+    <section className={style.infoContainer}>
       <Restaurant />
       <Pool />
-    </div>
+    </section>
   );
 };
 
