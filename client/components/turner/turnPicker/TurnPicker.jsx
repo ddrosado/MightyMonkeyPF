@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import style from "./TurnPicker.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const TurnPicker = ({ onTurnSelected, selectedDate, sportFind }) => {
+  const dispatch = useDispatch();
   const reservationsByHour = [];
   const turns = [];
   let disabledTurns = [];
@@ -70,6 +71,10 @@ dateBookings.forEach((booking) => {
 
     return selectedTurnBookings.length < availableCourtsForSelectedDate;
   };
+
+  useEffect(() => {
+    dispatch()    
+  },[])
 
   return (
     <div
