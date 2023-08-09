@@ -66,10 +66,10 @@ const handleDelete= async (email)=>{
   const resp = await dispatch(putUser({email: email , isActive: false}))
   if (resp.meta.requestStatus == "rejected"){
     console.log(resp)
-    alert("no se pudo bannear el usuario")
+    alert("Could not ban user")
   } else{
     dispatch(getUsers())
-    alert("usuario banneado")
+    alert("User banned")
   }
 }
 
@@ -77,10 +77,10 @@ const handleEnable = async(email)=>{
   const resp = await dispatch(putUser({email: email , isActive: true}))
   if (resp.meta.requestStatus == "rejected"){
     console.log(resp)
-    alert("no se pudo activar el usuario")
+    alert("Failed to activate user")
   } else{
     dispatch(getUsers())
-    alert("usuario activado")
+    alert("User activated")
   }
 }
 
@@ -122,7 +122,7 @@ const handleEnable = async(email)=>{
                   <tr>
                     {colums.map((col) => {
                       return (
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th key={col} className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           {col}
                         </th>
                       );
@@ -183,10 +183,10 @@ const handleEnable = async(email)=>{
                         <td className="px-5 py-5 bg-white text-sm">
                           {isActive? 
                           <button onClick={()=>handleDelete(email)} className="text-sm bg-red-600 hover:bg-red-500 text-black-900 font-semibold py-2 px-4 rounded-full">
-                          bann
+                          Ban
                         </button> :
                         <button onClick={()=>handleEnable(email)} className="text-sm bg-blue-600 hover:bg-blue-500 text-black-900 font-semibold py-2 px-4 rounded-full">
-                          enable
+                          Enable
                         </button>
                         }
                           
@@ -195,12 +195,12 @@ const handleEnable = async(email)=>{
                     );
                   })
                   : 
-                  <h1>No existes usuarios</h1>
+                  <h1 className={style.not}>There are no users</h1>
                  }
                 </tbody>
               </table>
               <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">
-              <span class="text-xs xs:text-sm text-gray-900">
+              <span className="text-xs xs:text-sm text-gray-900">
                             Page {page+1} the {Math.ceil(user.length/5)} of {user.length} Users
                         </span>
                 <div className="inline-flex mt-2 xs:mt-0">
@@ -218,5 +218,5 @@ const handleEnable = async(email)=>{
       </div>
   );
 };
-{/* <span className={style.loader}></span> */}
+
 export default ListSocios;

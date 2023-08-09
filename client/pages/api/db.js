@@ -12,7 +12,7 @@ const { faTruckMedical } = require('@fortawesome/free-solid-svg-icons');
 const { postgres_DATABASE,postgres_USER, postgres_PASSWORD, postgres_HOST } = process.env;
 
 const sequelize = new Sequelize( postgres_DATABASE,postgres_USER, postgres_PASSWORD, {
-   host:postgres_HOST,
+   host: postgres_HOST,
    dialect: 'postgres',
    dialectModule: require('pg'),
    force: false,

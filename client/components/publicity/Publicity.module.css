@@ -17,15 +17,148 @@
     height: 20rem;
 }
 
-.textContainer {
+.btnsContainer {
     margin-bottom: 50px;
     font-size: 2.5rem;
     font-weight: bold;
     text-align: center;
-    color: white;
     width: 40%;
     margin-top: 50px;
+    height: calc(auto + 40%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.btnReserve {
+  padding: 15px 20px;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  z-index: 1;
+  min-width: 208px;
+}
+.btnReserve:hover {
+  color: black;
+}
+
+.btnReserve::after,
+.btnReserve::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+  color: black;
+}
+
+.btnReserve::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: rgb(70, 210, 80);
+  border-radius: 10px;
+}
+
+.btnReserve::after {
+    transform: translate(-185px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  border-radius: 50px;
+  color: black;
+}
+
+.btnReserve:hover::before {
+  transform: translate(5%, 20%);
+  background: #FFDA61;
+  color: black;
+  width: 110%;
+  height: 110%;
+}
+
+.btnReserve:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+
+.btnReserve:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+
+
+.btnJoin {
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    position: relative;
+    color: #f0f0f0;
+    z-index: 1;
+    margin-bottom: 40px;
+    min-width: 126px;
+  }
+  .btnJoin:hover {
+    color: black;
+  }
+  
+  .btnJoin::after,
+  .btnJoin::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99999;
+    transition: all .4s;
+    color: black;
+  }
+  
+  .btnJoin::before {
+    transform: translate(0%, 0%);
+    width: 100%;
+    height: 100%;
+    background: rgb(70, 210, 80);
+    border-radius: 10px;
+  }
+  
+  .btnJoin::after {
+    transform: translate(10px, 10px);
+    width: 35px;
+    height: 35px;
+    background: #ffffff15;
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
+    color: black;
+  }
+  
+  .btnJoin:hover::before {
+    transform: translate(5%, 20%);
+    background: #FFDA61;
+    color: black;
+    width: 110%;
+    height: 110%;
+  }
+  
+  .btnJoin:hover::after {
+    border-radius: 10px;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
+    color: black;
+  }
+  
+  .btnJoin:active::after {
+    transition: 0s;
+    transform: translate(0, 5%);
+  }
 
 .textContainer h1 span {
     color: #FFDA61;
@@ -57,7 +190,7 @@
         align-items: center;
         justify-content: space-around;
         height: 100vh;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
     .textContainer {
         font-size: 2rem;

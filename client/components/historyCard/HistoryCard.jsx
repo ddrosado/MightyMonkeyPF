@@ -15,22 +15,18 @@ export const HistoryCard = ({
   isMember
 }) => {
 
-  const [status, setStatus] = useState({
-    name: "reserved",
-    color: "green",
-  });
-
-  const reserveDate = dayjs(date + "T" + hour + ":00");
+  const reserveDate = dayjs(date + hour );
   const finishTime = reserveDate.add(1, "hour"); //tiempo limite de la reserva
-  const finishHour = dayjs(finishTime).format("HH:ss");
+  const finishHour = dayjs(finishTime).format("YYYY/MM/DD HH:mm");
+  const endHour = dayjs(finishTime).format("HH:mm");
 
-  if (dayjs(finishHour).isBefore(time)) {
-    setStatus({
-      name: "finished",
-      color: "yellow",
-    });
-  }
-  const member = isMember ? '(Member)' : '(No Member)'
+  let status = {}
+  const condition = finishHour > time
+
+  if(condition) status = {color: 'green', name: 'reserved'}
+  else{ status = {color: 'yellow', name: 'finished'} }
+  
+  const member = isMember ? '(Member)' : '(No Member)';
 
   return (
     <div className={style.card}>
@@ -38,6 +34,7 @@ export const HistoryCard = ({
       <div className="bg-gray-50 mx-auto border-gray-500 border rounded-md text-gray-700 mb-0.5 h-30">
         <div className={`flex p-3 border-l-8 border-${status.color}-600`}>
           <div className="space-y-1 border-r-2 pr-3">
+
             {/*Id de la reserva */}
             <div className="text-sm leading-5 font-semibold">
               <span className="text-xs leading-4 font-normal text-gray-500">
@@ -46,6 +43,7 @@ export const HistoryCard = ({
               </span>{" "}
               {id}
             </div>
+            
             {/*fecha de emision de la reserva */}
             <span className="text-xs leading-4 font-normal text-gray-500 pr">
               {" "}
@@ -90,7 +88,7 @@ export const HistoryCard = ({
                   {" "}
                   Hour:
                 </span>{" "}
-                {`${hour} - ${finishHour}`}
+                {`${hour} - ${endHour}`}
               </div>
 
               {/*precio de la reserva*/}
@@ -112,6 +110,8 @@ export const HistoryCard = ({
               </div>
             </div>
           </div>
+
+
         </div>
       </div>
       {/*fin card */}

@@ -62,9 +62,9 @@ export const FormCourt = (props) => {
       const resp = await dispatch(postCourt(court))
       if(resp.meta.requestStatus == "rejected"){
         console.log(resp)
-        alert("Lo lamento no se pudo crear la cancha")
+        alert("Could not create court")
       } else{
-        alert("se a creado correctamente la cancha")
+        alert("Successfully created")
         if(props.setCreate){
           props.setCreate(!props.create)
         }
@@ -86,7 +86,7 @@ export const FormCourt = (props) => {
     e.preventDefault()
     const resp = await dispatch(putCourt({...court, id: props.court.id}))
     if (resp.meta.requestStatus == "rejected") {
-      alert("Lo lamento no se pudo editar el court");
+      alert("Could not edit court");
       setCourt({
         sport: "",
         name: "",
@@ -96,7 +96,7 @@ export const FormCourt = (props) => {
         memberPrice: 0
       });
     } else {
-      alert("court correctamente editado!")
+      alert("Court successfully edit!")
     }
   }
 
