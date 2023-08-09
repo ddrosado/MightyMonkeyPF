@@ -51,7 +51,7 @@ module.exports = async(data) => {
                     transaction_amount: plan.price,
                     currency_id: 'COP'
                 },
-                back_url: '/thanks'
+                back_url: 'https://mighty-monkey-pf-git-devs-monosfeos.vercel.app/thanks'
             })
             await user.update({memberId: result.body.id, planId})
             return result
