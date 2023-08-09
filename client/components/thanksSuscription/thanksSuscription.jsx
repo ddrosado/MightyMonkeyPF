@@ -6,7 +6,7 @@ import axios from "axios";
 import { fetcher } from "../../pages/api/fetcher";
 
 const ThanksSuscription = () => {
-    const { data, error } = useSWR("api/user", fetcher);
+    const { data, mutate } = useSWR("api/user", fetcher);
     console.log('esto es el data ',data);
     if(data){
         const updateUser = async () => {
@@ -18,6 +18,10 @@ const ThanksSuscription = () => {
                     isMember: true
                 })
                 console.log('Success');
+                const res = await fetch("api/login");
+                const data = await res.json();
+                mutate({...data, isMember: true});
+                return data;
             } catch (error) {
                 console.log('Error: ' + error);
             }
