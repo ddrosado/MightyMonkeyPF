@@ -9,7 +9,6 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function Login() {
-  console.log("env:", process.env);
 
   const [activeComponent, setActiveComponent] = useState("signIn");
 
