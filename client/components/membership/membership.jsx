@@ -52,14 +52,14 @@ const Membership = () => {
     return data;
   }
 
-  const cancelSupscription = async () => {
-    const cancel = await axios
-      .put("/api/pay", {
-        type: "cancel",
-        userId: user.data.id,
-      })
-      .then(({ data }) => data);
-  };
+  // const cancelSupscription = async () => {
+  //   const cancel = await axios
+  //     .put("/api/pay", {
+  //       type: "cancel",
+  //       userId: user.data.id,
+  //     })
+  //     .then(({ data }) => data);
+  // };
 
   return (
     <div>
