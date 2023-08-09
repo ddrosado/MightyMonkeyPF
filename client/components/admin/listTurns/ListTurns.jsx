@@ -162,7 +162,7 @@ export const ListTurns = () => {
                       </tr>
                     );
                   })
-                   : <h1>No hay turns</h1> }
+                   : <h1 className={style.not} >There is not Turns</h1> }
                 </tbody>
               </table>
               <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">
