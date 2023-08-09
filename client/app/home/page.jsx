@@ -2,7 +2,7 @@ import Cards from "../../components/cards/Cards";
 import styles from './page.module.css'
 import Banner from "../../components/banner/Banner";
 import InfoHome from "../../components/infoHome/InfoHome";
-
+import InfoReviews from "../../components/infoReviews/InfoReviews";
 
 export default async function Home() {
   return (
@@ -10,6 +10,7 @@ export default async function Home() {
       <Banner />
       <Cards />
       <InfoHome />
+      <InfoReviews />
     </div>
   )
 }
