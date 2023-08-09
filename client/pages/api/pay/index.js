@@ -8,7 +8,6 @@ export default async(req, res) => {
             case 'POST':
                 console.log('aaaaadsssssdsdds');
                 const pay = await payment(req.body);
-                console.log("Payment information: ", pay);
                 res.status(200).json(pay.body);
             case 'PUT':
                 const cancel = await cancelSupscription(req.body)
