@@ -96,7 +96,11 @@
 
 /* RESPONSIVE */
 /* Estilos para pantallas con ancho máximo de 576px (por ejemplo, smartphones en orientación vertical) */
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+  .logo {
+    margin-top: 170px;
+  }
+}
 
 /* Estilos para pantallas con ancho entre 577px y 991px (por ejemplo, tabletas en orientación vertical) */
 @media (min-width: 577px) and (max-width: 991px) {
@@ -107,12 +111,19 @@
     margin-top: 0px;
     right: -5px; 
   }
+  .logo {
+    margin-top: 170px;
+  }
 }
 
 /* Estilos para pantallas con ancho mínimo de 992px (por ejemplo, laptops y pantallas de escritorio) */
 @media (min-width: 992px) {
   .wideScreen {
     margin-top: 70px;
+  }
+  .logo {
+    margin-top: 170px;
+    width: 330px;
   }
 }
 
@@ -123,5 +134,6 @@
   }
   .logo {
     margin-top: 0px;
+    width: 330px;
   }
 }

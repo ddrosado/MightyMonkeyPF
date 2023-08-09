@@ -25,7 +25,7 @@ const Cards = () => {
         </h1>
       </div>
       <div className={styles.cardsContainer}>
-        {sports?.sports?.map(({ image, description, name, id, courts }) => (
+        {sports?.sports?.filter(sp=> sp.isActive).map(({ image, description, name, id, courts }) => (
           <Card
             key={id}
             courts={courts}
