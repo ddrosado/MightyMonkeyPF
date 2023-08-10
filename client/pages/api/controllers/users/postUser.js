@@ -10,7 +10,7 @@ export default async (info) => {
   // const surname = info.surname.toLowerCase();
   const existEmail = await User.findOne({
     where: {
-      email: info.email,
+      email: info.email
     },
   });
   if (existEmail) throw Error("This email is already in use");
@@ -18,7 +18,7 @@ export default async (info) => {
   const newUser = await User.create({
     ...info,
     password,
-    isActive: true,
+    isActive: true
   });
 
   // const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");

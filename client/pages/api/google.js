@@ -2,8 +2,8 @@ import userAuth from "./controllers/userAuth/userAuth";
 import postUser from "./controllers/users/postUser";
 import { withSession } from "./controllers/sessionAuth/middleware";
 import { transporter } from './controllers/utils/mails'
-const fs = require('fs')
-const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
+// const fs = require('fs')
+// const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
 
 async function handler(req, res) {
   const { body } = req;
@@ -46,7 +46,7 @@ async function handler(req, res) {
         //     subject: "Te damos la bienvenida a Mighty Monkeys",
         //     html: htmlstream.on('data', (data) => data.toString()),
         //   });
-        return res.status(200).json( {session:true, isActive} );
+        return res.status(200).json({session:true, isActive});
     }catch(error){
         return res.status(400).json(error)
     }
