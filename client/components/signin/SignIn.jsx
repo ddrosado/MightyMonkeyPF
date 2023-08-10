@@ -115,7 +115,7 @@ const SignIn = (props) => {
       // alert("donde vas perrito? ya tas logueado");
       router.push("/home");
     }
-  }, []);
+  });
 
   return (
     <div>

@@ -35,8 +35,8 @@ export const Navbar = () => {
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
     await logout()
-    mutate()
-    router.push("/");
+    mutate({data,isLoggedIn:false})
+    router.push("/home");
   };
   const logInHandler = () => {
     router.push("/");
