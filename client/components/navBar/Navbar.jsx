@@ -18,6 +18,8 @@ const logout = async () => {
   return res;
 };
 
+//...
+
 export const Navbar = () => {
   const { data } = useSWR("api/user", fetcher);
   const router = useRouter();
