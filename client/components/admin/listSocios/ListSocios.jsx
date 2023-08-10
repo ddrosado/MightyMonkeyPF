@@ -70,16 +70,16 @@ const ListSocios = () => {
     }
   };
 
-  const handleEnable = async (email) => {
-    const resp = await dispatch(putUser({ email: email, isActive: true }));
-    if (resp.meta.requestStatus == "rejected") {
-      console.log(resp);
-      alert("Failed to activate user");
-    } else {
-      dispatch(getUsers());
-      alert("User activated");
-    }
-  };
+const handleEnable = async(email)=>{
+  const resp = await dispatch(putUser({email: email , isActive: true}))
+  if (resp.meta.requestStatus == "rejected"){
+    console.log(resp)
+    alert("Failed to activate user")
+  } else{
+    dispatch(getUsers())
+    alert("User activated")
+  }
+} 
 
   return (
     <div className={style.usersContainer}>

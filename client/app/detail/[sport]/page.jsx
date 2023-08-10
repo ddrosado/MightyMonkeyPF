@@ -2,6 +2,7 @@ import React from "react";
 import Detail from "../../../components/detail/Detail";
 
 
+
 const page = ({params}) => {
   
   return (

@@ -26,13 +26,7 @@ const Summary = ({
     return `${year}-${month}-${day}`;
   };
   const dispatch = useDispatch();
-  const courtFinded = sportFind?.court.find((c) => c.name === selectedCourt);
-
-  const setAsyncBookings = async () => {
-    await dispatch(getBookings())
-    dispatch(filterBookings({sport:sportFind?.name, date:selectedDate, search:""}))
-  }
-  
+  const courtFinded = sportFind?.court?.find((c) => c.name === selectedCourt);
   const handleReserve = () => {
     const bookingData = {
       date: formatDate(selectedDate),
