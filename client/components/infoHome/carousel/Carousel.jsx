@@ -1,10 +1,20 @@
 "use client";
 import { Carousel } from "@material-tailwind/react";
 import style from '../InfoHome.module.css'
+import {useState} from "react"
 
 import Image from "next/image";
+import { useEffect } from "react";
+import { IANAZone } from "luxon";
 
-export function CarouselDefault({ images }) {
+export function CarouselDefault(props) {
+
+  const [images, setImage] = useState([])
+
+  useEffect(()=>{
+    setImage(props.images? props.images : props.sportFind?.gallery)
+  },[props])
+
 
   return (
     <Carousel className={style.carousel}>
@@ -13,8 +23,11 @@ export function CarouselDefault({ images }) {
         src={img}
         alt="image"
         className="h-full w-full object-cover"
+        width={props.sportFind? 300 : null}
+        height={props.sportFind? 300 : null}
       />
-      })}
+    })
+  }
     </Carousel>
   );
 }

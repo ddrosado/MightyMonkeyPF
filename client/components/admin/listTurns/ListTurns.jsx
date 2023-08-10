@@ -14,6 +14,7 @@ export const ListTurns = () => {
     const dispatch = useDispatch()
     const bookings = useSelector(state=> state.bookings.bookingsCopy)
     const sports = useSelector(state=> state.sports.sports)
+    const [page, setPage] = useState(0)
     const [filter, setFilter] = useState({
       sport: "all",
       date: "all",
@@ -57,6 +58,20 @@ export const ListTurns = () => {
     };
     
     const dates = generateDateArray();
+
+    const handlePage = (type)=>{
+      if(type == "next"){
+        const newPage = page+1
+        if((bookings.length / 5) >= newPage){
+          setPage(newPage)
+        }
+      } else {
+        const newPage = page-1
+        if(newPage >= 0){
+          setPage(newPage)
+        } 
+      }
+    }
 
 
   return (
@@ -119,7 +134,7 @@ export const ListTurns = () => {
                 {get == "pending"? <Image className={style.loading} src={loading} alt="gif" /> :
   
                 bookings?.length?
-                  bookings.map(({ date, hour, user, court, id}) => {
+                  bookings.slice((5 * page), ((page+1) * 5)).map(({ date, hour, user, court, id}) => {
                     return (
                       <tr key={id}>
                         <td className="px-5 py-5 bg-white text-sm">
@@ -166,14 +181,14 @@ export const ListTurns = () => {
                 </tbody>
               </table>
               <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between ">
-              <span class="text-xs xs:text-sm text-gray-900">
-                            Page 
+              <span className="text-xs xs:text-sm text-gray-900">
+                            Page {page+1} the {Math.ceil(bookings.length/5)} of {bookings.length} Bookings
                         </span>
                 <div className="inline-flex mt-2 xs:mt-0">
-                  <button  className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
+                  <button onClick={()=>handlePage("prev")} className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
                     Prev
                   </button>
-                  <button className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
+                  <button onClick={()=>handlePage("next")} className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
                     Next
                   </button>
                 </div>

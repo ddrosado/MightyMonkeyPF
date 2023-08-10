@@ -82,7 +82,7 @@ const handleEnable = async(email)=>{
     dispatch(getUsers())
     alert("User activated")
   }
-}
+} 
 
   return (
       <div className={`container mx-auto px-4 sm:px-8 ${style.container}`}> 
