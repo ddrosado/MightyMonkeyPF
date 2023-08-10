@@ -21,13 +21,13 @@ export default async (info) => {
     isActive: true,
   });
 
-  const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
+  // const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
   
-  await transporter.sendMail({
-    from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
-    to: info.email,
-    subject: "Te damos la bienvenida a Mighty Monkeys",
-    html: htmlstream.on('data', (data) => data.toString()),
-  });
+  // await transporter.sendMail({
+  //   from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
+  //   to: info.email,
+  //   subject: "Te damos la bienvenida a Mighty Monkeys",
+  //   html: htmlstream.on('data', (data) => data.toString()),
+  // });
   return newUser;
 };
