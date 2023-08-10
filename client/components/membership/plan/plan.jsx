@@ -6,7 +6,7 @@ import axios from "axios";
 
 export const Plan = ({plan, user}) => {
 
-  initMercadoPago('TEST-ca8f17b5-61e2-4977-acf0-1fbdcd51dd39');
+  initMercadoPago('TEST-8c446ca2-a3d3-4718-9e84-584f9c36833e');
   const [preferenceId, setPreferenceId] = useState(null)
 
 
