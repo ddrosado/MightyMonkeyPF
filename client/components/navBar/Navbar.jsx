@@ -11,6 +11,8 @@ import { useEffect } from "react";
 
 const url = process.env.VERCEL_URL;
 
+console.log(url)
+
 const logout = async () => {
   const data = await fetch(`${url}/api/logout`, {
     method: "GET",
