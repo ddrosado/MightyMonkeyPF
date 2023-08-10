@@ -40,6 +40,18 @@ const Membership = () => {
     router.push(url);
   }
 
+  const cancelSupscription = async() => {
+    const cancel = await axios.put('/api/pay', {
+      type: 'cancel',
+      userId: user.data.id
+    }).then(({data}) => data)
+    const res = await fetch("api/login");
+    const data = await res.json();
+    user.mutate({...data, isMember: false});
+    setMember(false);
+    return data;
+  }
+
   const cancelSupscription = async () => {
     const cancel = await axios
       .put("/api/pay", {
