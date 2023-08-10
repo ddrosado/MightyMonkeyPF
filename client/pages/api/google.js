@@ -33,7 +33,7 @@ async function handler(req, res) {
           image: data.photoURL,
           email: data.email,
           telelephone: data.phoneNumber,
-          password: data.uid,
+          password: data.uid
         };
         const { name, email, id, isAdmin, image, planId, surname, isActive } = await postUser(
           newUser
