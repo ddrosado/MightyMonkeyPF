@@ -7,10 +7,8 @@ import style from "./NavAdmin.module.css";
 
 const NavAdmin = ({page}) => {
   
-
-
   return (
-    <>
+    <div className={style.navContainer}>
       <div className={style.options}>
         <Link href={"/dashboard/users"}>
           <button className={`${style.users} ${page == "users" ? style.active :  null}`}>Users</button>
@@ -25,7 +23,7 @@ const NavAdmin = ({page}) => {
           <button className={`${style.users} ${page == "plans" ? style.active :  null}`}>Plans</button>
         </Link>
       </div>
-    </> 
+    </div> 
   );
 };
 

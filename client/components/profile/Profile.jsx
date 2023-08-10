@@ -7,17 +7,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 const MyProfile = (props) => {
-  
   const { data, mutate } = useSWR("api/user", fetcher);
 
   return data ? (
-    <div className={style.marginContainer}>
       <div className={style.container}>
-        <div className={style.img}>
-          <div>
-            <img src={data.image} alt="profile-image" />
-          </div>
+        <div className={style.imgContainer}>
+          <img className={style.image} src={data.image} alt="profile-image" />
         </div>
+        <div className={style.separator}></div>
         <div className={style.userdata}>
           <div>
             <h2 className={style.userDataLabel}>Name:</h2>
@@ -55,7 +52,6 @@ const MyProfile = (props) => {
           </div>
         </div>
       </div>
-    </div>
   ) : null;
 };
 

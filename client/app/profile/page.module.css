@@ -7,16 +7,35 @@
 }
 
 .profileContainer{
-    width: 80%;
-    /* border: 1px solid red; */
-    margin: auto;
-    
+    width: 100%;   
+}
+.logo {
+    position: absolute;
+    width: 500px;
+    top: 104px;
+    right: 166px;
+}
+
+.titleContainer {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    width: 77%;
+    margin-top: 50px;
+}
+
+.titleContainer span {
+    color: #FFDA61;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .container >h1{
     font-size: 2em;
     color: white;
-    margin-top: 6rem;
+    margin-top: 12rem;
     margin-bottom: 1.7rem;
 }
 
