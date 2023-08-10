@@ -72,9 +72,9 @@ dateBookings.forEach((booking) => {
     return selectedTurnBookings.length < availableCourtsForSelectedDate;
   };
 
-  useEffect(() => {
-    dispatch()    
-  },[])
+  // useEffect(() => {
+  //   dispatch()    
+  // },[])
 
   return (
     <div
