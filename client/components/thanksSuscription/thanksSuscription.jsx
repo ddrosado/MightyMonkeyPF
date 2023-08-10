@@ -7,28 +7,30 @@ import { fetcher } from "../../pages/api/fetcher";
 
 const ThanksSuscription = () => {
     const { data, mutate } = useSWR("api/user", fetcher);
-
     console.log('esto es el data ',data);
-    const updateUser = async () => {
-        try {
-            const email = data.email
-            console.log(email);
-            const put = await axios.put('/api/users',{
-                email: email,
-                isMember: true
-            })
-            const res = await fetch("/api/login");
-            const datos = await res.json();
-            mutate({...datos, isMember: true});
-            console.log(datos) ;
-        } catch (error) {
-            console.log('Error: ' + error);
-        }
+    if(data){
+        if(data.email){
+            const updateUser = async () => {
+                try {
+                    const email = await data.email
+                    console.log(email);
+                    const put = await axios.put('/api/users',{
+                        email: email,
+                        isMember: true
+                    })
+                    console.log('Success');
+                    const res = await fetch("api/login");
+                    const datos = await res.json();
+                    mutate({...datos, isMember: true});
+                    return datos;
+                } catch (error) {
+                    console.log('Error: ' + error);
+                }
             }
-
-    useEffect(()=>{
-        updateUser()
-    },[])
+            updateUser()
+        }
+    }
+        
         
     return (
 
