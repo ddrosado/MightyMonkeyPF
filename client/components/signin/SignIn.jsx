@@ -31,7 +31,7 @@ const userGoogle = async (user) => {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
   });
   const res = await data.json();

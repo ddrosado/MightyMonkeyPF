@@ -20,7 +20,7 @@ async function handler(req, res) {
       isAdmin: existingUser.isAdmin,
       isActive: existingUser.isActive,
       image: existingUser.image,
-      planId: existingUser.planId,
+      planId: existingUser.planId
     };
     set("user", userInfo);
     await save();
