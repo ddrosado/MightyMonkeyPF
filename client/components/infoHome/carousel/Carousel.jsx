@@ -8,7 +8,18 @@ export function CarouselDefault({ images }) {
 
   return (
     <Carousel className={style.carousel}>
-      <Image
+      {images?.map(img=>{
+        return  <Image
+        src={img}
+        alt="image"
+        className="h-full w-full object-cover"
+      />
+      })}
+    </Carousel>
+  );
+}
+
+      {/* <Image
         src={images[0]}
         alt="image 1"
         className="h-full w-full object-cover"
@@ -22,7 +33,4 @@ export function CarouselDefault({ images }) {
         src={images[2]}
         alt="image 3"
         className="h-full w-full object-cover"
-      />
-    </Carousel>
-  );
-}
+      /> */}

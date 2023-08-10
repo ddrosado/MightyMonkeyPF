@@ -10,6 +10,7 @@ import { fetcher } from "../../pages/api/fetcher.js";
 import Image from "next/image";
 import monkeyRes from '../../assets/images/monores.png'
 
+
 const Detail = ({ sportName }) => {
   const { data } = useSWR("/api/user", fetcher);
   const user = data;
@@ -17,6 +18,7 @@ const Detail = ({ sportName }) => {
   const sport = useSelector((state) => state.sports);
   const bookings = useSelector((state) => state.bookings);
   const [isWideScreen, setIsWideScreen] = useState(false);
+
 
   useEffect(() => {
     if (!sport.length) {
@@ -38,6 +40,7 @@ const Detail = ({ sportName }) => {
   }, []);
 
   const sportFind = sport.sports?.find((e) => e.name == sportName);
+
   // const noTurnsAvailable = !sportFind || sportFind?.court?.length === 0;
 
   return (

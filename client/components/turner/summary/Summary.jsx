@@ -19,7 +19,7 @@ const Summary = ({ sportFind, selectedDate, selectedTurn, selectedCourt, user })
     return `${year}-${month}-${day}`;
   };
   const dispatch = useDispatch();
-  const courtFinded = sportFind?.court.find((c) => c.name === selectedCourt);
+  const courtFinded = sportFind?.court?.find((c) => c.name === selectedCourt);
   const handleReserve = () => {
 
     const bookingData = {
