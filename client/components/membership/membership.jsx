@@ -35,7 +35,7 @@ const Membership = () => {
     const url = await fetch('/api/pay', {
       method: 'POST',
       body: JSON.stringify({
-        type: 'subscriptions',
+        type: "subscriptions",
         userId: user.data.id,
         planId,
       }),
