@@ -9,9 +9,10 @@ import { useRouter } from "next/navigation";
 import { fetcher } from "../../pages/api/fetcher";
 import { useEffect } from "react";
 
+const url = process.env.VERCEL_URL;
 
 const logout = async () => {
-  const data = await fetch("api/logout", {
+  const data = await fetch(`${url}/api/logout`, {
     method: "GET",
   });
   const res = await data.json();
@@ -19,7 +20,7 @@ const logout = async () => {
 };
 
 export const Navbar = () => {
-  const { data } = useSWR("api/user", fetcher);
+  const { data } = useSWR(`${url}/api/user`, fetcher);
   const router = useRouter();
 
   const obj = [
