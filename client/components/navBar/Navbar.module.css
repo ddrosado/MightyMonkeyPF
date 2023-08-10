@@ -23,6 +23,14 @@
     cursor: pointer;
 }
 
+.link {
+  transition: all ease 0.2s;
+}
+.link:hover {
+  scale: 110%;
+  text-decoration: underline;
+ text-underline-position: under;
+}
 .navContainer {
     display: flex;
     background-color:#FFDA61;
@@ -38,7 +46,9 @@
 
    /* Mobile hasta smartphone grande */
    @media (max-width: 720px) {
-
+    .link:hover {
+  scale: 100%;
+}
 }
 
 /* Smartphone grande hasta ordenador portátil medio */
@@ -55,6 +65,7 @@
 .adminBar {
     height: 60px;
 }
+
 }
 
 /* Ordenador portátil medio hasta ordenador de escritorio medio */

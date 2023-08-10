@@ -11,7 +11,7 @@ const InfoReviews = () => {
     dispatch(getReviews());
   }, []);
 
-  const lastThreeReviews = reviews.slice(-3).reverse();
+  const lastThreeReviews = reviews?.slice(-3).reverse();
 
   function formatDateWithoutTime(dateString) {
     if (!dateString) return null;
