@@ -1,7 +1,7 @@
 const mercadopago = require('mercadopago');
 const { db } = require('../../db');
 const { User, Court, Plan, Booking } = db
-// const ngrok = 'https://9e2a-179-1-48-61.ngrok-free.app'
+
 
 module.exports = async(data) => {
     mercadopago.configure({

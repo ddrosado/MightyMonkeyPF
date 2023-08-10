@@ -30,11 +30,13 @@ export default async(req, res)=> {
             },
             auto_return : "approved",
           };
-
+          console.log(user)
+          console.log(product)
           try {
             const response = await mercadopago.preferences.create(preference);
-      
+            console.log(response)
             res.status(200).json({ id: response.body.id });
+
           } catch (preferenceError) {
             console.error("Error al crear la preferencia:", preferenceError);
             res.status(500).json({ error: "Error al crear la preferencia" });
