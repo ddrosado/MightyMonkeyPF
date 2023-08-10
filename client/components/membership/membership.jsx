@@ -40,7 +40,8 @@ const Membership = () => {
         planId,
       },
       credentials: "include"
-    }).then(({data}) => data.init_point)
+    }).then(({data}) => data)
+    console.log(data);
     router.push(url);
   }
 
