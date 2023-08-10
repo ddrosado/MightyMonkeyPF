@@ -11,7 +11,7 @@ const userLogin = async (form) => {
     method: "POST",
     body: JSON.stringify(form),
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
   });
   const session = await data.json();
@@ -31,7 +31,7 @@ const userGoogle = async (user) => {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
   });
   const res = await data.json();
@@ -41,13 +41,13 @@ const userGoogle = async (user) => {
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   const router = useRouter();
   const [allowed, setAllowed] = useState(null);
 
-  const { data, mutate } = useSWR("/api/user", fetcher);
+  const { data, mutate } = useSWR("api/user", fetcher);
 
   const handleGoogle = (e) => {
     const provider = new GoogleAuthProvider();
@@ -67,7 +67,7 @@ const SignIn = (props) => {
               router.push("/home");
             } else if (res?.session && !res?.isActive) {
               setAllowed(false);
-              alert("TAS BANEADISIMO CAPO");
+              alert("You are banned");
             }
           })
           .catch((error) => console.log(error.message));
@@ -86,7 +86,7 @@ const SignIn = (props) => {
     const value = e.target.value;
     setUserData({
       ...userData,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -98,13 +98,13 @@ const SignIn = (props) => {
       router.push("/home");
     } else if (res?.session && !res?.isActive) {
       setAllowed(false);
-      alert("TAS BANEADISIMO PERRO");
+      alert("You are banned");
     } else {
       setAllowed(false);
     }
     setUserData({
       email: "",
-      password: "",
+      password: ""
     });
   };
 

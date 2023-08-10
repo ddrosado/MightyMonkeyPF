@@ -11,7 +11,7 @@ import { useEffect } from "react";
 
 
 const logout = async () => {
-  const data = await fetch("http://localhost:3000/api/logout", {
+  const data = await fetch("/api/logout", {
     method: "GET",
   });
   const res = await data.json();
@@ -32,7 +32,7 @@ export const Navbar = () => {
   ];
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
-    const res = await logout();
+    await logout();
     window.location.reload();
   };
 
