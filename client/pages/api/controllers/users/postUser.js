@@ -21,7 +21,7 @@ export default async (info) => {
     isActive: true
   });
 
-  const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
+  // const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
   
   // await transporter.sendMail({
   //   from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
