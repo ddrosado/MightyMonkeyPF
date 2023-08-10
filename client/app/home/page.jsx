@@ -2,6 +2,7 @@ import styles from './page.module.css'
 import Banner from "../../components/banner/Banner";
 import InfoHome from "../../components/infoHome/InfoHome";
 import Publicity from "../../components/publicity/Publicity";
+import InfoReviews from '../../components/infoReviews/InfoReviews';
 
 
 export default async function Home() {
@@ -11,6 +12,7 @@ export default async function Home() {
       <Publicity />
       {/* <Cards /> */}
       <InfoHome />
+      <InfoReviews/>
     </div>
   )
 }
