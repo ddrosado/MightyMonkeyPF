@@ -37,9 +37,9 @@ const Membership = () => {
       type: 'subscriptions',
       userId: user.data.id,
       planId,
-    }).then(({data}) => data)
+    }).then(({data}) => data.init_point)
     console.log(url);
-    // router.push(url);
+    router.push(url);
   }
 
   const cancelSupscription = async() => {
