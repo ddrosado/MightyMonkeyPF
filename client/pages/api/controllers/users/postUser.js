@@ -24,7 +24,7 @@ export default async (info) => {
 
   // const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
 
-  await sendMail(info.email)
+  // await sendMail(info.email)
   // await transporter.sendMail({
   //   from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
   //   to: info.email,
