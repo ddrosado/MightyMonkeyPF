@@ -1,7 +1,8 @@
-import { transporter } from '../utils/mails'
+
 import { db } from "../../db";
 const { User } = db;
 import bcrypt from "bcrypt";
+import sendMail from './sendMail';
 const fs = require('fs')
 
 export default async (info) => {
@@ -21,8 +22,9 @@ export default async (info) => {
     isActive: true
   });
 
-  const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
-  
+  // const htmlstream = fs.createReadStream("./pages/api/controllers/users/mail/content.html");
+
+  await sendMail(info.email)
   // await transporter.sendMail({
   //   from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
   //   to: info.email,
