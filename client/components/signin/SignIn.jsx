@@ -86,7 +86,7 @@ const SignIn = (props) => {
     const value = e.target.value;
     setUserData({
       ...userData,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -104,7 +104,7 @@ const SignIn = (props) => {
     }
     setUserData({
       email: "",
-      password: "",
+      password: ""
     });
   };
 
