@@ -3,6 +3,7 @@ import style from "./FormCount.module.css"
 import {useDispatch, useSelector} from "react-redux"
 import { postCourt, putCourt } from '../../../../../redux/actions/courtsAction'
 import { validationCourt } from '../../../validations/validations'
+import { getSports } from '../../../../../redux/actions/sportsActions'
 
 
 export const FormCourt = (props) => {
@@ -22,6 +23,10 @@ export const FormCourt = (props) => {
   const [errors, setErrors] = useState({})
 
 //----------------------useEffects------------------------
+
+  useEffect(()=>{
+    dispatch(getSports())
+  },[])
 
   useEffect(()=>{
     setCourt({
@@ -141,7 +146,6 @@ export const FormCourt = (props) => {
               className={`${style.label} ${
                 court?.name?.length ? style.full : style.noFull
               }`}
-              htmlFor="name"
             >
               Name
             </label>
@@ -160,7 +164,6 @@ export const FormCourt = (props) => {
               className={`${style.label} ${
                 court?.description?.length ? style.full : style.noFull
               }`}
-              htmlFor="description"
             >
               Description
             </label>
@@ -172,9 +175,6 @@ export const FormCourt = (props) => {
             <div>
             <label
               className={style.labelPrice}  
-              //   court.memberPrice.length ? style.full : style.noFull
-              // }`}
-              htmlFor="memberPrice"
             >
               Member:
             </label>
@@ -191,9 +191,6 @@ export const FormCourt = (props) => {
           <div>
             <label
               className={style.labelPrice}
-              //   court.nonMemberPrice.length ? style.full : style.noFull
-              // }`}
-              htmlFor="noMemberPrice"
             >
               No Member:
             </label>

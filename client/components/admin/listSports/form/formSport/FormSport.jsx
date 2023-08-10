@@ -117,7 +117,7 @@ export const FormSport = (props) => {
 
 
   return (
-    <>
+    <div>
       <form className={style.form}>
         <label className={style.title}>Sport</label>
         {!props.sport ? (
@@ -220,6 +220,6 @@ export const FormSport = (props) => {
           }
         </div>
       </form> 
-    </>
+    </div>
   );
 };

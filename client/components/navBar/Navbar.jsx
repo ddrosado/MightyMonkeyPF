@@ -32,7 +32,7 @@ export const Navbar = () => {
   ];
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
-    const res = await logout();
+    await logout();
     window.location.reload();
   };
 

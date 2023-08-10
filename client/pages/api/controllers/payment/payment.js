@@ -1,11 +1,11 @@
 const mercadopago = require('mercadopago');
 const { db } = require('../../db');
 const { User, Court, Plan, Booking } = db
-// const ngrok = 'https://a82d-179-1-48-61.ngrok-free.app.app'
+
 
 module.exports = async(data) => {
     mercadopago.configure({
-        access_token: "TEST-3840529657724541-080815-fba912c6e91d677be2f3b4e4aa59e138-1445796506"
+        access_token: 'TEST-3840529657724541-080815-fba912c6e91d677be2f3b4e4aa59e138-1445796506'
     });
     switch (data.type) {
         case 'bookings': {
@@ -22,37 +22,38 @@ module.exports = async(data) => {
                         description: `${date} ${hour} ${userId} ${courtId}`,
                         picture_url: court.image,
                         unit_price: user.isMember ? court.memberPrice*hour.length : court.noMemberPrice*hour.length,
-                        currency_id: 'ARS',
+                        currency_id: 'COP',
                         quantity: 1
                     }
                 ],
                 back_urls: {
-                    failure: 'https://localhost:3000/api/failure',
-                    pending: 'https://localhost:3000/api/pending',
-                    success: 'https://localhost:3000/api/success'
+                    failure: '/failure',
+                    pending: '/pending',
+                    success: '/success'
                 },
-                notification_url: '/api/webHookPay'
+                notification_url: 'https://mighty-monkey-pf-git-devs-monosfeos.vercel.app/api/webHookPay'
             })
-            console.log(result)
             return result
         }
         case 'subscriptions': {
+            console.log('llego al back');
             const { userId, planId } = data
+            
             const plan = await Plan.findOne({ where: { id: planId } })
             const user = await User.findOne({ where: { id: userId } })
 
             console.log(user);
 
             const result = await mercadopago.preapproval.create({
-                payer_email: "test_user_1808462247@testuser.com", //"test_user_1808462247@testuser.com", user.email
+                payer_email: user.email,
                 reason: plan.name,
                 auto_recurring: {
                     frequency: plan.duration,
                     frequency_type: 'months',
                     transaction_amount: plan.price,
-                    currency_id: 'ARS'
+                    currency_id: 'COP'
                 },
-                back_url: "https://mighty-monkey-pf.vercel.app/thanks"
+                back_url: 'https://mighty-monkey-pf-git-devs-monosfeos.vercel.app/thanks'
             })
             await user.update({memberId: result.body.id, planId})
             return result

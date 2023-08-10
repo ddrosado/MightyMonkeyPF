@@ -9,7 +9,9 @@ import Image from "next/image";
 import monkey from '../../assets/images/monover.png'
 
 const Cards = () => {
+  
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getSports());
   }, []);

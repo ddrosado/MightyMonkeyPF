@@ -6,6 +6,7 @@ const initialState = {
   bookingsCopy: [],
   loading: false,
   error: null,
+  bookingsXHour: [],
 };
 
 const bookingsSlice = createSlice({
@@ -15,24 +16,29 @@ const bookingsSlice = createSlice({
     filterBookings: (state, action) => {
       const { sport, date, search } = action.payload;
       let filteredBookings = state.bookings;
-  
+
       if (sport !== "all") {
-          filteredBookings = filteredBookings.filter(book => book.court?.sport?.name === sport);
+        filteredBookings = filteredBookings.filter(book => book.court?.sport?.name === sport);
       }
-  
+
       if (date !== "all") {
-          filteredBookings = filteredBookings.filter(book => book.date == date);
+        filteredBookings = filteredBookings.filter(book => book.date == date);
       }
-  
+
       filteredBookings = filteredBookings.filter(book =>
-          book.court.sport?.name.toLowerCase().includes(search.toLowerCase()) ||
-          book.court.name.toLowerCase().includes(search.toLowerCase()) ||
-          book.user.name.toLowerCase().includes(search.toLowerCase())
+        book.court.sport?.name.toLowerCase().includes(search.toLowerCase()) ||
+        book.court.name.toLowerCase().includes(search.toLowerCase()) ||
+        book.user.name.toLowerCase().includes(search.toLowerCase())
       );
-  
+
       state.bookingsCopy = filteredBookings;
-  }
-},
+    },
+    filterBookingsByHour: (state, action) => {
+      console.log(action.payload)
+      state.bookingsXHour = state.bookingsCopy.filter(book => book.hour == action.payload)
+    }
+  },
+
   extraReducers: (builder) => {
     builder
       .addCase(getBookings.pending, (state) => {
@@ -66,5 +72,5 @@ const bookingsSlice = createSlice({
   },
 });
 
-export const { filterBookings } = bookingsSlice.actions;
+export const { filterBookings, filterBookingsByHour } = bookingsSlice.actions;
 export default bookingsSlice.reducer;

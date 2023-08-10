@@ -6,7 +6,7 @@ import useSWR from "swr";
 import { fetcher } from "../../pages/api/fetcher";
 import  Modal  from "../modal/Modal";
 
-const ReviewForm = () => {
+const FormReview = () => {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(1);
   const [show, setShow] = useState(false);
@@ -108,4 +108,4 @@ const ReviewForm = () => {
   );
 };
 
-export default ReviewForm;
+export default FormReview;

@@ -1,11 +1,11 @@
 .detailContainer {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   padding-top: 250px;
-  margin-bottom: 430px;
+  margin-bottom: 60px;
 }
 
 .titleSport {
@@ -84,6 +84,7 @@
   margin-top: 110px;
   position: relative;
   top: 28px;
+  padding-top: 100px;
 }
 
 .wideScreen {

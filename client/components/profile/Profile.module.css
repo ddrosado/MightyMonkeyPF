@@ -1,38 +1,40 @@
 .container{
-    width: 100%;
+    width: 45%;
     display: flex;
     justify-content: space-between;
-    background-color: #000000e2;
-    border-radius: 5px;
-    border: 1px solid #FFDA60;
+    background-color: #FFDA61;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px;
+    margin-bottom: 130px;
 }
 
-.img{
-    border: solid 1px green; 
-    width: 100%;
-    height: auto;
+.separator {
+    width: 2px;
+    height: 191px;
+    border: solid 1px black;
+}
+
+.imgContainer{
+    width:250px;
+    height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.img > div{
-    width: 90%;
+    border-radius: 50%;
+    box-shadow: -4px 5px 16px -6px rgba(0,0,0,0.5);}
+.image {
+    width: 100%;
     height: 100%;
-    border-radius: 5px;
-    border: solid 1px #ffda603b;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .userdata{
-    /* border: solid 1px cyan; */
-    width: 100%;
-    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
 
-    margin-left: 20px;
-    /* padding-left: 2rem; */
 }
 
 .userdata >div{
@@ -40,12 +42,12 @@
     display: flex;
     flex-direction: column;
     font-size: 1.5em;
-    color: #f4f4f5;
+    color: black;
 }
 
 .userDataLabel{
     font-size: 1rem;
-    color: #f4f4f56c;
+    color: black;
 }
 
 .profileInput{
@@ -64,14 +66,14 @@
 }
 
 .editButton{
-    border: 1px solid rgba(255, 255, 255, 0.16);
     text-align: left;
     padding: 5px;
     width: 8rem;
+    color: white;
     margin-right: 20px;
     font-size: 1rem;
-    background-color: #0000004b;
-    transition: all .2s ease-in-out; 
+    background-color: black;
+    transition: all .2s ease-in-out;
     border-radius: 5px;
 }
 
@@ -96,14 +98,3 @@
     color: rgba(255, 255, 255, 0.463);
 }
 
-
-
-
-.container{
-    /* border: 1px solid fuchsia; */
-    padding: 40px
-}
-
-/* .marginContainer{
-    border: 1px solid green;
-} */

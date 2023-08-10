@@ -17,7 +17,7 @@ module.exports = async (info) => {
   
     const bookingInfo = {
       date,
-      hour,
+      hour, 
       userId,
       courtId
     };

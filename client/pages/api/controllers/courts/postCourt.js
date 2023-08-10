@@ -4,6 +4,8 @@ const { Court, Sport } = db;
 export default async (courtInfo) => {
   const sport = await Sport.findOne({ where: { name: courtInfo.sport } });
   if (!sport) throw Error("sport type is not listed in Sport table");
+  const courtName = await Court.findOne({ where: { name: courtInfo.name } });
+  if (courtName) throw Error("court name already in use");
 
     const newCourt = {
         ...courtInfo,

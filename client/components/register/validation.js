@@ -11,7 +11,7 @@ export default function validation(input) {
 //   }
 
   // Password validation
-  if (!passwordRegex.test(input.password)) {
+  if (!passwordRegex.test(input.password) && input.password.length) {
     errors.password = "Should contain at least one lowercase letter, one uppercase letter, one digit, and one special character";
   }
 
