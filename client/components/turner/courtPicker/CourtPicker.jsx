@@ -12,7 +12,7 @@ const CourtPicker = ({ courts, onCourtSelected }) => {
 
 const bookings = useSelector(state => state.bookings.bookingsXHour)
 
-const availableCourts = courts?.filter((court) => {
+// const availableCourts = courts?.filter((court) => {
 
 const courtAvailable = courts?.filter(court=> court.isAvailable)
 console.log(courtAvailable)
@@ -32,6 +32,7 @@ console.log(courtAvailable)
     </div>
   );
 };
+
 
 export default CourtPicker;
 
