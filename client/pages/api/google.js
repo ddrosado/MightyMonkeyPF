@@ -40,12 +40,12 @@ async function handler(req, res) {
         );
         set("user", { name, email, id, planId, isAdmin, image, surname, isActive });
         await save();
-        await transporter.sendMail({
-            from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
-            to: email,
-            subject: "Te damos la bienvenida a Mighty Monkeys",
-            html: htmlstream.on('data', (data) => data.toString()),
-          });
+        // await transporter.sendMail({
+        //     from: '"Mighty Monkeys" <mightymonkeys25@gmail.com>',
+        //     to: email,
+        //     subject: "Te damos la bienvenida a Mighty Monkeys",
+        //     html: htmlstream.on('data', (data) => data.toString()),
+        //   });
         return res.status(200).json( {session:true, isActive} );
     }catch(error){
         return res.status(400).json(error)
