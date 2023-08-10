@@ -9,9 +9,7 @@ import { useRouter } from "next/navigation";
 import { fetcher } from "../../pages/api/fetcher";
 import { useEffect } from "react";
 
-const url = process.env.VERCEL_URL;
-
-console.log(url)
+const url = "https://mighty-monkey-pf.vercel.app/"
 
 const logout = async () => {
   const data = await fetch(`${url}/api/logout`, {
@@ -22,7 +20,7 @@ const logout = async () => {
 };
 
 export const Navbar = () => {
-  const { data } = useSWR(`${url}/api/user`, fetcher);
+  const { data } = useSWR("api/user", fetcher);
   const router = useRouter();
 
   const obj = [
