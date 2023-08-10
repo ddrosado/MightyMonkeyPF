@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 import axios from "axios";
+import style from "./plan.module.css"
 
 
 
@@ -42,8 +43,8 @@ export const Plan = ({plan, user}) => {
 
 
   return (
-    <div className="py-12">
-                  <div className="bg-white  pt-4 rounded-xl space-y-6 overflow-hidden transition-all duration-500 transform hover:-translate-y-6 -translate-y-2 scale-105 shadow-xl hover:shadow-2xl cursor-pointer">
+    <div onClick={()=>handleBuy(plan)} className={style.container}>
+                  <div className={style.card}>
                     <div className="px-8 flex justify-between items-center">
                       <h4 className="text-xl font-bold text-gray-800">
                         {plan.duration === 12
@@ -86,8 +87,7 @@ export const Plan = ({plan, user}) => {
                     <div className="text-center bg-yellow-600 ">
                     </div>
                   </div>
-                  <button style={{backgroundColor: "white"}} onClick={()=>handleBuy(plan)}>comprarrr</button>
                   {preferenceId && <Wallet initialization={{ preferenceId }} />}
-                </div>
+            </div>
   )
 }

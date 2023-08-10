@@ -123,7 +123,7 @@ export const Navbar = () => {
           {data ? (
             <>
               {data.isAdmin ? (
-                <Link className={style.link} key="admin" href="http://localhost:3000/dashboard/users">
+                <Link className={style.link} key="admin" href="https://mighty-monkey-pf.vercel.app/dashboard/users">
                   <li>Admin</li>
                 </Link>
               ) : null}

@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlans } from "../../redux/actions/plansActions";
+import style from "./membership.module.css"
 
 import { Plan } from "./plan/plan";
 
@@ -20,7 +21,6 @@ const Membership = () => {
   useEffect(()=>{
   dispatch(getPlans())
   },[])
-  // const plans = useSWR("api/plans", fetcher);
   const user = useSWR("api/user", fetcher);
   const router = useRouter();
 
@@ -34,7 +34,7 @@ const Membership = () => {
 
 
   return (
-    <div>
+    <div className={style.container}>
           {plans?.map((plan) => {
               return (
                 <Plan plan={plan} user={user}/>
