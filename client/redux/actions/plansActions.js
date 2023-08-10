@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = "http://localhost:3000"
+
 
 export const getPlans = createAsyncThunk(
     'plans/getPlans',
@@ -43,7 +43,7 @@ export const deletePlans = createAsyncThunk(
     'plans/deletePlans',
     async (id) =>{
         try {
-            const resp = await axios.delete(url+"/api/plans" , {data:{id:id}})
+            const resp = await axios.delete("/api/plans" , {data:{id:id}})
             return resp.data
         } catch (error) {
             throw new Error(error.response.data.msg)
