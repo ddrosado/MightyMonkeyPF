@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlans } from "../../redux/actions/plansActions";
+import style from "./membership.module.css"
 
 import { Plan } from "./plan/plan";
 
@@ -34,7 +35,7 @@ const Membership = () => {
 
 
   return (
-    <div>
+    <div className={style.container}>
           {plans?.map((plan) => {
               return (
                 <Plan plan={plan} user={user}/>
