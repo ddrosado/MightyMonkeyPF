@@ -146,7 +146,6 @@ export const FormCourt = (props) => {
               className={`${style.label} ${
                 court?.name?.length ? style.full : style.noFull
               }`}
-              htmlFor="name"
             >
               Name
             </label>
@@ -165,7 +164,6 @@ export const FormCourt = (props) => {
               className={`${style.label} ${
                 court?.description?.length ? style.full : style.noFull
               }`}
-              htmlFor="description"
             >
               Description
             </label>
@@ -177,9 +175,6 @@ export const FormCourt = (props) => {
             <div>
             <label
               className={style.labelPrice}  
-              //   court.memberPrice.length ? style.full : style.noFull
-              // }`}
-              htmlFor="memberPrice"
             >
               Member:
             </label>
@@ -196,9 +191,6 @@ export const FormCourt = (props) => {
           <div>
             <label
               className={style.labelPrice}
-              //   court.nonMemberPrice.length ? style.full : style.noFull
-              // }`}
-              htmlFor="noMemberPrice"
             >
               No Member:
             </label>

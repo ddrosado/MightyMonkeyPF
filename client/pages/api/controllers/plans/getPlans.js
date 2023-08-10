@@ -2,7 +2,7 @@ const {db}= require('../../db')
 
 const {Plan} = db
 
-module.exports = async () => {
+export default async () => {
     return await Plan.findAll({
         attributes: {
         exclude: [

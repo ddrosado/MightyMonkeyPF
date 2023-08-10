@@ -1,11 +1,11 @@
 const mercadopago = require('mercadopago');
 const { db } = require('../../db');
 const { User, Court, Plan, Booking } = db
-// const ngrok = 'https://9e2a-179-1-48-61.ngrok-free.app'
+
 
 module.exports = async(data) => {
     mercadopago.configure({
-        access_token: 'TEST-5280417047762022-072715-6cdc99477060d48978bc1cf779776e2e-1431922934'
+        access_token: 'TEST-3840529657724541-080815-fba912c6e91d677be2f3b4e4aa59e138-1445796506'
     });
     switch (data.type) {
         case 'bookings': {
@@ -45,7 +45,7 @@ module.exports = async(data) => {
             console.log(user);
 
             const result = await mercadopago.preapproval.create({
-                payer_email: "test_user_1751930390@testuser.com",
+                payer_email: user.email,
                 reason: plan.name,
                 auto_recurring: {
                     frequency: plan.duration,
