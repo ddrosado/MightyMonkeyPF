@@ -11,11 +11,20 @@ import { useEffect } from "react";
 
 
 const logout = async () => {
-  const data = await fetch("/api/logout", {
-    method: "GET",
-  });
-  const res = await data.json();
-  return res;
+  try {
+    const currentUrl = new URL(window.location.href);
+    const logoutUrl = `${currentUrl.origin}/api/logout`;
+
+    const data = await fetch(logoutUrl, {
+      method: "GET",
+    });
+
+    const res = await data.json();
+    return res;
+  } catch (error) {
+    console.error("Logout error:", error);
+    throw error;
+  }
 };
 
 export const Navbar = () => {
