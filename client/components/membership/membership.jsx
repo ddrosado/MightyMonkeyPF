@@ -32,17 +32,34 @@ const Membership = () => {
     console.log(planId);
     console.log(user.data.id);
     if(!user.data.id) router.push("/")
-    const url = await fetch('/api/pay', {
-      method: 'POST',
-      body: {
-        type: "subscriptions",
-        userId: user.data.id,
-        planId,
+    // const url = await fetch('/api/pay', {
+    //   method: 'POST',
+    //   body: {
+    //     type: "subscriptions",
+    //     userId: user.data.id,
+    //     planId,
+    //   },
+    //   headers: { credentials: "include" }
+    // }).then(response => response.json())
+    // .then(data => console.log('member component',data))
+    // .catch(err => console.log('member component',err))
+    const url = await axios.post('https://api.mercadopago.com/preapproval', {
+      payer_email: "test_user_1751930390@testuser.com",
+      reason: 'plan.name',
+      auto_recurring: {
+          frequency: 1,
+          frequency_type: 'months',
+          transaction_amount: 5000,
+          currency_id: 'COP'
       },
-      headers: { credentials: "include" }
-    }).then(response => response.json())
-    .then(data => console.log('member component',data))
-    .catch(err => console.log('member component',err))
+      back_url: 'https://mighty-monkey-pf-git-devs-monosfeos.vercel.app/thanks'
+    },
+    {
+    headers: {
+      'x-integrator-id': '6957380372612142',
+      Authorization: 'Bearer TEST-5280417047762022-072715-6cdc99477060d48978bc1cf779776e2e-1431922934',
+      'Content-Type': 'application/json'
+    }})
     console.log(url);
     router.push(url);
   }
