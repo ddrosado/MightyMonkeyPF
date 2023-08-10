@@ -19,9 +19,9 @@ const sequelize = new Sequelize( postgres_DATABASE,postgres_USER, postgres_PASSW
    operatorAliases: false,
    logging: false,
    native: false,
-   dialectOptions: {
-      ssl: true, 
-    },
+   // dialectOptions: {
+   //    ssl: true, 
+   //  },
    pool: {
       max: 5,
       min: 0,
