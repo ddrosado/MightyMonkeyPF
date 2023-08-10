@@ -59,6 +59,6 @@ module.exports = async(data) => {
             return result
         }
         default:
-            throw new Error('Invalid url parameters');
+            throw new Error('Invalid url parameters', data);
     }
 }
