@@ -11,7 +11,7 @@ const userLogin = async (form) => {
     method: "POST",
     body: JSON.stringify(form),
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
   });
   const session = await data.json();
@@ -31,7 +31,7 @@ const userGoogle = async (user) => {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
   });
   const res = await data.json();
@@ -86,7 +86,7 @@ const SignIn = (props) => {
     const value = e.target.value;
     setUserData({
       ...userData,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -104,7 +104,7 @@ const SignIn = (props) => {
     }
     setUserData({
       email: "",
-      password: "",
+      password: ""
     });
   };
 
