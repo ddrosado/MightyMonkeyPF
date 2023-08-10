@@ -19,7 +19,9 @@ const logout = async () => {
 };
 
 export const Navbar = () => {
-  const { data } = useSWR("/api/user", fetcher);
+
+  const { data, mutate } = useSWR("/api/user", fetcher);
+
   const router = useRouter();
 
   const obj = [
@@ -33,20 +35,13 @@ export const Navbar = () => {
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
     await logout();
-    window.location.reload();
+    mutate({...data,isLoggedIn:false})
+    router.push("/");
   };
 
   const logInHandler = () => {
     router.push("/");
   };
-
-  useEffect(() => {
-    if (!data?.isActive && data?.id) {
-      logout().then(() => {
-        router.push("/");
-      });
-    }
-  }, [data, router]);
 
   useEffect(() => {
     const init = async () => {
@@ -56,10 +51,7 @@ export const Navbar = () => {
     init();
   }, []);
 
-  if (data?.id && !data?.isActive) {
-    router.push("/");
-  }
-
+ 
   return (
     <div className={style.navContainer}>
       <Image className={style.logo} src={logo} alt="#" />
