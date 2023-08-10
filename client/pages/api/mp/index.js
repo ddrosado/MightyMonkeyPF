@@ -24,8 +24,8 @@ export default async(req, res)=> {
               },
             ],
             back_urls:{
-                success : "http://localhost:3000/join",
-                failure: "http://localhost:3000/join",
+                success : "https://mighty-monkey-hsepqm1x2-monosfeos.vercel.app/join",
+                failure: "https://mighty-monkey-hsepqm1x2-monosfeos.vercel.app/join",
                 pending : ""
             },
             auto_return : "approved",
