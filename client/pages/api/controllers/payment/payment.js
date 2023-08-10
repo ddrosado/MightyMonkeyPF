@@ -5,8 +5,8 @@ const { User, Court, Plan, Booking } = db
 
 module.exports = async(data) => {
     mercadopago.configure({
-        access_token: 'TEST-5280417047762022-072715-6cdc99477060d48978bc1cf779776e2e-1431922934',
-        integrator_id: '1431922934',
+        access_token: 'TEST-6957380372612142-072516-7b4678147f1973268448b263801d8060-292528470',
+        integrator_id: '292528470',
     });
     switch (data.type) {
         case 'bookings': {
