@@ -19,6 +19,10 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
           <script
+            src="https://www.mercadopago.com/v2/security.js"
+            data-view="home"
+          ></script>
+          <script
             type="text/javascript"
             src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"
           ></script>

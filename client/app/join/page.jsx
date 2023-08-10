@@ -6,7 +6,7 @@ const page = () => {
   return (
     <div className={style.joinContainer}>
       <Membership/>
-    
+
     </div>
   )
 }
