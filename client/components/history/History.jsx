@@ -16,7 +16,7 @@ const fetcherMultiple = async (args) => {
 
 export const History = () => {
   const { data: multiple } = useSWR(
-    ["api/user", "api/users/", "http://worldtimeapi.org/api/ip"],
+    ["api/user", "api/users/", "https://worldtimeapi.org/api/ip"],
     fetcherMultiple
   );
 
