@@ -34,15 +34,13 @@ export const Navbar = () => {
   ];
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
-    await logout();
-    mutate({...data,isLoggedIn:false})
-    router.push("/");
+    await logout()
+    mutate()
+    router.push("/home")
   };
-
   const logInHandler = () => {
     router.push("/");
   };
-
   useEffect(() => {
     const init = async () => {
       const { Collapse, Dropdown, initTE } = await import("tw-elements");
@@ -51,7 +49,6 @@ export const Navbar = () => {
     init();
   }, []);
 
- 
   return (
     <div className={style.navContainer}>
       <Image className={style.logo} src={logo} alt="#" />
@@ -112,21 +109,21 @@ export const Navbar = () => {
         </div>
       </nav>
       <div className={style.adminBar}>
-          {data ? (
+         
             <>
-              {data.isAdmin ? (
+              {data?.isAdmin ? (
                 <Link className={style.link} key="admin" href="http://localhost:3000/dashboard/users">
                   <li>Admin</li>
                 </Link>
               ) : null}
-              |
-              {data.isLoggedIn ? (
+
+              {data?.isLoggedIn ? (
                 <li onClick={logoutHandler}>Log out</li>
               ) : (
                 <li onClick={logInHandler}>Log In</li>
               )}
             </>
-          ) : null}
+          
         </div>
     </div>
   );
