@@ -29,7 +29,6 @@ export default async(req, res)=> {
                 pending : ""
             },
             auto_return : "approved",
-            notification_url: 'https://mighty-monkey-pf-git-devs-monosfeos.vercel.app/api/webHookPay'
           };
 
           try {
