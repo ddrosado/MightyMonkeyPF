@@ -9,10 +9,9 @@ import { useRouter } from "next/navigation";
 import { fetcher } from "../../pages/api/fetcher";
 import { useEffect } from "react";
 
-const url = "https://mighty-monkey-pf.vercel.app/"
 
 const logout = async () => {
-  const data = await fetch(`${url}/api/logout`, {
+  const data = await fetch("/api/logout", {
     method: "GET",
   });
   const res = await data.json();
@@ -20,7 +19,7 @@ const logout = async () => {
 };
 
 export const Navbar = () => {
-  const { data } = useSWR(`${url}/api/user`, fetcher);
+  const { data } = useSWR("/api/user", fetcher);
   const router = useRouter();
 
   const obj = [
@@ -33,12 +32,8 @@ export const Navbar = () => {
   ];
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
-    try {
-      await logout();
-      window.location.reload();
-    } catch (error) {
-      console.error('Error during logout:', error);
-    }
+    await logout();
+    router.reload();
   };
 
   const logInHandler = () => {
