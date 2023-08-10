@@ -32,15 +32,13 @@ const Membership = () => {
     console.log(planId);
     console.log(user.data.id);
     if(!user.data.id) router.push("/")
-    const url = await fetch('/api/pay', {
-      method: 'POST',
-      body: {
+    const url = await axios.post('/api/pay', {
         type: "subscriptions",
         userId: user.data.id,
         planId,
       },
-      headers: { credentials: "include" }
-    }).then(response => response.json())
+      {headers: { credentials: "include" }}
+    ).then(response => response.json())
     .then(data => console.log('member component',data))
     .catch(err => console.log('member component',err))
     // const url = await axios.post('https://api.mercadopago.com/preapproval', {
