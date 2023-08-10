@@ -20,7 +20,7 @@ const logout = async () => {
 };
 
 export const Navbar = () => {
-  const { data } = useSWR("api/user", fetcher);
+  const { data } = useSWR(`${url}/api/user`, fetcher);
   const router = useRouter();
 
   const obj = [
