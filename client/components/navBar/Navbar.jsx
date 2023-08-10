@@ -32,8 +32,12 @@ export const Navbar = () => {
   ];
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
-    const res = await logout();
-    window.location.reload();
+    try {
+      await logout();
+      window.location.reload();
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
   };
 
   const logInHandler = () => {
