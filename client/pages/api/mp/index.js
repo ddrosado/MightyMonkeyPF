@@ -39,7 +39,6 @@ export default async(req, res)=> {
             console.error("Error al crear la preferencia:", preferenceError);
             res.status(500).json({ error: "Error al crear la preferencia" });
           }
-            
       }
       
     catch (error) {
