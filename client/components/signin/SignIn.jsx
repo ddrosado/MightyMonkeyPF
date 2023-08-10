@@ -199,7 +199,7 @@ const SignIn = (props) => {
       </div>
 
       <div className={styles.forgotPass}>
-        <a
+        {/* <a
           href="#"
           onClick={(e) => {
             e.preventDefault(); // Prevent the default link behavior
@@ -207,7 +207,7 @@ const SignIn = (props) => {
           }}
         >
           Forgot your password?
-        </a>
+        </a> */}
       </div>
     </div>
   );
