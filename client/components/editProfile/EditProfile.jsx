@@ -77,11 +77,8 @@ const EditProfile = (props) => {
 
   return (
     <div className={style.container}>
-      <div className={style.profileContainer}>
         <Upload />
         <form onSubmit={handleUserUpdate} className={style.profileForm}>
-          <div className={style.img}></div>
-
           <div className={style.userdata}>
             <div>
               <h2 className={style.userDataLabel}>Name: </h2>
@@ -172,7 +169,6 @@ const EditProfile = (props) => {
           </div>
         </form>
       </div>
-    </div>
   );
 };
 

@@ -6,6 +6,7 @@ import { fetcher } from "../../pages/api/fetcher";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import './membership.css'
 // import { useDispatch, useSelector } from "react-redux";
 // import getPlans from '../../pages/api/controllers/plans/getPlans';
 
@@ -66,7 +67,7 @@ const Membership = () => {
       {!member ? (
         <div class="container mx-auto max-w-4xl">
           <div class="mt-10 text-center">
-            <h1 class="text-4xl font-bold text-yellow-200">Choose your plan</h1>
+            <h1 class="title text-4xl font-bold">Choose your <span className='span'>PLAN!</span></h1>
             <p class="text-white mt-3 font-semibold">
               Every plan includes 30 day free trial
             </p>
@@ -131,10 +132,10 @@ const Membership = () => {
                         <a href="#" className="font-semibold"></a>
                       </li>
                     </ul>
-                    <div className="text-center bg-yellow-600 ">
+                    <div className="text-center bgBtn">
                       <button
                         onClick={() => urlPay(plan.id)}
-                        className="inline-block my-6 font-bold text-white"
+                        className="inline-block my-6 font-bold text-black"
                       >
                         Get started today
                       </button>

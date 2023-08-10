@@ -12,9 +12,8 @@ export default async function Home() {
       <Banner />
       <Publicity />
       <InfoHome />
-
-      <FormReview />
-      <InfoReviews/>
+      {/* <FormReview />
+      <InfoReviews/> */}
     </div>
   )
 }

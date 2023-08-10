@@ -1,26 +1,35 @@
-.container{
-    margin-top: 10vh;
-    border: 1px solid red;
-    width: 100vw;
-    height: 100vh;
-    background-color: #FFDA60;
-}
-
-.contentContainer{
-    border: 1px solid lightseagreen;
-    margin: auto;
-    width: 80%;
-    height: 100vh;
-}
-
-.historyTitle{
-    display: flex;
+.historyContainer {
+    height: 80vh;
+    background-color: #FFDA61;
     width: 100%;
-    /* border: 1px solid red; */
-    font-size: 2.5rem;
-    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.bookingsTitle{
-    margin: auto;
+.bookingsContainer {
+    height: 80%;
+    width: 45%;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-bottom:80px;
+}
+
+.titleContainer {
+    margin: 50px 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    width: 77%;
+}
+
+.titleContainer span {
+    color: #FFDA61;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
 }
