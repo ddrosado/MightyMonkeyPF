@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'http://localhost:3000';
 
 export const getBookings = createAsyncThunk(
     'bookings/getBookings',
