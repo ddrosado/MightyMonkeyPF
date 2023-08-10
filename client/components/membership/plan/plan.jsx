@@ -22,8 +22,6 @@ export const Plan = ({plan, user}) => {
             },
             user : user.data
           })
-
-
           const {id} = response.data
           return id
         } catch (error) {
@@ -37,10 +35,6 @@ export const Plan = ({plan, user}) => {
             setPreferenceId(id)
         }
       }
-
-
-
-
   return (
     <div className="py-12">
                   <div className="bg-white  pt-4 rounded-xl space-y-6 overflow-hidden transition-all duration-500 transform hover:-translate-y-6 -translate-y-2 scale-105 shadow-xl hover:shadow-2xl cursor-pointer">
