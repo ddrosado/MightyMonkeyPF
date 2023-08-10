@@ -11,7 +11,7 @@ const userLogin = async (form) => {
     method: "POST",
     body: JSON.stringify(form),
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
   });
   const session = await data.json();
