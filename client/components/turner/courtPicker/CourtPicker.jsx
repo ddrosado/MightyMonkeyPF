@@ -11,14 +11,16 @@ const CourtPicker = ({ courts, onCourtSelected }) => {
 
 const bookings = useSelector(state => state.bookings.bookingsCopy)
 
-console.log(courts)
+const courtAvailable = courts?.filter(court=> court.isAvailable)
+console.log(courtAvailable)
+
 
   return (
     <div className={style.courtsContainer}>
       <h2>Pick a court</h2>
       <select onChange={handleCourtChange} style={{borderRadius:'10px'}}>
         <option  value="">Select a court</option>
-        {courts?.map((court) => (
+        {courtAvailable?.map((court) => (
           <option style={{borderRadius:'10px'}} key={court.id} value={court.name}>
             {court.name}
           </option>

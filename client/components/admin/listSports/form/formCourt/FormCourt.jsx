@@ -3,6 +3,7 @@ import style from "./FormCount.module.css"
 import {useDispatch, useSelector} from "react-redux"
 import { postCourt, putCourt } from '../../../../../redux/actions/courtsAction'
 import { validationCourt } from '../../../validations/validations'
+import { getSports } from '../../../../../redux/actions/sportsActions'
 
 
 export const FormCourt = (props) => {
@@ -22,6 +23,10 @@ export const FormCourt = (props) => {
   const [errors, setErrors] = useState({})
 
 //----------------------useEffects------------------------
+
+  useEffect(()=>{
+    dispatch(getSports())
+  },[])
 
   useEffect(()=>{
     setCourt({

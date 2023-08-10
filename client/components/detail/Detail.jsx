@@ -9,6 +9,9 @@ import useSWR from "swr";
 import { fetcher } from "../../pages/api/fetcher.js";
 import Image from "next/image";
 import monkeyRes from '../../assets/images/monores.png'
+import { CarouselDefault } from "../infoHome/carousel/Carousel";
+import img from "../../assets/images/monophoto.png"
+
 
 const Detail = ({ sportName }) => {
   const { data } = useSWR("/api/user", fetcher);
@@ -17,6 +20,7 @@ const Detail = ({ sportName }) => {
   const sport = useSelector((state) => state.sports);
   const bookings = useSelector((state) => state.bookings);
   const [isWideScreen, setIsWideScreen] = useState(false);
+
 
   useEffect(() => {
     if (!sport.length) {
@@ -38,12 +42,18 @@ const Detail = ({ sportName }) => {
   }, []);
 
   const sportFind = sport.sports?.find((e) => e.name == sportName);
-  // const noTurnsAvailable = !sportFind || sportFind?.court?.length === 0;
+
 
   return (
     <div className={style.detailContainer}>
       <Image className={style.logo} src={monkeyRes} alt="#" priority={true} />
       <Turner sportFind={sportFind} user={user} bookings={bookings} />
+      <Image
+       src={img}
+       width={450}
+       style={{marginBottom:"60px"}}
+       />
+      <CarouselDefault sportFind={sportFind} />
     </div>
   );
 };
