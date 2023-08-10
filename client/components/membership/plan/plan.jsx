@@ -12,7 +12,7 @@ export const Plan = ({plan, user}) => {
 
     const createPreference = async (plan)=>{
         try {
-          const response = await axios.post("http://localhost:3000/api/mp", {
+          const response = await axios.post("/api/mp", {
             product :{
                 description: plan.name,
             price : plan.price,
