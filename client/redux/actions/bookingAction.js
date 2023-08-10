@@ -19,7 +19,7 @@ export const getBookings = createAsyncThunk(
     'bookings/postBooking',
     async (form, { rejectWithValue }) => {
       try {
-        const response = await axios.post(`api/bookings`, form);
+        const response = await axios.post(`/api/bookings`, form);
         console.log(response.data);
         return response.data;
       } catch (error) {
