@@ -2,16 +2,16 @@
 require('dotenv').config();
 const mercadopago = require("mercadopago");
 
+mercadopago.configure({
+    access_token: process.env.acces_token_mp
+})
 
 export default async(req, res)=> {
-    mercadopago.configure({
-        access_token: process.env.acces_token_mp
-    })
 
     const { method, body } = req;
 
     
-      if(method === "POST"){
+      if(method == "POST"){
         try {
         
         const {product, user} = body
