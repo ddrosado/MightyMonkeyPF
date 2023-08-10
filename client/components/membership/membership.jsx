@@ -34,11 +34,12 @@ const Membership = () => {
     if(!user.data.id) router.push("/")
     const url = await fetch('/api/pay', {
       method: 'POST',
-      data: {
+      body: JSON.stringify({
         type: 'subscriptions',
         userId: user.data.id,
         planId,
-      }
+      }),
+      headers: { credentials: "include" }
     }).then(response => response.json())
     .then(data => console.log('member component',data))
     .catch(err => console.log('member component',err))
