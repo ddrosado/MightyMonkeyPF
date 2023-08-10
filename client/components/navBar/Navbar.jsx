@@ -21,8 +21,9 @@ const logout = async () => {
 export const Navbar = () => {
 
   const { data, mutate } = useSWR("/api/user", fetcher);
-
   const router = useRouter();
+
+  
 
   const obj = [
     { label: "Home", route: "/home" },
@@ -35,8 +36,8 @@ export const Navbar = () => {
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
     await logout()
-    mutate({data,isLoggedIn:false})
-    router.push("/home")
+    mutate()
+    router.push("/");
   };
   const logInHandler = () => {
     router.push("/");
@@ -49,6 +50,7 @@ export const Navbar = () => {
     init();
   }, []);
 
+  console.log(data?.isLoggedIn)
   return (
     <div className={style.navContainer}>
       <Image className={style.logo} src={logo} alt="#" />

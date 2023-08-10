@@ -111,7 +111,7 @@ const SignIn = (props) => {
   const isLoggedIn = data?.isLoggedIn;
 
   useEffect(() => {
-    if (isLoggedIn && allowed === null) {
+    if (isLoggedIn) {
       // alert("donde vas perrito? ya tas logueado");
       router.push("/home");
     }
