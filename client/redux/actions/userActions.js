@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'http://localhost:3000';
-
 export const getUsers = createAsyncThunk(
     'users/getUsers',
     async () => {

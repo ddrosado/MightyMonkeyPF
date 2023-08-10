@@ -1,13 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'http://localhost:3000';
-
 export const postCourt = createAsyncThunk(
     'court/postCourt',
     async (obj) => {
       try {
-        const response = await axios.post(`${url}/api/courts`, obj);
+        const response = await axios.post(`/api/courts`, obj);
         return response.data;
       } catch (error) {
         throw new Error(error.response.data.msg)
@@ -19,7 +17,7 @@ export const postCourt = createAsyncThunk(
     'courts/putCourt',
     async(obj)=>{
       try {
-        return (await axios.put(`${url}/api/courts`, obj)).data
+        return (await axios.put(`/api/courts`, obj)).data
       } catch (error) {
         throw new Error(error.response.data.msg)
       }
