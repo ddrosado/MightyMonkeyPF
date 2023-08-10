@@ -19,7 +19,7 @@ const logout = async () => {
 };
 
 export const Navbar = () => {
-  const { data } = useSWR("/api/user", fetcher);
+  const { data } = useSWR("api/user", fetcher);
   const router = useRouter();
 
   const obj = [
@@ -33,7 +33,7 @@ export const Navbar = () => {
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
     await logout();
-    window.location.reload();
+    router.reload();
   };
 
   const logInHandler = () => {
