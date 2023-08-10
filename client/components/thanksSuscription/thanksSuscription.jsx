@@ -8,8 +8,7 @@ import { fetcher } from "../../pages/api/fetcher";
 const ThanksSuscription = () => {
     const { data, mutate } = useSWR("api/user", fetcher);
     console.log('esto es el data ',data);
-    if(data){
-        if(data.email){
+
             const updateUser = async () => {
                 try {
                     const email = await data.email
@@ -27,9 +26,14 @@ const ThanksSuscription = () => {
                     console.log('Error: ' + error);
                 }
             }
-            updateUser()
-        }
-    }
+
+
+            useEffect(() => {
+                if (data && data.email) {
+                    updateUser(data.email);
+                }
+            }, [data]);
+        
         
     return (
 
