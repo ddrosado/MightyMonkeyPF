@@ -21,7 +21,6 @@ const Membership = () => {
   useEffect(()=>{
   dispatch(getPlans())
   },[])
-  // const plans = useSWR("api/plans", fetcher);
   const user = useSWR("api/user", fetcher);
   const router = useRouter();
 
