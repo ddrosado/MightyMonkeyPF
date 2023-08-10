@@ -1,36 +1,28 @@
 .container{
-    width: 100%;
+    width: 45%;
+    display: flex;
     justify-content: space-between;
-    background-color: #000000e2;
-    border-radius: 5px;
-    border: 1px solid #FFDA60;
+    background-color: #FFDA61;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px;
+}
+.separator {
+    width: 2px;
+    height: 191px;
+    border: solid 1px black;
 }
 
-.img{
-    /* border: solid 1px green;  */
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.img > div{
-    width: 90%;
-    height: 100%;
-    border-radius: 5px;
-    border: solid 1px #ffda603b;
+.imgContainer{
+    width:250px;
+    height: 250px;
 }
 
 .userdata{
-    /* border: solid 1px red; */
-    width: 100%;
-    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    gap: 2rem;
-    margin-left: 20px;
-    /* padding-left: 2rem; */
+
 }
 
 .userdata >div{
@@ -38,12 +30,13 @@
     display: flex;
     flex-direction: column;
     font-size: 1.5em;
+    color: black;
 }
-
 .userDataLabel{
     font-size: 1rem;
-    color: #f4f4f56c;
+    color: black;
 }
+
 
 .profileInput{
     color: #f4f4f5;
@@ -56,7 +49,7 @@
 }
 
 .actualData{
-    color: #f4f4f5;
+    color: black;
 }
 
 .cancelButton{
@@ -143,7 +136,8 @@
     font-size: 1rem;
     background-color: rgb(0, 0, 0);
     border-radius: 5px;
-    transition: all .2s ease-in-out; 
+    transition: all 0.2s ease-in-out; 
+    color:white;
 }
 
 .saveButton:hover{
@@ -154,7 +148,7 @@
     width: 9rem;
     margin-right: 10px;
     font-size: 1rem;
-    background-color: rgba(0, 255, 0, 0.5);
+    background-color: #46d250;
     border-radius: 5px;
     transform: scale(1.1); 
 }

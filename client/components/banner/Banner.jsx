@@ -8,6 +8,7 @@ import img4 from '../../assets/images/banners/publi4.jpg'
 import Image from "next/image";
 
 
+
 const Banner = () => {
 
   const images = [img1, img2, img3, img4]
@@ -27,16 +28,16 @@ const Banner = () => {
       data-te-carousel-init
       data-te-carousel-slide
     >
-      <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+      <div className="relative h-full w-full overflow-hidden after:clear-both after:block after:content-['']">
         {/* Slide 1 */}
         <div
-          className="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          className="relative float-left h-full -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           data-te-carousel-item
           data-te-carousel-active
         >
           <Image
             src={images[0]}
-            className="block w-full"
+            className="block w-full imagenBanner"
             alt="publi1"
             key='publi1'
           />
@@ -44,12 +45,12 @@ const Banner = () => {
 
         {/* Slide 2 */}
         <div
-          className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          className="relative float-left h-full -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           data-te-carousel-item
         >
           <Image
             src={images[1]}
-            className="block w-full"
+            className="block w-full  imagenBanner"
             alt="publi2"
             key='publi2'
           />
@@ -57,23 +58,23 @@ const Banner = () => {
 
         {/* Slide 3 */}
         <div
-          className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          className="relative float-left  h-full -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           data-te-carousel-item
         >
           <Image
             src={images[2]}
-            className="block w-full"
+            className="block w-full imagenBanner"
             alt="publi3"
             key='publi3'
           />
         </div>
         <div
-          className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          className="relative float-left h-full -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           data-te-carousel-item
         >
           <Image
             src={images[3]}
-            className="block w-full"
+            className="block w-full imagenBanner"
             alt="publi4"
             key='publi4'
           />

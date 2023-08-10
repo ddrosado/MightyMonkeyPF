@@ -28,33 +28,31 @@ export const History = () => {
   );
 
   return (
-    <div className={style.container}>
-      <div className={style.contentContainer}>
-        <div className={style.historyTitle}>
-          <span className={style.bookingsTitle}></span>
-        </div>
-        <div>
-          {user?.booking?.map((book, index) => (
-            <HistoryCard
-              key={index}
-              clientName={`${user?.name} ${user?.surname}`}
-              isMember={user?.isMember}
-              hour={book.hour}
-              court={book.court}
-              createdAt={book.createdAt}
-              price={
-                user?.isMember
-                  ? book.court.memberPrice
-                  : book.court.noMemberPrice
-              }
-              id={book.id}
-              date={book.date}
-              sport={book.court.sport.name}
-              time={realTime}
-            />
-          ))}
-          <div className="bg-gray-50 mx-auto border-gray-500 border rounded-md text-gray-700 mb-0.5 h-30"></div>
-        </div>
+    <div className={style.historyContainer}>
+      <div className={style.titleContainer}>
+        <h1>
+          My <span>TURNS</span>
+        </h1>
+      </div>
+      <div className={style.bookingsContainer}>
+        {user?.booking?.map((book, index) => (
+          <HistoryCard
+            key={index}
+            clientName={`${user?.name} ${user?.surname}`}
+            isMember={user?.isMember}
+            hour={book.hour}
+            court={book.court}
+            createdAt={book.createdAt}
+            price={
+              user?.isMember ? book.court.memberPrice : book.court.noMemberPrice
+            }
+            id={book.id}
+            date={book.date}
+            sport={book.court.sport.name}
+            time={realTime}
+          />
+        ))}
+        <div className="bg-gray-50 mx-auto border-gray-500 border rounded-md text-gray-700 mb-0.5 h-30"></div>
       </div>
     </div>
   );

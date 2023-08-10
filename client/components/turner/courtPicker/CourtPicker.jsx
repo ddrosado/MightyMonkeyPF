@@ -4,12 +4,15 @@ import style from './CourtPicker.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
 const CourtPicker = ({ courts, onCourtSelected }) => {
+// let availableCourts = []
   const handleCourtChange = (event) => {
     const selectedCourt = event.target.value;
     onCourtSelected(selectedCourt);
   };
 
-const bookings = useSelector(state => state.bookings.bookingsCopy)
+const bookings = useSelector(state => state.bookings.bookingsXHour)
+
+const availableCourts = courts?.filter((court) => {
 
 const courtAvailable = courts?.filter(court=> court.isAvailable)
 console.log(courtAvailable)
