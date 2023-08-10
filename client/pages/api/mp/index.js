@@ -24,7 +24,7 @@ export default async(req, res)=> {
               },
             ],
             back_urls:{
-                success : "https://mighty-monkey-hsepqm1x2-monosfeos.vercel.app/join",
+                success : "https://mighty-monkey-pf.vercel.app/thanks",
                 failure: "https://mighty-monkey-hsepqm1x2-monosfeos.vercel.app/join",
                 pending : ""
             },
