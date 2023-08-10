@@ -38,9 +38,7 @@ const Membership = () => {
         planId,
       },
       {headers: { credentials: "include" }}
-    ).then(response => response.json())
-    .then(data => console.log('member component',data))
-    .catch(err => console.log('member component',err))
+    ).then(({data}) => data)
     // const url = await axios.post('https://api.mercadopago.com/preapproval', {
     //   payer_email: "test_user_1751930390@testuser.com",
     //   reason: 'plan.name',
