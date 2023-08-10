@@ -10,8 +10,8 @@ async function handler(req, res) {
       const { name, email, id, isAdmin, image, planId, isActive, surname, telephone, isMember } = await userAuth(body);
       set("user", { name, email, id, isAdmin, image, planId, isActive, surname, telephone, isMember });
       await save();
-      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-      res.setHeader('Pragma', 'no-cache');
+      // res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+      // res.setHeader('Pragma', 'no-cache');
       return res.status(200).json({ session: true, isActive });
     }
     if(method === "GET"){
@@ -19,8 +19,8 @@ async function handler(req, res) {
       const { name, email, id, isAdmin, image, planId, isActive, surname, telephone, isMember } = await getUserById(user.id)
       set("user", { name, email, id, isAdmin, image, planId, isActive, surname, telephone, isMember });
       await save();
-      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-      res.setHeader('Pragma', 'no-cache');
+      // res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+      // res.setHeader('Pragma', 'no-cache');
       return res.status(200).json({ session: true, isActive });
     }
   } catch (error) {
