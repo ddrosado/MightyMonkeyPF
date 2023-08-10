@@ -1,3 +1,4 @@
+import putUser from '../controllers/users/putUser';
 
 require('dotenv').config();
 const mercadopago = require("mercadopago");
@@ -9,7 +10,6 @@ mercadopago.configure({
 export default async(req, res)=> {
 
     const { method, body } = req;
-
     
       if(method == "POST"){
         try {
@@ -30,13 +30,12 @@ export default async(req, res)=> {
             },
             auto_return : "approved",
           };
-          console.log(user)
-          console.log(product)
+
           try {
             const response = await mercadopago.preferences.create(preference);
             console.log(response)
             res.status(200).json({ id: response.body.id });
-
+            putUser({email: user.email, isMember: true})
           } catch (preferenceError) {
             console.error("Error al crear la preferencia:", preferenceError);
             res.status(500).json({ error: "Error al crear la preferencia" });
