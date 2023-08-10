@@ -33,7 +33,7 @@ export const Navbar = () => {
   // ------------------------- Log out -------------------------
   const logoutHandler = async () => {
     await logout();
-    router.reload();
+    window.location.reload();
   };
 
   const logInHandler = () => {
